@@ -69,8 +69,8 @@ T = {
    homedesc="Simple information on PM Kisan, Ayushman Bharat, Ujjwala, Sukanya Samriddhi, Mudra loan and state schemes of all states of India, in Hindi and English."),
 }
 
-GA_SNIPPET = """<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-W2C4GHCT"></script>
-<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());</script>"""
+GA_SNIPPET = """<script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNDZDNDG8"></script>
+<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-MGNDZDNDG8');</script>"""
 def adscript():
     return f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_PUB}" crossorigin="anonymous"></script>' if ADSENSE_PUB else ""
 def adslot(t):
