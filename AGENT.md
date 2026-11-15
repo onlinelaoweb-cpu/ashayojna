@@ -33,7 +33,7 @@ Append a `B(...)` call to `data_daily.py` (full signature and many examples in `
 `(hindi, english)`; list lengths are automatically kept equal). Then register tags:
 `tags.TAGS["<slug>"] = "w d f e s b h g wid dis"` (space separated audience codes; see tags.py).
 Slug convention: `<state-key>-<scheme-name>` (state keys are in `STATES` in build.py, e.g. up, bihar, mp). For central
-schemes use the state value as in existing central entries in data1/data2 (check how they set `state`).
+schemes pass `None` as the state argument (central entries have `state=None`) and a slug like `central-<name>` or the official short name.
 Category keys: kisan, swasthya, mahila, rozgar, bima, ghar (see CATS in data1.py).
 Optional extras: `data9.EXTRA` / `data10.py` hold "how to check status" and "payment not received" sections - only add
 those if you verified the steps.
