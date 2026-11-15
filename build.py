@@ -69,6 +69,8 @@ T = {
    homedesc="Simple information on PM Kisan, Ayushman Bharat, Ujjwala, Sukanya Samriddhi, Mudra loan and state schemes of all states of India, in Hindi and English."),
 }
 
+GA_SNIPPET = """<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-W2C4GHCT"></script>
+<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());</script>"""
 def adscript():
     return f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_PUB}" crossorigin="anonymous"></script>' if ADSENSE_PUB else ""
 def adslot(t):
@@ -113,7 +115,7 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
 <meta name="theme-color" content="#0f5a4a">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%AA%94%3C/text%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family={t['font']}:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{css}">{ldj}{adscript()}</head><body>
+<link rel="stylesheet" href="{css}">{ldj}{GA_SNIPPET}{adscript()}</head><body>
 <header class="hd"><div class="w hdr"><a class="logo" href="{base}index.html"><span class="lg">🪔</span>{sn}</a>{swlink}
 </div>
 <nav class="w nav">{nav}</nav></header>
