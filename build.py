@@ -72,8 +72,8 @@ T = {
 def adscript():
     return f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_PUB}" crossorigin="anonymous"></script>' if ADSENSE_PUB else ""
 def adslot(t):
-    if not ADSENSE_PUB: return ""
-    return f'<div class="ad"><small>{t["ad"]}</small><ins class="adsbygoogle" style="display:block" data-ad-client="{ADSENSE_PUB}" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({{}});</script></div>'
+    # Auto ads (enabled in AdSense) place ads by themselves; manual slots need a data-ad-slot id, so none for now.
+    return ""
 
 T["hi"].update(statush="स्थिति (Status) कैसे जाँचें?", issuesh="पैसा नहीं आया? ये वजहें हो सकती हैं", calcgo="🧮 सुकन्या समृद्धि कैलकुलेटर", calcl="सुकन्या समृद्धि कैलकुलेटर", calcall="🧮 सभी कैलकुलेटर")
 T["en"].update(statush="How to check your status", issuesh="Payment not received? Possible reasons", calcgo="🧮 Sukanya Samriddhi calculator", calcl="Sukanya Samriddhi calculator", calcall="🧮 All calculators")
