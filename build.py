@@ -9,7 +9,7 @@ CALC = calcdata.CALC
 SITE_NAME   = "आशा योजना"
 SITE_NAME_EN= "Asha Yojana"
 SITE_URL    = "https://ashayojana.com"     # apna domain (bina / ke) - sitemap ke liye
-ADSENSE_PUB = ""                            # e.g. "ca-pub-1234567890123456"  (approval ke baad)
+ADSENSE_PUB = "ca-pub-5169642227203900"                            # e.g. "ca-pub-1234567890123456"  (approval ke baad)
 CONTACT_EMAIL = "ashayojana.contact@gmail.com"                          # apna contact email
 # ========================================================
 PH = "YOUR-DOMAIN" in SITE_URL
