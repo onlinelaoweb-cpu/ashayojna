@@ -22,6 +22,7 @@ CSS = open("style.css", encoding="utf-8").read()
 import hashlib
 CSSV = hashlib.md5(CSS.encode()).hexdigest()[:8]
 open(OUT+"/style.css","w",encoding="utf-8").write(CSS)
+shutil.copy("og-image.png", OUT+"/og-image.png")
 
 STATES = {"up": ("उत्तर प्रदेश","Uttar Pradesh"), "bihar": ("बिहार","Bihar"), "mp": ("मध्य प्रदेश","Madhya Pradesh"), "rajasthan": ("राजस्थान","Rajasthan"), "maharashtra": ("महाराष्ट्र","Maharashtra"), "gujarat": ("गुजरात","Gujarat"), "delhi": ("दिल्ली","Delhi"), "haryana": ("हरियाणा","Haryana"), "karnataka": ("कर्नाटक","Karnataka"), "westbengal": ("पश्चिम बंगाल","West Bengal"), "tamilnadu": ("तमिलनाडु","Tamil Nadu"), "ap": ("आंध्र प्रदेश","Andhra Pradesh"), "arunachal": ("अरुणाचल प्रदेश","Arunachal Pradesh"), "assam": ("असम","Assam"), "chhattisgarh": ("छत्तीसगढ़","Chhattisgarh"), "goa": ("गोवा","Goa"), "himachal": ("हिमाचल प्रदेश","Himachal Pradesh"), "jharkhand": ("झारखंड","Jharkhand"), "kerala": ("केरल","Kerala"), "manipur": ("मणिपुर","Manipur"), "meghalaya": ("मेघालय","Meghalaya"), "mizoram": ("मिज़ोरम","Mizoram"), "nagaland": ("नागालैंड","Nagaland"), "odisha": ("ओडिशा","Odisha"), "punjab": ("पंजाब","Punjab"), "sikkim": ("सिक्किम","Sikkim"), "telangana": ("तेलंगाना","Telangana"), "tripura": ("त्रिपुरा","Tripura"), "uttarakhand": ("उत्तराखंड","Uttarakhand")}
 CATS_EN = {
@@ -42,7 +43,7 @@ T = {
    central="केंद्र सरकार", lastchk="अंतिम जाँच", what="योजना क्या है?", ben="मुख्य लाभ", elig="पात्रता – कौन आवेदन कर सकता है?", notelig="कौन पात्र नहीं है / ध्यान रखें",
    docs="ज़रूरी दस्तावेज़", steps="आवेदन कैसे करें? (स्टेप बाय स्टेप)", faq="अक्सर पूछे जाने वाले सवाल", also="इन्हें भी देखें",
    warn="<b>सावधान:</b> सरकारी योजना के आवेदन के नाम पर किसी एजेंट या वेबसाइट को पैसे न दें। आधिकारिक पोर्टल पर आवेदन आम तौर पर निःशुल्क होता है। OTP, PIN या बैंक की गोपनीय जानकारी किसी से साझा न करें।",
-   ttl=" – पात्रता, लाभ, आवेदन", cattl=" – सरकारी योजनाएँ",
+   ttl=" – पात्रता व आवेदन", cattl=" – सरकारी योजनाएँ",
    h1="सरकारी योजनाओं की सही और आसान जानकारी", hp="पात्रता, लाभ, दस्तावेज़ और आवेदन का तरीका – सरल हिंदी में। हर पेज पर आधिकारिक पोर्टल का लिंक।",
    findl="योजना खोजक", findh="आपके लिए कौन-सी योजना?", findp="अपना राज्य चुनें और बताएँ कि आप कौन हैं। हम आपके लिए काम की योजनाएँ दिखाएँगे।", findst="आपका राज्य", findall="सभी राज्य", findwho="मैं हूँ… (एक या ज़्यादा चुनें)", findbtn="योजनाएँ दिखाएँ", findres="आपके लिए ये योजनाएँ मिलीं", findnote="यह सिर्फ़ सुझाव है, पात्रता की पक्की जाँच नहीं। हर योजना के पेज पर पात्रता पढ़ें और आधिकारिक पोर्टल से पुष्टि करें।", findnone="कुछ चुनकर बटन दबाएँ।", findgo="🔎 आपके लिए कौन-सी योजना? (योजना खोजक)",
    dedtop="🪔 माँ आशा जी को समर्पित · हर घर तक योजनाओं की रोशनी", ph="🔍 योजना खोजें… जैसे: किसान, बीमा, पेंशन, लोन",
@@ -58,7 +59,7 @@ T = {
    central="Central Government", lastchk="Last checked", what="What is the scheme?", ben="Key benefits", elig="Eligibility – who can apply", notelig="Who is not eligible / things to note",
    docs="Documents required", steps="How to apply (step by step)", faq="Frequently asked questions", also="Also see",
    warn="<b>Beware:</b> Do not pay any agent or website in the name of applying for a government scheme. Applying on the official portal is generally free. Do not share OTP, PIN or confidential bank details with anyone.",
-   ttl=" – Eligibility & How to Apply", cattl=" – Government Schemes",
+   ttl=" – Eligibility & Apply", cattl=" – Government Schemes",
    h1="Accurate and easy information on government schemes", hp="Eligibility, benefits, documents and how to apply – in simple language. Every page links to the official portal.",
    findl="Scheme finder", findh="Which scheme is for you?", findp="Choose your state and tell us who you are. We will show schemes that may be useful for you.", findst="Your state", findall="All states", findwho="I am… (choose one or more)", findbtn="Show schemes", findres="Schemes that may suit you", findnote="This is only a suggestion, not a confirmation of eligibility. Read the eligibility on each scheme page and confirm on the official portal.", findnone="Pick something and press the button.", findgo="🔎 Which scheme is for you? (Scheme finder)",
    dedtop="🪔 Dedicated to my mother, Asha ji · Light of schemes for every home", ph="🔍 Search schemes… e.g. farmer, insurance, pension, loan",
@@ -111,7 +112,7 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
     h = f"""<!doctype html><html lang="{t['lang']}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(title)}</title><meta name="description" content="{e(desc)}">
 {canon}{hre}{robots}
-<meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:type" content="article"><meta property="og:locale" content="{t['loc']}"><meta property="og:site_name" content="{sn}">
+<meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:type" content="article"><meta property="og:locale" content="{t['loc']}"><meta property="og:site_name" content="{sn}"><meta property="og:image" content="{SITE_URL}/og-image.png"><meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0f5a4a">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%AA%94%3C/text%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family={t['font']}:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -184,6 +185,7 @@ def build(lang):
 </article>
 <h2>{t["also"]}</h2><div class="grid">{relcards}</div>"""
         ld = [{"@context":"https://schema.org","@type":"Article","headline":y["name"],"description":y["short"],"inLanguage":t["lang"],"dateModified":LASTMOD,"author":{"@type":"Organization","name":SN},"publisher":{"@type":"Organization","name":SN}},
+              {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":t["home"],"item":SITE_URL+"/"+pfx},{"@type":"ListItem","position":2,"name":cname(y0["cat"],lang),"item":f'{SITE_URL}/{pfx}category/{y0["cat"]}.html'},{"@type":"ListItem","position":3,"name":y["name"]}]},
               {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in y["faq"]]}]
         p = f"yojana/{y0['slug']}.html"; reg(p)
         page(lang, p, f'{y["name"]}{t["ttl"]} | {SN}', y["short"], body, "../", ld)
