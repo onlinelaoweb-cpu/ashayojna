@@ -75,6 +75,11 @@ GA_SNIPPET = """<script async src="https://www.googletagmanager.com/gtag/js?id=G
 <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-MGNDZDNDG8');</script>"""
 def adscript():
     return f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_PUB}" crossorigin="anonymous"></script>' if ADSENSE_PUB else ""
+WA_URL = "https://whatsapp.com/channel/0029Vb93ObIKmCPZX9XLho1U"
+def wabox(lang):
+    h = ("रोज़ नई सरकारी योजनाओं की जानकारी WhatsApp पर पाएँ", "WhatsApp चैनल जॉइन करें") if lang=="hi" else ("Get new government scheme updates on WhatsApp every day", "Join our WhatsApp channel")
+    return f'<div class="wabox"><p>{h[0]}</p><a class="btn wabtn" href="{WA_URL}" target="_blank" rel="noopener">💬 {h[1]}</a></div>'
+
 def adslot(t):
     # Auto ads (enabled in AdSense) place ads by themselves; manual slots need a data-ad-slot id, so none for now.
     return ""
@@ -184,6 +189,7 @@ def build(lang):
 <h2>{t["faq"]}</h2>{faq}
 <div class="warn">{t["warn"]}</div>
 </article>
+{wabox(lang)}
 <h2>{t["also"]}</h2><div class="grid">{relcards}</div>"""
         ld = [{"@context":"https://schema.org","@type":"Article","headline":y["name"],"description":y["short"],"inLanguage":t["lang"],"dateModified":LASTMOD,"author":{"@type":"Organization","name":SN},"publisher":{"@type":"Organization","name":SN}},
               {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":t["home"],"item":SITE_URL+"/"+pfx},{"@type":"ListItem","position":2,"name":cname(y0["cat"],lang),"item":f'{SITE_URL}/{pfx}category/{y0["cat"]}.html'},{"@type":"ListItem","position":3,"name":y["name"]}]},
@@ -228,7 +234,7 @@ def build(lang):
 <h2>{t["statesh"]}</h2><p class="lead">{t["statesub"]}</p><div class="grid sgrid">{schips}</div>
 <div class="chips">{chips}</div>{adslot(t)}
 <h2 id="central">{t["central_h"]}</h2><div class="grid">{ccards}</div></div>
-<section class="trust"><h2>{t["how"]}</h2><ul>{"".join(f"<li>{x}</li>" for x in t["howl"])}</ul></section>
+{wabox(lang)}<section class="trust"><h2>{t["how"]}</h2><ul>{"".join(f"<li>{x}</li>" for x in t["howl"])}</ul></section>
 <script>const D={sjson};const q=document.getElementById('q'),r=document.getElementById('res'),a=document.getElementById('all');
 q.addEventListener('input',()=>{{const v=q.value.trim().toLowerCase();if(!v){{r.innerHTML='';a.style.display='';return}}
 const m=D.filter(d=>(d.t+' '+d.s+' '+d.k).toLowerCase().includes(v));a.style.display='none';
