@@ -116,8 +116,7 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
 <meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:type" content="article"><meta property="og:locale" content="{t['loc']}"><meta property="og:site_name" content="{sn}"><meta property="og:image" content="{SITE_URL}/og-image.png"><meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0f5a4a">
 <meta name="msvalidate.01" content="E396DD12CB7E02BFB4486E78FD592C97" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%AA%94%3C/text%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={t['font']}:wght@400;700;800&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={t['font']}:wght@400;700;800&display=swap"></noscript>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%AA%94%3C/text%3E%3C/svg%3E">
 <style>{CSS}</style>{ldj}{GA_SNIPPET}{adscript()}</head><body>
 <header class="hd"><div class="w hdr"><a class="logo" href="{base}index.html"><span class="lg">🪔</span>{sn}</a>{swlink}
 </div>
