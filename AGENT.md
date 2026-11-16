@@ -57,3 +57,8 @@ Commit trailers: `Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>`.
 Append to `DAILY_LOG.md`: date, slugs added, 1-2 source URLs per slug, anything skipped and why.
 Final message (Hinglish, short): how many pages added, their names, anything uncertain or worth Prabhash checking.
 If a step fails (build error, push denied), fix it or report exactly what failed; never force-push.
+
+## Update 2026-11-16: daily task is now two parts
+- Part A: 3-5 new verified pages (as above).
+- Part B: re-verify 3-4 OLDER pages per day (pages from before 2026-11-16, oldest/thinnest and high-traffic central schemes first). Fix outdated facts, replace vague "as per reports" with verified facts where possible, expand thin sections, note sources checked. Discontinued/renamed schemes: say so or remove, and log. Do not bump the global UPD date; log refreshed slugs and a "could not verify" list in DAILY_LOG.md.
+- Keep og-image.png (copied by build.py) and see TRAFFIC_PLAN.md. AI-detection evasion is not a goal; accuracy, sources and dates are.
