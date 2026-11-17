@@ -13,7 +13,7 @@ ADSENSE_PUB = "ca-pub-5169642227203900"                            # e.g. "ca-pu
 CONTACT_EMAIL = "ashayojana.contact@gmail.com"                          # apna contact email
 # ========================================================
 PH = "YOUR-DOMAIN" in SITE_URL
-LASTMOD = "2026-11-16"
+LASTMOD = "2026-11-17"
 OUT = "site"
 e = html.escape
 if os.path.exists(OUT): shutil.rmtree(OUT)
@@ -174,7 +174,7 @@ def build(lang):
         relcards = "".join(card(x,"../",lang) for x in rel)
         body = f"""<nav class="bc">{crumb}</nav>
 <article><h1>{e(y["name"])}</h1>
-<p class="meta">{y0["icon"]} {where} · {e(y["ministry"])} · {t["lastchk"]}: {UPD[lang]}</p>
+<p class="meta">{y0["icon"]} {where} · {e(y["ministry"])} · {t["lastchk"]}: {data_daily.VERIFIED.get(y0["slug"],{}).get(lang, UPD[lang])}</p>
 <div class="facts">{facts}</div>
 <div class="note">⚠️ {e(y["note"])}</div>
 {adslot(t)}
