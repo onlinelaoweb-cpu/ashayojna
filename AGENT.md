@@ -62,3 +62,9 @@ If a step fails (build error, push denied), fix it or report exactly what failed
 - Part A: 3-5 new verified pages (as above).
 - Part B: re-verify 3-4 OLDER pages per day (pages from before 2026-11-16, oldest/thinnest and high-traffic central schemes first). Fix outdated facts, replace vague "as per reports" with verified facts where possible, expand thin sections, note sources checked. Discontinued/renamed schemes: say so or remove, and log. Do not bump the global UPD date; log refreshed slugs and a "could not verify" list in DAILY_LOG.md.
 - Keep og-image.png (copied by build.py) and see TRAFFIC_PLAN.md. AI-detection evasion is not a goal; accuracy, sources and dates are.
+
+## Update 2026-11-18: Part C = 1-2 'Taaza Khabar' posts daily (Google Discover + RSS)
+- Add 1-2 short, verified news-update posts per day to `news.py` (NEWS list; fields in the file header). Topic: a real, dated development on a scheme (extension, instalment released, amount/rule change, deadline) found in an official/major source from the last days. Both hi+en, 3-4 short paragraphs, say what was NOT confirmed, list 2-3 sources, link `related` = an existing yojana slug. date = today (ISO). Never invent.
+- Then run `python3 tools/make_images.py` (makes img/<slug>-<lang>.jpg for schemes AND news-<slug>-<lang>.jpg; commit img/), `python3 build.py && python3 check.py`. Pages: /khabar/<slug>.html, /en/khabar/..., feeds /feed.xml and /en/feed.xml, section index /khabar/index.html. Publish the same way (site/ includes img/).
+- Always run make_images.py after adding new schemes too, otherwise their og:image 404s.
+- If there is no genuinely new verified development that day, post fewer (0 is fine); never pad.

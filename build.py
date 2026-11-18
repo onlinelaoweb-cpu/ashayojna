@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os, json, html, shutil, datetime
-import data10, data_daily, calcs2, calcdata, data9, tags, data4, data5, data6, data7, data8, en3, en4, en5, en6, static_hi, static_en
+import news, data10, data_daily, calcs2, calcdata, data9, tags, data4, data5, data6, data7, data8, en3, en4, en5, en6, static_hi, static_en
 from data1 import Y, CATS
 EN = en6.EN
 CALC = calcdata.CALC
@@ -100,7 +100,7 @@ def sname(k, lang): return STATES[k][0] if lang=="hi" else STATES[k][1]
 
 def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=True, img=None):
     t = T[lang]; pfx = "" if lang=="hi" else "en/"
-    nav = f'<a href="{base}find.html">🔎 {e(t["findl"])}</a>' + "".join(f'<a href="{base}category/{k}.html">{v[1]} {e(cname(k,lang))}</a>' for k,v in CATS.items())
+    nav = f'<a href="{base}khabar/index.html">📰 {"ताज़ा खबर" if lang=="hi" else "Latest updates"}</a><a href="{base}find.html">🔎 {e(t["findl"])}</a>' + "".join(f'<a href="{base}category/{k}.html">{v[1]} {e(cname(k,lang))}</a>' for k,v in CATS.items())
     nav += "".join(f'<a href="{base}state/{k}.html">📍 {e(sname(k,lang))}</a>' for k in STATES)
     ldj = f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>' if ld else ""
     url = f"{SITE_URL}/{pfx}{path}"
@@ -119,7 +119,7 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
     catlinks = "".join(f'<a href="{base}category/{k}.html">{e(cname(k,lang))}</a>' for k in CATS)
     h = f"""<!doctype html><html lang="{t['lang']}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(title)}</title><meta name="description" content="{e(desc)}">
-{canon}{hre}{robots}
+{canon}{hre}{robots}<link rel="alternate" type="application/rss+xml" title="{sn}" href="{SITE_URL}/{pfx}feed.xml">
 <meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:type" content="article"><meta property="og:locale" content="{t['loc']}"><meta property="og:site_name" content="{sn}"><meta property="og:image" content="{imgurl}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{imgurl}">
 <meta name="theme-color" content="#0f5a4a">
 <meta name="msvalidate.01" content="E396DD12CB7E02BFB4486E78FD592C97" />
@@ -149,6 +149,9 @@ def build(lang):
     def reg(p): URLS.append(pfx+p)
     ul = lambda a: "<ul>"+"".join(f"<li>{e(i)}</li>" for i in a)+"</ul>"
     ol = lambda a: "<ol class='steps'>"+"".join(f"<li>{e(i)}</li>" for i in a)+"</ol>"
+    def ncard(n, base):
+        d = n[lang]
+        return f'<a class="card" href="{base}khabar/{n["slug"]}.html"><span class="ic">{n["icon"]}</span><span class="tg">{n["date"]}</span><h3>{e(d["title"])}</h3><p>{e(d["summary"])}</p><span class="more">{t["more"]}</span></a>'
     # ---------- Yojana pages ----------
     for y0 in Y:
         y = view(y0, lang)
@@ -235,6 +238,7 @@ def build(lang):
 <div id="all">
 <h2>{t["statesh"]}</h2><p class="lead">{t["statesub"]}</p><div class="grid sgrid">{schips}</div>
 <div class="chips">{chips}</div>{adslot(t)}
+<h2>📰 {"ताज़ा खबर" if lang=="hi" else "Latest updates"}</h2><div class="grid">{"".join(ncard(n,"") for n in sorted(news.NEWS,key=lambda n:n["date"],reverse=True)[:3])}</div><p><a class="btn" href="khabar/index.html">{"सभी खबरें" if lang=="hi" else "All updates"} →</a></p>
 <h2 id="central">{t["central_h"]}</h2><div class="grid">{ccards}</div></div>
 {wabox(lang)}<section class="trust"><h2>{t["how"]}</h2><ul>{"".join(f"<li>{x}</li>" for x in t["howl"])}</ul></section>
 <script>const D={sjson};const q=document.getElementById('q'),r=document.getElementById('res'),a=document.getElementById('all');
@@ -316,6 +320,29 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
     hb = f'<nav class="bc"><a href="index.html">{t["home"]}</a> › {e(H["crumb"])}</nav><h1>🧮 {e(H["h1"])}</h1><p class="lead">{e(H["lead"])}</p><div class="grid">{cards}</div>{adslot(t)}'
     reg("calculators.html")
     page(lang, "calculators.html", f'{H["h1"]} | {SN}', H["desc"], hb, "")
+
+    # ---------- Taaza Khabar (news updates) ----------
+    NS = sorted(news.NEWS, key=lambda n: n["date"], reverse=True)
+    ntitle = "ताज़ा खबर" if lang=="hi" else "Latest Updates"
+    nsub = "सरकारी योजनाओं की ताज़ा, जाँची हुई खबरें" if lang=="hi" else "Fresh, checked news on government schemes"
+    srcl = "स्रोत" if lang=="hi" else "Sources"
+    relh = "योजना का पूरा पन्ना" if lang=="hi" else "Full scheme page"
+    pubh = "प्रकाशित" if lang=="hi" else "Published"
+    for n in NS:
+        d = n[lang]; ry = next(x for x in Y if x["slug"]==n["related"])
+        srcs = "".join(f'<li><a href="{u}" target="_blank" rel="noopener nofollow">{e(nm)}</a></li>' for nm,u in n["src"])
+        nb = (f'<nav class="bc"><a href="../index.html">{t["home"]}</a> › <a href="index.html">{ntitle}</a></nav><article><p class="meta">{n["icon"]} {pubh}: {n["date"]}</p><h1>{e(d["title"])}</h1>'
+              + "".join(f"<p>{e(x)}</p>" for x in d["body"])
+              + f'<p><a class="btn" href="../yojana/{n["related"]}.html">{n["icon"]} {relh}: {e(view(ry,lang)["name"])}</a></p><h2>{srcl}</h2><ul>{srcs}</ul><div class="warn">{t["warn"]}</div></article>{wabox(lang)}')
+        iu = f'{SITE_URL}/img/news-{n["slug"]}-{lang}.jpg'
+        nld = {"@context":"https://schema.org","@type":"NewsArticle","headline":d["title"],"description":d["summary"],"inLanguage":t["lang"],"datePublished":n["date"],"dateModified":n["date"],"image":[iu],"mainEntityOfPage":f'{SITE_URL}/{pfx}khabar/{n["slug"]}.html',"author":{"@type":"Organization","name":SN},"publisher":{"@type":"Organization","name":SN}}
+        p = f'khabar/{n["slug"]}.html'; reg(p)
+        page(lang, p, f'{d["title"]} | {SN}', d["summary"], nb, "../", nld, img=iu)
+    p = "khabar/index.html"; reg(p)
+    page(lang, p, f"{ntitle} | {SN}", nsub, f'<nav class="bc"><a href="../index.html">{t["home"]}</a> › {ntitle}</nav><h1>📰 {ntitle}</h1><p class="lead">{nsub}</p><div class="grid">{"".join(ncard(n,"../") for n in NS)}</div>{wabox(lang)}', "../")
+    items = "".join(f'<item><title>{e(n[lang]["title"])}</title><link>{SITE_URL}/{pfx}khabar/{n["slug"]}.html</link><guid>{SITE_URL}/{pfx}khabar/{n["slug"]}.html</guid><pubDate>{datetime.datetime.strptime(n["date"],"%Y-%m-%d").strftime("%a, %d %b %Y 06:00:00 +0000")}</pubDate><description>{e(n[lang]["summary"])}</description></item>' for n in NS[:30])
+    os.makedirs(OUT+"/"+pfx, exist_ok=True)
+    open(f"{OUT}/{pfx}feed.xml","w",encoding="utf-8").write(f'<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>{e(SN)} – {ntitle}</title><link>{SITE_URL}/{pfx}khabar/index.html</link><description>{e(nsub)}</description><language>{t["lang"]}</language>{items}</channel></rss>')
 
     # ---------- Static pages ----------
     mod = static_hi if lang=="hi" else static_en

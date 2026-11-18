@@ -31,5 +31,14 @@ with sync_playwright() as p:
             fs = 64 if len(name) < 45 else 52
             pg.set_content(card(y.get("icon","📄"), name, cat, site, tag, fs)); pg.wait_for_timeout(60)
             pg.screenshot(path=f"img/{y['slug']}-{lang}.jpg", type="jpeg", quality=82); n += 1
+    import news
+    for n in news.NEWS:
+        for lang in ("hi","en"):
+            d = n[lang]; nm = d["title"]
+            cat = "ताज़ा खबर" if lang=="hi" else "Latest update"
+            site = "आशा योजना" if lang=="hi" else "Asha Yojana"
+            fs = 64 if len(nm) < 45 else 52
+            pg.set_content(card(n["icon"], nm, cat, site, n["date"], fs)); pg.wait_for_timeout(60)
+            pg.screenshot(path=f"img/news-{n['slug']}-{lang}.jpg", type="jpeg", quality=82); n_ = 0
     b.close()
 print("images", n)

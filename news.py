@@ -1,0 +1,30 @@
+# -*- coding: utf-8 -*-
+# Daily 1-2 short, verified update posts ("Taaza Khabar"). Newest first is handled by build.py (sorted by date).
+# Fields per item: slug, date (ISO publish date = day written), icon, related (yojana slug), src [(name,url)],
+# hi/en: dict(title, summary, body=[paragraphs]). Only verified facts; say what was NOT confirmed.
+NEWS = [
+dict(slug="stand-up-india-extended-2031", date="2026-11-18", icon="🏭", related="central-stand-up-india",
+ src=[("PMO India – Cabinet approves continuation of Stand-Up India (11 Nov 2026)", "https://www.pmindia.gov.in/en/news_updates/cabinet-approves-continuation-of-stand-up-india-scheme"), ("GKToday (11 Nov 2026)", "https://www.gktoday.in/stand-up-india-scheme-extended-until-2031/"), ("Swarajya (11 Nov 2026)", "https://swarajyamag.com/business/centre-approves-five-year-extension-of-stand-up-india-scheme-rs-4111-crore-corpus-to-support-women-and-scst-entrepreneurs")],
+ hi=dict(title="स्टैंड-अप इंडिया योजना 31 मार्च 2031 तक बढ़ी", summary="कैबिनेट ने 11 नवंबर 2026 को महिला और SC/ST उद्यमियों के लिए स्टैंड-अप इंडिया को पाँच साल और चलाने को मंज़ूरी दी।",
+  body=["प्रधानमंत्री कार्यालय की विज्ञप्ति के अनुसार केंद्रीय कैबिनेट ने 11 नवंबर 2026 को स्टैंड-अप इंडिया योजना को 31 मार्च 2031 तक जारी रखने को मंज़ूरी दी। इसके लिए ₹4,111 करोड़ का क्रेडिट गारंटी कोष मंज़ूर हुआ है।",
+        "योजना में महिला, अनुसूचित जाति (SC) और अनुसूचित जनजाति (ST) के उद्यमियों को नया (ग्रीनफ़ील्ड) उद्यम शुरू करने के लिए ₹10 लाख से ऊपर और ₹1 करोड़ तक का बैंक लोन मिलता है, जो प्रोजेक्ट लागत का 85% तक हो सकता है। विनिर्माण, सेवा, व्यापार और कृषि-संबद्ध काम शामिल हैं।",
+        "सरकार का लक्ष्य पाँच साल में कम से कम 2.5 लाख और उद्यमियों तक पहुँचना है; अब तक 2.75 लाख से ज़्यादा को लाभ मिलने की बात कही गई है।",
+        "जो हमें इन ख़बरों में नहीं मिला: आयु सीमा, मार्जिन मनी, कोलैटरल की शर्तें, आवेदन का पोर्टल और हेल्पलाइन। इसलिए लोन के लिए सीधे अपनी बैंक शाखा से ताज़ा शर्तें पूछें।"]),
+ en=dict(title="Stand-Up India scheme extended till 31 March 2031", summary="On 11 November 2026 the Cabinet approved five more years of Stand-Up India for women and SC/ST entrepreneurs.",
+  body=["As per the PMO release, the Union Cabinet on 11 November 2026 approved continuing the Stand-Up India scheme till 31 March 2031. A credit guarantee corpus of ₹4,111 crore has been approved for this.",
+        "Under the scheme, women and Scheduled Caste (SC) and Scheduled Tribe (ST) entrepreneurs can get a bank loan of above ₹10 lakh and up to ₹1 crore, up to 85% of project cost, to set up a new (greenfield) enterprise. Manufacturing, services, trading and agri-allied activities are covered.",
+        "The government aims to reach at least 2.5 lakh more entrepreneurs in five years; it says more than 2.75 lakh have benefited so far.",
+        "What we did not find in these reports: age limit, margin money, collateral rules, the application portal and a helpline. So ask your bank branch directly for current terms."]) ),
+dict(slug="pm-surya-ghar-50-lakh-installations", date="2026-11-18", icon="☀️", related="pm-surya-ghar-muft-bijli-yojana",
+ src=[("Business Today (5 Aug 2026)", "https://www.businesstoday.in/amp/india/story/pm-surya-ghar-yojana-want-to-cut-your-electricity-bill-to-rs0-over-50-lakh-homes-have-already-claimed-this-solar-scheme-547382-2026-08-05"), ("Business Today (29 May 2026)", "https://www.businesstoday.in/amp/personal-finance/news/story/pm-surya-ghar-muft-bijli-yojana-how-it-works-who-can-apply-and-what-benefits-households-get-533959-2026-05-29"), ("GKToday (29 May 2026)", "https://www.gktoday.in/india-expands-rooftop-solar-under-pm-surya-ghar-scheme/")],
+ hi=dict(title="पीएम सूर्य घर: 50 लाख से ज़्यादा घरों में रूफटॉप सोलर", summary="बिज़नेस टुडे ने MNRE के आँकड़ों के हवाले से 50 लाख से ज़्यादा इंस्टॉलेशन बताए; लक्ष्य मार्च 2027 तक 1 करोड़ घर।",
+  body=["बिज़नेस टुडे (5 अगस्त 2026) के अनुसार MNRE के आँकड़ों में पीएम सूर्य घर: मुफ़्त बिजली योजना के तहत 50 लाख से ज़्यादा रूफटॉप इंस्टॉलेशन हो चुके हैं। रिपोर्ट में जुलाई 2026 में ही 5 लाख से ज़्यादा घर जुड़ने की बात है।",
+        "मई 2026 की रिपोर्टों में योजना का लक्ष्य वित्त वर्ष 2026-27 के अंत यानी मार्च 2027 तक 1 करोड़ घर बताया गया है। मार्च 2027 के बाद योजना बढ़ेगी या नहीं, इसकी कोई घोषणा हमें नहीं मिली, इसलिए सब्सिडी लेनी हो तो देर न करें।",
+        "सब्सिडी 1 kW पर ₹30,000, 2 kW पर ₹60,000 और 3 kW या ज़्यादा पर अधिकतम ₹78,000 है। आवेदन consumer.pmsuryaghar.gov.in पर होता है; रिपोर्टों में सब्सिडी आने का समय 15 से 30 दिन अलग-अलग बताया गया है।",
+        "यह जानकारी रिपोर्टों पर आधारित है; हमने सरकारी MNRE/पोर्टल पन्ना नहीं पढ़ा। नियम और राशि के लिए आधिकारिक पोर्टल देखें।"]),
+ en=dict(title="PM Surya Ghar: over 50 lakh homes now have rooftop solar", summary="Business Today, citing MNRE data, reports over 50 lakh installations; the target is 1 crore homes by March 2027.",
+  body=["As per Business Today (5 Aug 2026), MNRE data shows over 50 lakh rooftop installations under the PM Surya Ghar: Muft Bijli Yojana. The report says more than 5 lakh homes were added in July 2026 alone.",
+        "May 2026 reports give the target as 1 crore homes by the end of FY 2026-27, i.e. March 2027. We found no announcement on whether the scheme continues after March 2027, so do not delay if you want the subsidy.",
+        "The subsidy is ₹30,000 for 1 kW, ₹60,000 for 2 kW and up to ₹78,000 for 3 kW or more. Applications are on consumer.pmsuryaghar.gov.in; reports differ on when the subsidy arrives, from 15 to 30 days.",
+        "This is based on reports; we did not read an official MNRE/portal page. Check the official portal for rules and amounts."]) ),
+]
