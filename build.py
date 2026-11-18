@@ -23,6 +23,7 @@ import hashlib
 CSSV = hashlib.md5(CSS.encode()).hexdigest()[:8]
 open(OUT+"/style.css","w",encoding="utf-8").write(CSS)
 shutil.copy("og-image.png", OUT+"/og-image.png")
+if os.path.isdir("img"): shutil.copytree("img", OUT+"/img")
 shutil.copy("BingSiteAuth.xml", OUT+"/BingSiteAuth.xml")
 
 STATES = {"up": ("उत्तर प्रदेश","Uttar Pradesh"), "bihar": ("बिहार","Bihar"), "mp": ("मध्य प्रदेश","Madhya Pradesh"), "rajasthan": ("राजस्थान","Rajasthan"), "maharashtra": ("महाराष्ट्र","Maharashtra"), "gujarat": ("गुजरात","Gujarat"), "delhi": ("दिल्ली","Delhi"), "haryana": ("हरियाणा","Haryana"), "karnataka": ("कर्नाटक","Karnataka"), "westbengal": ("पश्चिम बंगाल","West Bengal"), "tamilnadu": ("तमिलनाडु","Tamil Nadu"), "ap": ("आंध्र प्रदेश","Andhra Pradesh"), "arunachal": ("अरुणाचल प्रदेश","Arunachal Pradesh"), "assam": ("असम","Assam"), "chhattisgarh": ("छत्तीसगढ़","Chhattisgarh"), "goa": ("गोवा","Goa"), "himachal": ("हिमाचल प्रदेश","Himachal Pradesh"), "jharkhand": ("झारखंड","Jharkhand"), "kerala": ("केरल","Kerala"), "manipur": ("मणिपुर","Manipur"), "meghalaya": ("मेघालय","Meghalaya"), "mizoram": ("मिज़ोरम","Mizoram"), "nagaland": ("नागालैंड","Nagaland"), "odisha": ("ओडिशा","Odisha"), "punjab": ("पंजाब","Punjab"), "sikkim": ("सिक्किम","Sikkim"), "telangana": ("तेलंगाना","Telangana"), "tripura": ("त्रिपुरा","Tripura"), "uttarakhand": ("उत्तराखंड","Uttarakhand")}
@@ -97,7 +98,7 @@ def cname(k, lang): return CATS[k][0] if lang=="hi" else CATS_EN[k][0]
 def cdesc(k, lang): return CATS[k][2] if lang=="hi" else CATS_EN[k][1]
 def sname(k, lang): return STATES[k][0] if lang=="hi" else STATES[k][1]
 
-def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=True):
+def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=True, img=None):
     t = T[lang]; pfx = "" if lang=="hi" else "en/"
     nav = f'<a href="{base}find.html">🔎 {e(t["findl"])}</a>' + "".join(f'<a href="{base}category/{k}.html">{v[1]} {e(cname(k,lang))}</a>' for k,v in CATS.items())
     nav += "".join(f'<a href="{base}state/{k}.html">📍 {e(sname(k,lang))}</a>' for k in STATES)
@@ -110,7 +111,8 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
     ol = "en" if lang=="hi" else "hi"
     swlink = f'<a class="lang" href="{sw}" hreflang="{ol}" lang="{ol}" title="{e(t["otherlbl"])}">🌐 {t["other"]}</a>' if alt else ""
     canon = "" if (PH or noindex) else f'<link rel="canonical" href="{url}">'
-    robots = '<meta name="robots" content="noindex">' if noindex else ''
+    robots = '<meta name="robots" content="noindex">' if noindex else '<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">'
+    imgurl = img or f"{SITE_URL}/og-image.png"
     css = (f"{base}style.css" if lang=="hi" else f"{base}../style.css") + "?v=" + CSSV
     sn = e(t["site"])
     statelinks = "".join(f'<a href="{base}state/{k}.html">{e(sname(k,lang))}</a>' for k in STATES)
@@ -118,7 +120,7 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
     h = f"""<!doctype html><html lang="{t['lang']}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(title)}</title><meta name="description" content="{e(desc)}">
 {canon}{hre}{robots}
-<meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:type" content="article"><meta property="og:locale" content="{t['loc']}"><meta property="og:site_name" content="{sn}"><meta property="og:image" content="{SITE_URL}/og-image.png"><meta name="twitter:card" content="summary_large_image">
+<meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:type" content="article"><meta property="og:locale" content="{t['loc']}"><meta property="og:site_name" content="{sn}"><meta property="og:image" content="{imgurl}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{imgurl}">
 <meta name="theme-color" content="#0f5a4a">
 <meta name="msvalidate.01" content="E396DD12CB7E02BFB4486E78FD592C97" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%AA%94%3C/text%3E%3C/svg%3E">
@@ -191,11 +193,11 @@ def build(lang):
 </article>
 {wabox(lang)}
 <h2>{t["also"]}</h2><div class="grid">{relcards}</div>"""
-        ld = [{"@context":"https://schema.org","@type":"Article","headline":y["name"],"description":y["short"],"inLanguage":t["lang"],"dateModified":LASTMOD,"author":{"@type":"Organization","name":SN},"publisher":{"@type":"Organization","name":SN}},
+        ld = [{"@context":"https://schema.org","@type":"Article","headline":y["name"],"description":y["short"],"inLanguage":t["lang"],"dateModified":data_daily.VERIFIED.get(y0["slug"],{}).get("iso",LASTMOD),"image":[f'{SITE_URL}/img/{y0["slug"]}-{lang}.jpg'],"mainEntityOfPage":f'{SITE_URL}/{pfx}yojana/{y0["slug"]}.html',"author":{"@type":"Organization","name":SN},"publisher":{"@type":"Organization","name":SN}},
               {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":t["home"],"item":SITE_URL+"/"+pfx},{"@type":"ListItem","position":2,"name":cname(y0["cat"],lang),"item":f'{SITE_URL}/{pfx}category/{y0["cat"]}.html'},{"@type":"ListItem","position":3,"name":y["name"]}]},
               {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in y["faq"]]}]
         p = f"yojana/{y0['slug']}.html"; reg(p)
-        page(lang, p, f'{y["name"]}{t["ttl"]} | {SN}', y["short"], body, "../", ld)
+        page(lang, p, f'{y["name"]}{t["ttl"]} | {SN}', y["short"], body, "../", ld, img=f'{SITE_URL}/img/{y0["slug"]}-{lang}.jpg')
 
     # ---------- Category pages ----------
     for k,(nm0,ic,ds0) in CATS.items():
