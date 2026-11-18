@@ -15,3 +15,4 @@
   Build: LASTMOD=2026-11-18. Published main 5a7bf97.
   Skipped Part A: Kanyashree (WB, post-election status not checked), Post Matric SC scholarship (only aggregator sites). Part B not done today: pm-mudra-yojana, pm-jan-dhan etc.
   Could not verify: official MNRE/pmayg.nic.in/NSAP/standupmitra pages (not read); Surya Ghar RWA rate, helpline 15555 (installer blog only), PMAY-G current exclusion rules, APY penalty/co-contribution, Stand-Up India portal.
+- 2026-11-18 (later): Added Discover setup (img/ per-scheme images, robots max-image-preview:large), Taaza Khabar section + RSS (news.py, daily Part C in AGENT.md and scheduled task), Microsoft Clarity script (project zfpiaxq0te, in build.py CLARITY) + privacy-policy note (hi+en).

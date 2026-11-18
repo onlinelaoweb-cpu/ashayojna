@@ -72,6 +72,7 @@ T = {
    homedesc="Simple information on PM Kisan, Ayushman Bharat, Ujjwala, Sukanya Samriddhi, Mudra loan and state schemes of all states of India, in Hindi and English."),
 }
 
+CLARITY = """<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","zfpiaxq0te");</script>"""
 GA_SNIPPET = """<script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNDZDNDG8"></script>
 <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-MGNDZDNDG8');</script>"""
 def adscript():
@@ -124,7 +125,7 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
 <meta name="theme-color" content="#0f5a4a">
 <meta name="msvalidate.01" content="E396DD12CB7E02BFB4486E78FD592C97" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%AA%94%3C/text%3E%3C/svg%3E">
-<style>{CSS}</style>{ldj}{GA_SNIPPET}{adscript()}</head><body>
+<style>{CSS}</style>{ldj}{GA_SNIPPET}{CLARITY}{adscript()}</head><body>
 <header class="hd"><div class="w hdr"><a class="logo" href="{base}index.html"><span class="lg">🪔</span>{sn}</a>{swlink}
 </div>
 <nav class="w nav">{nav}</nav></header>
