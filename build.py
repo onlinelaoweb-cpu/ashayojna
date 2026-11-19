@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os, json, html, shutil, datetime
-import news, data10, data_daily, calcs2, calcdata, data9, tags, data4, data5, data6, data7, data8, en3, en4, en5, en6, static_hi, static_en
+import guides, news, data10, data_daily, calcs2, calcdata, data9, tags, data4, data5, data6, data7, data8, en3, en4, en5, en6, static_hi, static_en
 from data1 import Y, CATS
 EN = en6.EN
 CALC = calcdata.CALC
@@ -101,7 +101,7 @@ def sname(k, lang): return STATES[k][0] if lang=="hi" else STATES[k][1]
 
 def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=True, img=None):
     t = T[lang]; pfx = "" if lang=="hi" else "en/"
-    nav = f'<a href="{base}khabar/index.html">📰 {"ताज़ा खबर" if lang=="hi" else "Latest updates"}</a><a href="{base}find.html">🔎 {e(t["findl"])}</a>' + "".join(f'<a href="{base}category/{k}.html">{v[1]} {e(cname(k,lang))}</a>' for k,v in CATS.items())
+    nav = f'<a href="{base}guides/index.html">📘 {"गाइड" if lang=="hi" else "Guides"}</a><a href="{base}khabar/index.html">📰 {"ताज़ा खबर" if lang=="hi" else "Latest updates"}</a><a href="{base}find.html">🔎 {e(t["findl"])}</a>' + "".join(f'<a href="{base}category/{k}.html">{v[1]} {e(cname(k,lang))}</a>' for k,v in CATS.items())
     nav += "".join(f'<a href="{base}state/{k}.html">📍 {e(sname(k,lang))}</a>' for k in STATES)
     ldj = f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>' if ld else ""
     url = f"{SITE_URL}/{pfx}{path}"
@@ -153,6 +153,9 @@ def build(lang):
     def ncard(n, base):
         d = n[lang]
         return f'<a class="card" href="{base}khabar/{n["slug"]}.html"><span class="ic">{n["icon"]}</span><span class="tg">{n["date"]}</span><h3>{e(d["title"])}</h3><p>{e(d["summary"])}</p><span class="more">{t["more"]}</span></a>'
+    def gcard(g, base):
+        d = g[lang]
+        return f'<a class="card" href="{base}guides/{g["slug"]}.html"><span class="ic">{g["icon"]}</span><h3>{e(d["title"])}</h3><p>{e(d["desc"])}</p><span class="more">{t["more"]}</span></a>'
     # ---------- Yojana pages ----------
     for y0 in Y:
         y = view(y0, lang)
@@ -165,6 +168,8 @@ def build(lang):
             y = dict(y); y["faq"] = list(y["faq"]) + [(t["statush"], " ".join(f"{i+1}. {x}" for i,x in enumerate(xs["status"])))]
             faq = "".join(f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q,a in y["faq"])
         xbk = ""
+        gl = [g for g in guides.GUIDES if y0["slug"] in g["rel"]]
+        xgd = f'<p class="note" style="margin-top:12px">📘 {"उपयोगी गाइड" if lang=="hi" else "Helpful guides"}: ' + " · ".join(f'<a href="../guides/{g["slug"]}.html">{e(g[lang]["title"])}</a>' for g in gl) + (" · " if gl else "") + f'<a href="../guides/index.html">{"सभी गाइड" if lang=="hi" else "All guides"}</a> · <a href="../status.html">{"सभी योजनाओं का स्टेटस" if lang=="hi" else "Status check hub"}</a></p>'
         if any(b in y["url"] for b in BKHOSTS):
             xbk = f'<p class="note" style="margin-top:12px">{t["bk"]} <a href="https://www.myscheme.gov.in/" target="_blank" rel="noopener nofollow">myScheme.gov.in ↗</a></p>'
         for cc in calcs2.CALCS:
@@ -190,7 +195,7 @@ def build(lang):
 <h2>{t["notelig"]}</h2>{ul(y["notelig"])}
 <h2>{t["docs"]}</h2>{ul(y["docs"])}
 <h2>{t["steps"]}</h2>{ol(y["steps"])}
-{xsec}<a class="btn" href="{y["url"]}" target="_blank" rel="noopener nofollow">{e(y["linklabel"])} ↗</a>{hl}{xtool}{xbk}
+{xsec}<a class="btn" href="{y["url"]}" target="_blank" rel="noopener nofollow">{e(y["linklabel"])} ↗</a>{hl}{xtool}{xbk}{xgd}
 {adslot(t)}
 <h2>{t["faq"]}</h2>{faq}
 <div class="warn">{t["warn"]}</div>
@@ -240,6 +245,7 @@ def build(lang):
 <h2>{t["statesh"]}</h2><p class="lead">{t["statesub"]}</p><div class="grid sgrid">{schips}</div>
 <div class="chips">{chips}</div>{adslot(t)}
 <h2>📰 {"ताज़ा खबर" if lang=="hi" else "Latest updates"}</h2><div class="grid">{"".join(ncard(n,"") for n in sorted(news.NEWS,key=lambda n:n["date"],reverse=True)[:3])}</div><p><a class="btn" href="khabar/index.html">{"सभी खबरें" if lang=="hi" else "All updates"} →</a></p>
+<h2>📘 {"उपयोगी गाइड" if lang=="hi" else "Helpful guides"}</h2><div class="grid">{"".join(gcard(g,"") for g in guides.GUIDES[:3])}</div><p><a class="btn" href="guides/index.html">{"सभी गाइड" if lang=="hi" else "All guides"} →</a> <a class="btn" href="status.html">{"📋 स्टेटस जाँचें" if lang=="hi" else "📋 Check status"}</a></p>
 <h2 id="central">{t["central_h"]}</h2><div class="grid">{ccards}</div></div>
 {wabox(lang)}<section class="trust"><h2>{t["how"]}</h2><ul>{"".join(f"<li>{x}</li>" for x in t["howl"])}</ul></section>
 <script>const D={sjson};const q=document.getElementById('q'),r=document.getElementById('res'),a=document.getElementById('all');
@@ -344,6 +350,35 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
     items = "".join(f'<item><title>{e(n[lang]["title"])}</title><link>{SITE_URL}/{pfx}khabar/{n["slug"]}.html</link><guid>{SITE_URL}/{pfx}khabar/{n["slug"]}.html</guid><pubDate>{datetime.datetime.strptime(n["date"],"%Y-%m-%d").strftime("%a, %d %b %Y 06:00:00 +0000")}</pubDate><description>{e(n[lang]["summary"])}</description></item>' for n in NS[:30])
     os.makedirs(OUT+"/"+pfx, exist_ok=True)
     open(f"{OUT}/{pfx}feed.xml","w",encoding="utf-8").write(f'<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>{e(SN)} – {ntitle}</title><link>{SITE_URL}/{pfx}khabar/index.html</link><description>{e(nsub)}</description><language>{t["lang"]}</language>{items}</channel></rss>')
+
+    # ---------- Guides + status hub ----------
+    gt = "उपयोगी गाइड" if lang=="hi" else "Helpful Guides"
+    gsub = "दस्तावेज़, e-KYC और आवेदन से जुड़े आसान स्टेप-बाय-स्टेप गाइड" if lang=="hi" else "Easy step-by-step guides on documents, e-KYC and applications"
+    stp, dcp, tpp = ("स्टेप-दर-स्टेप","ज़रूरी दस्तावेज़","ध्यान रखें") if lang=="hi" else ("Step by step","Documents needed","Keep in mind")
+    ofl = "आधिकारिक/स्रोत लिंक" if lang=="hi" else "Official / source links"
+    for g in guides.GUIDES:
+        d = g[lang]
+        srcs = "".join(f'<li><a href="{u}" target="_blank" rel="noopener nofollow">{e(nm)}</a></li>' for nm,u in g["src"])
+        rl = "".join(f'<a class="btn" href="../yojana/{r}.html">{e(view(next(x for x in Y if x["slug"]==r),lang)["name"])}</a> ' for r in g["rel"])
+        gb = (f'<nav class="bc"><a href="../index.html">{t["home"]}</a> › <a href="index.html">{gt}</a></nav><article><h1>{g["icon"]} {e(d["title"])}</h1><p class="lead">{e(d["intro"])}</p>'
+              f'<h2>{stp}</h2>{ol(d["steps"])}' + (f'<h2>{dcp}</h2>{ul(d["docs"])}' if d["docs"] else "") + f'<h2>{tpp}</h2>{ul(d["tips"])}'
+              + (f'<p>{rl}</p>' if rl else "") + f'<h2>{ofl}</h2><ul>{srcs}</ul><div class="warn">{t["warn"]}</div></article>{wabox(lang)}')
+        gld = {"@context":"https://schema.org","@type":"HowTo","name":d["title"],"description":d["desc"],"inLanguage":t["lang"],"step":[{"@type":"HowToStep","position":i+1,"text":x} for i,x in enumerate(d["steps"])]}
+        p = f'guides/{g["slug"]}.html'; reg(p)
+        page(lang, p, f'{d["title"]} | {SN}', d["desc"], gb, "../", gld)
+    p = "guides/index.html"; reg(p)
+    page(lang, p, f"{gt} | {SN}", gsub, f'<nav class="bc"><a href="../index.html">{t["home"]}</a> › {gt}</nav><h1>📘 {gt}</h1><p class="lead">{gsub}</p><div class="grid">{"".join(gcard(g,"../") for g in guides.GUIDES)}</div><p><a class="btn" href="../status.html">📋 {"स्टेटस जाँचें" if lang=="hi" else "Check scheme status"}</a></p>{wabox(lang)}', "../")
+    sh = "योजना का स्टेटस कैसे जाँचें – एक जगह" if lang=="hi" else "How to Check Scheme Status – All in One Place"
+    ssub = "जिन योजनाओं की स्टेटस/पेमेंट जाँच के स्टेप हमने जाँचकर जोड़े हैं, उनकी सूची" if lang=="hi" else "Schemes for which we have added checked status/payment steps"
+    sc = ""
+    for y0 in Y:
+        ex = data9.EXTRA.get(y0["slug"])
+        if not (ex and ex.get(lang)): continue
+        yv = view(y0, lang); first = ex[lang]["status"][0]
+        wh = sname(y0["state"],lang) if y0.get("state") else t["central"]
+        sc += f'<a class="card" href="yojana/{y0["slug"]}.html"><span class="ic">{y0["icon"]}</span><span class="tg">{e(wh)}</span><h3>{e(yv["name"])}</h3><p>{e(first)}</p><span class="more">{t["more"]}</span></a>'
+    p = "status.html"; reg(p)
+    page(lang, p, f"{sh} | {SN}", ssub, f'<nav class="bc"><a href="index.html">{t["home"]}</a> › {e(sh)}</nav><h1>📋 {e(sh)}</h1><p class="lead">{ssub}</p><div class="grid">{sc}</div><p><a class="btn" href="guides/aadhaar-bank-dbt-seeding.html">📘 {e(guides.GUIDES[0][lang]["title"])}</a></p>{wabox(lang)}', "")
 
     # ---------- Static pages ----------
     mod = static_hi if lang=="hi" else static_en

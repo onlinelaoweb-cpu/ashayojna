@@ -22,3 +22,6 @@
   Build: LASTMOD=2026-11-19. Published main 1b91256.
   Skipped Part A: HP Sukh Aashray (single aggregator source), PM-YASASVI (2026-27 dates unconfirmed), PM JANMAN (mission period ends 2026, status unclear), Tripura Balika Samriddhi (only 'announced').
   Could not verify: Mudra card/helpline/processing fee; Jan Dhan helpline, current doc list, Rs 30,000 life cover; KCC docs/insurance, MISS for FY2026-27, Rs 3 vs 5 lakh limit; PMFBY formal extension beyond 2025-26 and national rabi last date; Nikshay official guideline PDF.
+
+## 2026-11-20 (manual)
+- Added guides section: guides.py (7 evergreen guides hi+en), /guides/, status hub /status.html (from data9.EXTRA), nav + home + yojana-page links. Daily runs may add new guides to guides.GUIDES (verified facts only, hedge state-specific details).
