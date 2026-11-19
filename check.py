@@ -7,7 +7,7 @@ for f in pages:
     if 'YOUR-DOMAIN' in s: print('placeholder domain in', f); bad += 1
     for h in re.findall(r'href="([^"#?]+)"', s):
         if h.startswith(('http', 'mailto', 'data:', '//', "'+")): continue
-        if not os.path.exists(os.path.normpath(os.path.join(d, h))): print('BROKEN', f, h); bad += 1
+        if not os.path.exists(os.path.normpath(os.path.join('site', h[1:]) if h.startswith('/') else os.path.join(d, h))): print('BROKEN', f, h); bad += 1
     if '/yojana/' in f and '<h1>' not in s: print('no h1', f); bad += 1
 sm = open('site/sitemap.xml', encoding='utf-8').read()
 print('pages', len(pages), 'sitemap urls', sm.count('<loc>'), 'CNAME', open('site/CNAME').read().strip())

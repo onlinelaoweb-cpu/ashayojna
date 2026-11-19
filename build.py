@@ -151,14 +151,14 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
 <meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:type" content="article"><meta property="og:locale" content="{t['loc']}"><meta property="og:site_name" content="{sn}"><meta property="og:image" content="{imgurl}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{imgurl}">
 <meta name="theme-color" content="#0f5a4a">
 <meta name="msvalidate.01" content="E396DD12CB7E02BFB4486E78FD592C97" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%AA%94%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="/img/logo-icon.svg" type="image/svg+xml"><link rel="icon" href="/img/icon-192.png" type="image/png" sizes="192x192"><link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <style>{CSS}</style>{ldj}{GA_SNIPPET}{CLARITY}{adscript()}</head><body>
-<header class="hd"><div class="w hdr"><a class="logo" href="{base}index.html"><span class="lg">🪔</span><span class="lt">{sn}<small>{"सरकारी योजनाएँ, आसान भाषा में" if lang=="hi" else "Government schemes, made simple"}</small></span></a>
+<header class="hd"><div class="w hdr"><a class="logo" href="{base}index.html"><span class="lg"><img src="/img/logo-icon.svg" width="40" height="40" alt=""></span><span class="lt">{sn}<small>{"सरकारी योजनाएँ, आसान भाषा में" if lang=="hi" else "Government schemes, made simple"}</small></span></a>
 <nav class="mnav">{mnav}</nav>{swlink}</div>
 <nav class="w nav">{nav}</nav></header>
 <main class="w">{body}{share}</main>
 <footer class="ft"><div class="w"><div class="fcta"><div><b>{"रोज़ नई योजनाओं की खबर चाहिए?" if lang=="hi" else "Want daily scheme updates?"}</b><span>{"WhatsApp चैनल जॉइन करें – मुफ्त" if lang=="hi" else "Join our WhatsApp channel – free"}</span></div><a class="btn wabtn" href="{WA_URL}" target="_blank" rel="noopener"><img src="/img/logo-whatsapp-white.png" width="22" height="22" alt="" style="vertical-align:-5px;margin-right:6px"> {"जॉइन करें" if lang=="hi" else "Join now"}</a></div>
-<div class="fgrid"><div><b class="fb">🪔 {sn}</b><p>{t['tagline']}</p><p class="fd"><i>{t['ded']}</i></p><p class="fsoc"><a href="{base}khabar/index.html">📰 {"खबर" if lang=="hi" else "Updates"}</a><a href="{SITE_URL}/{pfx}feed.xml">📡 RSS</a></p></div>
+<div class="fgrid"><div><b class="fb"><img src="/img/logo-icon.svg" width="30" height="30" alt="" style="vertical-align:-8px;margin-right:8px">{sn}</b><p>{t['tagline']}</p><p class="fd"><i>{t['ded']}</i></p><p class="fsoc"><a href="{base}khabar/index.html">📰 {"खबर" if lang=="hi" else "Updates"}</a><a href="{SITE_URL}/{pfx}feed.xml">📡 RSS</a></p></div>
 <div><b>{t['info']}</b><a href="{base}about.html">{t['aboutl']}</a><a href="{base}contact.html">{t['contactl']}</a><a href="{base}privacy-policy.html">{t['privl']}</a><a href="{base}disclaimer.html">{t['disl']}</a></div>
 <div><b>{"उपयोगी टूल" if lang=="hi" else "Tools"}</b><a href="{base}find.html">🔎 {t["findl"]}</a><a href="{base}calculators.html">🧮 {"कैलकुलेटर" if lang=="hi" else "Calculators"}</a><a href="{base}guides/index.html">📘 {"गाइड" if lang=="hi" else "Guides"}</a><a href="{base}status.html">📋 {"स्टेटस जाँचें" if lang=="hi" else "Check status"}</a></div>
 <div><b>{t['catl']}</b>{catlinks}</div></div>
