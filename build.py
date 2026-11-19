@@ -13,7 +13,7 @@ ADSENSE_PUB = "ca-pub-5169642227203900"                            # e.g. "ca-pu
 CONTACT_EMAIL = "ashayojana.contact@gmail.com"                          # apna contact email
 # ========================================================
 PH = "YOUR-DOMAIN" in SITE_URL
-LASTMOD = "2026-11-18"
+LASTMOD = "2026-11-19"
 OUT = "site"
 e = html.escape
 if os.path.exists(OUT): shutil.rmtree(OUT)

@@ -1,19 +1,19 @@
-# Share posts 2026-11-18
+# Share posts 2026-11-19
 
 1)
-🏭 Stand-Up India 2031 tak बढ़ी!
-महिला और SC/ST उद्यमी नया कारोबार शुरू करने के लिए ₹10 लाख से ऊपर, ₹1 करोड़ तक का बैंक लोन ले सकते हैं (कैबिनेट, 11 नवंबर 2026)।
-https://ashayojana.com/yojana/central-stand-up-india.html
+🩺 TB मरीज़ों को ₹1,000 महीना: नि-क्षय पोषण योजना
+इलाज के दौरान पोषण के लिए पैसा सीधे बैंक खाते में (रिपोर्टों के अनुसार, अक्टूबर 2024 से ₹1,000)। मरीज़ को खुद आवेदन नहीं करना, अस्पताल पोर्टल पर नाम दर्ज करता है।
+https://ashayojana.com/yojana/central-nikshay-poshan-yojana.html
 Aur yojanayein: https://ashayojana.com
 
 2)
-👴 बुज़ुर्ग पेंशन: केंद्र से ₹200 (60-79) और ₹500 (80+) महीना
-BPL परिवार के बुज़ुर्गों के लिए। राज्य अपनी राशि जोड़ते हैं, इसलिए आपके राज्य में ज़्यादा मिल सकती है।
-https://ashayojana.com/yojana/central-ignoaps-old-age-pension.html
+🌾 फसल बीमा: बिहार में रबी 2026-27 के आवेदन शुरू
+यूएनआई के अनुसार 15 नवंबर 2026 से 15 जनवरी 2027 तक। प्रीमियम रबी में सिर्फ़ 1.5%। नुकसान पर हेल्पलाइन 14447।
+https://ashayojana.com/yojana/pm-fasal-bima-yojana.html
 Aur yojanayein: https://ashayojana.com
 
 3)
-☀️ PM सूर्य घर: 50 लाख से ज़्यादा घरों में सोलर लगा
-छत पर सोलर पर ₹78,000 तक सब्सिडी। रिपोर्टों में लक्ष्य मार्च 2027 तक बताया गया है, देर न करें।
-https://ashayojana.com/yojana/pm-surya-ghar-muft-bijli-yojana.html
+🌱 किसान क्रेडिट कार्ड: ₹2 लाख तक बिना गारंटी लोन
+पीआईबी के अनुसार ब्याज 7%, समय पर चुकाने पर असल में 4% तक। ब्याज सब्सिडी की सीमा पर स्रोतों में फ़र्क है, बैंक से लिखित में पूछें।
+https://ashayojana.com/yojana/kisan-credit-card.html
 Aur yojanayein: https://ashayojana.com
