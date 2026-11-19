@@ -135,6 +135,16 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
           f'<a class="sb xx" href="https://twitter.com/intent/tweet?url={u_}&text={tt_}" target="_blank" rel="noopener nofollow"><img src="/img/logo-x-white.png" width="20" height="20" alt=""> X</a>'
           f'<button class="sb cp2" type="button" data-u="{e(url)}" data-t="{e(title)}">🔗 {"लिंक कॉपी" if H_ else "Copy link"}</button></div>'
           '<script>document.querySelectorAll(".cp2").forEach(function(b){b.addEventListener("click",function(){var u=b.dataset.u;if(navigator.share){navigator.share({title:b.dataset.t,url:u}).catch(function(){})}else if(navigator.clipboard){navigator.clipboard.writeText(u).then(function(){var o=b.innerHTML;b.textContent="✅ OK";setTimeout(function(){b.innerHTML=o},1500)})}})})</script></section>')
+    if share and path != "index.html" and "</h1>" in body:
+        ic = lambda f,n,w=22: f'<img src="/img/{f}" width="{w}" height="{w}" alt="{n}">'
+        top = (f'<div class="tshare"><span>📤 {"शेयर करें:" if H_ else "Share:"}</span>'
+          f'<a class="ti wa" href="https://wa.me/?text={msg}" target="_blank" rel="noopener nofollow" aria-label="WhatsApp" title="WhatsApp">{ic("logo-whatsapp.png","WhatsApp")}</a>'
+          f'<a class="ti tg" href="https://t.me/share/url?url={u_}&text={tt_}" target="_blank" rel="noopener nofollow" aria-label="Telegram" title="Telegram">{ic("logo-telegram.png","Telegram")}</a>'
+          f'<a class="ti fb" href="https://www.facebook.com/sharer/sharer.php?u={u_}" target="_blank" rel="noopener nofollow" aria-label="Facebook" title="Facebook">{ic("logo-facebook.png","Facebook")}</a>'
+          f'<a class="ti xx" href="https://twitter.com/intent/tweet?url={u_}&text={tt_}" target="_blank" rel="noopener nofollow" aria-label="X" title="X">{ic("logo-x-white.png","X",18)}</a>'
+          f'<button class="ti cp2" type="button" data-u="{e(url)}" data-t="{e(title)}" aria-label="Copy link" title="Copy link">🔗</button></div>')
+        body = body.replace("</h1>", "</h1>" + top, 1)
+        share = share.replace("</script></section>", "</script></section>")
     h = f"""<!doctype html><html lang="{t['lang']}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(title)}</title><meta name="description" content="{e(desc)}">
 {canon}{hre}{robots}<link rel="alternate" type="application/rss+xml" title="{sn}" href="{SITE_URL}/{pfx}feed.xml">

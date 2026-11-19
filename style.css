@@ -81,3 +81,6 @@ body{font-family:"Noto Sans Devanagari","Noto Sans",system-ui,-apple-system,"Seg
 .sb{background:var(--bg)!important;color:var(--ink)!important;border:1px solid var(--bd)!important}.sb:hover{border-color:var(--g)!important;box-shadow:0 4px 12px rgba(0,0,0,.1)}.sb img{display:block}
 .sb.wa{border-color:#25d366!important}.sb.tg{border-color:#29a9eb!important}
 .sb.fb{border-color:#0866ff!important}.sb.xx{background:#000!important;color:#fff!important;border-color:#000!important}
+.tshare{display:flex;align-items:center;gap:8px;margin:2px 0 14px;flex-wrap:wrap}.tshare>span{font-size:14px;color:var(--mut);font-weight:600;margin-right:2px}
+.ti{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--card);border:1px solid var(--bd);cursor:pointer;padding:0;font-size:17px;text-decoration:none;transition:.15s}.ti:hover{transform:translateY(-2px);box-shadow:0 4px 10px rgba(0,0,0,.12)}
+.ti.wa{border-color:#25d366}.ti.tg{border-color:#29a9eb}.ti.fb{border-color:#0866ff}.ti.xx{background:#000;border-color:#000}
