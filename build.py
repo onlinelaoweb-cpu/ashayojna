@@ -101,7 +101,10 @@ def sname(k, lang): return STATES[k][0] if lang=="hi" else STATES[k][1]
 
 def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=True, img=None):
     t = T[lang]; pfx = "" if lang=="hi" else "en/"
-    nav = f'<a href="{base}guides/index.html">📘 {"गाइड" if lang=="hi" else "Guides"}</a><a href="{base}khabar/index.html">📰 {"ताज़ा खबर" if lang=="hi" else "Latest updates"}</a><a href="{base}find.html">🔎 {e(t["findl"])}</a>' + "".join(f'<a href="{base}category/{k}.html">{v[1]} {e(cname(k,lang))}</a>' for k,v in CATS.items())
+    H = lang=="hi"
+    mains = [("index.html","🏠",t["home"]),("find.html","🔎",t["findl"]),("guides/index.html","📘","गाइड" if H else "Guides"),("calculators.html","🧮","कैलकुलेटर" if H else "Calculators"),("status.html","📋","स्टेटस" if H else "Status"),("khabar/index.html","📰","ताज़ा खबर" if H else "Updates")]
+    mnav = "".join(f'<a href="{base}{u}"><span>{i}</span> {e(l)}</a>' for u,i,l in mains)
+    nav = "".join(f'<a href="{base}category/{k}.html">{v[1]} {e(cname(k,lang))}</a>' for k,v in CATS.items())
     nav += "".join(f'<a href="{base}state/{k}.html">📍 {e(sname(k,lang))}</a>' for k in STATES)
     ldj = f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>' if ld else ""
     url = f"{SITE_URL}/{pfx}{path}"
@@ -126,14 +129,17 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
 <meta name="msvalidate.01" content="E396DD12CB7E02BFB4486E78FD592C97" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%AA%94%3C/text%3E%3C/svg%3E">
 <style>{CSS}</style>{ldj}{GA_SNIPPET}{CLARITY}{adscript()}</head><body>
-<header class="hd"><div class="w hdr"><a class="logo" href="{base}index.html"><span class="lg">🪔</span>{sn}</a>{swlink}
-</div>
+<header class="hd"><div class="w hdr"><a class="logo" href="{base}index.html"><span class="lg">🪔</span><span class="lt">{sn}<small>{"सरकारी योजनाएँ, आसान भाषा में" if lang=="hi" else "Government schemes, made simple"}</small></span></a>
+<nav class="mnav">{mnav}</nav>{swlink}</div>
 <nav class="w nav">{nav}</nav></header>
 <main class="w">{body}</main>
-<footer class="ft"><div class="w"><div class="fgrid"><div><b>{sn}</b><p>🪔 <i>{t['ded']}</i></p><p>{t['tagline']}</p></div>
+<footer class="ft"><div class="w"><div class="fcta"><div><b>{"रोज़ नई योजनाओं की खबर चाहिए?" if lang=="hi" else "Want daily scheme updates?"}</b><span>{"WhatsApp चैनल जॉइन करें – मुफ्त" if lang=="hi" else "Join our WhatsApp channel – free"}</span></div><a class="btn wabtn" href="{WA_URL}" target="_blank" rel="noopener">💬 {"जॉइन करें" if lang=="hi" else "Join now"}</a></div>
+<div class="fgrid"><div><b class="fb">🪔 {sn}</b><p>{t['tagline']}</p><p class="fd"><i>{t['ded']}</i></p><p class="fsoc"><a href="{base}khabar/index.html">📰 {"खबर" if lang=="hi" else "Updates"}</a><a href="{SITE_URL}/{pfx}feed.xml">📡 RSS</a></p></div>
 <div><b>{t['info']}</b><a href="{base}about.html">{t['aboutl']}</a><a href="{base}contact.html">{t['contactl']}</a><a href="{base}privacy-policy.html">{t['privl']}</a><a href="{base}disclaimer.html">{t['disl']}</a></div>
-<div><b>{t['statel']}</b>{statelinks}</div>
+<div><b>{"उपयोगी टूल" if lang=="hi" else "Tools"}</b><a href="{base}find.html">🔎 {t["findl"]}</a><a href="{base}calculators.html">🧮 {"कैलकुलेटर" if lang=="hi" else "Calculators"}</a><a href="{base}guides/index.html">📘 {"गाइड" if lang=="hi" else "Guides"}</a><a href="{base}status.html">📋 {"स्टेटस जाँचें" if lang=="hi" else "Check status"}</a></div>
 <div><b>{t['catl']}</b>{catlinks}</div></div>
+<div class="fstates"><b>{t['statel']}</b><div>{statelinks}</div></div>
+<p class="fnote">ℹ️ {"यह एक स्वतंत्र जानकारी वेबसाइट है, सरकारी वेबसाइट नहीं। आवेदन हमेशा आधिकारिक पोर्टल पर ही करें।" if lang=="hi" else "This is an independent information website, not a government site. Always apply on the official portal."}</p>
 <p class="cp">© {datetime.date.today().year} {sn} · {t['copy']}</p></div></footer>
 </body></html>"""
     full = os.path.join(OUT, pfx+path)
