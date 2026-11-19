@@ -75,3 +75,6 @@ body{font-family:"Noto Sans Devanagari","Noto Sans",system-ui,-apple-system,"Seg
 .fstates{margin-top:20px;border-top:1px solid #1d4a40;padding-top:14px}.fstates b{display:block;color:#fff;margin-bottom:8px}
 .fstates div{display:flex;flex-wrap:wrap;gap:6px}.ft .fstates a{display:inline-block;background:rgba(255,255,255,.08);padding:3px 11px;border-radius:99px;font-size:13.5px;margin:0}.ft .fstates a:hover{background:rgba(255,255,255,.18);transform:none}
 .ft p b{display:inline!important;margin:0!important;font-size:inherit!important}
+.share{margin:26px 0 6px;padding:14px 16px;background:var(--card);border:1px solid var(--bd);border-radius:14px}.share>b{display:block;margin-bottom:8px}
+.sbtns{display:flex;flex-wrap:wrap;gap:8px}.sb{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:99px;font:inherit;font-size:14.5px;font-weight:700;text-decoration:none;color:#fff;border:0;cursor:pointer;transition:.15s}.sb:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.sb.wa{background:#1fa855}.sb.tg{background:#2a8fd0}.sb.fb{background:#3b5998}.sb.xx{background:#222}.sb.cp2{background:var(--g)}
