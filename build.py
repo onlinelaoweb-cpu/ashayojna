@@ -160,7 +160,7 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
 <footer class="ft"><div class="w"><div class="fcta"><div><b>{"रोज़ नई योजनाओं की खबर चाहिए?" if lang=="hi" else "Want daily scheme updates?"}</b><span>{"WhatsApp चैनल जॉइन करें – मुफ्त" if lang=="hi" else "Join our WhatsApp channel – free"}</span></div><a class="btn wabtn" href="{WA_URL}" target="_blank" rel="noopener"><img src="/img/logo-whatsapp-white.png" width="22" height="22" alt="" style="vertical-align:-5px;margin-right:6px"> {"जॉइन करें" if lang=="hi" else "Join now"}</a></div>
 <div class="fgrid"><div><b class="fb"><img src="/img/logo-icon.svg" width="30" height="30" alt="" style="vertical-align:-8px;margin-right:8px">{sn}</b><p>{t['tagline']}</p><p class="fd"><i>{t['ded']}</i></p><p class="fsoc"><a href="{base}khabar/index.html">📰 {"खबर" if lang=="hi" else "Updates"}</a><a href="{SITE_URL}/{pfx}feed.xml">📡 RSS</a></p></div>
 <div><b>{t['info']}</b><a href="{base}about.html">{t['aboutl']}</a><a href="{base}contact.html">{t['contactl']}</a><a href="{base}privacy-policy.html">{t['privl']}</a><a href="{base}disclaimer.html">{t['disl']}</a></div>
-<div><b>{"उपयोगी टूल" if lang=="hi" else "Tools"}</b><a href="{base}find.html">🔎 {t["findl"]}</a><a href="{base}calculators.html">🧮 {"कैलकुलेटर" if lang=="hi" else "Calculators"}</a><a href="{base}guides/index.html">📘 {"गाइड" if lang=="hi" else "Guides"}</a><a href="{base}status.html">📋 {"स्टेटस जाँचें" if lang=="hi" else "Check status"}</a></div>
+<div><b>{"उपयोगी टूल" if lang=="hi" else "Tools"}</b><a href="{base}find.html">🔎 {t["findl"]}</a><a href="{base}calculators.html">🧮 {"कैलकुलेटर" if lang=="hi" else "Calculators"}</a><a href="{base}guides/index.html">📘 {"गाइड" if lang=="hi" else "Guides"}</a><a href="{base}status.html">📋 {"स्टेटस जाँचें" if lang=="hi" else "Check status"}</a><a href="{base}checklist.html">📝 {"दस्तावेज़ चेकलिस्ट" if lang=="hi" else "Document checklist"}</a><a href="{base}how-we-verify.html">🔍 {"हम कैसे जाँचते हैं" if lang=="hi" else "How we verify"}</a></div>
 <div><b>{t['catl']}</b>{catlinks}</div></div>
 <div class="fstates"><b>{t['statel']}</b><div>{statelinks}</div></div>
 <p class="fnote">ℹ️ {"यह एक स्वतंत्र जानकारी वेबसाइट है, सरकारी वेबसाइट नहीं। आवेदन हमेशा आधिकारिक पोर्टल पर ही करें।" if lang=="hi" else "This is an independent information website, not a government site. Always apply on the official portal."}</p>
@@ -199,7 +199,7 @@ def build(lang):
             faq = "".join(f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q,a in y["faq"])
         xbk = ""
         gl = [g for g in guides.GUIDES if y0["slug"] in g["rel"]]
-        xgd = f'<p class="note" style="margin-top:12px">📘 {"उपयोगी गाइड" if lang=="hi" else "Helpful guides"}: ' + " · ".join(f'<a href="../guides/{g["slug"]}.html">{e(g[lang]["title"])}</a>' for g in gl) + (" · " if gl else "") + f'<a href="../guides/index.html">{"सभी गाइड" if lang=="hi" else "All guides"}</a> · <a href="../status.html">{"सभी योजनाओं का स्टेटस" if lang=="hi" else "Status check hub"}</a></p>'
+        xgd = f'<p class="note" style="margin-top:12px">📘 {"उपयोगी गाइड" if lang=="hi" else "Helpful guides"}: ' + " · ".join(f'<a href="../guides/{g["slug"]}.html">{e(g[lang]["title"])}</a>' for g in gl) + (" · " if gl else "") + f'<a href="../guides/index.html">{"सभी गाइड" if lang=="hi" else "All guides"}</a> · <a href="../status.html">{"सभी योजनाओं का स्टेटस" if lang=="hi" else "Status check hub"}</a> · <a href="../checklist.html">{"📝 चेकलिस्ट प्रिंट करें" if lang=="hi" else "📝 Print checklist"}</a></p><p class="note">🔍 <a href="../how-we-verify.html">{"हम जानकारी कैसे जाँचते हैं" if lang=="hi" else "How we verify"}</a> · <a href="mailto:{CONTACT_EMAIL}?subject={y0["slug"]}">{"✉️ गलती बताएँ" if lang=="hi" else "✉️ Report a mistake"}</a></p>'
         if any(b in y["url"] for b in BKHOSTS):
             xbk = f'<p class="note" style="margin-top:12px">{t["bk"]} <a href="https://www.myscheme.gov.in/" target="_blank" rel="noopener nofollow">myScheme.gov.in ↗</a></p>'
         for cc in calcs2.CALCS:
@@ -409,6 +409,44 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
         sc += f'<a class="card" href="yojana/{y0["slug"]}.html"><span class="ic">{y0["icon"]}</span><span class="tg">{e(wh)}</span><h3>{e(yv["name"])}</h3><p>{e(first)}</p><span class="more">{t["more"]}</span></a>'
     p = "status.html"; reg(p)
     page(lang, p, f"{sh} | {SN}", ssub, f'<nav class="bc"><a href="index.html">{t["home"]}</a> › {e(sh)}</nav><h1>📋 {e(sh)}</h1><p class="lead">{ssub}</p><div class="grid">{sc}</div><p><a class="btn" href="guides/aadhaar-bank-dbt-seeding.html">📘 {e(guides.GUIDES[0][lang]["title"])}</a></p>{wabox(lang)}', "")
+
+    # ---------- Trust page + checklist ----------
+    H = lang=="hi"
+    vh = "हम जानकारी कैसे जाँचते हैं" if H else "How We Verify Information"
+    vd = "Asha Yojana पर हर योजना की जानकारी कैसे जुटाई, जाँची और अपडेट की जाती है।" if H else "How information on every Asha Yojana page is gathered, checked and updated."
+    vsec = ([("हम क्या करते हैं",["हर योजना के लिए पहले आधिकारिक पोर्टल, मंत्रालय/विभाग के पेज और PIB जैसे सरकारी स्रोत देखे जाते हैं।","जहाँ सरकारी साइट खुल नहीं पाती, वहाँ कम से कम दो भरोसेमंद स्रोत (जैसे Vikaspedia, myScheme, बड़े अख़बार) मिलाए जाते हैं।","हर पेज पर 'आख़िरी जाँच' की तारीख लिखी होती है और रकम, तारीख या नियम बदलने पर पेज अपडेट किया जाता है।","हम खबरें और जानकारी अपने शब्दों में लिखते हैं, किसी साइट की नकल नहीं करते।"]),
+      ("जो पक्का नहीं होता, उसका क्या",["जो बात हम पक्की नहीं कर पाते, उसे 'रिपोर्टों के अनुसार' लिखकर बताते हैं या छोड़ देते हैं।","हेल्पलाइन नंबर, रकम और आख़िरी तारीख हम अंदाज़े से नहीं लिखते।","आवेदन से पहले आधिकारिक पोर्टल पर पुष्टि करने की सलाह हर पेज पर दी जाती है।"]),
+      ("हमारी पहचान",["Asha Yojana एक स्वतंत्र जानकारी वेबसाइट है, सरकारी वेबसाइट या किसी विभाग का हिस्सा नहीं।","हम आवेदन के लिए कोई फीस नहीं लेते और न ही आपसे आधार, OTP या बैंक की जानकारी माँगते हैं।","साइट पर Google के विज्ञापन दिख सकते हैं; इनसे साइट का खर्च निकलता है और इससे जानकारी पर कोई असर नहीं पड़ता।"]),
+      ("गलती दिखे तो",["किसी भी पेज पर गलत या पुरानी जानकारी दिखे तो हमें बताइए। हम जाँचकर जल्दी सुधारते हैं।"])]
+      if H else
+      [("What we do",["For every scheme we first look at the official portal, the ministry/department page and government sources such as PIB.","Where an official site does not open, we cross-check at least two reliable sources (such as Vikaspedia, myScheme, major newspapers).","Every page shows a 'Last checked' date, and pages are updated when amounts, dates or rules change.","We write news and information in our own words and do not copy other sites."]),
+      ("What we cannot confirm",["Anything we cannot confirm is written as 'as per reports' or left out.","We do not guess helpline numbers, amounts or last dates.","Every page advises you to confirm on the official portal before applying."]),
+      ("Who we are",["Asha Yojana is an independent information website, not a government site or part of any department.","We do not charge any fee for applications and never ask for your Aadhaar, OTP or bank details.","Google ads may appear on the site; they pay for running it and do not affect the information."]),
+      ("If you spot a mistake",["If any page has wrong or outdated information, tell us. We check and fix it quickly."])])
+    vb = "".join(f"<h2>{e(a)}</h2><ul>{''.join(f'<li>{e(x)}</li>' for x in b)}</ul>" for a,b in vsec)
+    rep = f'mailto:{CONTACT_EMAIL}?subject=' + ("गलती बताएँ" if H else "Report a mistake")
+    vb += f'<p><a class="btn" href="{rep}">✉️ {"गलती बताएँ" if H else "Report a mistake"}</a></p>'
+    p = "how-we-verify.html"; reg(p)
+    page(lang, p, f"{vh} | {SN}", vd, f'<nav class="bc"><a href="index.html">{t["home"]}</a> › {e(vh)}</nav><article class="static"><h1>🔍 {e(vh)}</h1><p class="lead">{vd}</p>{vb}</article>{wabox(lang)}', "")
+    ck_t = "दस्तावेज़ चेकलिस्ट (प्रिंट/शेयर)" if H else "Document Checklist (print / share)"
+    ck_d = "अपनी योजना चुनें और ज़रूरी दस्तावेज़ व आवेदन के स्टेप एक पेज पर पाएँ, प्रिंट करें या WhatsApp पर भेजें।" if H else "Pick your scheme and get the documents and application steps on one page. Print it or send it on WhatsApp."
+    ckd = [{"n":view(y0,lang)["name"],"s":y0["slug"],"g":(sname(y0["state"],lang) if y0.get("state") else t["central"]),"d":view(y0,lang)["docs"],"st":view(y0,lang)["steps"]} for y0 in Y]
+    ckd.sort(key=lambda x:(x["g"],x["n"]))
+    L_ = dict(pick="— योजना चुनें —",docs="ज़रूरी दस्तावेज़",steps="आवेदन के स्टेप",pr="🖨️ प्रिंट करें",wa="WhatsApp पर भेजें",full="पूरी जानकारी पढ़ें",site="ashayojana.com") if H else dict(pick="— Choose a scheme —",docs="Documents needed",steps="Application steps",pr="🖨️ Print",wa="Send on WhatsApp",full="Read full details",site="ashayojana.com")
+    ckb = (f'<nav class="bc"><a href="index.html">{t["home"]}</a> › {e(ck_t)}</nav><h1>📝 {e(ck_t)}</h1><p class="lead">{ck_d}</p>'
+      f'<select id="cs" class="search" style="max-width:520px"></select><div id="cr" style="margin-top:14px"></div>'
+      f'<p class="note">⚠️ {t["warn"]}</p>'
+      '<script>const C='+json.dumps(ckd,ensure_ascii=False)+',L='+json.dumps(L_,ensure_ascii=False)+',P="yojana/";'
+      'const cs=document.getElementById("cs"),cr=document.getElementById("cr");let g="",h=\'<option value="">\'+L.pick+"</option>";'
+      'C.forEach((c,i)=>{if(c.g!==g){if(g)h+="</optgroup>";h+=\'<optgroup label="\'+c.g+\'">\';g=c.g}h+=\'<option value="\'+i+\'">\'+c.n+"</option>"});cs.innerHTML=h+"</optgroup>";'
+      'function esc(x){return x.replace(/&/g,"&amp;").replace(/</g,"&lt;")}'
+      'function show(){const v=cs.value;if(v===""){cr.innerHTML="";return}const c=C[v];'
+      'const t=c.n+"\\n\\n"+L.docs+":\\n"+c.d.map(x=>"☐ "+x).join("\\n")+"\\n\\n"+L.steps+":\\n"+c.st.map((x,i)=>(i+1)+". "+x).join("\\n")+"\\n\\n"+location.origin+(location.pathname.indexOf("/en/")===0?"/en/":"/")+P+c.s+".html";'
+      'cr.innerHTML=\'<div class="ckp"><h2>\'+esc(c.n)+"</h2><h3>"+L.docs+"</h3><ul class=ckl>"+c.d.map(x=>"<li>☐ "+esc(x)+"</li>").join("")+"</ul><h3>"+L.steps+"</h3><ol>"+c.st.map(x=>"<li>"+esc(x)+"</li>").join("")+\'</ol><p class="ckf">\'+L.site+"</p></div>"'
+      '+\'<p class="noprint"><button class="btn" onclick="window.print()">\'+L.pr+\'</button> <a class="btn" target="_blank" rel="noopener" href="https://wa.me/?text=\'+encodeURIComponent(t)+\'">\'+L.wa+\'</a> <a class="btn" href="\'+P+c.s+\'.html">\'+L.full+" →</a></p>"}'
+      'cs.addEventListener("change",show)</script>')
+    p = "checklist.html"; reg(p)
+    page(lang, p, f"{ck_t} | {SN}", ck_d, ckb, "")
 
     # ---------- Static pages ----------
     mod = static_hi if lang=="hi" else static_en

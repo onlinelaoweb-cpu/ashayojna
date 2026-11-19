@@ -68,3 +68,14 @@ If a step fails (build error, push denied), fix it or report exactly what failed
 - Then run `python3 tools/make_images.py` (makes img/<slug>-<lang>.jpg for schemes AND news-<slug>-<lang>.jpg; commit img/), `python3 build.py && python3 check.py`. Pages: /khabar/<slug>.html, /en/khabar/..., feeds /feed.xml and /en/feed.xml, section index /khabar/index.html. Publish the same way (site/ includes img/).
 - Always run make_images.py after adding new schemes too, otherwise their og:image 404s.
 - If there is no genuinely new verified development that day, post fewer (0 is fine); never pad.
+
+## Guides, scholarships and trust pages (added 2026-11-20)
+- `guides.py` holds evergreen how-to guides (hi+en, fields in the file header). Each daily run may add 1 new guide to
+  `guides.GUIDES` if it can verify the steps with 2+ sources (backlog ideas: Jan Dhan account, PAN-Aadhaar link, Voter ID
+  correction, birth certificate, Ayushman card download, e-Shram card, Digilocker, Udyam registration, bank KYC update).
+  Keep state-specific facts hedged. Link related yojana slugs in `rel`.
+- Scholarship schemes (state-wise, with last dates when official) are a priority for Part A; category `rozgar`/`kisan`
+  etc. are fine, scholarships go under the education category used in data1 CATS.
+- `/status.html` is built from `data9.EXTRA` (status sections); `/checklist.html` is built from every scheme's docs/steps.
+  `/how-we-verify.html` describes our method - do not claim anything there that the routine does not actually do.
+- Every yojana page links to guides, status hub, checklist and "report a mistake" (mailto). Do not remove these.
