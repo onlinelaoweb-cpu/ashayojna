@@ -80,7 +80,7 @@ def adscript():
 WA_URL = "https://whatsapp.com/channel/0029Vb93ObIKmCPZX9XLho1U"
 def wabox(lang):
     h = ("रोज़ नई सरकारी योजनाओं की जानकारी WhatsApp पर पाएँ", "WhatsApp चैनल जॉइन करें") if lang=="hi" else ("Get new government scheme updates on WhatsApp every day", "Join our WhatsApp channel")
-    return f'<div class="wabox"><p>{h[0]}</p><a class="btn wabtn" href="{WA_URL}" target="_blank" rel="noopener">💬 {h[1]}</a></div>'
+    return f'<div class="wabox"><p>{h[0]}</p><a class="btn wabtn" href="{WA_URL}" target="_blank" rel="noopener"><img src="{SITE_URL}/img/logo-whatsapp-white.png" width="22" height="22" alt="" style="vertical-align:-5px;margin-right:6px">{h[1]}</a></div>'
 
 def adslot(t):
     # Auto ads (enabled in AdSense) place ads by themselves; manual slots need a data-ad-slot id, so none for now.
@@ -129,8 +129,8 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
         u_ = quote(url); tt_ = quote(title)
         bub = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>'
         share = (f'<section class="share" aria-label="share"><b>📤 {"इसे शेयर करें" if H_ else "Share this page"}</b><div class="sbtns">'
-          f'<a class="sb wa" href="https://wa.me/?text={msg}" target="_blank" rel="noopener nofollow">{bub} WhatsApp</a>'
-          f'<a class="sb tg" href="https://t.me/share/url?url={u_}&text={tt_}" target="_blank" rel="noopener nofollow">✈️ Telegram</a>'
+          f'<a class="sb wa" href="https://wa.me/?text={msg}" target="_blank" rel="noopener nofollow"><img src="{base}img/logo-whatsapp.png" width="22" height="22" alt="" loading="lazy"> WhatsApp</a>'
+          f'<a class="sb tg" href="https://t.me/share/url?url={u_}&text={tt_}" target="_blank" rel="noopener nofollow"><img src="{base}img/logo-telegram.png" width="22" height="22" alt="" loading="lazy"> Telegram</a>'
           f'<a class="sb fb" href="https://www.facebook.com/sharer/sharer.php?u={u_}" target="_blank" rel="noopener nofollow">👍 Facebook</a>'
           f'<a class="sb xx" href="https://twitter.com/intent/tweet?url={u_}&text={tt_}" target="_blank" rel="noopener nofollow">✖ X</a>'
           f'<button class="sb cp2" type="button" data-u="{e(url)}" data-t="{e(title)}">🔗 {"लिंक कॉपी" if H_ else "Copy link"}</button></div>'
@@ -147,7 +147,7 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
 <nav class="mnav">{mnav}</nav>{swlink}</div>
 <nav class="w nav">{nav}</nav></header>
 <main class="w">{body}{share}</main>
-<footer class="ft"><div class="w"><div class="fcta"><div><b>{"रोज़ नई योजनाओं की खबर चाहिए?" if lang=="hi" else "Want daily scheme updates?"}</b><span>{"WhatsApp चैनल जॉइन करें – मुफ्त" if lang=="hi" else "Join our WhatsApp channel – free"}</span></div><a class="btn wabtn" href="{WA_URL}" target="_blank" rel="noopener">💬 {"जॉइन करें" if lang=="hi" else "Join now"}</a></div>
+<footer class="ft"><div class="w"><div class="fcta"><div><b>{"रोज़ नई योजनाओं की खबर चाहिए?" if lang=="hi" else "Want daily scheme updates?"}</b><span>{"WhatsApp चैनल जॉइन करें – मुफ्त" if lang=="hi" else "Join our WhatsApp channel – free"}</span></div><a class="btn wabtn" href="{WA_URL}" target="_blank" rel="noopener"><img src="{base}img/logo-whatsapp-white.png" width="22" height="22" alt="" style="vertical-align:-5px;margin-right:6px"> {"जॉइन करें" if lang=="hi" else "Join now"}</a></div>
 <div class="fgrid"><div><b class="fb">🪔 {sn}</b><p>{t['tagline']}</p><p class="fd"><i>{t['ded']}</i></p><p class="fsoc"><a href="{base}khabar/index.html">📰 {"खबर" if lang=="hi" else "Updates"}</a><a href="{SITE_URL}/{pfx}feed.xml">📡 RSS</a></p></div>
 <div><b>{t['info']}</b><a href="{base}about.html">{t['aboutl']}</a><a href="{base}contact.html">{t['contactl']}</a><a href="{base}privacy-policy.html">{t['privl']}</a><a href="{base}disclaimer.html">{t['disl']}</a></div>
 <div><b>{"उपयोगी टूल" if lang=="hi" else "Tools"}</b><a href="{base}find.html">🔎 {t["findl"]}</a><a href="{base}calculators.html">🧮 {"कैलकुलेटर" if lang=="hi" else "Calculators"}</a><a href="{base}guides/index.html">📘 {"गाइड" if lang=="hi" else "Guides"}</a><a href="{base}status.html">📋 {"स्टेटस जाँचें" if lang=="hi" else "Check status"}</a></div>
