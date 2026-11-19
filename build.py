@@ -121,6 +121,20 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
     sn = e(t["site"])
     statelinks = "".join(f'<a href="{base}state/{k}.html">{e(sname(k,lang))}</a>' for k in STATES)
     catlinks = "".join(f'<a href="{base}category/{k}.html">{e(cname(k,lang))}</a>' for k in CATS)
+    share = ""
+    if not noindex:
+        from urllib.parse import quote
+        H_ = lang=="hi"
+        msg = quote(f"{title}\n{url}")
+        u_ = quote(url); tt_ = quote(title)
+        bub = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>'
+        share = (f'<section class="share" aria-label="share"><b>📤 {"इसे शेयर करें" if H_ else "Share this page"}</b><div class="sbtns">'
+          f'<a class="sb wa" href="https://wa.me/?text={msg}" target="_blank" rel="noopener nofollow">{bub} WhatsApp</a>'
+          f'<a class="sb tg" href="https://t.me/share/url?url={u_}&text={tt_}" target="_blank" rel="noopener nofollow">✈️ Telegram</a>'
+          f'<a class="sb fb" href="https://www.facebook.com/sharer/sharer.php?u={u_}" target="_blank" rel="noopener nofollow">👍 Facebook</a>'
+          f'<a class="sb xx" href="https://twitter.com/intent/tweet?url={u_}&text={tt_}" target="_blank" rel="noopener nofollow">✖ X</a>'
+          f'<button class="sb cp2" type="button" data-u="{e(url)}" data-t="{e(title)}">🔗 {"लिंक कॉपी" if H_ else "Copy link"}</button></div>'
+          '<script>document.querySelectorAll(".cp2").forEach(function(b){b.addEventListener("click",function(){var u=b.dataset.u;if(navigator.share){navigator.share({title:b.dataset.t,url:u}).catch(function(){})}else if(navigator.clipboard){navigator.clipboard.writeText(u).then(function(){var o=b.innerHTML;b.textContent="✅ OK";setTimeout(function(){b.innerHTML=o},1500)})}})})</script></section>')
     h = f"""<!doctype html><html lang="{t['lang']}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(title)}</title><meta name="description" content="{e(desc)}">
 {canon}{hre}{robots}<link rel="alternate" type="application/rss+xml" title="{sn}" href="{SITE_URL}/{pfx}feed.xml">
@@ -132,7 +146,7 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
 <header class="hd"><div class="w hdr"><a class="logo" href="{base}index.html"><span class="lg">🪔</span><span class="lt">{sn}<small>{"सरकारी योजनाएँ, आसान भाषा में" if lang=="hi" else "Government schemes, made simple"}</small></span></a>
 <nav class="mnav">{mnav}</nav>{swlink}</div>
 <nav class="w nav">{nav}</nav></header>
-<main class="w">{body}</main>
+<main class="w">{body}{share}</main>
 <footer class="ft"><div class="w"><div class="fcta"><div><b>{"रोज़ नई योजनाओं की खबर चाहिए?" if lang=="hi" else "Want daily scheme updates?"}</b><span>{"WhatsApp चैनल जॉइन करें – मुफ्त" if lang=="hi" else "Join our WhatsApp channel – free"}</span></div><a class="btn wabtn" href="{WA_URL}" target="_blank" rel="noopener">💬 {"जॉइन करें" if lang=="hi" else "Join now"}</a></div>
 <div class="fgrid"><div><b class="fb">🪔 {sn}</b><p>{t['tagline']}</p><p class="fd"><i>{t['ded']}</i></p><p class="fsoc"><a href="{base}khabar/index.html">📰 {"खबर" if lang=="hi" else "Updates"}</a><a href="{SITE_URL}/{pfx}feed.xml">📡 RSS</a></p></div>
 <div><b>{t['info']}</b><a href="{base}about.html">{t['aboutl']}</a><a href="{base}contact.html">{t['contactl']}</a><a href="{base}privacy-policy.html">{t['privl']}</a><a href="{base}disclaimer.html">{t['disl']}</a></div>
