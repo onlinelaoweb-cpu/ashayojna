@@ -129,10 +129,10 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
         u_ = quote(url); tt_ = quote(title)
         bub = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>'
         share = (f'<section class="share" aria-label="share"><b>📤 {"इसे शेयर करें" if H_ else "Share this page"}</b><div class="sbtns">'
-          f'<a class="sb wa" href="https://wa.me/?text={msg}" target="_blank" rel="noopener nofollow"><img src="{base}img/logo-whatsapp.png" width="22" height="22" alt="" loading="lazy"> WhatsApp</a>'
-          f'<a class="sb tg" href="https://t.me/share/url?url={u_}&text={tt_}" target="_blank" rel="noopener nofollow"><img src="{base}img/logo-telegram.png" width="22" height="22" alt="" loading="lazy"> Telegram</a>'
-          f'<a class="sb fb" href="https://www.facebook.com/sharer/sharer.php?u={u_}" target="_blank" rel="noopener nofollow">👍 Facebook</a>'
-          f'<a class="sb xx" href="https://twitter.com/intent/tweet?url={u_}&text={tt_}" target="_blank" rel="noopener nofollow">✖ X</a>'
+          f'<a class="sb wa" href="https://wa.me/?text={msg}" target="_blank" rel="noopener nofollow"><img src="{base}img/logo-whatsapp.png" width="22" height="22" alt=""> WhatsApp</a>'
+          f'<a class="sb tg" href="https://t.me/share/url?url={u_}&text={tt_}" target="_blank" rel="noopener nofollow"><img src="{base}img/logo-telegram.png" width="22" height="22" alt=""> Telegram</a>'
+          f'<a class="sb fb" href="https://www.facebook.com/sharer/sharer.php?u={u_}" target="_blank" rel="noopener nofollow"><img src="{base}img/logo-facebook.png" width="22" height="22" alt=""> Facebook</a>'
+          f'<a class="sb xx" href="https://twitter.com/intent/tweet?url={u_}&text={tt_}" target="_blank" rel="noopener nofollow"><img src="{base}img/logo-x-white.png" width="20" height="20" alt=""> X</a>'
           f'<button class="sb cp2" type="button" data-u="{e(url)}" data-t="{e(title)}">🔗 {"लिंक कॉपी" if H_ else "Copy link"}</button></div>'
           '<script>document.querySelectorAll(".cp2").forEach(function(b){b.addEventListener("click",function(){var u=b.dataset.u;if(navigator.share){navigator.share({title:b.dataset.t,url:u}).catch(function(){})}else if(navigator.clipboard){navigator.clipboard.writeText(u).then(function(){var o=b.innerHTML;b.textContent="✅ OK";setTimeout(function(){b.innerHTML=o},1500)})}})})</script></section>')
     h = f"""<!doctype html><html lang="{t['lang']}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
