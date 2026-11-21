@@ -13,14 +13,16 @@ CROPS = {
 BLUR = {"pm-jay-public-hospital-packages-proposal": [(.30, .735, .40, .775), (.67, .755, .77, .79)]}
 BRIGHT = {"pm-jay-public-hospital-packages-proposal": 1.25}
 def run():
-    for slug, (x0f, y0f, wf) in CROPS.items():
+    import glob
+    slugs = [os.path.basename(f)[:-4] for f in sorted(glob.glob("photos/*.jpg"))]
+    for slug in slugs:
+        x0f, y0f, wf = CROPS.get(slug, (0, None, 1.0))  # auto photos: full width, vertically a bit above centre (faces/subjects sit high)
         src = f"photos/{slug}.jpg"
-        if not os.path.exists(src): continue
         im = Image.open(src).convert("RGB"); W, H = im.size
         for (a, b, c, d) in BLUR.get(slug, []):
             box = (int(a*W), int(b*H), int(c*W), int(d*H))
             im.paste(im.crop(box).filter(ImageFilter.GaussianBlur(25)), box)
-        w = int(wf*W); h = int(w*630/1200); x0 = int(x0f*W); y0 = min(int(y0f*H), H-h)
+        w = int(wf*W); h = int(w*630/1200); x0 = int(x0f*W); y0 = min(int((y0f if y0f is not None else max(0.0, (H-h)*0.4/H))*H), H-h)
         out = im.crop((x0, y0, x0+w, y0+h)).resize((1200, 630), Image.LANCZOS)
         if slug in BRIGHT: out = ImageEnhance.Brightness(out).enhance(BRIGHT[slug])
         for lang in ("hi", "en"): out.save(f"img/news-{slug}-{lang}.jpg", quality=86)

@@ -105,6 +105,12 @@ def cname(k, lang): return CATS[k][0] if lang=="hi" else CATS_EN[k][0]
 def cdesc(k, lang): return CATS[k][2] if lang=="hi" else CATS_EN[k][1]
 def sname(k, lang): return STATES[k][0] if lang=="hi" else STATES[k][1]
 
+def _pcredit(slug):
+    # auto photos (tools/auto_photos.py) record the photographer in photos/credits.json; Unsplash asks for visible credit
+    try: c = json.load(open("photos/credits.json", encoding="utf-8")).get(slug)
+    except Exception: c = None
+    if not c: return ""
+    return f'<p class="pcr">Photo: <a href="{html.escape(c["link"])}?utm_source=ashayojana&utm_medium=referral" target="_blank" rel="noopener nofollow">{html.escape(c["name"])}</a> / <a href="https://unsplash.com/?utm_source=ashayojana&utm_medium=referral" target="_blank" rel="noopener nofollow">Unsplash</a></p>'
 def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=True, img=None):
     t = T[lang]; pfx = "" if lang=="hi" else "en/"
     H = lang=="hi"
@@ -376,6 +382,7 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
         d = n[lang]; ry = next(x for x in Y if x["slug"]==n["related"])
         srcs = "".join(f'<li><a href="{u}" target="_blank" rel="noopener nofollow">{e(nm)}</a></li>' for nm,u in n["src"])
         nb = (f'<nav class="bc"><a href="../index.html">{t["home"]}</a> › <a href="index.html">{ntitle}</a></nav><article><p class="meta">{n["icon"]} {pubh}: {n["date"]}</p><h1>{e(d["title"])}</h1><img class="nhero" src="/img/news-{n["slug"]}-{lang}.jpg" alt="{e(d["title"])}" width="1200" height="630">'
+              + _pcredit(n["slug"])
               + "".join(f"<p>{e(x)}</p>" for x in d["body"])
               + f'<p><a class="btn" href="../yojana/{n["related"]}.html">{n["icon"]} {relh}: {e(view(ry,lang)["name"])}</a></p><h2>{srcl}</h2><ul>{srcs}</ul><div class="warn">{t["warn"]}</div></article>{wabox(lang)}')
         iu = f'{SITE_URL}/img/news-{n["slug"]}-{lang}.jpg'

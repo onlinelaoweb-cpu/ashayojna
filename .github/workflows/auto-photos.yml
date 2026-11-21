@@ -1,0 +1,38 @@
+name: auto-photos
+on:
+  schedule: [{cron: "30 7 * * *"}]   # 13:00 IST, after the 11:23 IST content routine
+  workflow_dispatch:
+permissions: {contents: write}
+concurrency: {group: auto-photos, cancel-in-progress: false}
+jobs:
+  photos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: source, fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install pillow
+      - name: Fetch photos for posts that have none
+        env: {UNSPLASH_KEY: "${{ secrets.UNSPLASH_KEY }}"}
+        run: python3 tools/auto_photos.py
+      - name: Crop, build, check
+        run: |
+          python3 tools/apply_photos.py
+          python3 build.py
+          python3 check.py | tail -1
+          python3 check.py | grep -q "PROBLEMS: 0"
+      - name: Commit to source
+        id: c
+        run: |
+          git config user.name "asha-bot"; git config user.email "asha-bot@users.noreply.github.com"
+          git add photos img
+          if git diff --cached --quiet; then echo "changed=no" >> $GITHUB_OUTPUT; else
+            git commit -qm "Auto photos for new khabar posts"; git pull -q --rebase origin source; git push -q origin source; echo "changed=yes" >> $GITHUB_OUTPUT; fi
+      - name: Publish site to main
+        if: steps.c.outputs.changed == 'yes'
+        run: |
+          git fetch -q origin main; git worktree add ../mainwt origin/main -f --detach
+          cd ../mainwt && find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} + && cp -a "$GITHUB_WORKSPACE/site/." .
+          git add -A; git commit -qm "Publish site: auto photos" || exit 0
+          git push -q origin HEAD:main
