@@ -111,6 +111,9 @@ def _pcredit(slug):
     except Exception: c = None
     if not c: return ""
     return f'<p class="pcr">Photo: <a href="{html.escape(c["link"])}?utm_source=ashayojana&utm_medium=referral" target="_blank" rel="noopener nofollow">{html.escape(c["name"])}</a> / <a href="https://unsplash.com/?utm_source=ashayojana&utm_medium=referral" target="_blank" rel="noopener nofollow">Unsplash</a></p>'
+def _phero(slug, outprefix, lang, alt):
+    if not os.path.exists(f"photos/{slug}.jpg"): return ""
+    return f'<img class="nhero" src="/img/{outprefix}{slug}-{lang}.jpg" alt="{html.escape(alt)}" width="1200" height="630">' + _pcredit(slug)
 def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=True, img=None):
     t = T[lang]; pfx = "" if lang=="hi" else "en/"
     H = lang=="hi"
@@ -197,7 +200,8 @@ def build(lang):
         return f'<a class="card ncard" href="{base}khabar/{n["slug"]}.html"><img class="nimg" src="/img/news-{n["slug"]}-{lang}.jpg" alt="" width="600" height="315" loading="lazy"><span class="tg">{n["icon"]} {n["date"]}</span><h3>{e(d["title"])}</h3><p>{e(d["summary"])}</p><span class="more">{t["more"]}</span></a>'
     def gcard(g, base):
         d = g[lang]
-        return f'<a class="card" href="{base}guides/{g["slug"]}.html"><span class="ic">{g["icon"]}</span><h3>{e(d["title"])}</h3><p>{e(d["desc"])}</p><span class="more">{t["more"]}</span></a>'
+        gimg = f'<img class="nimg" src="/img/guide-{g["slug"]}-{lang}.jpg" alt="" width="600" height="315" loading="lazy">' if os.path.exists(f"photos/{g['slug']}.jpg") else ""
+        return f'<a class="card" href="{base}guides/{g["slug"]}.html">{gimg}<span class="ic">{g["icon"]}</span><h3>{e(d["title"])}</h3><p>{e(d["desc"])}</p><span class="more">{t["more"]}</span></a>'
     # ---------- Yojana pages ----------
     for y0 in Y:
         y = view(y0, lang)
@@ -227,7 +231,7 @@ def build(lang):
         relcards = "".join(card(x,"../",lang) for x in rel)
         body = f"""<nav class="bc">{crumb}</nav>
 <article><h1>{e(y["name"])}</h1>
-<p class="meta">{y0["icon"]} {where} · {e(y["ministry"])} · {t["lastchk"]}: {data_daily.VERIFIED.get(y0["slug"],{}).get(lang, UPD[lang])}</p>
+{_phero(y0["slug"], "", lang, y["name"])}<p class="meta">{y0["icon"]} {where} · {e(y["ministry"])} · {t["lastchk"]}: {data_daily.VERIFIED.get(y0["slug"],{}).get(lang, UPD[lang])}</p>
 <div class="facts">{facts}</div>
 <div class="note">⚠️ {e(y["note"])}</div>
 {adslot(t)}
@@ -404,7 +408,7 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
         d = g[lang]
         srcs = "".join(f'<li><a href="{u}" target="_blank" rel="noopener nofollow">{e(nm)}</a></li>' for nm,u in g["src"])
         rl = "".join(f'<a class="btn" href="../yojana/{r}.html">{e(view(next(x for x in Y if x["slug"]==r),lang)["name"])}</a> ' for r in g["rel"])
-        gb = (f'<nav class="bc"><a href="../index.html">{t["home"]}</a> › <a href="index.html">{gt}</a></nav><article><h1>{g["icon"]} {e(d["title"])}</h1><p class="lead">{e(d["intro"])}</p>'
+        gb = (f'<nav class="bc"><a href="../index.html">{t["home"]}</a> › <a href="index.html">{gt}</a></nav><article><h1>{g["icon"]} {e(d["title"])}</h1><p class="lead">{e(d["intro"])}</p>' + _phero(g["slug"], "guide-", lang, d["title"]) + ''
               f'<h2>{stp}</h2>{ol(d["steps"])}' + (f'<h2>{dcp}</h2>{ul(d["docs"])}' if d["docs"] else "") + f'<h2>{tpp}</h2>{ul(d["tips"])}'
               + (f'<p>{rl}</p>' if rl else "") + f'<h2>{ofl}</h2><ul>{srcs}</ul><div class="warn">{t["warn"]}</div></article>{wabox(lang)}')
         giu = f'{SITE_URL}/img/guide-{g["slug"]}-{lang}.jpg'

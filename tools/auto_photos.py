@@ -18,42 +18,60 @@ TOPICS = [
  (r"bank|aadhaar|dbt|kyc|ekyc|account|upi", "indian woman smartphone bank"),
  (r"job|employment|rozgar|skill|training|mgnrega|nrega", "indian workers"),
 ]
+CATQ = {"kisan": "indian farmer field", "swasthya": "indian hospital patient", "mahila": "indian woman village", "rozgar": "indian small business owner",
+        "bima": "elderly indian man village", "ghar": "indian village house", "shiksha": "indian school students"}
 def query_for(n):
-    text = " ".join([n.get("slug", ""), n.get("related", ""), n["en"]["title"], n["en"].get("summary", "")]).lower()
+    text = " ".join([n.get("slug", ""), n.get("related", ""), n["en"]["title"], n["en"].get("summary", ""), n["en"].get("desc", "")]).lower()
     for pat, q in TOPICS:
         if re.search(pat, text): return q + " india" if "india" not in q else q
-    return "india village people"
+    return CATQ.get(n.get("cat"), "india village people")
 def api(path, **params):
     params["client_id"] = KEY
     req = urllib.request.Request("https://api.unsplash.com" + path + "?" + urllib.parse.urlencode(params), headers={"Accept-Version": "v1"})
     return json.load(urllib.request.urlopen(req, timeout=30))
-def pick(results):
+def pick(results, used=()):
     for r in results:
+        if r["id"] in used: continue  # never reuse a photo on another page
         if r.get("width", 0) >= 2000 and r["width"] > r["height"] * 1.3:
             if r.get("premium") or r.get("plus"): continue
             return r
-def fetch(n):
+def fetch(n, used=()):
     q = query_for(n)
     res = api("/search/photos", query=q, orientation="landscape", per_page=15, content_filter="high").get("results", [])
-    r = pick(res)
+    r = pick(res, used)
     if not r: return None
     url = r["urls"]["raw"] + ("&" if "?" in r["urls"]["raw"] else "?") + "w=1800&fit=max&q=80&fm=jpg"
     data = urllib.request.urlopen(urllib.request.Request(url), timeout=60).read()
     try: api(urllib.parse.urlparse(r["links"]["download_location"]).path)  # required by Unsplash API terms: count the download
     except Exception: pass
     open(f"photos/{n['slug']}.jpg", "wb").write(data)
-    return {"name": r["user"]["name"], "link": r["user"]["links"]["html"], "id": r["id"], "query": q}
+    return {"name": r["user"]["name"], "link": r["user"]["links"]["html"], "id": r["id"], "query": q, "out": n["out"]}
+MAX_EXTRA = int(os.environ.get("MAX_EXTRA", "8"))  # guides/schemes per run -> whole site covered gradually, nothing floods the quota
+def items():
+    import random, datetime
+    import news, guides
+    for n in news.NEWS: yield dict(n, out="img/news-")
+    extra = [dict(g, out="img/guide-", en=dict(g["en"], summary=g["en"].get("intro", ""))) for g in guides.GUIDES]
+    import build  # scheme list Y (runs a build; harmless here)
+    for y in build.Y:
+        e = build.view(y, "en")
+        extra.append(dict(slug=y["slug"], cat=y["cat"], related="", out="img/", en=dict(title=e["name"], summary=e.get("short", ""))))
+    random.Random(datetime.date.today().toordinal()).shuffle(extra)
+    for x in extra: yield x
 def main():
     if not KEY: print("UNSPLASH_KEY missing"); return 0
-    import news
     cp = "photos/credits.json"
     cred = json.load(open(cp, encoding="utf-8")) if os.path.exists(cp) else {}
-    os.makedirs("photos", exist_ok=True); got = 0
-    for n in news.NEWS:
+    used = {c["id"] for c in cred.values() if "id" in c}
+    os.makedirs("photos", exist_ok=True); got = extra = 0
+    for n in items():
         if os.path.exists(f"photos/{n['slug']}.jpg"): continue
-        try: c = fetch(n)
+        is_extra = n["out"] != "img/news-"
+        if is_extra and extra >= MAX_EXTRA: break
+        try: c = fetch(n, used)
         except Exception as ex: print("FAIL", n["slug"], ex); continue
-        if c: cred[n["slug"]] = c; got += 1; print("OK", n["slug"], "<-", c["query"], c["name"])
+        if is_extra: extra += 1
+        if c: cred[n["slug"]] = c; used.add(c["id"]); got += 1; print("OK", n["slug"], "<-", c["query"], c["name"])
         else: print("no photo", n["slug"])
     json.dump(cred, open(cp, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print("new photos:", got)
