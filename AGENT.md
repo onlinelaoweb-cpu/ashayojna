@@ -89,3 +89,6 @@ If a step fails (build error, push denied), fix it or report exactly what failed
 - OneSignal app "Asha Yojana" (App ID in build.py `ONESIGNAL_APP_ID`); worker file `OneSignalSDKWorker.js` is written to site root by build.py. Slidedown prompt shows after 25s + a scroll, or via the footer bell button. Do not make it more aggressive (AdSense/UX).
 
 - Daily routine: after adding khabar posts run `python3 tools/push_draft.py` (writes PUSH_TODAY.md with title/message/launch URL for the owner to paste into OneSignal; max 1-2 pushes/day) and commit it with SHARE_TODAY.md.
+
+## Khabar images (22 Nov 2026)
+- Khabar cards and article pages now show `img/news-<slug>-<lang>.jpg`, a topic scene made by `tools/make_images.py` (emoji scene, no headline text). For EVERY new khabar post add a specific 3-emoji entry to `SCENES` in tools/make_images.py (centre emoji = main topic) before running it; the category default is only a fallback. Never use a scene that misrepresents the news.

@@ -18,6 +18,25 @@ CSS = f"""@font-face{{font-family:N;font-weight:700;src:url(file://{F}/noto-sans
 def sp(t): return ''.join(f'<span style="margin-right:.25em;display:inline-block">{html.escape(w)}</span>' for w in t.split(' '))
 def card(icon, name, cat, site, tag, fs):
     return f"<html><head><meta charset=utf-8><style>{CSS.replace('{fs}',str(fs))}</style></head><body><div class=top><span class=chip>{sp(cat)}</span><span class=ic>{icon}</span></div><h1>{sp(name)}</h1><div class=bot><span>{sp(site)}</span><span>{html.escape(tag)}</span></div></body></html>"
+
+# ---- topic scene images for Taaza Khabar (no headline text; the headline is on the page) ----
+SCENE_BG = {"kisan":("#2f7d32","#9bcf53"),"swasthya":("#0d6e8c","#5ec8d8"),"mahila":("#a23b72","#f2a1c4"),"rozgar":("#c25e00","#f7b955"),
+            "bima":("#2c4a8f","#7aa7e8"),"ghar":("#b8512a","#f4b183"),"shiksha":("#5b3fa0","#b9a2ee")}
+SCENE_CAT = {"kisan":["🌾","🚜","👨‍🌾"],"swasthya":["🏥","🩺","💊"],"mahila":["👩","👧","🤱"],"rozgar":["💼","🏭","🤝"],
+             "bima":["🛡️","📄","👴"],"ghar":["🏡","💡","🔑"],"shiksha":["🎓","📚","🏫"]}
+# per-slug override: 3 emojis (centre first). Add new ones for each khabar post if the default is not specific enough.
+SCENES = {"stand-up-india-extended-2031":["🏭","💼","👩‍💼"],"pm-surya-ghar-50-lakh-installations":["☀️","🏡","🔌"],
+          "bihar-pmfby-rabi-2026-27-applications":["🌾","☔","📝"],"karnataka-ration-card-ekyc-deadline-30-november":["🪪","🍚","📱"],
+          "pm-jay-public-hospital-packages-proposal":["🏥","🩺","💳"],"jeevan-pramaan-life-certificate-30-november-2026":["👴","📱","🪪"]}
+def scene(em, cat, site, date):
+    c1, c2 = SCENE_BG[cat]
+    a, b2, c = (em + ["📄","📄"])[:3]
+    return f"""<html><head><meta charset=utf-8><style>*{{margin:0;box-sizing:border-box}}body{{width:1200px;height:630px;overflow:hidden;position:relative;background:linear-gradient(135deg,{c1},{c2});font-family:'Noto Color Emoji',sans-serif}}
+.o{{position:absolute;border-radius:50%;background:rgba(255,255,255,.16)}}.e{{position:absolute;line-height:1;filter:drop-shadow(0 14px 18px rgba(0,0,0,.28))}}
+.s{{position:absolute;left:36px;bottom:24px;font:700 28px sans-serif;color:#fff;opacity:.9;text-shadow:0 2px 6px rgba(0,0,0,.35)}}.d{{position:absolute;right:36px;bottom:24px;font:700 26px sans-serif;color:#fff;opacity:.85;text-shadow:0 2px 6px rgba(0,0,0,.35)}}</style></head><body>
+<div class=o style="width:760px;height:760px;left:220px;top:-70px"></div><div class=o style="width:360px;height:360px;left:-80px;top:330px"></div><div class=o style="width:300px;height:300px;right:-60px;top:-60px"></div>
+<div class=e style="font-size:330px;left:405px;top:130px">{a}</div><div class=e style="font-size:190px;left:150px;top:300px;transform:rotate(-8deg)">{b2}</div><div class=e style="font-size:190px;right:140px;top:90px;transform:rotate(8deg)">{c}</div>
+<div class=s>ashayojana.com</div><div class=d>{date}</div></body></html>"""
 CATEN = build.CATS_EN
 with sync_playwright() as p:
     b = p.chromium.launch(); pg = b.new_page(viewport={"width":1200,"height":630})
@@ -38,8 +57,10 @@ with sync_playwright() as p:
             cat = "ताज़ा खबर" if lang=="hi" else "Latest update"
             site = "आशा योजना" if lang=="hi" else "Asha Yojana"
             fs = 64 if len(nm) < 45 else 52
-            pg.set_content(card(n["icon"], nm, cat, site, n["date"], fs)); pg.wait_for_timeout(60)
-            pg.screenshot(path=f"img/news-{n['slug']}-{lang}.jpg", type="jpeg", quality=82); n_ = 0
+            ycat = next(x for x in Y if x["slug"] == n["related"])["cat"]
+            em = SCENES.get(n["slug"]) or SCENE_CAT[ycat]
+            pg.set_content(scene(em, ycat, site, n["date"])); pg.wait_for_timeout(120)
+            pg.screenshot(path=f"img/news-{n['slug']}-{lang}.jpg", type="jpeg", quality=86); n_ = 0
     import guides
     for g in guides.GUIDES:
         for lang in ("hi","en"):

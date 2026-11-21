@@ -188,7 +188,7 @@ def build(lang):
     ol = lambda a: "<ol class='steps'>"+"".join(f"<li>{e(i)}</li>" for i in a)+"</ol>"
     def ncard(n, base):
         d = n[lang]
-        return f'<a class="card" href="{base}khabar/{n["slug"]}.html"><span class="ic">{n["icon"]}</span><span class="tg">{n["date"]}</span><h3>{e(d["title"])}</h3><p>{e(d["summary"])}</p><span class="more">{t["more"]}</span></a>'
+        return f'<a class="card ncard" href="{base}khabar/{n["slug"]}.html"><img class="nimg" src="/img/news-{n["slug"]}-{lang}.jpg" alt="" width="600" height="315" loading="lazy"><span class="tg">{n["icon"]} {n["date"]}</span><h3>{e(d["title"])}</h3><p>{e(d["summary"])}</p><span class="more">{t["more"]}</span></a>'
     def gcard(g, base):
         d = g[lang]
         return f'<a class="card" href="{base}guides/{g["slug"]}.html"><span class="ic">{g["icon"]}</span><h3>{e(d["title"])}</h3><p>{e(d["desc"])}</p><span class="more">{t["more"]}</span></a>'
@@ -375,7 +375,7 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
     for n in NS:
         d = n[lang]; ry = next(x for x in Y if x["slug"]==n["related"])
         srcs = "".join(f'<li><a href="{u}" target="_blank" rel="noopener nofollow">{e(nm)}</a></li>' for nm,u in n["src"])
-        nb = (f'<nav class="bc"><a href="../index.html">{t["home"]}</a> › <a href="index.html">{ntitle}</a></nav><article><p class="meta">{n["icon"]} {pubh}: {n["date"]}</p><h1>{e(d["title"])}</h1>'
+        nb = (f'<nav class="bc"><a href="../index.html">{t["home"]}</a> › <a href="index.html">{ntitle}</a></nav><article><p class="meta">{n["icon"]} {pubh}: {n["date"]}</p><h1>{e(d["title"])}</h1><img class="nhero" src="/img/news-{n["slug"]}-{lang}.jpg" alt="{e(d["title"])}" width="1200" height="630">'
               + "".join(f"<p>{e(x)}</p>" for x in d["body"])
               + f'<p><a class="btn" href="../yojana/{n["related"]}.html">{n["icon"]} {relh}: {e(view(ry,lang)["name"])}</a></p><h2>{srcl}</h2><ul>{srcs}</ul><div class="warn">{t["warn"]}</div></article>{wabox(lang)}')
         iu = f'{SITE_URL}/img/news-{n["slug"]}-{lang}.jpg'
