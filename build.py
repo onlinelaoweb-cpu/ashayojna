@@ -13,7 +13,7 @@ ADSENSE_PUB = "ca-pub-5169642227203900"                            # e.g. "ca-pu
 CONTACT_EMAIL = "ashayojana.contact@gmail.com"                          # apna contact email
 # ========================================================
 PH = "YOUR-DOMAIN" in SITE_URL
-LASTMOD = "2026-11-20"
+LASTMOD = "2026-11-21"
 OUT = "site"
 e = html.escape
 if os.path.exists(OUT): shutil.rmtree(OUT)
@@ -26,7 +26,7 @@ shutil.copy("og-image.png", OUT+"/og-image.png")
 if os.path.isdir("img"): shutil.copytree("img", OUT+"/img")
 shutil.copy("BingSiteAuth.xml", OUT+"/BingSiteAuth.xml")
 
-STATES = {"up": ("उत्तर प्रदेश","Uttar Pradesh"), "bihar": ("बिहार","Bihar"), "mp": ("मध्य प्रदेश","Madhya Pradesh"), "rajasthan": ("राजस्थान","Rajasthan"), "maharashtra": ("महाराष्ट्र","Maharashtra"), "gujarat": ("गुजरात","Gujarat"), "delhi": ("दिल्ली","Delhi"), "haryana": ("हरियाणा","Haryana"), "karnataka": ("कर्नाटक","Karnataka"), "westbengal": ("पश्चिम बंगाल","West Bengal"), "tamilnadu": ("तमिलनाडु","Tamil Nadu"), "ap": ("आंध्र प्रदेश","Andhra Pradesh"), "arunachal": ("अरुणाचल प्रदेश","Arunachal Pradesh"), "assam": ("असम","Assam"), "chhattisgarh": ("छत्तीसगढ़","Chhattisgarh"), "goa": ("गोवा","Goa"), "himachal": ("हिमाचल प्रदेश","Himachal Pradesh"), "jharkhand": ("झारखंड","Jharkhand"), "kerala": ("केरल","Kerala"), "manipur": ("मणिपुर","Manipur"), "meghalaya": ("मेघालय","Meghalaya"), "mizoram": ("मिज़ोरम","Mizoram"), "nagaland": ("नागालैंड","Nagaland"), "odisha": ("ओडिशा","Odisha"), "punjab": ("पंजाब","Punjab"), "sikkim": ("सिक्किम","Sikkim"), "telangana": ("तेलंगाना","Telangana"), "tripura": ("त्रिपुरा","Tripura"), "uttarakhand": ("उत्तराखंड","Uttarakhand")}
+STATES = {"up": ("उत्तर प्रदेश","Uttar Pradesh"), "bihar": ("बिहार","Bihar"), "mp": ("मध्य प्रदेश","Madhya Pradesh"), "rajasthan": ("राजस्थान","Rajasthan"), "maharashtra": ("महाराष्ट्र","Maharashtra"), "gujarat": ("गुजरात","Gujarat"), "delhi": ("दिल्ली","Delhi"), "haryana": ("हरियाणा","Haryana"), "karnataka": ("कर्नाटक","Karnataka"), "westbengal": ("पश्चिम बंगाल","West Bengal"), "tamilnadu": ("तमिलनाडु","Tamil Nadu"), "ap": ("आंध्र प्रदेश","Andhra Pradesh"), "arunachal": ("अरुणाचल प्रदेश","Arunachal Pradesh"), "assam": ("असम","Assam"), "chhattisgarh": ("छत्तीसगढ़","Chhattisgarh"), "goa": ("गोवा","Goa"), "himachal": ("हिमाचल प्रदेश","Himachal Pradesh"), "jharkhand": ("झारखंड","Jharkhand"), "kerala": ("केरल","Kerala"), "manipur": ("मणिपुर","Manipur"), "meghalaya": ("मेघालय","Meghalaya"), "mizoram": ("मिज़ोरम","Mizoram"), "nagaland": ("नागालैंड","Nagaland"), "odisha": ("ओडिशा","Odisha"), "punjab": ("पंजाब","Punjab"), "sikkim": ("सिक्किम","Sikkim"), "telangana": ("तेलंगाना","Telangana"), "tripura": ("त्रिपुरा","Tripura"), "uttarakhand": ("उत्तराखंड","Uttarakhand"), "jk": ("जम्मू और कश्मीर","Jammu & Kashmir")}
 CATS_EN = {
  "kisan":("Farmer Schemes","Direct income support and cheap credit for farmers"),
  "swasthya":("Health Schemes","Free treatment and health insurance"),
