@@ -484,3 +484,6 @@ if ADSENSE_PUB: open(OUT+"/ads.txt","w").write(f"google.com, {ADSENSE_PUB.replac
 open(OUT+"/.nojekyll","w").write("")
 if not PH: open(OUT+"/CNAME","w").write(SITE_URL.replace("https://",""))
 print("built", len(URLS), "pages")
+
+# GitHub runs schedules only from the default branch (main), so ship the workflow inside site/ too
+shutil.copytree(".github", "site/.github", dirs_exist_ok=True)
