@@ -1,6 +1,8 @@
 name: auto-photos
 on:
-  schedule: [{cron: "30 7 * * *"}]   # 13:00 IST, after the 11:23 IST content routine
+  schedule:
+    - cron: "30 7 * * *"   # 13:00 IST daily, after the 11:23 IST content routine
+    - cron: "5 * * * *"    # hourly catch-up, only until CATCHUP_UNTIL below (Unsplash demo limit: 50 req/hour, ~2 per photo)
   workflow_dispatch:
 permissions: {contents: write}
 concurrency: {group: auto-photos, cancel-in-progress: false}
@@ -8,15 +10,25 @@ jobs:
   photos:
     runs-on: ubuntu-latest
     steps:
+      - name: Gate hourly catch-up
+        id: g
+        run: |
+          CATCHUP_UNTIL=2026-11-23T08:00   # UTC; after this only the daily run happens
+          if [ "${{ github.event.schedule }}" = "5 * * * *" ] && [[ "$(date -u +%Y-%m-%dT%H:%M)" > "$CATCHUP_UNTIL" ]]; then echo go=no >> $GITHUB_OUTPUT; else echo go=yes >> $GITHUB_OUTPUT; fi
       - uses: actions/checkout@v4
+        if: steps.g.outputs.go == 'yes'
         with: {ref: source, fetch-depth: 0}
       - uses: actions/setup-python@v5
+        if: steps.g.outputs.go == 'yes'
         with: {python-version: "3.12"}
       - run: pip install pillow
+        if: steps.g.outputs.go == 'yes'
       - name: Fetch photos for posts that have none
-        env: {UNSPLASH_KEY: "${{ secrets.UNSPLASH_KEY }}"}
+        if: steps.g.outputs.go == 'yes'
+        env: {UNSPLASH_KEY: "${{ secrets.UNSPLASH_KEY }}", MAX_EXTRA: "20"}
         run: python3 tools/auto_photos.py
       - name: Crop, build, check
+        if: steps.g.outputs.go == 'yes'
         run: |
           python3 tools/apply_photos.py
           python3 build.py
@@ -24,6 +36,7 @@ jobs:
           python3 check.py | grep -q "PROBLEMS: 0"
       - name: Commit to source
         id: c
+        if: steps.g.outputs.go == 'yes'
         run: |
           git config user.name "asha-bot"; git config user.email "asha-bot@users.noreply.github.com"
           git add photos img
