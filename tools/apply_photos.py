@@ -5,7 +5,7 @@ from PIL import Image, ImageFilter, ImageEnhance
 CROPS = {
  "pm-jay-public-hospital-packages-proposal": (0, .45, 1.0),
  "jeevan-pramaan-life-certificate-30-november-2026": (0, .09, 1.0),
- "bihar-pmfby-rabi-2026-27-applications": (0, .33, 1.0),
+ "bihar-pmfby-rabi-2026-27-applications": (0, .12, 1.0),
  "karnataka-ration-card-ekyc-deadline-30-november": (.24, .452, .76),
  "stand-up-india-extended-2031": (0, .084, 1.0),
  "pm-surya-ghar-50-lakh-installations": (0, .273, 1.0),
