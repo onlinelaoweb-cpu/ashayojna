@@ -79,3 +79,8 @@ If a step fails (build error, push denied), fix it or report exactly what failed
 - `/status.html` is built from `data9.EXTRA` (status sections); `/checklist.html` is built from every scheme's docs/steps.
   `/how-we-verify.html` describes our method - do not claim anything there that the routine does not actually do.
 - Every yojana page links to guides, status hub, checklist and "report a mistake" (mailto). Do not remove these.
+
+## Discover readiness (added 22 Nov 2026)
+- Guides now get per-guide share/Discover images (`img/guide-<slug>-<lang>.jpg`, made by `tools/make_images.py`) plus Article+HowTo schema. After adding a guide or khabar post ALWAYS run `python3 tools/make_images.py` and commit `img/`.
+- NewsArticle/Article schema uses the PUBLISHER object (name, url, logo) and full ISO timestamps. Keep featured images 1200px wide.
+- Do not add spam tactics (mass AI posts, adding strangers to WhatsApp groups).

@@ -14,6 +14,7 @@ CONTACT_EMAIL = "ashayojana.contact@gmail.com"                          # apna c
 # ========================================================
 PH = "YOUR-DOMAIN" in SITE_URL
 LASTMOD = "2026-11-21"
+PUBLISHER = {"@type":"Organization","name":"Asha Yojana","url":SITE_URL,"logo":{"@type":"ImageObject","url":SITE_URL+"/img/icon-512.png","width":512,"height":512}}
 OUT = "site"
 e = html.escape
 if os.path.exists(OUT): shutil.rmtree(OUT)
@@ -372,7 +373,7 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
               + "".join(f"<p>{e(x)}</p>" for x in d["body"])
               + f'<p><a class="btn" href="../yojana/{n["related"]}.html">{n["icon"]} {relh}: {e(view(ry,lang)["name"])}</a></p><h2>{srcl}</h2><ul>{srcs}</ul><div class="warn">{t["warn"]}</div></article>{wabox(lang)}')
         iu = f'{SITE_URL}/img/news-{n["slug"]}-{lang}.jpg'
-        nld = {"@context":"https://schema.org","@type":"NewsArticle","headline":d["title"],"description":d["summary"],"inLanguage":t["lang"],"datePublished":n["date"],"dateModified":n["date"],"image":[iu],"mainEntityOfPage":f'{SITE_URL}/{pfx}khabar/{n["slug"]}.html',"author":{"@type":"Organization","name":SN},"publisher":{"@type":"Organization","name":SN}}
+        nld = {"@context":"https://schema.org","@type":"NewsArticle","headline":d["title"],"description":d["summary"],"inLanguage":t["lang"],"datePublished":n["date"]+"T06:00:00+05:30","dateModified":n["date"]+"T06:00:00+05:30","image":[iu],"mainEntityOfPage":f'{SITE_URL}/{pfx}khabar/{n["slug"]}.html',"author":{"@type":"Organization","name":SN,"url":SITE_URL},"publisher":PUBLISHER}
         p = f'khabar/{n["slug"]}.html'; reg(p)
         page(lang, p, f'{d["title"]} | {SN}', d["summary"], nb, "../", nld, img=iu)
     p = "khabar/index.html"; reg(p)
@@ -393,9 +394,11 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
         gb = (f'<nav class="bc"><a href="../index.html">{t["home"]}</a> › <a href="index.html">{gt}</a></nav><article><h1>{g["icon"]} {e(d["title"])}</h1><p class="lead">{e(d["intro"])}</p>'
               f'<h2>{stp}</h2>{ol(d["steps"])}' + (f'<h2>{dcp}</h2>{ul(d["docs"])}' if d["docs"] else "") + f'<h2>{tpp}</h2>{ul(d["tips"])}'
               + (f'<p>{rl}</p>' if rl else "") + f'<h2>{ofl}</h2><ul>{srcs}</ul><div class="warn">{t["warn"]}</div></article>{wabox(lang)}')
-        gld = {"@context":"https://schema.org","@type":"HowTo","name":d["title"],"description":d["desc"],"inLanguage":t["lang"],"step":[{"@type":"HowToStep","position":i+1,"text":x} for i,x in enumerate(d["steps"])]}
+        giu = f'{SITE_URL}/img/guide-{g["slug"]}-{lang}.jpg'
+        gld = [{"@context":"https://schema.org","@type":"HowTo","name":d["title"],"description":d["desc"],"inLanguage":t["lang"],"image":[giu],"step":[{"@type":"HowToStep","position":i+1,"text":x} for i,x in enumerate(d["steps"])]},
+               {"@context":"https://schema.org","@type":"Article","headline":d["title"],"description":d["desc"],"inLanguage":t["lang"],"dateModified":LASTMOD,"image":[giu],"mainEntityOfPage":f'{SITE_URL}/{pfx}guides/{g["slug"]}.html',"author":{"@type":"Organization","name":SN},"publisher":PUBLISHER}]
         p = f'guides/{g["slug"]}.html'; reg(p)
-        page(lang, p, f'{d["title"]} | {SN}', d["desc"], gb, "../", gld)
+        page(lang, p, f'{d["title"]} | {SN}', d["desc"], gb, "../", gld, img=giu)
     p = "guides/index.html"; reg(p)
     page(lang, p, f"{gt} | {SN}", gsub, f'<nav class="bc"><a href="../index.html">{t["home"]}</a> › {gt}</nav><h1>📘 {gt}</h1><p class="lead">{gsub}</p><div class="grid">{"".join(gcard(g,"../") for g in guides.GUIDES)}</div><p><a class="btn" href="../status.html">📋 {"स्टेटस जाँचें" if lang=="hi" else "Check scheme status"}</a></p>{wabox(lang)}', "../")
     sh = "योजना का स्टेटस कैसे जाँचें – एक जगह" if lang=="hi" else "How to Check Scheme Status – All in One Place"
