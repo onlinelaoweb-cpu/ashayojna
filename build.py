@@ -26,6 +26,7 @@ open(OUT+"/style.css","w",encoding="utf-8").write(CSS)
 shutil.copy("og-image.png", OUT+"/og-image.png")
 if os.path.isdir("img"): shutil.copytree("img", OUT+"/img")
 shutil.copy("BingSiteAuth.xml", OUT+"/BingSiteAuth.xml")
+open(OUT+"/OneSignalSDKWorker.js","w").write('importScripts("https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js");\n')
 
 STATES = {"up": ("उत्तर प्रदेश","Uttar Pradesh"), "bihar": ("बिहार","Bihar"), "mp": ("मध्य प्रदेश","Madhya Pradesh"), "rajasthan": ("राजस्थान","Rajasthan"), "maharashtra": ("महाराष्ट्र","Maharashtra"), "gujarat": ("गुजरात","Gujarat"), "delhi": ("दिल्ली","Delhi"), "haryana": ("हरियाणा","Haryana"), "karnataka": ("कर्नाटक","Karnataka"), "westbengal": ("पश्चिम बंगाल","West Bengal"), "tamilnadu": ("तमिलनाडु","Tamil Nadu"), "ap": ("आंध्र प्रदेश","Andhra Pradesh"), "arunachal": ("अरुणाचल प्रदेश","Arunachal Pradesh"), "assam": ("असम","Assam"), "chhattisgarh": ("छत्तीसगढ़","Chhattisgarh"), "goa": ("गोवा","Goa"), "himachal": ("हिमाचल प्रदेश","Himachal Pradesh"), "jharkhand": ("झारखंड","Jharkhand"), "kerala": ("केरल","Kerala"), "manipur": ("मणिपुर","Manipur"), "meghalaya": ("मेघालय","Meghalaya"), "mizoram": ("मिज़ोरम","Mizoram"), "nagaland": ("नागालैंड","Nagaland"), "odisha": ("ओडिशा","Odisha"), "punjab": ("पंजाब","Punjab"), "sikkim": ("सिक्किम","Sikkim"), "telangana": ("तेलंगाना","Telangana"), "tripura": ("त्रिपुरा","Tripura"), "uttarakhand": ("उत्तराखंड","Uttarakhand"), "jk": ("जम्मू और कश्मीर","Jammu & Kashmir")}
 CATS_EN = {
@@ -72,6 +73,10 @@ T = {
    nores="No scheme found. Try another word.", homettl=" – Government Schemes in Hindi & English",
    homedesc="Simple information on PM Kisan, Ayushman Bharat, Ujjwala, Sukanya Samriddhi, Mudra loan and state schemes of all states of India, in Hindi and English."),
 }
+
+ONESIGNAL_APP_ID = "5af3a852-10ca-4416-8c37-e204286772e1"
+ONESIGNAL = """<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>window.OneSignalDeferred=window.OneSignalDeferred||[];OneSignalDeferred.push(async function(OneSignal){try{await OneSignal.init({appId:"%s",allowLocalhostAsSecureOrigin:false});var asked=false;function ask(){if(asked)return;asked=true;try{OneSignal.Slidedown.promptPush();}catch(e){}}setTimeout(function(){window.addEventListener("scroll",ask,{once:true,passive:true});},25000);var b=document.getElementById("pushbtn");if(b)b.addEventListener("click",function(ev){ev.preventDefault();try{OneSignal.Slidedown.promptPush({force:true});}catch(e){}});}catch(e){}});</script>""" % ONESIGNAL_APP_ID
 
 CLARITY = """<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","zfpiaxq0te");</script>"""
 GA_SNIPPET = """<script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNDZDNDG8"></script>
@@ -153,13 +158,13 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
 <meta name="theme-color" content="#0f5a4a">
 <meta name="msvalidate.01" content="E396DD12CB7E02BFB4486E78FD592C97" />
 <link rel="icon" href="/img/favicon-48.png" type="image/png" sizes="48x48"><link rel="icon" href="/img/icon-192.png" type="image/png" sizes="192x192"><link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
-<style>{CSS}</style>{ldj}{GA_SNIPPET}{CLARITY}{adscript()}</head><body>
+<style>{CSS}</style>{ldj}{GA_SNIPPET}{CLARITY}{ONESIGNAL}{adscript()}</head><body>
 <header class="hd"><div class="w hdr"><a class="logo" href="{base}index.html"><span class="lg"><img src="/img/logo-icon.png" width="42" height="42" alt=""></span><span class="lt">{sn}<small>{"सरकारी योजनाएँ, आसान भाषा में" if lang=="hi" else "Government schemes, made simple"}</small></span></a>
 <nav class="mnav">{mnav}</nav>{swlink}</div>
 <nav class="w nav">{nav}</nav></header>
 <main class="w">{body}{share}</main>
 <footer class="ft"><div class="w"><div class="fcta"><div><b>{"रोज़ नई योजनाओं की खबर चाहिए?" if lang=="hi" else "Want daily scheme updates?"}</b><span>{"WhatsApp चैनल जॉइन करें – मुफ्त" if lang=="hi" else "Join our WhatsApp channel – free"}</span></div><a class="btn wabtn" href="{WA_URL}" target="_blank" rel="noopener"><img src="/img/logo-whatsapp-white.png" width="22" height="22" alt="" style="vertical-align:-5px;margin-right:6px"> {"जॉइन करें" if lang=="hi" else "Join now"}</a></div>
-<div class="fgrid"><div><b class="fb"><img src="/img/logo-icon.png" width="30" height="30" alt="" style="vertical-align:-8px;margin-right:8px">{sn}</b><p>{t['tagline']}</p><p class="fd"><i>{t['ded']}</i></p><p class="fsoc"><a href="{base}khabar/index.html">📰 {"खबर" if lang=="hi" else "Updates"}</a><a href="{SITE_URL}/{pfx}feed.xml">📡 RSS</a></p></div>
+<div class="fgrid"><div><b class="fb"><img src="/img/logo-icon.png" width="30" height="30" alt="" style="vertical-align:-8px;margin-right:8px">{sn}</b><p>{t['tagline']}</p><p class="fd"><i>{t['ded']}</i></p><p class="fsoc"><a href="{base}khabar/index.html">📰 {"खबर" if lang=="hi" else "Updates"}</a><a href="{SITE_URL}/{pfx}feed.xml">📡 RSS</a><a href="#" id="pushbtn">🔔 {"नई खबर की सूचना" if lang=="hi" else "Get alerts"}</a></p></div>
 <div><b>{t['info']}</b><a href="{base}about.html">{t['aboutl']}</a><a href="{base}contact.html">{t['contactl']}</a><a href="{base}privacy-policy.html">{t['privl']}</a><a href="{base}disclaimer.html">{t['disl']}</a></div>
 <div><b>{"उपयोगी टूल" if lang=="hi" else "Tools"}</b><a href="{base}find.html">🔎 {t["findl"]}</a><a href="{base}calculators.html">🧮 {"कैलकुलेटर" if lang=="hi" else "Calculators"}</a><a href="{base}guides/index.html">📘 {"गाइड" if lang=="hi" else "Guides"}</a><a href="{base}status.html">📋 {"स्टेटस जाँचें" if lang=="hi" else "Check status"}</a><a href="{base}checklist.html">📝 {"दस्तावेज़ चेकलिस्ट" if lang=="hi" else "Document checklist"}</a><a href="{base}how-we-verify.html">🔍 {"हम कैसे जाँचते हैं" if lang=="hi" else "How we verify"}</a></div>
 <div><b>{t['catl']}</b>{catlinks}</div></div>

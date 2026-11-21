@@ -84,3 +84,6 @@ If a step fails (build error, push denied), fix it or report exactly what failed
 - Guides now get per-guide share/Discover images (`img/guide-<slug>-<lang>.jpg`, made by `tools/make_images.py`) plus Article+HowTo schema. After adding a guide or khabar post ALWAYS run `python3 tools/make_images.py` and commit `img/`.
 - NewsArticle/Article schema uses the PUBLISHER object (name, url, logo) and full ISO timestamps. Keep featured images 1200px wide.
 - Do not add spam tactics (mass AI posts, adding strangers to WhatsApp groups).
+
+## Push notifications (OneSignal, 22 Nov 2026)
+- OneSignal app "Asha Yojana" (App ID in build.py `ONESIGNAL_APP_ID`); worker file `OneSignalSDKWorker.js` is written to site root by build.py. Slidedown prompt shows after 25s + a scroll, or via the footer bell button. Do not make it more aggressive (AdSense/UX).
