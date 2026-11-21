@@ -92,3 +92,4 @@ If a step fails (build error, push denied), fix it or report exactly what failed
 
 ## Khabar images (22 Nov 2026)
 - Khabar cards and article pages now show `img/news-<slug>-<lang>.jpg`, a topic scene made by `tools/make_images.py` (emoji scene, no headline text). For EVERY new khabar post add a specific 3-emoji entry to `SCENES` in tools/make_images.py (centre emoji = main topic) before running it; the category default is only a fallback. Never use a scene that misrepresents the news.
+- Real photos: if `photos/<slug>.jpg` exists (original from Pexels, owner-supplied) and has a CROPS entry in tools/apply_photos.py, make_images.py uses it instead of the emoji scene. Keep credits in photos/CREDITS.md. Never take photos from news sites or Google Images.

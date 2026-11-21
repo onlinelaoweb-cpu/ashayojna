@@ -71,4 +71,6 @@ with sync_playwright() as p:
             pg.set_content(card(g["icon"], nm, cat, site, "ashayojana.com", fs)); pg.wait_for_timeout(60)
             pg.screenshot(path=f"img/guide-{g['slug']}-{lang}.jpg", type="jpeg", quality=82)
     b.close()
+sys.path.insert(0, "tools")
+import apply_photos; apply_photos.run()   # real photos (photos/<slug>.jpg) override the scene images
 print("images", n)
