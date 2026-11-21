@@ -1,14 +1,16 @@
-🌾 बिहार में रबी फसल बीमा (PMFBY) शुरू
-रिपोर्टों के अनुसार बिहार में रबी 2026-27 से PMFBY लागू है, आवेदन 15 नवंबर 2026 से 15 जनवरी 2027 तक। खाद्य फसलों पर किसान का प्रीमियम 1.5%। तारीख़ बैंक/कृषि विभाग से पक्की करें।
-https://ashayojana.com/khabar/bihar-pmfby-rabi-2026-27-applications.html
+# Share posts 2026-11-21
+
+1) 👧 J&K Ladli Beti Yojana: bachchi ke naam ₹1,000/mahina
+1 April 2015 ya baad janmi beti ke naam sarkar 14 saal tak ₹1,000 mahina jama karti hai. Parivar ki aay ₹75,000 se kam; abhi 8 zilon mein manjoor.
+https://ashayojana.com/yojana/jk-ladli-beti.html
 Aur yojanayein: https://ashayojana.com
 
-🎓 NMMSS: कक्षा 9-12 के बच्चों को ₹12,000 सालाना
-सरकारी/सहायता प्राप्त स्कूल के मेधावी बच्चे, माता-पिता की आय ₹3.5 लाख तक। पहले कक्षा 8 की राज्य परीक्षा पास करनी होती है, फिर NSP पर आवेदन।
-https://ashayojana.com/yojana/central-nmmss-scholarship.html
+2) 👵 J&K pension badhi: ₹1,250 se ₹2,000 mahina
+1 April 2025 se ISSS pension 60-79 saal ko ₹1,500, 80+ ko ₹2,000 (mahila 55-60 / vidhwa / divyang ₹1,250). Shart: PHH/AAY ration card.
+https://ashayojana.com/yojana/jk-integrated-social-security-pension.html
 Aur yojanayein: https://ashayojana.com
 
-🍚 कर्नाटक: राशन कार्ड e-KYC की तारीख़ 30 नवंबर (रिपोर्ट)
-e-KYC न हो तो राशन रुक सकता है। राशन दुकान या अन्ना सेवा ऐप से करें। तारीख़ सिर्फ़ एक रिपोर्ट में है, पहले पक्का कर लें।
-https://ashayojana.com/khabar/karnataka-ration-card-ekyc-deadline-30-november.html
+3) 🪪 Pensioners dhyan dein: Jeevan Pramaan 30 November tak
+Sarkari pensioners ko life certificate 30 Nov tak dena hai, warna December se pension ruk sakti hai. UMANG app, bank/post office ya CSC se de sakte hain.
+https://ashayojana.com/khabar/jeevan-pramaan-life-certificate-30-november-2026.html
 Aur yojanayein: https://ashayojana.com
