@@ -1,0 +1,13 @@
+# Push drafts (khabar dated 2026-11-21)
+
+OneSignal dashboard > Messages > Push > New push > Audience: Subscribed Users. Max 1-2 pushes per day.
+
+## 🏥 pm-jay-public-hospital-packages-proposal
+- Title: आयुष्मान भारत: सरकारी अस्पतालों के लिए आरक्षित पैकेज 23 से…
+- Message: रिपोर्टों के अनुसार NHA आयुष्मान भारत PM-JAY के 89 और इलाज-पैकेज सिर्फ़ सरकारी अस्पतालों के लिए आरक्षित करने…
+- Launch URL: https://ashayojana.com/khabar/pm-jay-public-hospital-packages-proposal.html
+
+## 🪪 jeevan-pramaan-life-certificate-30-november-2026
+- Title: पेंशनरों के लिए जीवन प्रमाण (डिजिटल लाइफ़ सर्टिफ़िकेट) की…
+- Message: रिपोर्टों के अनुसार केंद्र और राज्य सरकार के पेंशनरों को सालाना जीवन प्रमाण 30 नवंबर 2026 तक जमा करना है,…
+- Launch URL: https://ashayojana.com/khabar/jeevan-pramaan-life-certificate-30-november-2026.html
