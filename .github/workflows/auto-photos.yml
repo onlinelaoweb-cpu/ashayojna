@@ -1,5 +1,8 @@
 name: auto-photos
 on:
+  push:
+    branches: [source]
+    paths: [news.py]   # new khabar pushed by the daily routine -> photo is added within minutes
   schedule:
     - cron: "30 7 * * *"   # 13:00 IST daily, after the 11:23 IST content routine
     - cron: "5 * * * *"    # hourly catch-up, only until CATCHUP_UNTIL below (Unsplash demo limit: 50 req/hour, ~2 per photo)
