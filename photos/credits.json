@@ -814,5 +814,33 @@
   "id": "tcppYP5yaKw",
   "query": "india street life",
   "out": "img/"
+ },
+ "karnataka-drought-relief-rs-5000-farmers": {
+  "name": "amol sonar",
+  "link": "https://unsplash.com/@amoldhl",
+  "id": "1KntWz6Hpgc",
+  "query": "indian farmer field",
+  "out": "img/news-"
+ },
+ "mp-ladli-behna-42nd-instalment-13-november-2026": {
+  "name": "Anirudh",
+  "link": "https://unsplash.com/@underroot",
+  "id": "FY33apL3IR8",
+  "query": "india street life",
+  "out": "img/news-"
+ },
+ "punjab-mawan-dhiyan-satkar-yojana": {
+  "name": "Shubhro Jyoti Dey",
+  "link": "https://unsplash.com/@shubhro_",
+  "id": "_inb075aOqM",
+  "query": "india street life",
+  "out": "img/"
+ },
+ "delhi-ayushman-bharat-widow-disability-pensioners": {
+  "name": "Indre Velaviciute",
+  "link": "https://unsplash.com/@indrevela",
+  "id": "KT3r730FVkA",
+  "query": "india street life",
+  "out": "img/"
  }
 }
