@@ -10,9 +10,13 @@ def session():
     info = json.loads(os.environ["GCP_SA_KEY"])
     return AuthorizedSession(service_account.Credentials.from_service_account_info(info, scopes=SCOPES))
 def ga(s, body):
-    r = s.post(f"https://analyticsdata.googleapis.com/v1beta/properties/{GA_PROP}:runReport", json=body, timeout=60); r.raise_for_status(); return r.json()
+    r = s.post(f"https://analyticsdata.googleapis.com/v1beta/properties/{GA_PROP}:runReport", json=body, timeout=60)
+    if not r.ok: print("GA error", r.status_code, r.text[:600])
+    r.raise_for_status(); return r.json()
 def gsc(s, body):
-    r = s.post("https://www.googleapis.com/webmasters/v3/sites/" + urllib.parse.quote(SITE, safe="") + "/searchAnalytics/query", json=body, timeout=60); r.raise_for_status(); return r.json().get("rows", [])
+    r = s.post("https://www.googleapis.com/webmasters/v3/sites/" + urllib.parse.quote(SITE, safe="") + "/searchAnalytics/query", json=body, timeout=60)
+    if not r.ok: print("GSC error", r.status_code, r.text[:600])  # reason (API not enabled vs no permission) is in the body
+    r.raise_for_status(); return r.json().get("rows", [])
 def rows(j, nd):  # GA4 response -> [(dims..., metrics...)]
     out = []
     for r in j.get("rows", []):
