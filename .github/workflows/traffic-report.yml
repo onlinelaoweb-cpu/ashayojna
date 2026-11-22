@@ -1,0 +1,22 @@
+name: traffic-report
+on:
+  schedule: [{cron: "0 4 * * 1"}]   # Monday 09:30 IST, before the 10:17 IST report task
+  workflow_dispatch:
+permissions: {contents: write}
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: source, fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install google-auth requests
+      - name: Build report
+        env: {GCP_SA_KEY: "${{ secrets.GCP_SA_KEY }}", GA_PROPERTY_ID: "${{ secrets.GA_PROPERTY_ID }}"}
+        run: python3 tools/traffic_report.py
+      - name: Commit report
+        run: |
+          git config user.name "asha-bot"; git config user.email "asha-bot@users.noreply.github.com"
+          git add TRAFFIC_REPORT.md
+          git diff --cached --quiet || { git commit -qm "Weekly traffic report"; git pull -q --rebase origin source; git push -q origin source; }

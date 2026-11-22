@@ -101,3 +101,6 @@ Extra pages: the same Action also adds photos to guides and scheme pages, MAX_EX
 ## Auto photos trigger
 The Action also runs on every push to `source` that changes news.py, so a new khabar gets its photo minutes after the daily routine pushes it (news items are fetched before guides/schemes).
 Daily routine note: the photo Action pushes to `source` (photos/, img/) and publishes `main` too, so ALWAYS `git pull --rebase origin source` before pushing source and `git pull origin main` in the mainwt worktree before publishing. Do not delete photos/*.jpg or photos/credits.json.
+
+## Traffic report (backup to Supermetrics)
+`.github/workflows/traffic-report.yml` runs Mondays 09:30 IST: `tools/traffic_report.py` reads GA4 + Search Console read-only with a Google service account (secrets `GCP_SA_KEY`, `GA_PROPERTY_ID`) and commits `TRAFFIC_REPORT.md` to source. No secret = it skips. Never commit the key.
