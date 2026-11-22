@@ -109,9 +109,9 @@ def _pcredit(slug):
     # auto photos (tools/auto_photos.py) record the photographer in photos/credits.json; Unsplash asks for visible credit
     try: c = json.load(open("photos/credits.json", encoding="utf-8")).get(slug)
     except Exception: c = None
-    if not c: return ""
+    if not c or not c.get("link"): return ""  # own/blurred images carry no credit
     return f'<p class="pcr">Photo: <a href="{html.escape(c["link"])}?utm_source=ashayojana&utm_medium=referral" target="_blank" rel="noopener nofollow">{html.escape(c["name"])}</a> / <a href="https://unsplash.com/?utm_source=ashayojana&utm_medium=referral" target="_blank" rel="noopener nofollow">Unsplash</a></p>'
-ART = {"aadhaar-bank-dbt-seeding"}  # slugs with custom drawn art (tools/make_images.py) instead of a stock photo
+ART = set()  # slugs with custom drawn art (tools/make_images.py) instead of a photo
 def _hasimg(slug): return slug in ART or os.path.exists(f"photos/{slug}.jpg")
 def _phero(slug, outprefix, lang, alt):
     if not _hasimg(slug): return ""

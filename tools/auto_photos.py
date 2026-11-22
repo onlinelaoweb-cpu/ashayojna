@@ -49,7 +49,7 @@ def fetch(n, used=()):
     except Exception: pass
     open(f"photos/{n['slug']}.jpg", "wb").write(data)
     return {"name": r["user"]["name"], "link": r["user"]["links"]["html"], "id": r["id"], "query": q, "out": n["out"]}
-ART = {"aadhaar-bank-dbt-seeding"}  # custom drawn art guides: no stock photo (keep in sync with build.py ART)
+ART = set()  # custom drawn art guides: no stock photo (keep in sync with build.py ART)
 MAX_EXTRA = int(os.environ.get("MAX_EXTRA", "8"))  # guides/schemes per run -> whole site covered gradually, nothing floods the quota
 def items():
     import random, datetime

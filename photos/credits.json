@@ -670,5 +670,9 @@
   "id": "YsoSh9x5704",
   "query": "india village people",
   "out": "img/"
+ },
+ "aadhaar-bank-dbt-seeding": {
+  "out": "img/guide-",
+  "note": "own image, personal details blurred (pixelate+blur); original never stored in repo"
  }
 }
