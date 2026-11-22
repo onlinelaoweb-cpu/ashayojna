@@ -60,6 +60,7 @@ def items():
         e = build.view(y, "en")
         extra.append(dict(slug=y["slug"], cat=y["cat"], related="", out="img/", en=dict(title=e["name"], summary=e.get("short", ""))))
     random.Random(datetime.date.today().toordinal()).shuffle(extra)
+    extra.sort(key=lambda x: x["out"] != "img/guide-")  # guides first (shown on the homepage)
     for x in extra: yield x
 def main():
     if not KEY: print("UNSPLASH_KEY missing"); return 0
