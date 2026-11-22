@@ -18,5 +18,6 @@ jobs:
       - name: Commit report
         run: |
           git config user.name "asha-bot"; git config user.email "asha-bot@users.noreply.github.com"
+          [ -f TRAFFIC_REPORT.md ] || { echo "no report (secret missing?)"; exit 0; }
           git add TRAFFIC_REPORT.md
           git diff --cached --quiet || { git commit -qm "Weekly traffic report"; git pull -q --rebase origin source; git push -q origin source; }
