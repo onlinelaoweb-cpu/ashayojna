@@ -97,3 +97,6 @@ If a step fails (build error, push denied), fix it or report exactly what failed
 ## Auto photos (GitHub Action)
 `.github/workflows/auto-photos.yml` runs daily 13:00 IST (and on demand): `tools/auto_photos.py` finds Unsplash landscape photos (secret `UNSPLASH_KEY`) for khabar posts lacking `photos/<slug>.jpg`, saves credit in `photos/credits.json` (shown as "Photo: name / Unsplash" on the post), `tools/apply_photos.py` crops every `photos/*.jpg` (auto crop unless listed in CROPS), builds, checks, pushes `source` and publishes `main`. No photo found -> emoji scene stays. To pick a photo yourself, drop `photos/<slug>.jpg`; the Action skips slugs that already have one. Keep topic regexes in `TOPICS` updated.
 Extra pages: the same Action also adds photos to guides and scheme pages, MAX_EXTRA=8 per run (random, seeded by date, no photo reused). Pages show a hero photo only when `photos/<slug>.jpg` exists; `photos/credits.json` `out` says where the cropped image goes (img/guide-, img/, img/news-).
+
+## Auto photos trigger
+The Action also runs on every push to `source` that changes news.py, so a new khabar gets its photo minutes after the daily routine pushes it (news items are fetched before guides/schemes).
