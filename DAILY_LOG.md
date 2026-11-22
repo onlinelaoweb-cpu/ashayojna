@@ -55,3 +55,22 @@
 - Skipped Part A: Odisha Subhadra fresh applications (Nov 2025 source, nothing for 2026), Delhi Lakshmi (already on site), Ladki Bahin Maharashtra Part B (only 2025 pages readable).
 - Could not verify: PM-KUSUM subsidy split/pump sizes, PMGKAY official end date and helpline, Vay Vandana sharing rule/helpline 1800-110-770/application steps, Punjab official portal/helpline, Delhi PM-JAY start date/process, Maharashtra Ladki Bahin 2026 status, Namo Shetkari instalments.
 - Build: LASTMOD=2026-11-22.
+
+## 2026-11-22 (weekly health check, Sunday)
+- Build/check on source: `build.py` 362 pages, sitemap 362 urls, `check.py` PROBLEMS: 0. Local built output: GA (G-MGNDZDNDG8), AdSense (ca-pub-5169642227203900), canonical, hreflang hi/en/x-default, og:image present on home + 2 sampled scheme pages (hi + en). ads.txt and robots.txt in build are correct.
+- main hash at check time: 97bfa99d (Action commit "Publish site: traffic workflow fix"; the routine's last logged publish was a81dbf3, later commits are the auto-photo/traffic Actions, so mismatch is expected, not an error).
+- LIVE site fetch (home, sitemap, robots, ads.txt, 5 pages) NOT possible this run: WebFetch returned PROVENANCE_REQUIRED (permission not answered, unattended) and curl is blocked. So "live site loads" is unverified this week; only repo/build verified.
+- Link rot: week 1 batch (pages 1-14 of 112 sorted slugs, ap-annadata-sukhibhava .. bihar-student-credit-card-yojana) could NOT be tested (same fetch error). Nothing counted as broken. Next run restarts at index 0 if fetch works; list in site/yojana sorted order, link = first `class="btn"` href.
+- News watch (7 days): searched PM-KISAN, Ladki Bahin, Ladli Behna, Gruha Lakshmi, Mahalakshmi, Ayushman Bharat. No new verified change found beyond what is already on site (PM-KISAN 24th 30 Oct; Ladli Behna 41st/42nd; PM-JAY public-hospital packages proposal 19 Nov already posted). Ladki Bahin results were only 2025 pages. No page edited, nothing published to main.
+### Next week priority list (all need 2-source verification before writing; sources are search hits, not yet read in full)
+1. Kerala Sthree Suraksha pension for unemployed women, Rs 1,000/month, applications reported from 22 Dec - https://www.outlookmoney.com/news/sthree-suraksha-scheme-launched-kerala-to-provide-monthly-pension-for-unemployed-women
+2. VB-G RAM G (rural employment scheme, women farmers angle) - https://www.newsonair.gov.in/vb-g-ram-g-scheme-will-promote-employment-empower-women-farmers-shivraj-singh-chouhan
+3. Uttarakhand Beni-Bhuli Yojana - https://www.govtschemes.in/uttarakhand-beni-bhuli-yojana
+4. Jharkhand Mahila Kisan Khushali Yojana - https://www.govtschemes.in/jharkhand-mahila-kisan-khushali-yojana
+5. Himachal Mukhya Mantri Mahila Sashaktikaran Yojana - https://www.govtschemes.in/himachal-pradesh-mukhya-mantri-mahila-sashaktikaran-yojana
+6. Pre-matric scholarship for students with disabilities (central, NSP 2026-27) - https://www.indiascholarships.in/scholarships/pre-matric-scholarship-for-students-with-disabilities/last-date
+7. Post-matric scholarship SC/ST/OBC 2026-27 registration dates (district notice) - https://surajpur.nic.in/en/notice/publication-of-the-notification-regarding-the-online-registration-dates-for-the-online-post-matric-scholarship-for-studies-above-class-12th-for-st-sc-and-obc-categories-for-the-year-2026-27/
+8. Digital Gujarat scholarship 2026-27 - https://school.careers360.com/articles/digital-gujarat-scholarship-application-form-2026-27
+9. NSP centrally funded scholarships 2026-27 hub (last dates) - https://www.buddy4study.com/article/nsp-centrally-funded-scholarships-schemes
+10. Open slot: Maharashtra Ladki Bahin Nov-Dec combined payment / e-KYC (only 2025 sources found, so only if a 2026 source appears) - https://www.angelone.in/news/government-schemes/ladki-bahin-yojana-maharashtra-to-release-combined-november-december-payment-for-beneficiaries
+Already on site, skip: Punjab Mawan Dhiyan, WB Annapurna Bhandar, WB Ayushman, NMMSS, Delhi PM-JAY widows.
