@@ -674,5 +674,145 @@
  "aadhaar-bank-dbt-seeding": {
   "out": "img/guide-",
   "note": "own image, personal details blurred (pixelate+blur); original never stored in repo"
+ },
+ "maharashtra-ladki-bahin-yojana": {
+  "name": "Wietse Jongsma",
+  "link": "https://unsplash.com/@wietsej",
+  "id": "xe6eBpNDyAE",
+  "query": "indian woman village",
+  "out": "img/"
+ },
+ "karnataka-shakti-yojana": {
+  "name": "Kashish Lamba",
+  "link": "https://unsplash.com/@drunkenchimp",
+  "id": "Xf1vpE7EVPg",
+  "query": "india village people",
+  "out": "img/"
+ },
+ "odisha-subhadra": {
+  "name": "Kashish Lamba",
+  "link": "https://unsplash.com/@drunkenchimp",
+  "id": "oZUUBJ8Pitg",
+  "query": "india village people",
+  "out": "img/"
+ },
+ "bihar-mahila-rozgar-yojana": {
+  "name": "Dhiraj Chouhan",
+  "link": "https://unsplash.com/@imdhirajchouhan",
+  "id": "7WEgPlKnir8",
+  "query": "indian small business owner",
+  "out": "img/"
+ },
+ "pm-vishwakarma-yojana": {
+  "name": "Guberan Thanirmalai",
+  "link": "https://unsplash.com/@helloguberan",
+  "id": "Cg2VlJDA9Xo",
+  "query": "indian small business owner",
+  "out": "img/"
+ },
+ "pm-mudra-yojana": {
+  "name": "atelierbyvineeth ...",
+  "link": "https://unsplash.com/@atelierbyvineeth",
+  "id": "s4K32BXEua0",
+  "query": "indian small business owner",
+  "out": "img/"
+ },
+ "rajasthan-maa-yojana": {
+  "name": "Dibakar Roy",
+  "link": "https://unsplash.com/@dibakar16roy",
+  "id": "MuYeaGA_nEA",
+  "query": "india village people",
+  "out": "img/"
+ },
+ "up-kanya-sumangala-yojana": {
+  "name": "Dibakar Roy",
+  "link": "https://unsplash.com/@dibakar16roy",
+  "id": "vJrLqO-Jw-E",
+  "query": "india village people",
+  "out": "img/"
+ },
+ "rajasthan-shri-annapurna-rasoi-yojana": {
+  "name": "theamrit Dev",
+  "link": "https://unsplash.com/@theamritdev",
+  "id": "8PO0DSilqdM",
+  "query": "indian village house",
+  "out": "img/"
+ },
+ "karnataka-gruha-jyothi-yojana": {
+  "name": "Ketan Pandey",
+  "link": "https://unsplash.com/@ketandesign",
+  "id": "-jiFHb_GUrY",
+  "query": "indian village house",
+  "out": "img/"
+ },
+ "central-nikshay-poshan-yojana": {
+  "name": "R.D. Smith",
+  "link": "https://unsplash.com/@rd421",
+  "id": "n0y5x4dQJtk",
+  "query": "indian woman smartphone bank",
+  "out": "img/"
+ },
+ "jk-ladli-beti": {
+  "name": "Jannes Jacobs",
+  "link": "https://unsplash.com/@jannesjacobs",
+  "id": "21Nhd42_1sM",
+  "query": "india street life",
+  "out": "img/"
+ },
+ "mp-mukhyamantri-kanya-vivah-yojana": {
+  "name": "Lewis J Goetz",
+  "link": "https://unsplash.com/@lgoetz",
+  "id": "67heLkXJ340",
+  "query": "india street life",
+  "out": "img/"
+ },
+ "pm-surya-ghar-muft-bijli-yojana": {
+  "name": "Shruti Singh",
+  "link": "https://unsplash.com/@halyzia",
+  "id": "yxZcYFv51T8",
+  "query": "indian village house",
+  "out": "img/"
+ },
+ "punjab-free-electricity": {
+  "name": "Vinny Vin",
+  "link": "https://unsplash.com/@vinnyvinme",
+  "id": "6qZ0361rZ4w",
+  "query": "indian village house",
+  "out": "img/"
+ },
+ "chhattisgarh-krishak-unnati": {
+  "name": "Gyan Shahane",
+  "link": "https://unsplash.com/@gyanoba",
+  "id": "jPMD2GdgIck",
+  "query": "indian farmer field",
+  "out": "img/"
+ },
+ "mizoram-health-care": {
+  "name": "Vignesh Moorthy",
+  "link": "https://unsplash.com/@vigmoo",
+  "id": "q3jZ17KHgBY",
+  "query": "india street life",
+  "out": "img/"
+ },
+ "rajasthan-social-security-pension": {
+  "name": "yash rai",
+  "link": "https://unsplash.com/@yashzucced",
+  "id": "WbIVglu2ICE",
+  "query": "india street life",
+  "out": "img/"
+ },
+ "haryana-lado-lakshmi-yojana": {
+  "name": "Martin Jernberg",
+  "link": "https://unsplash.com/@martinjernberg",
+  "id": "XI7lwAWzhZQ",
+  "query": "india street life",
+  "out": "img/"
+ },
+ "gujarat-ma-yojana-pmjay": {
+  "name": "Raghu Nayyar",
+  "link": "https://unsplash.com/@raghunayyar",
+  "id": "tcppYP5yaKw",
+  "query": "india street life",
+  "out": "img/"
  }
 }
