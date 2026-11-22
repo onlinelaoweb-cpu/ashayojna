@@ -77,3 +77,5 @@ dict(slug="jeevan-pramaan-life-certificate-30-november-2026", date="2026-11-21",
         "As per the reports, if it is not submitted in time the pension may be paused from December; there is no monetary penalty and the pending amount is paid as arrears in the next cycle once the certificate is submitted. This is an annual recurring process, not a new rule; as of today (21 Nov) 9 days remain.",
         "What we could not confirm: the reports do not make clear which authority issued the deadline notice, or how it applies to state old-age pension schemes (such as NSAP/IGNOAPS). It is mainly for government-service pensioners; if you get NSAP/old-age pension, ask your district social welfare office or bank."]) ),
 ]
+
+# (auto-photos trigger test)
