@@ -49,6 +49,7 @@ def fetch(n, used=()):
     except Exception: pass
     open(f"photos/{n['slug']}.jpg", "wb").write(data)
     return {"name": r["user"]["name"], "link": r["user"]["links"]["html"], "id": r["id"], "query": q, "out": n["out"]}
+ART = {"aadhaar-bank-dbt-seeding"}  # custom drawn art guides: no stock photo (keep in sync with build.py ART)
 MAX_EXTRA = int(os.environ.get("MAX_EXTRA", "8"))  # guides/schemes per run -> whole site covered gradually, nothing floods the quota
 def items():
     import random, datetime
@@ -69,7 +70,7 @@ def main():
     used = {c["id"] for c in cred.values() if "id" in c}
     os.makedirs("photos", exist_ok=True); got = extra = 0
     for n in items():
-        if os.path.exists(f"photos/{n['slug']}.jpg"): continue
+        if os.path.exists(f"photos/{n['slug']}.jpg") or n['slug'] in ART: continue
         is_extra = n["out"] != "img/news-"
         if is_extra and extra >= MAX_EXTRA: break
         try: c = fetch(n, used)

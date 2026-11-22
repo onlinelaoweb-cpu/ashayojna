@@ -111,8 +111,10 @@ def _pcredit(slug):
     except Exception: c = None
     if not c: return ""
     return f'<p class="pcr">Photo: <a href="{html.escape(c["link"])}?utm_source=ashayojana&utm_medium=referral" target="_blank" rel="noopener nofollow">{html.escape(c["name"])}</a> / <a href="https://unsplash.com/?utm_source=ashayojana&utm_medium=referral" target="_blank" rel="noopener nofollow">Unsplash</a></p>'
+ART = {"aadhaar-bank-dbt-seeding"}  # slugs with custom drawn art (tools/make_images.py) instead of a stock photo
+def _hasimg(slug): return slug in ART or os.path.exists(f"photos/{slug}.jpg")
 def _phero(slug, outprefix, lang, alt):
-    if not os.path.exists(f"photos/{slug}.jpg"): return ""
+    if not _hasimg(slug): return ""
     return f'<img class="nhero" src="/img/{outprefix}{slug}-{lang}.jpg" alt="{html.escape(alt)}" width="1200" height="630">' + _pcredit(slug)
 def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=True, img=None):
     t = T[lang]; pfx = "" if lang=="hi" else "en/"
@@ -200,7 +202,7 @@ def build(lang):
         return f'<a class="card ncard" href="{base}khabar/{n["slug"]}.html"><img class="nimg" src="/img/news-{n["slug"]}-{lang}.jpg" alt="" width="600" height="315" loading="lazy"><span class="tg">{n["icon"]} {n["date"]}</span><h3>{e(d["title"])}</h3><p>{e(d["summary"])}</p><span class="more">{t["more"]}</span></a>'
     def gcard(g, base):
         d = g[lang]
-        gimg = f'<img class="nimg" src="/img/guide-{g["slug"]}-{lang}.jpg" alt="" width="600" height="315" loading="lazy">' if os.path.exists(f"photos/{g['slug']}.jpg") else ""
+        gimg = f'<img class="nimg" src="/img/guide-{g["slug"]}-{lang}.jpg" alt="" width="600" height="315" loading="lazy">' if _hasimg(g['slug']) else ""
         return f'<a class="card" href="{base}guides/{g["slug"]}.html">{gimg}<span class="ic">{g["icon"]}</span><h3>{e(d["title"])}</h3><p>{e(d["desc"])}</p><span class="more">{t["more"]}</span></a>'
     # ---------- Yojana pages ----------
     for y0 in Y:
