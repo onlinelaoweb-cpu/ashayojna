@@ -32,13 +32,16 @@ def api(path, **params):
 def pick(results, used=()):
     for r in results:
         if r["id"] in used: continue  # never reuse a photo on another page
-        if r.get("width", 0) >= 2000 and r["width"] > r["height"] * 1.3:
+        if r.get("width", 0) >= 1600 and r["width"] > r["height"] * 1.3:
             if r.get("premium") or r.get("plus"): continue
             return r
 def fetch(n, used=()):
-    q = query_for(n)
-    res = api("/search/photos", query=q, orientation="landscape", per_page=15, content_filter="high").get("results", [])
-    r = pick(res, used)
+    q0 = query_for(n); r = None
+    # specific query first, then the category query, then a generic one (so no page is left without a photo)
+    for q in dict.fromkeys([q0, CATQ.get(n.get("cat"), q0), "india village people", "india street life"]):
+        res = api("/search/photos", query=q, orientation="landscape", per_page=20, content_filter="high").get("results", [])
+        r = pick(res, used)
+        if r: break
     if not r: return None
     url = r["urls"]["raw"] + ("&" if "?" in r["urls"]["raw"] else "?") + "w=1800&fit=max&q=80&fm=jpg"
     data = urllib.request.urlopen(urllib.request.Request(url), timeout=60).read()
