@@ -27,7 +27,8 @@ SCENE_CAT = {"kisan":["🌾","🚜","👨‍🌾"],"swasthya":["🏥","🩺","�
 # per-slug override: 3 emojis (centre first). Add new ones for each khabar post if the default is not specific enough.
 SCENES = {"stand-up-india-extended-2031":["🏭","💼","👩‍💼"],"pm-surya-ghar-50-lakh-installations":["☀️","🏡","🔌"],
           "bihar-pmfby-rabi-2026-27-applications":["🌾","☔","📝"],"karnataka-ration-card-ekyc-deadline-30-november":["🪪","🍚","📱"],
-          "pm-jay-public-hospital-packages-proposal":["🏥","🩺","💳"],"jeevan-pramaan-life-certificate-30-november-2026":["👴","📱","🪪"]}
+          "pm-jay-public-hospital-packages-proposal":["🏥","🩺","💳"],"jeevan-pramaan-life-certificate-30-november-2026":["👴","📱","🪪"],
+          "karnataka-drought-relief-rs-5000-farmers":["🌾","☀️","💰"],"mp-ladli-behna-42nd-instalment-13-november-2026":["👩","💰","🏦"]}
 def scene(em, cat, site, date):
     c1, c2 = SCENE_BG[cat]
     a, b2, c = (em + ["📄","📄"])[:3]
