@@ -13,7 +13,6 @@ _Auto-generated 2026-11-23 by tools/traffic_report.py (GA4 property 564355542, S
 | channel | sessions |
 |---|---|
 | Direct | 117 |
-| Unassigned | 4 |
 | Referral | 1 |
 
 ### Top pages
