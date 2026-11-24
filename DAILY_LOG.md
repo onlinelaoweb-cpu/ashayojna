@@ -83,3 +83,8 @@ Already on site, skip: Punjab Mawan Dhiyan, WB Annapurna Bhandar, WB Ayushman, N
 - Skipped Part A: Jharkhand Mahila Kisan Khushali, HP Mahila Sashaktikaran (aggregator only), Digital Gujarat (only aggregators), Post-matric SC (no readable detail), Baini-Bhuli page (no amount/eligibility -> khabar only).
 - Could not verify: Sthree Suraksha current status/payments, HP scheme start/eligibility, DEPwD official amounts, PMIS official notification/insurance/one-time grant, NPS Vatsalya official min and withdrawal rules, PMUY FY26-27 subsidy, Cheyutha amount for new beneficiaries and whether 26 Nov payment happened.
 - Build: LASTMOD=2026-11-23, 374 pages, PROBLEMS 0. Published main da7f5ae2 (rebased over auto-photos commit 0368a4f6). PUSH_TODAY.md regenerated.
+
+## 2026-11-24 (owner request: daily guides)
+- Added Part D to AGENT.md: daily 2-3 unique everyday-needs guides. NEW guides (hi+en): ayushman-card-download-guide (NHA PM-JAY call-centre FAQ docx [official, undated], Royal Sundaram 18 May 2026, LatestLY 30 Apr 2026, ClearTax; helpline 14555 from NHA, 1800-11-4477 single private page not used as fact; name-change rule conflicts hedged), pan-aadhaar-link-status-guide (incometax.gov.in Link Aadhaar manual + FAQ [official, body text dates from 2023], Business Standard 29 Dec 2025, Business Today 26 Dec 2025; 2026 deadline/relief NOT found, fee Rs 1,000 vs 500 conflict hedged, reactivation steps and SMS method not official -> hedged).
+- Voter ID correction dropped: ECI portal unreadable, only aggregators. Left in backlog.
+- Build: LASTMOD=2026-11-24, 378 pages, PROBLEMS 0.
