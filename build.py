@@ -121,6 +121,12 @@ def _cn(n, lang, t):
     return f"{n} योजना" if (n==1 and lang=="hi") else (f"{n} scheme" if n==1 else f"{n} {t['cnt']}")
 
 def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=True, img=None):
+    if len(title) > 70 and " | " in title:
+        title = title.rsplit(" | ", 1)[0]
+    if len(title) > 70:
+        title = title[:68].rsplit(" ", 1)[0].rstrip(",:–-") + "…"
+    if len(desc) > 165:
+        desc = desc[:160].rsplit(" ", 1)[0].rstrip(",;:–- ") + "…"
     if len(desc) < 60 and not noindex:
         desc = desc.rstrip("।. ") + (" | आशा योजना – सरकारी योजनाओं की सरल और भरोसेमंद जानकारी" if lang=="hi" else " | Asha Yojana – simple, reliable information on government schemes")
     t = T[lang]; pfx = "" if lang=="hi" else "en/"
