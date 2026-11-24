@@ -100,3 +100,4 @@ Already on site, skip: Punjab Mawan Dhiyan, WB Annapurna Bhandar, WB Ayushman, N
 - Skipped Part A: Gujarat MYSY (only aggregators, dates/amounts conflict), Odisha Mission Shakti (no 2026 source), Namo Drone Didi (outlay period ended, extension unconfirmed).
 - Could not verify: official portals for Yuva Nidhi/Pudhumai Penn/PM-Vidyalaxmi, WB Annapurna official notification and Oct-Nov payments, WB state health scheme official name, Ladki Bahin current paid count/new applications, MP Ladli Behna age 23/helpline.
 - Build: LASTMOD=2026-11-24, 392 pages, PROBLEMS 0. PUSH_TODAY.md + SHARE_TODAY.md regenerated.
+- Published main 978932e3 (workflows in .github kept).
