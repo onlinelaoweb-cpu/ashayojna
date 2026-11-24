@@ -4,6 +4,7 @@ import guides, news, data10, data_daily, calcs2, calcdata, data9, tags, data4, d
 from data1 import Y, CATS
 EN = en6.EN
 CALC = calcdata.CALC
+import seo_boost; seo_boost.apply(Y, EN)  # extra FAQ for real Google queries
 
 # ======= CONFIG: sirf ye 4 cheezein badalni hain =======
 SITE_NAME   = "आशा योजना"
