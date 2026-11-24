@@ -1,16 +1,19 @@
-# Share posts 2026-11-23 (WhatsApp channel, copy-paste)
+# Share posts 2026-11-24 (WhatsApp ke liye, plain text)
 
-👩 Kerala: बेरोज़गार महिलाओं को ₹1,000 महीना (स्त्री सुरक्षा पेंशन)
-35 से 60 साल की बेरोज़गार महिला/ट्रांसजेंडर महिला, AAY या PHH राशन कार्ड ज़रूरी। आवेदन K-SMART पर। (रिपोर्टों के अनुसार; ताज़ा स्थिति पंचायत से पूछें)
-https://ashayojana.com/yojana/kerala-sthree-suraksha-pension.html
+1)
+🎓 Karnataka Yuva Nidhi: berozgar graduate ko Rs 3,000, diploma ko Rs 1,500 mahina
+Result ke baad 180 din berozgar rehne par, naukri milne tak ya max 2 saal. Har mahine berozgari ki self-declaration zaroori.
+https://ashayojana.com/yojana/karnataka-yuva-nidhi.html
 Aur yojanayein: https://ashayojana.com
 
-🏔️ Himachal: महिलाओं को ₹1,500 महीना + 300 यूनिट फ्री बिजली को कैबिनेट मंज़ूरी
-13 नवंबर को मंज़ूर, 18-59 साल की पात्र महिलाएँ, करीब 3.5 लाख चिह्नित। शुरुआत की तारीख़ और आवेदन अभी घोषित नहीं।
-https://ashayojana.com/khabar/himachal-cabinet-rs-1500-women-300-units-13-november-2026.html
+2)
+🎓 PM-Vidyalaxmi: bina guarantee education loan
+Chune hue 1,425 sansthanon mein merit par admission wale students ko collateral-free loan; Rs 7.5 lakh tak 75% sarkari guarantee. Rs 10 lakh tak loan par 3% byaj chhoot (family income Rs 8 lakh tak).
+https://ashayojana.com/yojana/central-pm-vidyalaxmi.html
 Aur yojanayein: https://ashayojana.com
 
-👵 तेलंगाना: नई चेयुता पेंशन अब 26 नवंबर को (19 से टली)
-रिपोर्टों के अनुसार करीब 4.6 लाख नए लाभार्थियों के खाते में पेंशन; राशि स्पष्ट नहीं। स्वीकृति पत्र वाले 26 के बाद चेक करें।
-https://ashayojana.com/khabar/telangana-cheyutha-pension-26-november-2026.html
+3)
+🔥 Delhi: Diwali par 15.46 lakh parivaron ko LPG sahayata ke Rs 141.88 crore DBT se bheje gaye
+Ration card wale parivar, paisa mukhiya ke Aadhaar-linked bank khate mein. Scheme saal mein 2 baar (Holi, Diwali). Per-family amount par reports alag hain.
+https://ashayojana.com/khabar/delhi-free-lpg-cylinder-diwali-transfer-rs-142-crore.html
 Aur yojanayein: https://ashayojana.com
