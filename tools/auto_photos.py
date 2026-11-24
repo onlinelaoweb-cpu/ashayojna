@@ -20,7 +20,11 @@ TOPICS = [
 ]
 CATQ = {"kisan": "indian farmer field", "swasthya": "indian hospital patient", "mahila": "indian woman village", "rozgar": "indian small business owner",
         "bima": "elderly indian man village", "ghar": "indian village house", "shiksha": "indian school students"}
+# per-slug query overrides (used when the automatic topic query gave a poor photo)
+OVERRIDE = {"aadhaar-update-guide": "indian man using smartphone"}
+REJECT = {"Ee0P95h8nW4"}  # photo ids that were replaced on purpose
 def query_for(n):
+    if n.get("slug") in OVERRIDE: return OVERRIDE[n["slug"]]
     text = " ".join([n.get("slug", ""), n.get("related", ""), n["en"]["title"], n["en"].get("summary", ""), n["en"].get("desc", "")]).lower()
     for pat, q in TOPICS:
         if re.search(pat, text): return q + " india" if "india" not in q else q
@@ -31,14 +35,14 @@ def api(path, **params):
     return json.load(urllib.request.urlopen(req, timeout=30))
 def pick(results, used=()):
     for r in results:
-        if r["id"] in used: continue  # never reuse a photo on another page
+        if r["id"] in used or r["id"] in REJECT: continue  # never reuse a photo on another page
         if r.get("width", 0) >= 1600 and r["width"] > r["height"] * 1.3:
             if r.get("premium") or r.get("plus"): continue
             return r
 def fetch(n, used=()):
     q0 = query_for(n); r = None
     # specific query first, then the category query, then a generic one (so no page is left without a photo)
-    for q in dict.fromkeys([q0, CATQ.get(n.get("cat"), q0), "india village people", "india street life"]):
+    for q in dict.fromkeys([q0] + ([] if n.get("slug") in OVERRIDE else [CATQ.get(n.get("cat"), q0), "india village people", "india street life"])):
         res = api("/search/photos", query=q, orientation="landscape", per_page=20, content_filter="high").get("results", [])
         r = pick(res, used)
         if r: break
