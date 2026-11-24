@@ -884,5 +884,68 @@
   "id": "D-9ieeKJNFM",
   "query": "india street life",
   "out": "img/"
+ },
+ "cabinet-nbs-fertiliser-subsidy-rabi-2026-27": {
+  "name": "Shruti Singh",
+  "link": "https://unsplash.com/@halyzia",
+  "id": "ilp4a4XCFUU",
+  "query": "indian farmer field",
+  "out": "img/news-"
+ },
+ "delhi-free-lpg-cylinder-diwali-transfer-rs-142-crore": {
+  "name": "Dibakar Roy",
+  "link": "https://unsplash.com/@dibakar16roy",
+  "id": "YIqANSWjCo4",
+  "query": "india street life",
+  "out": "img/news-"
+ },
+ "ayushman-card-download-guide": {
+  "name": "Shray Chawla",
+  "link": "https://unsplash.com/@shray",
+  "id": "juVmjD_aDaY",
+  "query": "india street life",
+  "out": "img/guide-"
+ },
+ "udyam-registration-guide": {
+  "name": "Anjali Lokhande",
+  "link": "https://unsplash.com/@anj4li",
+  "id": "Ml4gGKdF-MI",
+  "query": "indian small business owner",
+  "out": "img/guide-"
+ },
+ "pan-aadhaar-link-status-guide": {
+  "name": "Subash Mugilan",
+  "link": "https://unsplash.com/@subashmugilan",
+  "id": "EJOFqKmIlD4",
+  "query": "indian small business owner",
+  "out": "img/guide-"
+ },
+ "e-shram-card-registration-guide": {
+  "name": "Dibakar Roy",
+  "link": "https://unsplash.com/@dibakar16roy",
+  "id": "SrUuVcjShQo",
+  "query": "india street life",
+  "out": "img/guide-"
+ },
+ "central-pm-vidyalaxmi": {
+  "name": "Dilip Sharma",
+  "link": "https://unsplash.com/@dilipsharma",
+  "id": "9XcmDyWr1dQ",
+  "query": "indian school students",
+  "out": "img/"
+ },
+ "tamilnadu-pudhumai-penn": {
+  "name": "Aman Shrivastava",
+  "link": "https://unsplash.com/@amansks91",
+  "id": "w6caoaJzXIE",
+  "query": "indian school students",
+  "out": "img/"
+ },
+ "karnataka-yuva-nidhi": {
+  "name": "Varun Gaba",
+  "link": "https://unsplash.com/@varunkgaba",
+  "id": "O_H7BlvtZ8Y",
+  "query": "indian workers",
+  "out": "img/"
  }
 }
