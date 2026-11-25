@@ -14,7 +14,7 @@ ADSENSE_PUB = "ca-pub-5169642227203900"                            # e.g. "ca-pu
 CONTACT_EMAIL = "ashayojana.contact@gmail.com"                          # apna contact email
 # ========================================================
 PH = "YOUR-DOMAIN" in SITE_URL
-LASTMOD = "2026-11-24"
+LASTMOD = "2026-11-25"
 PUBLISHER = {"@type":"Organization","name":"Asha Yojana","url":SITE_URL,"logo":{"@type":"ImageObject","url":SITE_URL+"/img/icon-512.png","width":512,"height":512}}
 OUT = "site"
 e = html.escape

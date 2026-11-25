@@ -25,7 +25,7 @@ SCENE_BG = {"kisan":("#2f7d32","#9bcf53"),"swasthya":("#0d6e8c","#5ec8d8"),"mahi
 SCENE_CAT = {"kisan":["🌾","🚜","👨‍🌾"],"swasthya":["🏥","🩺","💊"],"mahila":["👩","👧","🤱"],"rozgar":["💼","🏭","🤝"],
              "bima":["🛡️","📄","👴"],"ghar":["🏡","💡","🔑"],"shiksha":["🎓","📚","🏫"]}
 # per-slug override: 3 emojis (centre first). Add new ones for each khabar post if the default is not specific enough.
-SCENES = {"cabinet-nbs-fertiliser-subsidy-rabi-2026-27":["🌱","🌾","🧪"],"delhi-free-lpg-cylinder-diwali-transfer-rs-142-crore":["🔥","🏠","🪔"],"uttarakhand-baini-bhuli-5-lakh-women-announcement":["👩‍🌾","🏔️","💰"],"telangana-cheyutha-pension-26-november-2026":["👵","💳","🧵"],"himachal-cabinet-rs-1500-women-300-units-13-november-2026":["👩","🏔️","💡"],"stand-up-india-extended-2031":["🏭","💼","👩‍💼"],"pm-surya-ghar-50-lakh-installations":["☀️","🏡","🔌"],
+SCENES = {"inspire-she-scholarship-applications-7-december-2026":["🔬","🎓","📅"],"cabinet-nbs-fertiliser-subsidy-rabi-2026-27":["🌱","🌾","🧪"],"delhi-free-lpg-cylinder-diwali-transfer-rs-142-crore":["🔥","🏠","🪔"],"uttarakhand-baini-bhuli-5-lakh-women-announcement":["👩‍🌾","🏔️","💰"],"telangana-cheyutha-pension-26-november-2026":["👵","💳","🧵"],"himachal-cabinet-rs-1500-women-300-units-13-november-2026":["👩","🏔️","💡"],"stand-up-india-extended-2031":["🏭","💼","👩‍💼"],"pm-surya-ghar-50-lakh-installations":["☀️","🏡","🔌"],
           "bihar-pmfby-rabi-2026-27-applications":["🌾","☔","📝"],"karnataka-ration-card-ekyc-deadline-30-november":["🪪","🍚","📱"],
           "pm-jay-public-hospital-packages-proposal":["🏥","🩺","💳"],"jeevan-pramaan-life-certificate-30-november-2026":["👴","📱","🪪"],
           "karnataka-drought-relief-rs-5000-farmers":["🌾","☀️","💰"],"mp-ladli-behna-42nd-instalment-13-november-2026":["👩","💰","🏦"]}
