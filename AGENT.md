@@ -113,3 +113,8 @@ Every daily run ALSO adds 2 to 3 new, unique, evergreen guides to `guides.GUIDES
 - Backlog (not yet done): voter ID correction/e-EPIC (ECI portal was unreadable 24 Nov, needs a readable source), birth certificate, DigiLocker, Udyam registration, bank KYC update, Jan Dhan account opening, driving licence/Parivahan, land record check, electricity connection, UPI fraud safety, e-Shram card steps, pension life certificate.
 
 SEO boost: `seo_boost.py` holds extra FAQ entries that mirror real Search Console queries (answers only from facts on the page, hedge otherwise). The daily routine may add more there; keep both hi and en.
+
+## Search Console priorities (added 2026-11-25, owner approved)
+- Part B: refresh these first (Google already shows them near top 10, so accuracy matters most): punjab-free-electricity, uttarakhand-nanda-gaura, telangana-mahalakshmi-free-bus, telangana-aarogyasri, pm-awas-yojana-gramin (33 impressions, position ~37: strengthen apply-online and documents sections), then the rest of the unrefreshed list.
+- `seo_boost.py`: add FAQ entries (hi + en) that mirror real queries, answers only from facts already verified on the page: Gaura Devi Kanya Dhan spelling variants (gaura/gora devi, kanya dhan), 'free electricity units in punjab' / '300 unit conditions', 'delhi ayushman card for disabled', 'asha payment status bihar' only if page facts support it. Skip off-topic queries (e.g. 'funny ukhane').
+- Pull queries via Supermetrics GW (sc-domain:ashayojana.com, report_type STANDARD) when available; GA4 property id 564355542. Early data is thin (1-3 impressions per query), so do not over-fit.
