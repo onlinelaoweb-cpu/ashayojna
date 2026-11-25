@@ -14,6 +14,16 @@ ADSENSE_PUB = "ca-pub-5169642227203900"                            # e.g. "ca-pu
 CONTACT_EMAIL = "ashayojana.contact@gmail.com"                          # apna contact email
 # ========================================================
 PH = "YOUR-DOMAIN" in SITE_URL
+# Search-Console driven title overrides (25 Nov 2026): only wording from facts already on the page.
+SEO_TITLES = {
+ "punjab-free-electricity": {"hi": "पंजाब 300 यूनिट मुफ़्त बिजली: पात्रता, शर्तें व आवेदन", "en": "Punjab 300 Units Free Electricity: Eligibility & How to Apply"},
+ "uttarakhand-nanda-gaura": {"hi": "गौरा देवी कन्या धन योजना (नंदा गौरा), उत्तराखंड – पात्रता व आवेदन", "en": "Gaura Devi Kanya Dhan (Nanda Gaura) Uttarakhand: Eligibility, Apply"},
+ "westbengal-ayushman-bharat-swasthya-sathi": {"hi": "पश्चिम बंगाल आयुष्मान भारत (स्वास्थ्य साथी) – पात्रता व आवेदन", "en": "West Bengal Ayushman Bharat (Swasthya Sathi): Eligibility & Apply"},
+ "central-national-family-benefit-scheme": {"hi": "राष्ट्रीय परिवार लाभ योजना (NFBS) ₹20,000 – पात्रता व आवेदन", "en": "National Family Benefit Scheme (NFBS) ₹20,000: Eligibility & Apply"},
+ "ayushman-vay-vandana-yojana": {"hi": "आयुष्मान वय वंदना कार्ड (70+): पात्रता, लाभ व आवेदन", "en": "Ayushman Vay Vandana Card (70+): Eligibility, Benefits & Apply"},
+ "central-nikshay-poshan-yojana": {"hi": "नि-क्षय पोषण योजना ₹1,000 महीना – पात्रता व आवेदन", "en": "Ni-kshay Poshan Yojana ₹1,000 a Month: Eligibility & Apply"},
+ "up-samuhik-vivah-yojana": {"hi": "यूपी मुख्यमंत्री सामूहिक विवाह योजना – पात्रता व आवेदन", "en": "UP Mukhyamantri Samuhik Vivah Yojana: Eligibility & Apply"},
+}
 LASTMOD = "2026-11-25"
 PUBLISHER = {"@type":"Organization","name":"Asha Yojana","url":SITE_URL,"logo":{"@type":"ImageObject","url":SITE_URL+"/img/icon-512.png","width":512,"height":512}}
 OUT = "site"
@@ -266,7 +276,7 @@ def build(lang):
               {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":t["home"],"item":SITE_URL+"/"+pfx},{"@type":"ListItem","position":2,"name":cname(y0["cat"],lang),"item":f'{SITE_URL}/{pfx}category/{y0["cat"]}.html'},{"@type":"ListItem","position":3,"name":y["name"]}]},
               {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in y["faq"]]}]
         p = f"yojana/{y0['slug']}.html"; reg(p)
-        page(lang, p, f'{y["name"]}{t["ttl"]} | {SN}', y["short"], body, "../", ld, img=f'{SITE_URL}/img/{y0["slug"]}-{lang}.jpg')
+        page(lang, p, f'{SEO_TITLES.get(y0["slug"], {}).get(lang) or (y["name"] + t["ttl"])} | {SN}', y["short"], body, "../", ld, img=f'{SITE_URL}/img/{y0["slug"]}-{lang}.jpg')
 
     # ---------- Category pages ----------
     for k,(nm0,ic,ds0) in CATS.items():
