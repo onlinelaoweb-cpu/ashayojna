@@ -24,7 +24,7 @@ SEO_TITLES = {
  "central-nikshay-poshan-yojana": {"hi": "नि-क्षय पोषण योजना ₹1,000 महीना – पात्रता व आवेदन", "en": "Ni-kshay Poshan Yojana ₹1,000 a Month: Eligibility & Apply"},
  "up-samuhik-vivah-yojana": {"hi": "यूपी मुख्यमंत्री सामूहिक विवाह योजना – पात्रता व आवेदन", "en": "UP Mukhyamantri Samuhik Vivah Yojana: Eligibility & Apply"},
 }
-LASTMOD = "2026-11-25"
+LASTMOD = "2026-11-26"
 PUBLISHER = {"@type":"Organization","name":"Asha Yojana","url":SITE_URL,"logo":{"@type":"ImageObject","url":SITE_URL+"/img/icon-512.png","width":512,"height":512}}
 OUT = "site"
 e = html.escape
