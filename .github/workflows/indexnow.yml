@@ -1,0 +1,40 @@
+name: indexnow
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Submit changed pages to IndexNow (Bing, Yandex etc.)
+        run: |
+          python3 - <<'PY'
+          import json, os, subprocess, urllib.request, re
+          KEY = "a8f45ee04a54231a085577bbe7ae63ec"
+          before = "${{ github.event.before }}"
+          try:
+              files = subprocess.check_output(["git", "diff", "--name-only", before, "HEAD", "--", "*.html"], text=True).split()
+          except Exception:
+              files = []
+          if not files:
+              s = open("sitemap.xml").read()
+              urls = re.findall(r"<loc>([^<]+)</loc>", s)
+          else:
+              urls = []
+              for f in files:
+                  if not os.path.exists(f) or f in ("404.html",): continue
+                  urls.append("https://ashayojana.com/" + f)
+          urls = urls[:9000]
+          if not urls:
+              print("nothing to submit"); raise SystemExit
+          body = json.dumps({"host": "ashayojana.com", "key": KEY, "keyLocation": f"https://ashayojana.com/{KEY}.txt", "urlList": urls}).encode()
+          req = urllib.request.Request("https://api.indexnow.org/indexnow", data=body, headers={"Content-Type": "application/json; charset=utf-8"})
+          try:
+              r = urllib.request.urlopen(req, timeout=30); print("submitted", len(urls), "status", r.status)
+          except Exception as e:
+              print("indexnow error", e)
+          PY
