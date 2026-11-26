@@ -13,7 +13,7 @@ jobs:
       - name: Submit changed pages to IndexNow (Bing, Yandex etc.)
         run: |
           python3 - <<'PY'
-          import json, os, subprocess, urllib.request, re
+          import json, os, subprocess, urllib.request, urllib.error, re
           KEY = "a8f45ee04a54231a085577bbe7ae63ec"
           before = "${{ github.event.before }}"
           try:
@@ -32,9 +32,12 @@ jobs:
           if not urls:
               print("nothing to submit"); raise SystemExit
           body = json.dumps({"host": "ashayojana.com", "key": KEY, "keyLocation": f"https://ashayojana.com/{KEY}.txt", "urlList": urls}).encode()
-          req = urllib.request.Request("https://api.indexnow.org/indexnow", data=body, headers={"Content-Type": "application/json; charset=utf-8"})
-          try:
-              r = urllib.request.urlopen(req, timeout=30); print("submitted", len(urls), "status", r.status)
-          except Exception as e:
-              print("indexnow error", e)
+          for ep in ("https://www.bing.com/indexnow", "https://api.indexnow.org/indexnow"):
+              req = urllib.request.Request(ep, data=body, headers={"Content-Type": "application/json; charset=utf-8"})
+              try:
+                  r = urllib.request.urlopen(req, timeout=30); print("OK", ep, "submitted", len(urls), "status", r.status); break
+              except urllib.error.HTTPError as e:
+                  print("FAIL", ep, e.code, e.read()[:300])
+              except Exception as e:
+                  print("FAIL", ep, e)
           PY
