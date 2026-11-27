@@ -168,7 +168,7 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
         desc = desc.rstrip("।. ") + (" | आशा योजना – सरकारी योजनाओं की सरल और भरोसेमंद जानकारी" if lang=="hi" else " | Asha Yojana – simple, reliable information on government schemes")
     t = T[lang]; pfx = "" if lang=="hi" else "en/"
     H = lang=="hi"
-    mains = [("index.html","🏠",t["home"]),("find.html","🔎",t["findl"]),("guides/index.html","📘","गाइड" if H else "Guides"),("calculators.html","🧮","कैलकुलेटर" if H else "Calculators"),("status.html","📋","स्टेटस" if H else "Status"),("khabar/index.html","📰","ताज़ा खबर" if H else "Updates")]
+    mains = [("index.html","🏠",t["home"]),("find.html","🔎",t["findl"]),("guides/index.html","📘","गाइड" if H else "Guides"),("calculators.html","🧮","कैलकुलेटर" if H else "Calculators"),("status.html","📋","स्टेटस" if H else "Status"),("deadlines.html","⏰","अंतिम तारीख़ें" if H else "Deadlines"),("khabar/index.html","📰","ताज़ा खबर" if H else "Updates")]
     mnav = "".join(f'<a href="{base}{u}"><span>{i}</span> {e(l)}</a>' for u,i,l in mains)
     nav = "".join(f'<a href="{base}category/{k}.html">{v[1]} {e(cname(k,lang))}</a>' for k,v in CATS.items())
     nav += "".join(f'<a href="{base}state/{k}.html">📍 {e(sname(k,lang))}</a>' for k in STATES)
@@ -345,7 +345,7 @@ def build(lang):
     sjson = json.dumps(sj, ensure_ascii=False)
     body = f"""<section class="hero"><p style="margin:0 0 4px;font-size:15px;opacity:.9">{t["dedtop"]}</p><h1>{t["h1"]}</h1>
 <p>{t["hp"]}</p>
-<p style="margin:0 0 10px"><a class="btn" href="find.html">{t["findgo"]}</a> <a class="btn" href="calculators.html">{t["calcall"]}</a></p><input id="q" class="search" type="search" placeholder="{t["ph"]}" autocomplete="off"><div id="res" class="grid"></div></section>
+<p style="margin:0 0 10px"><a class="btn" href="find.html">{t["findgo"]}</a> <a class="btn" href="calculators.html">{t["calcall"]}</a> <a class="btn" href="deadlines.html">⏰ {"अंतिम तारीख़ें" if lang=="hi" else "Deadlines"}</a></p><input id="q" class="search" type="search" placeholder="{t["ph"]}" autocomplete="off"><div id="res" class="grid"></div></section>
 <div id="all">
 <h2>📰 {"ताज़ा खबर" if lang=="hi" else "Latest updates"}</h2><div class="grid">{"".join(ncard(n,"") for n in sorted(news.NEWS,key=lambda n:n["date"],reverse=True)[:3])}</div><p><a class="btn" href="khabar/index.html">{"सभी खबरें" if lang=="hi" else "All updates"} →</a></p>
 <h2>📘 {"उपयोगी गाइड" if lang=="hi" else "Helpful guides"}</h2><div class="grid">{"".join(gcard(g,"") for g in guides.GUIDES[:3])}</div><p><a class="btn" href="guides/index.html">{"सभी गाइड" if lang=="hi" else "All guides"} →</a> <a class="btn" href="status.html">{"📋 स्टेटस जाँचें" if lang=="hi" else "📋 Check status"}</a></p>
@@ -489,6 +489,27 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
         sc += f'<a class="card" href="yojana/{y0["slug"]}.html"><span class="ic">{y0["icon"]}</span><span class="tg">{e(wh)}</span><h3>{e(yv["name"])}</h3><p>{e(first)}</p><span class="more">{t["more"]}</span></a>'
     p = "status.html"; reg(p)
     page(lang, p, f"{sh} | {SN}", ssub, f'<nav class="bc"><a href="index.html">{t["home"]}</a> › {e(sh)}</nav><h1>📋 {e(sh)}</h1><p class="lead">{ssub}</p><div class="grid">{sc}</div><p><a class="btn" href="guides/aadhaar-bank-dbt-seeding.html">📘 {e(guides.GUIDES[0][lang]["title"])}</a></p>{wabox(lang)}', "")
+
+    # ---------- Upcoming deadlines ----------
+    import deadlines
+    today = datetime.date.today()
+    dh = "आने वाली अंतिम तारीख़ें" if lang=="hi" else "Upcoming Deadlines"
+    dsub = "खबरों में छपी योजनाओं की अंतिम तारीख़ें, एक जगह। तारीख़ बदल सकती है, आवेदन से पहले आधिकारिक पोर्टल से पक्का करें।" if lang=="hi" else "Last dates reported in our news posts, in one place. Dates can change; confirm on the official portal before applying."
+    dm = {"hi":["जन","फ़र","मार्च","अप्रैल","मई","जून","जुलाई","अग","सित","अक्टू","नव","दिस"],"en":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]}[lang]
+    rows = ""; shown = 0
+    for d in sorted(deadlines.DEADLINES, key=lambda x: x["date"]):
+        dd = datetime.date.fromisoformat(d["date"])
+        if dd < today: continue
+        shown += 1; ti, no = d[lang]; left = (dd - today).days
+        lbl = (f"{left} दिन बचे" if lang=="hi" else f"{left} days left") if left > 0 else ("आज आख़िरी दिन" if lang=="hi" else "Last day today")
+        rows += (f'<div class="card dl"><div class="dld"><b>{dd.day}</b><span>{dm[dd.month-1]} {dd.year}</span></div><div><h3>{e(ti)}</h3><p>{e(no)}</p>'
+                 f'<p class="dlm"><span class="dlleft" data-d="{d["date"]}">{lbl}</span> · <a href="khabar/{d["news"]}.html">{"पूरी खबर" if lang=="hi" else "Full story"}</a> · <a href="yojana/{d["related"]}.html">{"योजना पेज" if lang=="hi" else "Scheme page"}</a></p></div></div>')
+    if not shown: rows = f'<p>{"अभी कोई पक्की तारीख़ दर्ज नहीं है। रोज़ की खबरों में नई तारीख़ें जुड़ती हैं।" if lang=="hi" else "No confirmed dates listed right now. New dates are added with the daily news."}</p>'
+    js = ("<script>document.querySelectorAll('.dlleft').forEach(function(s){var t=new Date(s.dataset.d+'T23:59:59+05:30'),n=Math.ceil((t-new Date())/864e5);"
+          "if(n<0){s.closest('.dl').style.display='none';return}"
+          "s.textContent=n>0?(n+(document.documentElement.lang=='hi'?' दिन बचे':' days left')):(document.documentElement.lang=='hi'?'आज आख़िरी दिन':'Last day today')})</script>")
+    p = "deadlines.html"; reg(p)
+    page(lang, p, f"{dh} | {SN}", dsub, f'<nav class="bc"><a href="index.html">{t["home"]}</a> › {e(dh)}</nav><h1>⏰ {e(dh)}</h1><p class="lead">{dsub}</p><div class="dlist">{rows}</div>{js}<p><a class="btn" href="khabar/index.html">📰 {"सभी खबरें" if lang=="hi" else "All news"}</a></p>{wabox(lang)}', "")
 
     # ---------- Trust page + checklist ----------
     H = lang=="hi"

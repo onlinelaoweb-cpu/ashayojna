@@ -110,3 +110,8 @@ img{max-width:100%}
 .eres{font-weight:700;margin:8px 0 0}
 html{scroll-behavior:smooth}h2[id]{scroll-margin-top:12px}
 .srcs{margin-top:6px;font-size:.88rem}.srcs summary{cursor:pointer;font-weight:600}.srcs p{margin:6px 0 0}
+.dlist{display:grid;gap:12px;margin:12px 0}
+.dl{display:flex;gap:14px;align-items:flex-start}
+.dld{flex:0 0 64px;text-align:center;border-radius:12px;background:#fff4e5;border:1px solid #f3d3a4;padding:8px 4px}
+.dld b{display:block;font-size:1.6rem;line-height:1.1}.dld span{font-size:.78rem}
+.dl h3{margin:0 0 4px}.dl p{margin:0 0 6px}.dlm{font-size:.88rem}.dlleft{font-weight:700;color:#b45309}

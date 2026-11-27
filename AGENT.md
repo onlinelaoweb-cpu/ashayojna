@@ -121,3 +121,6 @@ SEO boost: `seo_boost.py` holds extra FAQ entries that mirror real Search Consol
 
 ## Engagement features (scheme pages)
 - build.py: `_jump` (jump nav), `_echeck` (tick-box eligibility checker, inline JS), 6 related cards (same state first, then category), home "Handy tools" grid. CSS at end of style.css.
+
+## Deadlines page
+- `deadlines.py` DEADLINES feeds /deadlines.html (hi+en). Daily routine: when a khabar post reports a dated last date (application/e-KYC/certificate), ALSO append a row (date, news slug, related slug, hi/en title+note). Only reported dates; past dates auto-hide at build and in the browser.
