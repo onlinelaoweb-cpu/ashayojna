@@ -147,3 +147,7 @@ html{scroll-behavior:smooth}h2[id]{scroll-margin-top:12px}
 @media(max-width:760px){.tn-hero,.tn-t{min-height:190px}}
 .tn-hero,.tn-t{min-height:250px}.tn-t h2{text-shadow:0 1px 6px rgba(0,0,0,.6)}
 @media(max-width:760px){.tn-hero,.tn-t{min-height:240px}}
+.hd .nav a.navst{background:var(--g);color:#fff}
+@media(min-width:861px){.hd .nav{flex-wrap:wrap;overflow:visible}}
+h2#states{scroll-margin-top:12px}
+@media(min-width:861px){.hd .nav{flex-wrap:nowrap;gap:5px}.hd .nav a{font-size:13.5px;padding:4px 10px}}

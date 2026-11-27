@@ -192,7 +192,7 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
     btm = [("index.html","🏠","होम" if H else "Home"),("find.html","🔎","खोजक" if H else "Find"),("deadlines.html","⏰","तारीख़ें" if H else "Dates"),("guides/index.html","📘","गाइड" if H else "Guides"),("saved.html","🔖","सेव" if H else "Saved")]
     mnav = "".join(f'<a href="{base}{u}"><span>{i}</span> {e(l)}</a>' for u,i,l in mains)
     nav = "".join(f'<a href="{base}category/{k}.html">{v[1]} {e(cname(k,lang))}</a>' for k,v in CATS.items())
-    nav += "".join(f'<a href="{base}state/{k}.html">📍 {e(sname(k,lang))}</a>' for k in STATES)
+    nav = f'<a class="navst" href="{base}index.html#states">📍 {"राज्य चुनें" if H else "Choose state"} ▾</a>' + nav
     ldj = f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>' if ld else ""
     url = f"{SITE_URL}/{pfx}{path}"
     sw = f"{base}en/{path}" if lang=="hi" else f"{base}../{path}"
@@ -395,7 +395,7 @@ def build(lang):
 <h2>🧮 {"उपयोगी टूल" if lang=="hi" else "Handy tools"}</h2><div class="grid">{toolcards}</div>
 {adslot(t)}
 <h2 id="central">{t["central_h"]}</h2><div class="grid">{ccards}</div>
-<h2>{t["statesh"]}</h2><p class="lead">{t["statesub"]}</p><div class="grid sgrid">{schips}</div>
+<h2 id="states">{t["statesh"]}</h2><p class="lead">{t["statesub"]}</p><div class="grid sgrid">{schips}</div>
 <div class="chips">{chips}</div></div>
 {wabox(lang)}<section class="trust"><h2>{t["how"]}</h2><ul>{"".join(f"<li>{x}</li>" for x in t["howl"])}</ul></section>
 <script>const D={sjson};const q=document.getElementById('q'),r=document.getElementById('res'),a=document.getElementById('all');
