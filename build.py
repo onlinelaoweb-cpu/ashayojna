@@ -140,6 +140,21 @@ def _note(txt, lang):
     lab = "📚 स्रोत और जाँच का ब्योरा" if hi else "📚 Sources and what we checked"
     return f'<div class="note">⚠️ {short}<details class="srcs"><summary>{lab}</summary><p>{e(txt)}</p></details></div>'
 
+def _savebtn(slug, lang):
+    return (f'<p><button class="savebtn" type="button" data-slug="{slug}" data-on="{"✅ सेव किया गया" if lang=="hi" else "✅ Saved"}" data-off="{"🔖 बाद के लिए सेव करें" if lang=="hi" else "🔖 Save for later"}">'
+            f'{"🔖 बाद के लिए सेव करें" if lang=="hi" else "🔖 Save for later"}</button> <a class="savelink" href="../saved.html">{"मेरी सेव की हुई योजनाएँ" if lang=="hi" else "My saved schemes"}</a></p>')
+
+SAVEJS = ("<script>(function(){var K='ay_saved';function g(){try{return JSON.parse(localStorage.getItem(K)||'[]')}catch(e){return[]}}"
+          "function p(a){try{localStorage.setItem(K,JSON.stringify(a))}catch(e){}}"
+          "document.querySelectorAll('.savebtn').forEach(function(b){var s=b.dataset.slug;function r(){b.textContent=g().indexOf(s)>-1?b.dataset.on:b.dataset.off}r();"
+          "b.addEventListener('click',function(){var a=g(),i=a.indexOf(s);if(i>-1)a.splice(i,1);else a.push(s);p(a);r()})})})()</script>")
+
+def _askq(lang):
+    sub = "सवाल" if lang=="hi" else "Question"
+    msg = ("❓ आपका सवाल यहाँ नहीं है? <a href=\"mailto:%s?subject=%s\">हमें लिखें</a>। आम सवाल हम FAQ में जोड़ते रहते हैं।" if lang=="hi"
+           else "❓ Your question is not here? <a href=\"mailto:%s?subject=%s\">Write to us</a>. We add common questions to the FAQ.") % (CONTACT_EMAIL, sub)
+    return f'<p class="note">{msg}</p>'
+
 def _jump(lang):
     return [("elig","✅ पात्रता" if lang=="hi" else "✅ Eligibility"),("docs","📄 दस्तावेज़" if lang=="hi" else "📄 Documents"),("apply","📝 आवेदन" if lang=="hi" else "📝 How to apply"),("faq","❓ FAQ")]
 
@@ -168,7 +183,7 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
         desc = desc.rstrip("।. ") + (" | आशा योजना – सरकारी योजनाओं की सरल और भरोसेमंद जानकारी" if lang=="hi" else " | Asha Yojana – simple, reliable information on government schemes")
     t = T[lang]; pfx = "" if lang=="hi" else "en/"
     H = lang=="hi"
-    mains = [("index.html","🏠",t["home"]),("find.html","🔎",t["findl"]),("guides/index.html","📘","गाइड" if H else "Guides"),("calculators.html","🧮","कैलकुलेटर" if H else "Calculators"),("status.html","📋","स्टेटस" if H else "Status"),("deadlines.html","⏰","अंतिम तारीख़ें" if H else "Deadlines"),("khabar/index.html","📰","ताज़ा खबर" if H else "Updates")]
+    mains = [("index.html","🏠",t["home"]),("find.html","🔎",t["findl"]),("guides/index.html","📘","गाइड" if H else "Guides"),("calculators.html","🧮","कैलकुलेटर" if H else "Calculators"),("status.html","📋","स्टेटस" if H else "Status"),("deadlines.html","⏰","अंतिम तारीख़ें" if H else "Deadlines"),("weekly.html","🗞️","इस हफ़्ते" if H else "This week"),("saved.html","🔖","सेव की गई" if H else "Saved"),("khabar/index.html","📰","ताज़ा खबर" if H else "Updates")]
     mnav = "".join(f'<a href="{base}{u}"><span>{i}</span> {e(l)}</a>' for u,i,l in mains)
     nav = "".join(f'<a href="{base}category/{k}.html">{v[1]} {e(cname(k,lang))}</a>' for k,v in CATS.items())
     nav += "".join(f'<a href="{base}state/{k}.html">📍 {e(sname(k,lang))}</a>' for k in STATES)
@@ -286,6 +301,7 @@ def build(lang):
         body = f"""<nav class="bc">{crumb}</nav>
 <article><h1>{e(y["name"])}</h1>
 {_phero(y0["slug"], "", lang, y["name"])}<p class="meta">{y0["icon"]} {where} · {e(y["ministry"])} · {t["lastchk"]}: {data_daily.VERIFIED.get(y0["slug"],{}).get(lang, UPD[lang])}</p>
+{_savebtn(y0["slug"], lang)}
 <div class="facts">{facts}</div>
 {_note(y["note"], lang)}
 <nav class="jump">{"".join(f'<a href="#{i}">{l}</a>' for i,l in _jump(lang))}</nav>
@@ -300,10 +316,11 @@ def build(lang):
 {xsec}<a class="btn" href="{y["url"]}" target="_blank" rel="noopener nofollow">{e(y["linklabel"])} ↗</a>{hl}{xtool}{xbk}{xgd}
 {adslot(t)}
 <h2 id="faq">{t["faq"]}</h2>{faq}
+{_askq(lang)}
 <div class="warn">{t["warn"]}</div>
 </article>
 {wabox(lang)}
-<h2>{t["also"]}</h2><div class="grid">{relcards}</div>"""
+<h2>{t["also"]}</h2><div class="grid">{relcards}</div>{SAVEJS}"""
         ld = [{"@context":"https://schema.org","@type":"Article","headline":y["name"],"description":y["short"],"inLanguage":t["lang"],"dateModified":data_daily.VERIFIED.get(y0["slug"],{}).get("iso",LASTMOD),"image":[f'{SITE_URL}/img/{y0["slug"]}-{lang}.jpg'],"mainEntityOfPage":f'{SITE_URL}/{pfx}yojana/{y0["slug"]}.html',"author":{"@type":"Organization","name":SN},"publisher":{"@type":"Organization","name":SN}},
               {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":t["home"],"item":SITE_URL+"/"+pfx},{"@type":"ListItem","position":2,"name":cname(y0["cat"],lang),"item":f'{SITE_URL}/{pfx}category/{y0["cat"]}.html'},{"@type":"ListItem","position":3,"name":y["name"]}]},
               {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in y["faq"]]}]
@@ -489,6 +506,34 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
         sc += f'<a class="card" href="yojana/{y0["slug"]}.html"><span class="ic">{y0["icon"]}</span><span class="tg">{e(wh)}</span><h3>{e(yv["name"])}</h3><p>{e(first)}</p><span class="more">{t["more"]}</span></a>'
     p = "status.html"; reg(p)
     page(lang, p, f"{sh} | {SN}", ssub, f'<nav class="bc"><a href="index.html">{t["home"]}</a> › {e(sh)}</nav><h1>📋 {e(sh)}</h1><p class="lead">{ssub}</p><div class="grid">{sc}</div><p><a class="btn" href="guides/aadhaar-bank-dbt-seeding.html">📘 {e(guides.GUIDES[0][lang]["title"])}</a></p>{wabox(lang)}', "")
+
+    # ---------- Saved schemes (browser-only, no login) ----------
+    svh = "मेरी सेव की हुई योजनाएँ" if lang=="hi" else "My saved schemes"
+    svsub = "आपने जो योजनाएँ सेव की हैं वे सिर्फ़ इसी फ़ोन/ब्राउज़र में रहती हैं। लॉगिन की ज़रूरत नहीं।" if lang=="hi" else "Schemes you save stay only in this phone/browser. No login needed."
+    svd = json.dumps({y0["slug"]: {"t": view(y0, lang)["name"], "s": view(y0, lang)["short"]} for y0 in Y}, ensure_ascii=False)
+    svbody = (f'<nav class="bc"><a href="index.html">{t["home"]}</a> › {e(svh)}</nav><h1>🔖 {e(svh)}</h1><p class="lead">{svsub}</p><div id="svlist" class="grid"></div>'
+              f'<p id="svempty" class="note" style="display:none">{"अभी कुछ सेव नहीं है। किसी योजना के पेज पर “बाद के लिए सेव करें” दबाएँ।" if lang=="hi" else "Nothing saved yet. Tap “Save for later” on any scheme page."}</p>'
+              f'<script>(function(){{var D={svd},K="ay_saved",a=[];try{{a=JSON.parse(localStorage.getItem(K)||"[]")}}catch(e){{}}'
+              f'var h="",n=0;a.forEach(function(s){{var d=D[s];if(!d)return;n++;var u=\'yojana/\'+s+\'.html\';h+=\'<a class="card" href="\'+u+\'"><h3>\'+d.t+\'</h3><p>\'+d.s+\'</p><span class="more">{t["more"]}</span></a>\'}});'
+              f'document.getElementById("svlist").innerHTML=h;if(!n)document.getElementById("svempty").style.display="block"}})()</script>{wabox(lang)}')
+    p = "saved.html"
+    page(lang, p, f"{svh} | {SN}", svsub, svbody, "", noindex=True)
+
+    # ---------- Weekly digest ----------
+    import datetime as _dt
+    wk = "इस हफ़्ते क्या नया" if lang=="hi" else "What's new this week"
+    wsub = "पिछले 7 दिनों की जाँची हुई खबरें और आने वाली अंतिम तारीख़ें, एक जगह।" if lang=="hi" else "Verified news from the last 7 days and the upcoming deadlines, in one place."
+    _td = _dt.date.today()
+    wn = [n for n in sorted(news.NEWS, key=lambda n: n["date"], reverse=True) if (_td - _dt.date.fromisoformat(n["date"])).days <= 7]
+    wn = wn or sorted(news.NEWS, key=lambda n: n["date"], reverse=True)[:6]
+    import deadlines as _dl
+    up = [d for d in sorted(_dl.DEADLINES, key=lambda d: d["date"]) if 0 <= (_dt.date.fromisoformat(d["date"]) - _td).days <= 21]
+    uph = "".join(f'<li><b>{_dt.date.fromisoformat(d["date"]).day}/{_dt.date.fromisoformat(d["date"]).month}</b> – <a href="khabar/{d["news"]}.html">{e(d[lang][0])}</a></li>' for d in up)
+    wbody = (f'<nav class="bc"><a href="index.html">{t["home"]}</a> › {e(wk)}</nav><h1>🗞️ {e(wk)}</h1><p class="lead">{wsub}</p>'
+             + (f'<h2>⏰ {"अगले 3 हफ़्ते की अंतिम तारीख़ें" if lang=="hi" else "Deadlines in the next 3 weeks"}</h2><ul>{uph}</ul><p><a class="btn" href="deadlines.html">{"सभी तारीख़ें" if lang=="hi" else "All deadlines"}</a></p>' if up else "")
+             + f'<h2>📰 {"ताज़ा खबरें" if lang=="hi" else "Latest news"}</h2><div class="grid">{"".join(ncard(n,"") for n in wn)}</div>{wabox(lang)}')
+    p = "weekly.html"; reg(p)
+    page(lang, p, f"{wk} | {SN}", wsub, wbody, "")
 
     # ---------- Upcoming deadlines ----------
     import deadlines

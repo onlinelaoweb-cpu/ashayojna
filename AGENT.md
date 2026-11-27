@@ -124,3 +124,6 @@ SEO boost: `seo_boost.py` holds extra FAQ entries that mirror real Search Consol
 
 ## Deadlines page
 - `deadlines.py` DEADLINES feeds /deadlines.html (hi+en). Daily routine: when a khabar post reports a dated last date (application/e-KYC/certificate), ALSO append a row (date, news slug, related slug, hi/en title+note). Only reported dates; past dates auto-hide at build and in the browser.
+
+## Save, weekly, ask-a-question
+- Scheme pages: save button (localStorage `ay_saved`, no login) + /saved.html (noindex, not in sitemap); /weekly.html = last 7 days of NEWS + deadlines in next 21 days (rebuilt on every publish, so keep the daily publish going); `_askq` mailto under FAQ.
