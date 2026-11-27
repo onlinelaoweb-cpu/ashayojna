@@ -131,6 +131,15 @@ def _phero(slug, outprefix, lang, alt):
 def _cn(n, lang, t):
     return f"{n} योजना" if (n==1 and lang=="hi") else (f"{n} scheme" if n==1 else f"{n} {t['cnt']}")
 
+def _note(txt, lang):
+    # short notes stay as they are; long source lists go into a collapsed box under a one-line caution
+    if len(txt) <= 170:
+        return f'<div class="note">⚠️ {e(txt)}</div>'
+    hi = lang == "hi"
+    short = "राशि और नियम राज्य या समय के अनुसार बदल सकते हैं। आवेदन से पहले आधिकारिक पोर्टल या हेल्पलाइन से पक्का करें।" if hi else "Amounts and rules can change by state or over time. Confirm on the official portal or helpline before applying."
+    lab = "📚 स्रोत और जाँच का ब्योरा" if hi else "📚 Sources and what we checked"
+    return f'<div class="note">⚠️ {short}<details class="srcs"><summary>{lab}</summary><p>{e(txt)}</p></details></div>'
+
 def _jump(lang):
     return [("elig","✅ पात्रता" if lang=="hi" else "✅ Eligibility"),("docs","📄 दस्तावेज़" if lang=="hi" else "📄 Documents"),("apply","📝 आवेदन" if lang=="hi" else "📝 How to apply"),("faq","❓ FAQ")]
 
@@ -278,7 +287,7 @@ def build(lang):
 <article><h1>{e(y["name"])}</h1>
 {_phero(y0["slug"], "", lang, y["name"])}<p class="meta">{y0["icon"]} {where} · {e(y["ministry"])} · {t["lastchk"]}: {data_daily.VERIFIED.get(y0["slug"],{}).get(lang, UPD[lang])}</p>
 <div class="facts">{facts}</div>
-<div class="note">⚠️ {e(y["note"])}</div>
+{_note(y["note"], lang)}
 <nav class="jump">{"".join(f'<a href="#{i}">{l}</a>' for i,l in _jump(lang))}</nav>
 {adslot(t)}
 <h2>{t["what"]}</h2><p>{e(y["about"])}</p>

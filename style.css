@@ -109,3 +109,4 @@ img{max-width:100%}
 .echk input{margin-top:4px;width:18px;height:18px;flex:0 0 auto}
 .eres{font-weight:700;margin:8px 0 0}
 html{scroll-behavior:smooth}h2[id]{scroll-margin-top:12px}
+.srcs{margin-top:6px;font-size:.88rem}.srcs summary{cursor:pointer;font-weight:600}.srcs p{margin:6px 0 0}
