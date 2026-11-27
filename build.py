@@ -140,6 +140,11 @@ def _note(txt, lang):
     lab = "📚 स्रोत और जाँच का ब्योरा" if hi else "📚 Sources and what we checked"
     return f'<div class="note">⚠️ {short}<details class="srcs"><summary>{lab}</summary><p>{e(txt)}</p></details></div>'
 
+_MON = {"hi":["जनवरी","फ़रवरी","मार्च","अप्रैल","मई","जून","जुलाई","अगस्त","सितंबर","अक्टूबर","नवंबर","दिसंबर"],"en":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]}
+def _fd(iso, lang):
+    y, m, d = iso.split("-")
+    return f"{int(d)} {_MON[lang][int(m)-1]} {y}"
+
 def _savebtn(slug, lang):
     return (f'<p><button class="savebtn" type="button" data-slug="{slug}" data-on="{"✅ सेव किया गया" if lang=="hi" else "✅ Saved"}" data-off="{"🔖 बाद के लिए सेव करें" if lang=="hi" else "🔖 Save for later"}">'
             f'{"🔖 बाद के लिए सेव करें" if lang=="hi" else "🔖 Save for later"}</button> <a class="savelink" href="../saved.html">{"मेरी सेव की हुई योजनाएँ" if lang=="hi" else "My saved schemes"}</a></p>')
@@ -184,6 +189,7 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
     t = T[lang]; pfx = "" if lang=="hi" else "en/"
     H = lang=="hi"
     mains = [("index.html","🏠",t["home"]),("find.html","🔎",t["findl"]),("guides/index.html","📘","गाइड" if H else "Guides"),("calculators.html","🧮","कैलकुलेटर" if H else "Calculators"),("status.html","📋","स्टेटस" if H else "Status"),("deadlines.html","⏰","अंतिम तारीख़ें" if H else "Deadlines"),("weekly.html","🗞️","इस हफ़्ते" if H else "This week"),("khabar/index.html","📰","ताज़ा खबर" if H else "Updates")]
+    btm = [("index.html","🏠","होम" if H else "Home"),("find.html","🔎","खोजक" if H else "Find"),("deadlines.html","⏰","तारीख़ें" if H else "Dates"),("guides/index.html","📘","गाइड" if H else "Guides"),("saved.html","🔖","सेव" if H else "Saved")]
     mnav = "".join(f'<a href="{base}{u}"><span>{i}</span> {e(l)}</a>' for u,i,l in mains)
     nav = "".join(f'<a href="{base}category/{k}.html">{v[1]} {e(cname(k,lang))}</a>' for k,v in CATS.items())
     nav += "".join(f'<a href="{base}state/{k}.html">📍 {e(sname(k,lang))}</a>' for k in STATES)
@@ -246,6 +252,7 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
 <div class="fstates"><b>{t['statel']}</b><div>{statelinks}</div></div>
 <p class="fnote">ℹ️ {"यह एक स्वतंत्र जानकारी वेबसाइट है, सरकारी वेबसाइट नहीं। आवेदन हमेशा आधिकारिक पोर्टल पर ही करें।" if lang=="hi" else "This is an independent information website, not a government site. Always apply on the official portal."}</p>
 <p class="cp">© {datetime.date.today().year} {sn} · {t['copy']}</p></div></footer>
+<nav class="btm" aria-label="{'मुख्य मेन्यू' if H else 'Main menu'}">{"".join(f'<a href="{base}{u}"><span>{i}</span>{e(l)}</a>' for u,i,l in btm)}</nav>
 </body></html>"""
     full = os.path.join(OUT, pfx+path)
     os.makedirs(os.path.dirname(full) or ".", exist_ok=True)
@@ -263,7 +270,7 @@ def build(lang):
     ol = lambda a: "<ol class='steps'>"+"".join(f"<li>{e(i)}</li>" for i in a)+"</ol>"
     def ncard(n, base):
         d = n[lang]
-        return f'<a class="card ncard" href="{base}khabar/{n["slug"]}.html"><img class="nimg" src="/img/news-{n["slug"]}-{lang}.jpg" alt="" width="600" height="315" loading="lazy"><span class="tg">{n["icon"]} {n["date"]}</span><h3>{e(d["title"])}</h3><p>{e(d["summary"])}</p><span class="more">{t["more"]}</span></a>'
+        return f'<a class="card ncard" href="{base}khabar/{n["slug"]}.html"><img class="nimg" src="/img/news-{n["slug"]}-{lang}.jpg" alt="" width="600" height="315" loading="lazy"><span class="tg">{n["icon"]} {_fd(n["date"], lang)}</span><h3>{e(d["title"])}</h3><p>{e(d["summary"])}</p><span class="more">{t["more"]}</span></a>'
     def gcard(g, base):
         d = g[lang]
         gimg = f'<img class="nimg" src="/img/guide-{g["slug"]}-{lang}.jpg" alt="" width="600" height="315" loading="lazy">' if _hasimg(g['slug']) else ""
@@ -481,7 +488,7 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
     for n in NS:
         d = n[lang]; ry = next(x for x in Y if x["slug"]==n["related"])
         srcs = "".join(f'<li><a href="{u}" target="_blank" rel="noopener nofollow">{e(nm)}</a></li>' for nm,u in n["src"])
-        nb = (f'<nav class="bc"><a href="../index.html">{t["home"]}</a> › <a href="index.html">{ntitle}</a></nav><article><p class="meta">{n["icon"]} {pubh}: {n["date"]}</p><h1>{e(d["title"])}</h1><img class="nhero" src="/img/news-{n["slug"]}-{lang}.jpg" alt="{e(d["title"])}" width="1200" height="630">'
+        nb = (f'<nav class="bc"><a href="../index.html">{t["home"]}</a> › <a href="index.html">{ntitle}</a></nav><article><p class="meta">{n["icon"]} {pubh}: {_fd(n["date"], lang)}</p><h1>{e(d["title"])}</h1><img class="nhero" src="/img/news-{n["slug"]}-{lang}.jpg" alt="{e(d["title"])}" width="1200" height="630">'
               + _pcredit(n["slug"])
               + "".join(f"<p>{e(x)}</p>" for x in d["body"])
               + f'<p><a class="btn" href="../yojana/{n["related"]}.html">{n["icon"]} {relh}: {e(view(ry,lang)["name"])}</a></p><h2>{srcl}</h2><ul>{srcs}</ul><div class="warn">{t["warn"]}</div></article>{wabox(lang)}')
