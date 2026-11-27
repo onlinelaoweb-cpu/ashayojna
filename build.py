@@ -381,7 +381,7 @@ def build(lang):
         _dr += f'<a href="khabar/{_x["news"]}.html"><b>{_dd.day}<small>{_mo[_dd.month-1]}</small></b><span>{e(_x[lang][0])}</span><em class="dlleft" data-d="{_x["date"]}">{_lb}</em></a>'
     _used = {_hn["slug"]} | {x["news"] for x in [x for x in sorted(_dl2.DEADLINES, key=lambda x: x["date"]) if _d2.date.fromisoformat(x["date"]) >= _t0][:3]}
     topnews = (f'<section class="topnews"><a class="tn-hero" href="khabar/{_hn["slug"]}.html"><img src="/img/news-{_hn["slug"]}-{lang}.jpg" alt="" width="1200" height="630" fetchpriority="high">'
-               f'<div class="tn-t"><span class="tn-tag">{_tag}</span><h2>{e(_hd["title"])}</h2><p>{e(_hd["summary"])}</p></div></a>'
+               f'<div class="tn-t"><span class="tn-tag">{_tag}</span><h2>{e(_hd["title"])}</h2></div></a>'
                + (f'<aside class="tn-dl"><h3>⏰ {"अगली अंतिम तारीख़ें" if lang=="hi" else "Next deadlines"}</h3>{_dr}<a class="tn-all" href="deadlines.html">{"सभी तारीख़ें देखें →" if lang=="hi" else "See all deadlines →"}</a></aside>' if _dr else "")
                + '</section><script>document.querySelectorAll(".tn-dl .dlleft").forEach(function(s){var t=new Date(s.dataset.d+"T23:59:59+05:30"),n=Math.ceil((t-new Date())/864e5);if(n<0){s.closest("a").style.display="none";return}'
                + 's.textContent=n>0?(n+(document.documentElement.lang=="hi"?" दिन बचे":" days left")):(document.documentElement.lang=="hi"?"आज आख़िरी दिन":"Last day today")})</script>')

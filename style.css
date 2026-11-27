@@ -143,3 +143,5 @@ html{scroll-behavior:smooth}h2[id]{scroll-margin-top:12px}
  .btm a span{font-size:1.3rem;line-height:1.2}
  .btm a:active{background:#eef4f1;border-radius:10px}
 }
+.tn-hero,.tn-t{min-height:210px}.tn-t h2{margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+@media(max-width:760px){.tn-hero,.tn-t{min-height:190px}}
