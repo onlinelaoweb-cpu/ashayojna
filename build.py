@@ -183,7 +183,7 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
         desc = desc.rstrip("।. ") + (" | आशा योजना – सरकारी योजनाओं की सरल और भरोसेमंद जानकारी" if lang=="hi" else " | Asha Yojana – simple, reliable information on government schemes")
     t = T[lang]; pfx = "" if lang=="hi" else "en/"
     H = lang=="hi"
-    mains = [("index.html","🏠",t["home"]),("find.html","🔎",t["findl"]),("guides/index.html","📘","गाइड" if H else "Guides"),("calculators.html","🧮","कैलकुलेटर" if H else "Calculators"),("status.html","📋","स्टेटस" if H else "Status"),("deadlines.html","⏰","अंतिम तारीख़ें" if H else "Deadlines"),("weekly.html","🗞️","इस हफ़्ते" if H else "This week"),("saved.html","🔖","सेव की गई" if H else "Saved"),("khabar/index.html","📰","ताज़ा खबर" if H else "Updates")]
+    mains = [("index.html","🏠",t["home"]),("find.html","🔎",t["findl"]),("guides/index.html","📘","गाइड" if H else "Guides"),("calculators.html","🧮","कैलकुलेटर" if H else "Calculators"),("status.html","📋","स्टेटस" if H else "Status"),("deadlines.html","⏰","अंतिम तारीख़ें" if H else "Deadlines"),("weekly.html","🗞️","इस हफ़्ते" if H else "This week"),("khabar/index.html","📰","ताज़ा खबर" if H else "Updates")]
     mnav = "".join(f'<a href="{base}{u}"><span>{i}</span> {e(l)}</a>' for u,i,l in mains)
     nav = "".join(f'<a href="{base}category/{k}.html">{v[1]} {e(cname(k,lang))}</a>' for k,v in CATS.items())
     nav += "".join(f'<a href="{base}state/{k}.html">📍 {e(sname(k,lang))}</a>' for k in STATES)
@@ -360,10 +360,28 @@ def build(lang):
         v = view(y0, lang); st = y0.get("state")
         sj.append({"t":v["name"],"s":v["short"],"u":f'yojana/{y0["slug"]}.html',"k":v["tag"]+" "+y0["slug"]+" "+(sname(st,"hi")+" "+sname(st,"en") if st else "")})
     sjson = json.dumps(sj, ensure_ascii=False)
+    # --- top block: today's big story + next deadlines ---
+    import datetime as _d2, deadlines as _dl2
+    _nn = sorted(news.NEWS, key=lambda n: n["date"], reverse=True)
+    _hn = _nn[0]; _hd = _hn[lang]
+    _mo = {"hi":["जन","फ़र","मार्च","अप्रैल","मई","जून","जुलाई","अग","सित","अक्टू","नव","दिस"],"en":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]}[lang]
+    _t0 = _d2.date.today(); _hdt = _d2.date.fromisoformat(_hn["date"])
+    _tag = f'{_hn["icon"]} ' + ("आज की बड़ी खबर" if lang=="hi" else "Top story") + f' · {_hdt.day} {_mo[_hdt.month-1]}'
+    _dr = ""
+    for _x in [x for x in sorted(_dl2.DEADLINES, key=lambda x: x["date"]) if _d2.date.fromisoformat(x["date"]) >= _t0][:3]:
+        _dd = _d2.date.fromisoformat(_x["date"]); _lf = (_dd - _t0).days
+        _lb = (f"{_lf} दिन बचे" if lang=="hi" else f"{_lf} days left") if _lf > 0 else ("आज आख़िरी दिन" if lang=="hi" else "Last day today")
+        _dr += f'<a href="khabar/{_x["news"]}.html"><b>{_dd.day} {_mo[_dd.month-1]}</b><span>{e(_x[lang][0])}</span><em class="dlleft" data-d="{_x["date"]}">{_lb}</em></a>'
+    topnews = (f'<section class="topnews"><a class="tn-hero" href="khabar/{_hn["slug"]}.html"><img src="/img/news-{_hn["slug"]}-{lang}.jpg" alt="" width="1200" height="630" fetchpriority="high">'
+               f'<div class="tn-t"><span class="tn-tag">{_tag}</span><h2>{e(_hd["title"])}</h2><p>{e(_hd["summary"])}</p></div></a>'
+               + (f'<aside class="tn-dl"><h3>⏰ {"अगली अंतिम तारीख़ें" if lang=="hi" else "Next deadlines"}</h3>{_dr}<a class="tn-all" href="deadlines.html">{"सभी तारीख़ें देखें →" if lang=="hi" else "See all deadlines →"}</a></aside>' if _dr else "")
+               + '</section><script>document.querySelectorAll(".tn-dl .dlleft").forEach(function(s){var t=new Date(s.dataset.d+"T23:59:59+05:30"),n=Math.ceil((t-new Date())/864e5);if(n<0){s.closest("a").style.display="none";return}'
+               + 's.textContent=n>0?(n+(document.documentElement.lang=="hi"?" दिन बचे":" days left")):(document.documentElement.lang=="hi"?"आज आख़िरी दिन":"Last day today")})</script>')
     body = f"""<section class="hero"><p style="margin:0 0 4px;font-size:15px;opacity:.9">{t["dedtop"]}</p><h1>{t["h1"]}</h1>
 <p>{t["hp"]}</p>
 <p style="margin:0 0 10px"><a class="btn" href="find.html">{t["findgo"]}</a> <a class="btn" href="calculators.html">{t["calcall"]}</a> <a class="btn" href="deadlines.html">⏰ {"अंतिम तारीख़ें" if lang=="hi" else "Deadlines"}</a></p><input id="q" class="search" type="search" placeholder="{t["ph"]}" autocomplete="off"><div id="res" class="grid"></div></section>
 <div id="all">
+{topnews}
 <h2>📰 {"ताज़ा खबर" if lang=="hi" else "Latest updates"}</h2><div class="grid">{"".join(ncard(n,"") for n in sorted(news.NEWS,key=lambda n:n["date"],reverse=True)[:3])}</div><p><a class="btn" href="khabar/index.html">{"सभी खबरें" if lang=="hi" else "All updates"} →</a></p>
 <h2>📘 {"उपयोगी गाइड" if lang=="hi" else "Helpful guides"}</h2><div class="grid">{"".join(gcard(g,"") for g in guides.GUIDES[:3])}</div><p><a class="btn" href="guides/index.html">{"सभी गाइड" if lang=="hi" else "All guides"} →</a> <a class="btn" href="status.html">{"📋 स्टेटस जाँचें" if lang=="hi" else "📋 Check status"}</a></p>
 <h2>🧮 {"उपयोगी टूल" if lang=="hi" else "Handy tools"}</h2><div class="grid">{toolcards}</div>
