@@ -372,6 +372,7 @@ def build(lang):
         _dd = _d2.date.fromisoformat(_x["date"]); _lf = (_dd - _t0).days
         _lb = (f"{_lf} दिन बचे" if lang=="hi" else f"{_lf} days left") if _lf > 0 else ("आज आख़िरी दिन" if lang=="hi" else "Last day today")
         _dr += f'<a href="khabar/{_x["news"]}.html"><b>{_dd.day} {_mo[_dd.month-1]}</b><span>{e(_x[lang][0])}</span><em class="dlleft" data-d="{_x["date"]}">{_lb}</em></a>'
+    _used = {_hn["slug"]} | {x["news"] for x in [x for x in sorted(_dl2.DEADLINES, key=lambda x: x["date"]) if _d2.date.fromisoformat(x["date"]) >= _t0][:3]}
     topnews = (f'<section class="topnews"><a class="tn-hero" href="khabar/{_hn["slug"]}.html"><img src="/img/news-{_hn["slug"]}-{lang}.jpg" alt="" width="1200" height="630" fetchpriority="high">'
                f'<div class="tn-t"><span class="tn-tag">{_tag}</span><h2>{e(_hd["title"])}</h2><p>{e(_hd["summary"])}</p></div></a>'
                + (f'<aside class="tn-dl"><h3>⏰ {"अगली अंतिम तारीख़ें" if lang=="hi" else "Next deadlines"}</h3>{_dr}<a class="tn-all" href="deadlines.html">{"सभी तारीख़ें देखें →" if lang=="hi" else "See all deadlines →"}</a></aside>' if _dr else "")
@@ -382,7 +383,7 @@ def build(lang):
 <p style="margin:0 0 10px"><a class="btn" href="find.html">{t["findgo"]}</a> <a class="btn" href="calculators.html">{t["calcall"]}</a> <a class="btn" href="deadlines.html">⏰ {"अंतिम तारीख़ें" if lang=="hi" else "Deadlines"}</a></p><input id="q" class="search" type="search" placeholder="{t["ph"]}" autocomplete="off"><div id="res" class="grid"></div></section>
 <div id="all">
 {topnews}
-<h2>📰 {"ताज़ा खबर" if lang=="hi" else "Latest updates"}</h2><div class="grid">{"".join(ncard(n,"") for n in sorted(news.NEWS,key=lambda n:n["date"],reverse=True)[:3])}</div><p><a class="btn" href="khabar/index.html">{"सभी खबरें" if lang=="hi" else "All updates"} →</a></p>
+<h2>📰 {"ताज़ा खबर" if lang=="hi" else "Latest updates"}</h2><div class="grid">{"".join(ncard(n,"") for n in [n for n in sorted(news.NEWS,key=lambda n:n["date"],reverse=True) if n["slug"] not in _used][:3])}</div><p><a class="btn" href="khabar/index.html">{"सभी खबरें" if lang=="hi" else "All updates"} →</a></p>
 <h2>📘 {"उपयोगी गाइड" if lang=="hi" else "Helpful guides"}</h2><div class="grid">{"".join(gcard(g,"") for g in guides.GUIDES[:3])}</div><p><a class="btn" href="guides/index.html">{"सभी गाइड" if lang=="hi" else "All guides"} →</a> <a class="btn" href="status.html">{"📋 स्टेटस जाँचें" if lang=="hi" else "📋 Check status"}</a></p>
 <h2>🧮 {"उपयोगी टूल" if lang=="hi" else "Handy tools"}</h2><div class="grid">{toolcards}</div>
 {adslot(t)}
