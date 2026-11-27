@@ -364,14 +364,14 @@ def build(lang):
     import datetime as _d2, deadlines as _dl2
     _nn = sorted(news.NEWS, key=lambda n: n["date"], reverse=True)
     _hn = _nn[0]; _hd = _hn[lang]
-    _mo = {"hi":["जन","फ़र","मार्च","अप्रैल","मई","जून","जुलाई","अग","सित","अक्टू","नव","दिस"],"en":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]}[lang]
+    _mo = {"hi":["जनवरी","फ़रवरी","मार्च","अप्रैल","मई","जून","जुलाई","अगस्त","सितंबर","अक्टूबर","नवंबर","दिसंबर"],"en":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]}[lang]
     _t0 = _d2.date.today(); _hdt = _d2.date.fromisoformat(_hn["date"])
-    _tag = f'{_hn["icon"]} ' + ("आज की बड़ी खबर" if lang=="hi" else "Top story") + f' · {_hdt.day} {_mo[_hdt.month-1]}'
+    _tag = f'{_hn["icon"]} ' + ("आज की बड़ी खबर" if lang=="hi" else "Top story") + f' · {_hdt.day} {_mo[_hdt.month-1]} {_hdt.year}'
     _dr = ""
     for _x in [x for x in sorted(_dl2.DEADLINES, key=lambda x: x["date"]) if _d2.date.fromisoformat(x["date"]) >= _t0][:3]:
         _dd = _d2.date.fromisoformat(_x["date"]); _lf = (_dd - _t0).days
         _lb = (f"{_lf} दिन बचे" if lang=="hi" else f"{_lf} days left") if _lf > 0 else ("आज आख़िरी दिन" if lang=="hi" else "Last day today")
-        _dr += f'<a href="khabar/{_x["news"]}.html"><b>{_dd.day} {_mo[_dd.month-1]}</b><span>{e(_x[lang][0])}</span><em class="dlleft" data-d="{_x["date"]}">{_lb}</em></a>'
+        _dr += f'<a href="khabar/{_x["news"]}.html"><b>{_dd.day}<small>{_mo[_dd.month-1]}</small></b><span>{e(_x[lang][0])}</span><em class="dlleft" data-d="{_x["date"]}">{_lb}</em></a>'
     _used = {_hn["slug"]} | {x["news"] for x in [x for x in sorted(_dl2.DEADLINES, key=lambda x: x["date"]) if _d2.date.fromisoformat(x["date"]) >= _t0][:3]}
     topnews = (f'<section class="topnews"><a class="tn-hero" href="khabar/{_hn["slug"]}.html"><img src="/img/news-{_hn["slug"]}-{lang}.jpg" alt="" width="1200" height="630" fetchpriority="high">'
                f'<div class="tn-t"><span class="tn-tag">{_tag}</span><h2>{e(_hd["title"])}</h2><p>{e(_hd["summary"])}</p></div></a>'
@@ -559,7 +559,7 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
     today = datetime.date.today()
     dh = "आने वाली अंतिम तारीख़ें" if lang=="hi" else "Upcoming Deadlines"
     dsub = "खबरों में छपी योजनाओं की अंतिम तारीख़ें, एक जगह। तारीख़ बदल सकती है, आवेदन से पहले आधिकारिक पोर्टल से पक्का करें।" if lang=="hi" else "Last dates reported in our news posts, in one place. Dates can change; confirm on the official portal before applying."
-    dm = {"hi":["जन","फ़र","मार्च","अप्रैल","मई","जून","जुलाई","अग","सित","अक्टू","नव","दिस"],"en":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]}[lang]
+    dm = {"hi":["जनवरी","फ़रवरी","मार्च","अप्रैल","मई","जून","जुलाई","अगस्त","सितंबर","अक्टूबर","नवंबर","दिसंबर"],"en":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]}[lang]
     rows = ""; shown = 0
     for d in sorted(deadlines.DEADLINES, key=lambda x: x["date"]):
         dd = datetime.date.fromisoformat(d["date"])

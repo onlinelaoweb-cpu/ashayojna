@@ -132,3 +132,4 @@ html{scroll-behavior:smooth}h2[id]{scroll-margin-top:12px}
 .tn-dl span{font-weight:600;font-size:.95rem}.tn-dl em{font-style:normal;font-size:.85rem;color:#b45309;font-weight:700}
 .tn-dl .tn-all{display:block;border-top:1px solid #f0dcc0;padding-top:10px;font-weight:700;color:#0f5a4a;text-align:left}
 @media(max-width:760px){.topnews{grid-template-columns:1fr}.tn-t,.tn-hero{min-height:220px}.tn-t h2{font-size:1.2rem}}
+.tn-dl b small{display:block;font-size:.72rem;font-weight:600;margin-top:1px}
