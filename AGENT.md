@@ -118,3 +118,6 @@ SEO boost: `seo_boost.py` holds extra FAQ entries that mirror real Search Consol
 - Part B: refresh these first (Google already shows them near top 10, so accuracy matters most): punjab-free-electricity, uttarakhand-nanda-gaura, telangana-mahalakshmi-free-bus, telangana-aarogyasri, pm-awas-yojana-gramin (33 impressions, position ~37: strengthen apply-online and documents sections), then the rest of the unrefreshed list.
 - `seo_boost.py`: add FAQ entries (hi + en) that mirror real queries, answers only from facts already verified on the page: Gaura Devi Kanya Dhan spelling variants (gaura/gora devi, kanya dhan), 'free electricity units in punjab' / '300 unit conditions', 'delhi ayushman card for disabled', 'asha payment status bihar' only if page facts support it. Skip off-topic queries (e.g. 'funny ukhane').
 - Pull queries via Supermetrics GW (sc-domain:ashayojana.com, report_type STANDARD) when available; GA4 property id 564355542. Early data is thin (1-3 impressions per query), so do not over-fit.
+
+## Engagement features (scheme pages)
+- build.py: `_jump` (jump nav), `_echeck` (tick-box eligibility checker, inline JS), 6 related cards (same state first, then category), home "Handy tools" grid. CSS at end of style.css.

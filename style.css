@@ -99,3 +99,13 @@ body{font-family:"Noto Sans Devanagari","Noto Sans",system-ui,-apple-system,"Seg
 .card>.nimg{display:block;width:100%;max-width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;border-radius:10px;margin:0 0 10px}
 .ncard>.nimg{border-radius:0;margin:0}
 img{max-width:100%}
+
+/* engagement: jump nav, eligibility checker */
+.jump{display:flex;gap:8px;overflow-x:auto;margin:10px 0 4px;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+.jump a{flex:0 0 auto;padding:6px 12px;border:1px solid #cfd8e3;border-radius:999px;font-size:.88rem;text-decoration:none;color:inherit;background:#fff}
+.echk{margin:12px 0;border:1px solid #cfe3d4;background:#f4fbf6;border-radius:12px;padding:10px 14px}
+.echk summary{font-weight:700;cursor:pointer}
+.echk label{display:flex;gap:10px;align-items:flex-start;padding:7px 0;cursor:pointer}
+.echk input{margin-top:4px;width:18px;height:18px;flex:0 0 auto}
+.eres{font-weight:700;margin:8px 0 0}
+html{scroll-behavior:smooth}h2[id]{scroll-margin-top:12px}

@@ -131,6 +131,23 @@ def _phero(slug, outprefix, lang, alt):
 def _cn(n, lang, t):
     return f"{n} योजना" if (n==1 and lang=="hi") else (f"{n} scheme" if n==1 else f"{n} {t['cnt']}")
 
+def _jump(lang):
+    return [("elig","✅ पात्रता" if lang=="hi" else "✅ Eligibility"),("docs","📄 दस्तावेज़" if lang=="hi" else "📄 Documents"),("apply","📝 आवेदन" if lang=="hi" else "📝 How to apply"),("faq","❓ FAQ")]
+
+def _echeck(items, lang):
+    if not items: return ""
+    hi = lang=="hi"
+    rows = "".join(f'<label><input type="checkbox"> <span>{e(x)}</span></label>' for x in items)
+    ttl = "🧮 अपनी पात्रता जल्दी जाँचें" if hi else "🧮 Quick eligibility check"
+    sub = "जो शर्तें आप पर लागू हों उन पर टिक करें। यह सिर्फ़ एक अंदाज़ा है, अंतिम फ़ैसला विभाग करता है।" if hi else "Tick the conditions that apply to you. This is only a rough guide; the department makes the final decision."
+    return (f'<details class="echk"><summary>{ttl}</summary><p class="note">{sub}</p>{rows}'
+            f'<p class="eres" aria-live="polite"></p></details>'
+            + '<script>(function(){var d=document.currentScript.previousElementSibling,b=d.querySelectorAll("input"),r=d.querySelector(".eres"),H=@H@;'
+              'function u(){var n=0;b.forEach(function(x){if(x.checked)n++});var m=b.length;'
+              'r.textContent=n==0?"":(n==m?(H?"✅ आप सभी शर्तों पर खरे दिखते हैं। नीचे दिए दस्तावेज़ और आवेदन का तरीका देखें।":"✅ You appear to meet all the conditions. See the documents and how to apply below."):'
+              '(H?n+"/"+m+" शर्तें पूरी। बाकी शर्तें विभाग या आधिकारिक पोर्टल से पक्की करें।":n+"/"+m+" conditions met. Confirm the rest with the department or official portal."))}'
+              'b.forEach(function(x){x.addEventListener("change",u)})})()</script>').replace('@H@', '1' if hi else '0')
+
 def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=True, img=None):
     if len(title) > 70 and " | " in title:
         title = title.rsplit(" | ", 1)[0]
@@ -247,8 +264,11 @@ def build(lang):
             if cc["scheme"] == y0["slug"]:
                 xtool += f'<p style="margin-top:12px"><a class="btn" href="../{cc["slug"]}.html">{cc["icon"]} {e(cc[lang]["h1"])}</a></p>'
         if ex and ex.get("tool"): xtool += f'<p style="margin-top:12px"><a class="btn" href="../ssy-calculator.html">{t["calcgo"]}</a></p>'
-        rel = [x for x in Y if x["cat"]==y0["cat"] and x["slug"]!=y0["slug"]] or [x for x in Y if x["slug"]!=y0["slug"]]
-        rel = rel[:3]
+        _o = [x for x in Y if x["slug"]!=y0["slug"]]
+        _same_state = [x for x in _o if y0.get("state") and x.get("state")==y0.get("state")]
+        _same_cat = [x for x in _o if x["cat"]==y0["cat"] and x not in _same_state]
+        _rest = [x for x in _o if x not in _same_state and x not in _same_cat]
+        rel = (_same_state[:3] + _same_cat[:6] + _rest)[:6]
         hl = f'<p class="hl">📞 {e(y["helpline"])}</p>' if y["helpline"] else ""
         st = y0.get("state")
         where = f'📍 {e(sname(st,lang))}' if st else f'🏛️ {t["central"]}'
@@ -259,16 +279,18 @@ def build(lang):
 {_phero(y0["slug"], "", lang, y["name"])}<p class="meta">{y0["icon"]} {where} · {e(y["ministry"])} · {t["lastchk"]}: {data_daily.VERIFIED.get(y0["slug"],{}).get(lang, UPD[lang])}</p>
 <div class="facts">{facts}</div>
 <div class="note">⚠️ {e(y["note"])}</div>
+<nav class="jump">{"".join(f'<a href="#{i}">{l}</a>' for i,l in _jump(lang))}</nav>
 {adslot(t)}
 <h2>{t["what"]}</h2><p>{e(y["about"])}</p>
 <h2>{t["ben"]}</h2>{ul(y["benefits"])}
-<h2>{t["elig"]}</h2>{ul(y["elig"])}
+<h2 id="elig">{t["elig"]}</h2>{ul(y["elig"])}
+{_echeck(y["elig"], lang)}
 <h2>{t["notelig"]}</h2>{ul(y["notelig"])}
-<h2>{t["docs"]}</h2>{ul(y["docs"])}
-<h2>{t["steps"]}</h2>{ol(y["steps"])}
+<h2 id="docs">{t["docs"]}</h2>{ul(y["docs"])}
+<h2 id="apply">{t["steps"]}</h2>{ol(y["steps"])}
 {xsec}<a class="btn" href="{y["url"]}" target="_blank" rel="noopener nofollow">{e(y["linklabel"])} ↗</a>{hl}{xtool}{xbk}{xgd}
 {adslot(t)}
-<h2>{t["faq"]}</h2>{faq}
+<h2 id="faq">{t["faq"]}</h2>{faq}
 <div class="warn">{t["warn"]}</div>
 </article>
 {wabox(lang)}
@@ -304,6 +326,9 @@ def build(lang):
     central = [y for y in Y if not y.get("state")]
     schips = "".join(f'<a class="card statecard" href="state/{k}.html"><span class="ic">📍</span><h3>{e(sname(k,lang))}</h3><p>{_cn(sum(1 for y in Y if y.get("state")==k), lang, t)}</p><span class="more">{t["more"]}</span></a>' for k in STATES)
     ccards = "".join(card(y,"",lang) for y in central)
+    toolcards = (f'<a class="card" href="find.html"><span class="ic">🔎</span><h3>{t["findl"]}</h3><p>{t["findp"]}</p><span class="more">{t["more"]}</span></a>'
+                 f'<a class="card" href="ssy-calculator.html"><span class="ic">👧</span><h3>{"सुकन्या समृद्धि कैलकुलेटर" if lang=="hi" else "Sukanya Samriddhi calculator"}</h3><p>{"जमा रकम पर परिपक्वता राशि का हिसाब" if lang=="hi" else "See the maturity amount on your deposits"}</p><span class="more">{t["more"]}</span></a>'
+                 + "".join(f'<a class="card" href="{cc["slug"]}.html"><span class="ic">{cc["icon"]}</span><h3>{e(cc[lang]["h1"])}</h3><p>{e(cc[lang]["desc"])}</p><span class="more">{t["more"]}</span></a>' for cc in calcs2.CALCS))
     sj = []
     for y0 in Y:
         v = view(y0, lang); st = y0.get("state")
@@ -315,6 +340,7 @@ def build(lang):
 <div id="all">
 <h2>📰 {"ताज़ा खबर" if lang=="hi" else "Latest updates"}</h2><div class="grid">{"".join(ncard(n,"") for n in sorted(news.NEWS,key=lambda n:n["date"],reverse=True)[:3])}</div><p><a class="btn" href="khabar/index.html">{"सभी खबरें" if lang=="hi" else "All updates"} →</a></p>
 <h2>📘 {"उपयोगी गाइड" if lang=="hi" else "Helpful guides"}</h2><div class="grid">{"".join(gcard(g,"") for g in guides.GUIDES[:3])}</div><p><a class="btn" href="guides/index.html">{"सभी गाइड" if lang=="hi" else "All guides"} →</a> <a class="btn" href="status.html">{"📋 स्टेटस जाँचें" if lang=="hi" else "📋 Check status"}</a></p>
+<h2>🧮 {"उपयोगी टूल" if lang=="hi" else "Handy tools"}</h2><div class="grid">{toolcards}</div>
 {adslot(t)}
 <h2 id="central">{t["central_h"]}</h2><div class="grid">{ccards}</div>
 <h2>{t["statesh"]}</h2><p class="lead">{t["statesub"]}</p><div class="grid sgrid">{schips}</div>
