@@ -140,6 +140,16 @@ html{scroll-behavior:smooth}h2[id]{scroll-margin-top:12px}
 .tn-dl .tn-all{display:block;border-top:1px solid #f0dcc0;padding-top:10px;font-weight:700;color:#0f5a4a;text-align:left}
 @media(max-width:760px){.topnews{grid-template-columns:1fr}.tn-t,.tn-hero{min-height:220px}.tn-t h2{font-size:1.2rem}}
 .tn-dl b small{display:block;font-size:.72rem;font-weight:600;margin-top:1px}
+/* mobile: compact header + bottom tab bar */
+.btm{display:none}
+@media(max-width:860px){
+ .hd{position:static}
+ body{padding-bottom:66px}
+ .btm{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;background:#fff;border-top:1px solid #dfe5ec;box-shadow:0 -2px 10px rgba(0,0,0,.06);padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
+ .btm a{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;font-size:.72rem;font-weight:700;line-height:1.2;color:var(--ink);text-decoration:none;padding:2px 0}
+ .btm a span{font-size:1.3rem;line-height:1.2}
+ .btm a:active{background:#eef4f1;border-radius:10px}
+}
 </style><script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNDZDNDG8"></script>
 <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-MGNDZDNDG8');</script><script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","zfpiaxq0te");</script><script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>window.OneSignalDeferred=window.OneSignalDeferred||[];OneSignalDeferred.push(async function(OneSignal){try{await OneSignal.init({appId:"5af3a852-10ca-4416-8c37-e204286772e1",allowLocalhostAsSecureOrigin:false});var asked=false;function ask(){if(asked)return;asked=true;try{OneSignal.Slidedown.promptPush();}catch(e){}}setTimeout(function(){window.addEventListener("scroll",ask,{once:true,passive:true});},25000);var b=document.getElementById("pushbtn");if(b)b.addEventListener("click",function(ev){ev.preventDefault();try{OneSignal.Slidedown.promptPush({force:true});}catch(e){}});}catch(e){}});</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5169642227203900" crossorigin="anonymous"></script></head><body>
@@ -155,4 +165,5 @@ html{scroll-behavior:smooth}h2[id]{scroll-margin-top:12px}
 <div class="fstates"><b>States</b><div><a href="../state/up.html">Uttar Pradesh</a><a href="../state/bihar.html">Bihar</a><a href="../state/mp.html">Madhya Pradesh</a><a href="../state/rajasthan.html">Rajasthan</a><a href="../state/maharashtra.html">Maharashtra</a><a href="../state/gujarat.html">Gujarat</a><a href="../state/delhi.html">Delhi</a><a href="../state/haryana.html">Haryana</a><a href="../state/karnataka.html">Karnataka</a><a href="../state/westbengal.html">West Bengal</a><a href="../state/tamilnadu.html">Tamil Nadu</a><a href="../state/ap.html">Andhra Pradesh</a><a href="../state/arunachal.html">Arunachal Pradesh</a><a href="../state/assam.html">Assam</a><a href="../state/chhattisgarh.html">Chhattisgarh</a><a href="../state/goa.html">Goa</a><a href="../state/himachal.html">Himachal Pradesh</a><a href="../state/jharkhand.html">Jharkhand</a><a href="../state/kerala.html">Kerala</a><a href="../state/manipur.html">Manipur</a><a href="../state/meghalaya.html">Meghalaya</a><a href="../state/mizoram.html">Mizoram</a><a href="../state/nagaland.html">Nagaland</a><a href="../state/odisha.html">Odisha</a><a href="../state/punjab.html">Punjab</a><a href="../state/sikkim.html">Sikkim</a><a href="../state/telangana.html">Telangana</a><a href="../state/tripura.html">Tripura</a><a href="../state/uttarakhand.html">Uttarakhand</a><a href="../state/jk.html">Jammu &amp; Kashmir</a></div></div>
 <p class="fnote">ℹ️ This is an independent information website, not a government site. Always apply on the official portal.</p>
 <p class="cp">© 2026 Asha Yojana · Always confirm the information on the official website before applying.</p></div></footer>
+<nav class="btm" aria-label="Main menu"><a href="../index.html"><span>🏠</span>Home</a><a href="../find.html"><span>🔎</span>Find</a><a href="../deadlines.html"><span>⏰</span>Dates</a><a href="../guides/index.html"><span>📘</span>Guides</a><a href="../saved.html"><span>🔖</span>Saved</a></nav>
 </body></html>
