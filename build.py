@@ -448,7 +448,7 @@ def build(lang):
                + 's.textContent=n>0?(n+(document.documentElement.lang=="hi"?" दिन बचे":" days left")):(document.documentElement.lang=="hi"?"आज आख़िरी दिन":"Last day today")})</script>')
     body = f"""<section class="hero"><p style="margin:0 0 4px;font-size:15px;opacity:.9">{t["dedtop"]}</p><h1>{t["h1"]}</h1>
 <p>{t["hp"]}</p>
-<p style="margin:0 0 10px"><a class="btn" href="find.html">{t["findgo"]}</a> <a class="btn" href="calculators.html">{t["calcall"]}</a> <a class="btn" href="deadlines.html">⏰ {"अंतिम तारीख़ें" if lang=="hi" else "Deadlines"}</a></p><input id="q" class="search" type="search" placeholder="{t["ph"]}" autocomplete="off"><div id="res" class="grid"></div></section>
+<p style="margin:0 0 10px"><a class="btn" href="find.html">{t["findgo"]}</a> <a class="btn btn2" href="calculators.html">{t["calcall"]}</a> <a class="btn btn2" href="deadlines.html">⏰ {"अंतिम तारीख़ें" if lang=="hi" else "Deadlines"}</a></p><input id="q" class="search" type="search" placeholder="{t["ph"]}" autocomplete="off"><div id="res" class="grid"></div></section>
 <div id="all">
 {topnews}
 <h2>📰 {"ताज़ा खबर" if lang=="hi" else "Latest updates"}</h2><div class="grid">{"".join(ncard(n,"") for n in [n for n in sorted(news.NEWS,key=lambda n:n["date"],reverse=True) if n["slug"] not in _used][:3])}</div><p><a class="btn" href="khabar/index.html">{"सभी खबरें" if lang=="hi" else "All updates"} →</a></p>
