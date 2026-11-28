@@ -175,4 +175,3 @@ Already on site, skip: Punjab Mawan Dhiyan, WB Annapurna Bhandar, WB Ayushman, N
 - 2026-11-28 header/hero lightened in light mode (v5 block at end of style.css); dark mode unchanged.
 - 2026-11-28 dark-mode fix: deadlines box (.tn-dl), finder, wabox, statecard etc. had hard-coded light backgrounds -> v5b dark overrides at end of style.css.
 - 2026-11-28 header colour back to footer-matching deep green in light mode (hero stays lighter); guide cards use SVG tiles (GSLUG/GICON in build.py; add mapping for new guides, else emoji fallback).
-- 2026-11-28 line SVG icons (SI dict in build.py) for top menu, category chips, bottom bar and hero buttons; news/footer emoji left as is.

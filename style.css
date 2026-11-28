@@ -236,10 +236,3 @@ main{padding-top:20px}
  .ssyt th,.ssyt td{border-color:var(--bd)}
  .jump a{border-color:var(--bd);color:var(--ink)}
 }
-
-/* ---- v6 line icons in menu / chips / bottom bar ---- */
-.si{vertical-align:-3px;flex:none}
-.mnav a span,.btm a span{display:inline-flex;align-items:center;justify-content:center}
-.btm a span .si{width:23px;height:23px}
-.hd .nav a,.mnav a{display:inline-flex;align-items:center;gap:6px}
-.hero .btn{display:inline-flex;align-items:center;gap:8px}
