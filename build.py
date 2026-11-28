@@ -5,6 +5,7 @@ from data1 import Y, CATS
 EN = en6.EN
 CALC = calcdata.CALC
 import seo_boost; seo_boost.apply(Y, EN)  # extra FAQ for real Google queries
+import seo_auto; seo_auto.apply(Y, EN)
 
 # ======= CONFIG: sirf ye 4 cheezein badalni hain =======
 SITE_NAME   = "आशा योजना"
