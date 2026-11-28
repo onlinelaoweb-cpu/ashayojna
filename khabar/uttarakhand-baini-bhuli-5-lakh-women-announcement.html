@@ -186,6 +186,15 @@ h2#states{scroll-margin-top:12px}
 }
 /* 6-item bottom bar */
 @media(max-width:860px){.btm a{font-size:.66rem;min-width:0}.btm a span{font-size:1.2rem}}
+/* ---- v3c sticky header that shrinks on scroll ---- */
+.hd{position:sticky!important;top:0;z-index:40}
+.hd .lg,.hd .lt,.hd .lt small,.hd .nav,.hd .mnav{transition:all .2s ease}
+.hd.shr .nav,.hd.shr .mnav,.hd.shr .lt small{display:none}
+.hd.shr .hdr{min-height:0;padding-top:5px;padding-bottom:5px}
+.hd.shr .lg{width:38px;height:38px}
+.hd.shr .lt{font-size:18px}
+.hd.shr .mnav{display:none}
+@media(min-width:861px){.hd.shr .mnav{display:flex;order:0;width:auto;margin-left:auto;overflow:visible;padding:0}.hd.shr .hdr .lang{margin-left:8px}}
 </style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "उत्तराखंड: 'बैनी-भूली' योजना में 5 लाख से ज़्यादा महिलाओं को आर्थिक मदद की घोषणा", "description": "मुख्यमंत्री धामी ने 17 नवंबर 2026 को घोषणा की; मदद दो किस्तों में आएगी, पहली दिसंबर में। राशि और पात्रता अभी नहीं बताई गई।", "inLanguage": "hi", "datePublished": "2026-11-23T06:00:00+05:30", "dateModified": "2026-11-23T06:00:00+05:30", "image": ["https://ashayojana.com/img/news-uttarakhand-baini-bhuli-5-lakh-women-announcement-hi.jpg"], "mainEntityOfPage": "https://ashayojana.com/khabar/uttarakhand-baini-bhuli-5-lakh-women-announcement.html", "author": {"@type": "Organization", "name": "आशा योजना", "url": "https://ashayojana.com"}, "publisher": {"@type": "Organization", "name": "Asha Yojana", "url": "https://ashayojana.com", "logo": {"@type": "ImageObject", "url": "https://ashayojana.com/img/icon-512.png", "width": 512, "height": 512}}}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNDZDNDG8"></script>
 <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-MGNDZDNDG8');</script><script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","zfpiaxq0te");</script><script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>window.OneSignalDeferred=window.OneSignalDeferred||[];OneSignalDeferred.push(async function(OneSignal){try{await OneSignal.init({appId:"5af3a852-10ca-4416-8c37-e204286772e1",allowLocalhostAsSecureOrigin:false});var asked=false;function ask(){if(asked)return;asked=true;try{OneSignal.Slidedown.promptPush();}catch(e){}}setTimeout(function(){window.addEventListener("scroll",ask,{once:true,passive:true});},25000);var b=document.getElementById("pushbtn");if(b)b.addEventListener("click",function(ev){ev.preventDefault();try{OneSignal.Slidedown.promptPush({force:true});}catch(e){}});}catch(e){}});</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5169642227203900" crossorigin="anonymous"></script></head><body>
@@ -202,4 +211,5 @@ h2#states{scroll-margin-top:12px}
 <p class="fnote">ℹ️ यह एक स्वतंत्र जानकारी वेबसाइट है, सरकारी वेबसाइट नहीं। आवेदन हमेशा आधिकारिक पोर्टल पर ही करें।</p>
 <p class="cp">© 2026 आशा योजना · आवेदन से पहले हमेशा आधिकारिक वेबसाइट पर जानकारी की पुष्टि करें।</p></div></footer>
 <nav class="btm" aria-label="मुख्य मेन्यू"><a href="../index.html"><span>🏠</span>होम</a><a href="../find.html"><span>🔎</span>खोजक</a><a href="../deadlines.html"><span>⏰</span>तारीख़ें</a><a href="../guides/index.html"><span>📘</span>गाइड</a><a href="../calculators.html"><span>🧮</span>कैलकुलेटर</a><a href="../saved.html"><span>🔖</span>सेव</a></nav>
+<script>(function(){var h=document.querySelector(".hd");if(!h)return;var t=false;function f(){t=false;var y=window.pageYOffset||0;if(y>70&&!h.classList.contains("shr"))h.classList.add("shr");else if(y<20&&h.classList.contains("shr"))h.classList.remove("shr")}window.addEventListener("scroll",function(){if(!t){t=true;requestAnimationFrame(f)}},{passive:true});f()})();</script>
 </body></html>
