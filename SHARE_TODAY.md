@@ -1,16 +1,16 @@
-# SHARE_TODAY (27 Nov 2026)
+# SHARE_TODAY (28 Nov 2026)
 
-🏥 Ayushman Bharat: 70+ walon ke liye alag ₹5 lakh top-up
-70 saal ya upar ke sabhi bujurg, income dekhe bina, ₹5 lakh tak cashless ilaaj ke paatra (PIB ke mutabik). Pehle se PM-JAY family mein hain to 70+ member ko alag top-up. Helpline 14555.
-https://ashayojana.com/yojana/ayushman-bharat-pmjay.html
+🚌 AP: Stree Shakti se mahilayon ko APSRTC bus mein free safar
+Andhra Pradesh ki mahila, bachchi aur transgender 5 category ki APSRTC bus (Pallevelugu, Express, Metro Express etc.) mein state ke andar free safar kar sakti hain. Aadhaar ID rakhein. 100 crore+ trips ho chuki hain.
+https://ashayojana.com/yojana/ap-stree-shakti-free-bus.html
 Aur yojanayein: https://ashayojana.com
 
-🎓 NSP scholarship: 30 Nov 2026 aakhri tareekh
-NSP list ke mutabik AICTE Pragati/Saksham, PM YASASVI, UGC PG jaisi kai scholarships ki student application 30-11-2026 tak. Extension ka notice nahi mila, der na karein.
-https://ashayojana.com/khabar/nsp-scholarships-30-november-2026-deadline.html
+🏠 Odisha ko PMAY-G ke 5 lakh pakke ghar
+14 Nov ko Shivraj Chouhan ne Odisha ke gareeb gramin parivaron ke liye 5 lakh ghar announce kiye. Survey ke eligible parivaron ko charan-wise milenge; abhi apply window nahi. Panchayat se list mein naam poochein.
+https://ashayojana.com/khabar/odisha-pmay-g-5-lakh-houses-announced-14-november-2026.html
 Aur yojanayein: https://ashayojana.com
 
-🏦 EPFO board: PF ka Systematic Withdrawal Plan
-19 Nov ko EPFO board ne SWP (monthly/quarterly PF payout) aur minimum balance 25% se 10% karne ko manjoori di. Shuru hone ki date abhi confirm nahi.
-https://ashayojana.com/khabar/epfo-cbt-19-november-2026-swp-minimum-balance-10-percent.html
+👴 Bihar pension ₹1,100: jeevan pramanikaran na bhoolein
+Bihar mein bujurg, vidhwa aur divyang pension ₹1,100/mahina, har mahine ki 10 tarikh ko. Sabhi pensioners ko saalana jeevan pramanikaran karna hota hai (pichhli deadline 30 May 2026). Pension ruke to block/CSC jayein.
+https://ashayojana.com/yojana/bihar-samajik-suraksha-pension-yojana.html
 Aur yojanayein: https://ashayojana.com

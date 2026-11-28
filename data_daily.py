@@ -1765,3 +1765,154 @@ B("kvp-kisan-vikas-patra", None, "bima", "🌾", "https://www.indiapost.gov.in",
   (("KVP में न्यूनतम होल्डिंग अवधि कितनी है?", "What is the minimum holding period in KVP?"), ("हमें इसका पक्का आँकड़ा सरकारी स्रोत में नहीं मिला, इसलिए डाकघर से पूछें।", "We did not find a confirmed figure in an official source, so ask the post office."))],
  _SN)
 tags.TAGS["kvp-kisan-vikas-patra"] = ""
+
+
+# ================= 2026-11-28 =================
+_D28 = {"hi": "28 नवंबर 2026", "en": "28 November 2026", "iso": "2026-11-28"}
+def _ad(slug, key, hi, en):
+    _y(slug)[key] += hi if isinstance(hi, list) else [hi]
+    _EN[slug][key] += en if isinstance(en, list) else [en]
+def _st(slug, key, hi, en):
+    _y(slug)[key] = hi; _EN[slug][key] = en
+
+# ---------- Part B 1) Bihar 125 unit free bijli ----------
+_s = "bihar-125-unit-free-bijli-yojana"
+y = _y(_s); e = _EN[_s]
+y["about"] += " आज तक की रिपोर्ट (19 मार्च 2026) के अनुसार योजना अब भी चल रही है और करीब 1.86 करोड़ उपभोक्ताओं को इसका लाभ मिल रहा है। रिपोर्टों में इसका सरकारी नाम 'मुख्यमंत्री विद्युत उपभोक्ता सहायता योजना' आता है।"
+e["about"] += " As per an Aaj Tak report (19 Mar 2026) the scheme is still running and about 1.86 crore consumers get the benefit. Reports give its official name as 'Mukhyamantri Vidyut Upbhokta Sahayata Yojana'."
+y["facts"].append(("लाभार्थी", "लगभग 1.86 करोड़ उपभोक्ता (आज तक, 19 मार्च 2026)"))
+e["facts"].append(("Beneficiaries", "About 1.86 crore consumers (Aaj Tak, 19 Mar 2026)"))
+_ad(_s, "benefits",
+    ["पत्रिका के अनुसार लगभग 1.87 करोड़ घरेलू उपभोक्ताओं में करीब 1.68 करोड़ (लगभग 90%) की खपत 125 यूनिट या कम है, इसलिए उनका बिल शून्य आता है",
+     "सरकार ने 2025-26 के लिए अतिरिक्त ₹3,797 करोड़ मंज़ूर किए; कुल बोझ ₹19,792 करोड़ बताया गया (पत्रिका, न्यूज़ ऑन एयर)"],
+    ["As per Patrika about 1.68 crore (roughly 90%) of about 1.87 crore domestic consumers use 125 units or less, so their bill is zero",
+     "An extra ₹3,797 crore was sanctioned for 2025-26; the total burden is put at ₹19,792 crore (Patrika, News On AIR)"])
+_ad(_s, "elig",
+    "सोलर: कम से कम 1.1 kW की छत वाली योजना में सहायता मिलती है और सोलर लगाने के लिए उपभोक्ता की सहमति ज़रूरी है (एनर्जेटिका, 17 जुलाई 2025)",
+    "Solar: support is for rooftop plants of at least 1.1 kW and the consumer's consent is needed to install solar (Energetica, 17 Jul 2025)")
+_st(_s, "faq", [
+ ("क्या हर घर को 125 यूनिट मुफ़्त मिलेगी?", "बिहार मंत्रिमंडल ने 18 जुलाई 2025 को राज्य के सभी घरेलू उपभोक्ताओं के लिए इसे मंज़ूरी दी (न्यूज़ ऑन एयर)। लाभ जुलाई 2025 के बिल से दिखा। अपने बिल पर जाँचें।"),
+ ("125 यूनिट से ज़्यादा बिजली जले तो?", "पत्रिका के अनुसार 125 यूनिट से ऊपर खपत पर बिल पहले की तरह मौजूदा टैरिफ़ से बनता है, सब्सिडी लगाकर। फ़िक्स्ड चार्ज पर हमें पक्की पुष्टि नहीं मिली, इसलिए बिजली कंपनी से पूछें।"),
+ ("क्या योजना अब भी चल रही है?", "आज तक की रिपोर्ट (19 मार्च 2026) के अनुसार हाँ। बिहार विद्युत नियामक आयोग ने 2026-27 में बिजली की दरें नहीं बढ़ाईं (1 अप्रैल 2026 से)। 2026-27 के लिए सब्सिडी की रकम तब तक घोषित नहीं हुई थी।"),
+ ("क्या आवेदन करना होगा?", "हमें पढ़ी गई रिपोर्टों में किसी आवेदन का ज़िक्र नहीं मिला; लाभ बिल में 125 यूनिट की राशि कटकर दिखता है। पक्की पुष्टि बिजली कंपनी से करें।"),
+ ("क्या सोलर के लिए मेरी सहमति चाहिए?", "हाँ, एनर्जेटिका (17 जुलाई 2025) के अनुसार सोलर लगाने के लिए उपभोक्ता की सहमति ज़रूरी है। कुटीर ज्योति के लाभार्थियों का पूरा खर्च सरकार उठाएगी; बाकी घरों को 'उचित सहायता' की बात है, रकम तय नहीं बताई गई।")],
+ [("Will every household get 125 free units?", "Bihar's cabinet approved it on 18 July 2025 for all domestic consumers (News On AIR). The benefit showed from the July 2025 bill. Check your bill."),
+  ("What if I use more than 125 units?", "As per Patrika the bill above 125 units is calculated at the existing tariff as before, with the subsidy applied. We did not find firm confirmation on fixed charges, so ask your electricity company."),
+  ("Is the scheme still running?", "Yes as per an Aaj Tak report (19 Mar 2026). The Bihar Electricity Regulatory Commission did not raise tariffs for 2026-27 (from 1 Apr 2026). The 2026-27 subsidy allocation had not been announced at that time."),
+  ("Do I have to apply?", "The reports we read mention no application; the benefit shows as 125 units' worth of charges deducted on the bill. Confirm with your electricity company."),
+  ("Is my consent needed for solar?", "Yes, as per Energetica (17 Jul 2025) the consumer's consent is needed to install solar. The government pays the full cost for Kutir Jyoti beneficiaries; other homes are to get 'appropriate support' with no fixed amount stated.")])
+_st(_s, "note", "स्रोत जाँचे (28 नवंबर 2026): न्यूज़ ऑन एयर (18 जुलाई 2025), एनर्जेटिका इंडिया (17 जुलाई 2025), पत्रिका (अगस्त 2025 की रिपोर्ट), आज तक (19 मार्च 2026)। बिजली कंपनी का आधिकारिक पन्ना नहीं पढ़ा जा सका; हेल्पलाइन, फ़िक्स्ड चार्ज और 2026-27 की सब्सिडी की पुष्टि नहीं हुई। बिजली कंपनी से पक्का करें.",
+    "Sources checked (28 Nov 2026): News On AIR (18 Jul 2025), Energetica India (17 Jul 2025), Patrika (Aug 2025 report), Aaj Tak (19 Mar 2026). No official electricity-company page could be read; the helpline, fixed charges and the 2026-27 subsidy are not confirmed. Confirm with your electricity company.")
+VERIFIED[_s] = _D28; tags.TAGS[_s] = tags.TAGS.get(_s, "g")
+
+# ---------- Part B 2) Bihar social security pension ----------
+_s = "bihar-samajik-suraksha-pension-yojana"
+y = _y(_s); e = _EN[_s]
+y["facts"].append(("भुगतान", "हर महीने की 10 तारीख़ को, DBT से (वन इंडिया, जून 2025)"))
+e["facts"].append(("Payment", "On the 10th of every month by DBT (Oneindia, Jun 2025)"))
+y["about"] += " वृद्धि की घोषणा 21 जून 2025 को मुख्यमंत्री ने की थी (न्यूज़ ऑन एयर) और पत्रिका (15 मई 2026) के अनुसार राशि अब भी ₹1,100 है, लाभार्थी एक करोड़ से ज़्यादा।"
+e["about"] += " The hike was announced by the Chief Minister on 21 June 2025 (News On AIR) and, as per Patrika (15 May 2026), the amount is still ₹1,100 with over 1 crore beneficiaries."
+_ad(_s, "steps",
+    "सभी पेंशनधारकों को सालाना जीवन प्रमाणीकरण कराना होता है। पत्रिका (15 मई 2026) के अनुसार इसकी अंतिम तारीख़ 30 मई 2026 थी, यह निःशुल्क है और पंचायत स्तर के शिविर या नज़दीकी CSC पर होता है। 2026-27 के अगले चरण की तारीख़ हमें नहीं मिली",
+    "All pensioners have to do the annual life certification (jeevan pramanikaran). As per Patrika (15 May 2026) the deadline was 30 May 2026, it is free and done at panchayat-level camps or the nearest CSC. We did not find the date for the next round")
+_ad(_s, "faq",
+    [("पेंशन किस तारीख़ को आती है?", "वन इंडिया (जून 2025) के अनुसार हर महीने की 10 तारीख़ को DBT से। छुट्टी या तकनीकी वजह से देरी हो सकती है।"),
+     ("जीवन प्रमाणीकरण क्या है और अंतिम तारीख़ क्या थी?", "पत्रिका (15 मई 2026) के अनुसार सभी सामाजिक सुरक्षा पेंशनधारकों को यह कराना था, तारीख़ 30 मई 2026 थी, नहीं कराने पर पेंशन अस्थायी रूप से रुक सकती है। यह निःशुल्क है। यह e-KYC जैसी ही प्रक्रिया है या अलग, इस पर स्रोत साफ़ नहीं हैं; ब्लॉक कार्यालय से पूछें।"),
+     ("उँगली के निशान/आधार नाम मिलान की वजह से पेंशन रुक गई तो?", "पत्रिका (13 अगस्त 2025) के अनुसार लगभग 3 लाख वृद्धजनों की पेंशन फ़िंगरप्रिंट, आइरिस स्कैन और आधार-बैंक नाम के अंतर जैसी वजहों से रुकी थी और ब्लॉक स्तर पर विशेष शिविर लगाए गए। ऐसे में ब्लॉक या CSC जाएँ।")],
+    [("On which date does the pension arrive?", "As per Oneindia (Jun 2025), on the 10th of every month by DBT. Holidays or technical issues can cause delays."),
+     ("What is life certification and what was the deadline?", "As per Patrika (15 May 2026) all social security pensioners had to do it by 30 May 2026, otherwise the pension can be stopped temporarily. It is free. Sources are unclear whether it is the same as e-KYC or separate; ask your block office."),
+     ("My pension stopped because of fingerprint/Aadhaar name mismatch. What now?", "As per Patrika (13 Aug 2025) about 3 lakh senior citizens' pensions were stopped for reasons like worn fingerprints, iris-scan trouble and Aadhaar-bank name differences, and special block-level camps were held. Visit your block or a CSC.")])
+_st(_s, "note", "स्रोत जाँचे (28 नवंबर 2026): न्यूज़ ऑन एयर (21 जून 2025), वन इंडिया (जून 2025), पत्रिका (13 अगस्त 2025 और 15 मई 2026)। आधिकारिक पोर्टल नहीं पढ़ा जा सका; आयु/आय की सटीक शर्तें, सही पोर्टल पता, हेल्पलाइन और जीवन प्रमाणीकरण की अगली तारीख़ की पुष्टि नहीं हुई। ब्लॉक कार्यालय से पक्का करें.",
+    "Sources checked (28 Nov 2026): News On AIR (21 Jun 2025), Oneindia (Jun 2025), Patrika (13 Aug 2025 and 15 May 2026). No official portal could be read; the exact age/income rules, the correct portal address, the helpline and the next life-certification date are not confirmed. Confirm with your block office.")
+VERIFIED[_s] = _D28
+
+# ---------- Part B 3) UP pension SSPY ----------
+_s = "up-pension-yojana-sspy"
+y = _y(_s); e = _EN[_s]
+y["about"] += " फ्री प्रेस जर्नल (8 मई 2026) के अनुसार राशि अब भी ₹1,000 प्रति माह है (तिमाही ₹3,000, DBT) और करीब 29.2 लाख बुज़ुर्ग महिलाओं को मिल रही है। मुख्यमंत्री ने ₹1,500 की बात कही है, पर इसका कोई आदेश या लागू होने की तारीख़ हमें नहीं मिली, इसलिए यहाँ ₹1,000 ही दिया गया है।"
+e["about"] += " As per Free Press Journal (8 May 2026) the amount is still ₹1,000 a month (₹3,000 a quarter, by DBT) and about 29.2 lakh elderly women get it. The Chief Minister has spoken of ₹1,500, but we found no order or start date, so ₹1,000 is what is shown here."
+_ad(_s, "elig",
+    "वृद्धावस्था पेंशन की आय सीमा पत्रिका (14 फ़रवरी 2025) के अनुसार सालाना ग्रामीण ₹46,080 और शहरी ₹56,460 है; यह पुरानी रिपोर्ट है, पोर्टल पर पक्का करें",
+    "As per Patrika (14 Feb 2025) the income limit for old-age pension is ₹46,080 a year in rural and ₹56,460 in urban areas; this is an older report, confirm on the portal")
+_ad(_s, "faq",
+    [("क्या UP में पेंशन ₹1,500 हो गई है?", "ऑर्गनाइज़र (16 जून 2026) की रिपोर्ट में मुख्यमंत्री के ₹1,500 मासिक पेंशन की बात है, पर उसमें लागू होने की तारीख़ या आदेश नहीं है। फ्री प्रेस जर्नल (8 मई 2026) और सितंबर 2026 की एक रिपोर्ट के अनुसार राशि ₹1,000 है। हमें बढ़ोतरी का कोई सरकारी आदेश नहीं मिला, इसलिए ₹1,000 ही माने।"),
+     ("क्या ₹3,000 की जगह ₹1,500 की दो किस्तें मिल रही हैं?", "कुछ वेबसाइटें (सितंबर-अक्टूबर 2026) ऐसा कहती हैं, पर वे भी कोई आदेश नहीं दिखातीं। इसकी हमने पुष्टि नहीं की। अपने ज़िला समाज कल्याण कार्यालय से पूछें।"),
+     ("क्या योजना अब भी चल रही है?", "हाँ। पीआरएस की यूपी बजट 2026-27 रिपोर्ट के अनुसार वृद्धावस्था/किसान पेंशन के लिए ₹8,950 करोड़ और निराश्रित महिला पेंशन के लिए ₹3,500 करोड़ रखे गए हैं।")],
+    [("Has the UP pension become ₹1,500?", "An Organiser report (16 Jun 2026) speaks of the Chief Minister announcing ₹1,500 a month but gives no start date or order. As per Free Press Journal (8 May 2026) and a September 2026 report the amount is ₹1,000. We found no government order for a hike, so treat ₹1,000 as the amount."),
+     ("Is it now two instalments of ₹1,500 instead of ₹3,000?", "Some websites (Sep-Oct 2026) say so, but they show no order either. We have not confirmed it. Ask your district social welfare office."),
+     ("Is the scheme still running?", "Yes. As per PRS's UP Budget 2026-27 analysis ₹8,950 crore is set aside for old-age/farmer pensions and ₹3,500 crore for the destitute women's pension.")])
+_st(_s, "note", "स्रोत जाँचे (28 नवंबर 2026): फ्री प्रेस जर्नल (13 फ़रवरी और 8 मई 2026), ऑर्गनाइज़र (16 जून 2026), द लॉजिकल इंडियन (1 अक्टूबर 2026), पीआरएस बजट विश्लेषण 2026-27, पत्रिका (14 फ़रवरी 2025)। sspy-up.gov.in का पन्ना नहीं पढ़ा जा सका; बढ़ोतरी का आदेश, विधवा/दिव्यांग की आयु-आय सीमा और हेल्पलाइन की पुष्टि नहीं हुई। आय सीमा, आयु-शर्तें और सत्यापन के नियम बदल सकते हैं; अंतिम सत्यापन sspy-up.gov.in या ज़िला समाज कल्याण कार्यालय में करें। पोर्टल न खुले (जैसे सर्टिफ़िकेट त्रुटि आए) तो उस पेज पर आधार या पासवर्ड न डालें.",
+    "Sources checked (28 Nov 2026): Free Press Journal (13 Feb and 8 May 2026), Organiser (16 Jun 2026), The Logical Indian (1 Oct 2026), PRS budget analysis 2026-27, Patrika (14 Feb 2025). The sspy-up.gov.in page could not be read; an order for a hike, the age/income limits for widow and disability pension and the helpline are not confirmed. Income limits, age rules and verification rules can change; confirm on sspy-up.gov.in or at the district social welfare office. If the portal does not open (for example a certificate error) do not enter Aadhaar or a password on that page.")
+VERIFIED[_s] = _D28
+
+# ---------- Part B 4) Sukanya Samriddhi ----------
+_s = "sukanya-samriddhi-yojana"
+y = _y(_s); e = _EN[_s]
+y["about"] += " ब्याज चक्रवृद्धि सालाना जुड़ता है और वित्त वर्ष के अंत में खाते में आता है। 21 साल बाद खाता बंद न कराएँ तो उस पर डाकघर बचत खाते की दर से ब्याज मिलता है (PIB दस्तावेज़)। 1 अक्टूबर 2024 से लागू नियम (बिज़नेस स्टैंडर्ड, 4 सितंबर 2024) के अनुसार दादा-दादी जैसे गैर-अभिभावक के खोले खाते माता-पिता/कानूनी अभिभावक के नाम पर ट्रांसफ़र करने होते हैं।"
+e["about"] += " Interest compounds annually and is credited at the end of the financial year. If the account is not closed after 21 years it earns the post office savings account rate (PIB document). As per a rule effective 1 Oct 2024 (Business Standard, 4 Sep 2024) accounts opened by non-guardians such as grandparents must be moved to the parents/legal guardian."
+y["docs"] = y["docs"] + ["PAN या फ़ॉर्म 60 (PIB दस्तावेज़ के अनुसार)"]
+e["docs"] = e["docs"] + ["PAN or Form 60 (as per the PIB document)"]
+_ad(_s, "elig",
+    ["खाता डाकघर, सार्वजनिक बैंक या अधिकृत निजी बैंक (HDFC, एक्सिस, ICICI, IDBI) में खुल सकता है और देश में कहीं भी ट्रांसफ़र हो सकता है (PIB दस्तावेज़)"],
+    ["The account can be opened at a post office, public sector bank or authorised private bank (HDFC, Axis, ICICI, IDBI) and transferred anywhere in India (PIB document)"])
+_st(_s, "faq", [
+ ("सुकन्या समृद्धि में ब्याज दर कितनी है?", "अक्टूबर–दिसंबर 2026 तिमाही के लिए 8.2% है (30 सितंबर 2026 की घोषणा में पिछली तिमाही से अपरिवर्तित)। जनवरी–मार्च 2027 की दर आमतौर पर दिसंबर के अंत में घोषित होती है; अभी हमें वह नहीं मिली।"),
+ ("खाता कब तक चलता है?", "जमा 15 साल करनी होती है और खाता खुलने से 21 साल बाद मैच्योर होता है। उसके बाद खाता बंद न हो तो डाकघर बचत खाते की दर से ब्याज मिलता है।"),
+ ("पढ़ाई के लिए पैसे कब निकाल सकते हैं?", "बेटी के 18 साल होने या कक्षा 10 पास करने (जो पहले हो) के बाद पिछले वित्त वर्ष के अंत की रकम का 50% तक, उच्च शिक्षा के खर्च के लिए। साल में एक बार, अधिकतम 5 साल, एकमुश्त या किस्तों में; दाख़िले का पत्र/फ़ीस रसीद चाहिए और रकम असल फ़ीस से ज़्यादा नहीं हो सकती (बिज़नेस टुडे, 24 अप्रैल 2026; PIB दस्तावेज़)।"),
+ ("शादी पर खाता कैसे बंद होता है?", "बेटी की शादी के दिन उम्र कम से कम 18 साल होनी चाहिए। बिज़नेस टुडे/PIB दस्तावेज़ के अनुसार बंद करने का आवेदन शादी से 1 महीना पहले से 3 महीने बाद तक देना होता है, घोषणा-पत्र के साथ। नोटरी की शर्त पर डाकघर से पक्का करें।"),
+ ("5 साल से पहले खाता बंद हो सकता है?", "रिपोर्टों के अनुसार शुरुआती 5 साल में खाताधारक की मृत्यु या अत्यंत कठिनाई जैसे विशेष हालात में ही। खाताधारक के अनिवासी हो जाने पर भी बंद होता है (बिज़नेस टुडे)।"),
+ ("खाता दादा-दादी ने खोला था तो?", "1 अक्टूबर 2024 से लागू नियम (बिज़नेस स्टैंडर्ड, 4 सितंबर 2024) के अनुसार उसे माता-पिता/कानूनी अभिभावक के नाम पर ट्रांसफ़र कराना होता है, उसी शाखा में आवेदन, मूल पासबुक, जन्म प्रमाण पत्र और रिश्ते का प्रमाण देकर। नियम की गैर-अनुपालन पर ब्याज का असर हमने नहीं जाँचा।"),
+ ("अगर किसी साल पैसा जमा न हो पाए?", "न्यूनतम राशि जमा न होने पर खाता डिफ़ॉल्ट हो जाता है और नियमित करने के लिए जुर्माना व बकाया जमा करना पड़ता है। जुर्माने की ताज़ा रकम हमने नहीं जाँची; डाकघर से पूछें।")],
+ [("What is the interest rate on Sukanya Samriddhi?", "8.2% for the Oct–Dec 2026 quarter (unchanged from the previous quarter in the 30 Sep 2026 announcement). The Jan–Mar 2027 rate is normally announced around the end of December; we have not found it yet."),
+  ("How long does the account run?", "Deposits are made for 15 years and the account matures 21 years after opening. If it is not closed after that it earns the post office savings account rate."),
+  ("When can I withdraw for education?", "After the girl turns 18 or passes Class 10 (whichever is earlier), up to 50% of the balance at the end of the previous financial year, for higher education costs. Once a year for up to 5 years, as a lump sum or in instalments; an admission letter/fee receipt is needed and the amount cannot exceed the actual fees (Business Today, 24 Apr 2026; PIB document)."),
+  ("How is the account closed on marriage?", "The girl must be at least 18 on the wedding date. As per Business Today/the PIB document the closure application must be made from 1 month before to 3 months after the marriage, with a declaration. Confirm the notarisation rule with the post office."),
+  ("Can the account be closed before 5 years?", "As per reports only in special cases such as the holder's death or extreme hardship in the first 5 years. It is also closed if the holder becomes a non-resident (Business Today)."),
+  ("What if the account was opened by grandparents?", "As per a rule effective 1 Oct 2024 (Business Standard, 4 Sep 2024) it must be transferred to the parents/legal guardian, applying at the same branch with the original passbook, birth certificate and proof of relationship. We did not check the interest effect of non-compliance."),
+  ("What if I miss a year's deposit?", "If the minimum is not deposited the account becomes defaulted and has to be regularised by paying a penalty and the arrears. We did not check the current penalty; ask the post office.")])
+_st(_s, "note", "स्रोत जाँचे (28 नवंबर 2026): बिज़नेस टुडे और फ्री प्रेस जर्नल/PTI (30 सितंबर 2026, दर 8.2%), बिज़नेस टुडे (24 अप्रैल 2026, निकासी), PIB दस्तावेज़ (जनवरी 2026 पथ, जमा/अवधि/खाता नियम), बिज़नेस स्टैंडर्ड (4 सितंबर 2024, ट्रांसफ़र नियम)। आधिकारिक डाक विभाग पन्ना नहीं पढ़ा; जुर्माना, टैक्स का ताज़ा व्यवहार (धारा 80C/नई कर प्रणाली) और हेल्पलाइन की पुष्टि नहीं हुई। दर हर तिमाही बदल सकती है; डाकघर/बैंक या indiapost.gov.in से पक्का करें।",
+    "Sources checked (28 Nov 2026): Business Today and Free Press Journal/PTI (30 Sep 2026, 8.2% rate), Business Today (24 Apr 2026, withdrawal), a PIB document (Jan 2026 path; deposit/tenure/account rules), Business Standard (4 Sep 2024, transfer rule). The official India Post page was not read; the penalty, current tax treatment (Section 80C/new regime) and helpline are not confirmed. The rate can change every quarter; confirm with the post office/bank or indiapost.gov.in.")
+VERIFIED[_s] = _D28
+
+# ================= Part A: new pages 2026-11-28 =================
+B("ap-stree-shakti-free-bus", "ap", "mahila", "🚌", "https://www.apsrtc.co.in",
+ ("स्त्री शक्ति – आंध्र प्रदेश में APSRTC बसों में महिलाओं को मुफ़्त यात्रा", "Stree Shakti – Free APSRTC Bus Travel for Women in Andhra Pradesh"),
+ ("आंध्र प्रदेश की महिलाएँ, बालिकाएँ और ट्रांसजेंडर व्यक्ति APSRTC की चुनी हुई पाँच श्रेणी की बसों में राज्य के अंदर मुफ़्त यात्रा कर सकते हैं।", "Women, girls and transgender persons of Andhra Pradesh can travel free within the state in five listed categories of APSRTC buses."),
+ ("आंध्र प्रदेश · मुफ़्त यात्रा", "Andhra Pradesh · Free travel"), ("आंध्र प्रदेश सरकार / APSRTC", "Government of Andhra Pradesh / APSRTC"),
+ [(("लाभ", "Benefit"), ("राज्य में चुनी बसों में मुफ़्त यात्रा", "Free travel in listed buses within the state")), (("शुरुआत", "Started"), ("15 अगस्त 2025", "15 August 2025")), (("किसके लिए", "For"), ("AP की निवासी बालिकाएँ, महिलाएँ, ट्रांसजेंडर", "Girls, women and transgender persons living in AP")), (("पहचान", "ID"), ("आधार मान्य बताया गया", "Aadhaar reported as accepted"))],
+ ("स्त्री शक्ति योजना 15 अगस्त 2025 को शुरू हुई। डेक्कन क्रॉनिकल (15 अगस्त 2026) के अनुसार इसमें पल्ले वेलुगु, अल्ट्रा पल्ले वेलुगु, सिटी ऑर्डिनरी, मेट्रो एक्सप्रेस और एक्सप्रेस बसों में राज्य के अंदर कहीं भी मुफ़्त यात्रा मिलती है। हंस इंडिया (7 अक्टूबर 2026) के अनुसार योजना में 100 करोड़ से ज़्यादा मुफ़्त यात्राएँ हो चुकी हैं और रोज़ करीब 24 लाख महिलाएँ इसका उपयोग करती हैं।",
+  "The Stree Shakti scheme began on 15 August 2025. As per Deccan Chronicle (15 Aug 2026) it gives free travel anywhere within the state in Pallevelugu, Ultra Pallevelugu, City Ordinary, Metro Express and Express buses. As per The Hans India (7 Oct 2026) over 100 crore free trips have been made and about 24 lakh women use it every day."),
+ [("पाँच श्रेणी की APSRTC बसों में राज्य के अंदर मुफ़्त यात्रा; डेक्कन क्रॉनिकल के अनुसार चुनी मंदिर-विशेष बसों में भी", "Free travel within the state in five categories of APSRTC buses; as per Deccan Chronicle also on special temple bus services"), ("कोई आयु या आय सीमा किसी रिपोर्ट में नहीं मिली", "No age or income limit appeared in any report"), ("रिपोर्टों के अनुसार सरकार हर महीने करीब ₹160 करोड़ APSRTC को देती है और अगस्त 2026 तक ₹2,160 करोड़ जारी हुए", "As per reports the government pays APSRTC about ₹160 crore a month and ₹2,160 crore had been released by August 2026")],
+ [("आंध्र प्रदेश की निवासी बालिका, महिला या ट्रांसजेंडर व्यक्ति (द प्रिंट 8 अगस्त 2025, FPJ 15 अगस्त 2025)", "A girl, woman or transgender person living in Andhra Pradesh (ThePrint 8 Aug 2025, FPJ 15 Aug 2025)"), ("यात्रा चुनी हुई पाँच श्रेणी की APSRTC बसों में और राज्य की सीमा के अंदर", "Travel in the five listed APSRTC bus categories and within the state")],
+ [("द प्रिंट (8 अगस्त 2025) के अनुसार अल्ट्रा डीलक्स, सुपर लग्ज़री, नॉन-स्टॉप अंतरराज्यीय, कॉन्ट्रैक्ट कैरेज/चार्टर और पैकेज टूर की बसें शामिल नहीं थीं; 2026 में सूची बदली या नहीं, हमें पक्का नहीं मिला", "As per ThePrint (8 Aug 2025) Ultra Deluxe, Super Luxury, non-stop interstate, contract-carriage/charter and package-tour buses were not covered; we could not confirm whether the list changed in 2026"), ("राज्य के बाहर की यात्रा या पुरुष और बाहरी राज्य के यात्री", "Travel outside the state, men and visitors from other states")],
+ [("आधार कार्ड (डेक्कन क्रॉनिकल, अगस्त 2026)", "Aadhaar card (Deccan Chronicle, Aug 2026)"), ("2025 की एक रिपोर्ट के अनुसार वोटर ID या राशन कार्ड भी", "As per a 2025 report voter ID or ration card also"), ("AP का निवास दिखाने वाला कोई पहचान पत्र", "An ID showing Andhra Pradesh residence")],
+ [("किसी रिपोर्ट में अलग पंजीकरण या कार्ड का ज़िक्र नहीं मिला; कंडक्टर को पहचान पत्र दिखाने की बात है (हमारा अनुमान, किसी स्रोत ने चरण नहीं बताए)", "No report mentions separate registration or a card; showing ID to the conductor appears to be the method (our reading, no source lists steps)"), ("पल्ले वेलुगु, अल्ट्रा पल्ले वेलुगु, सिटी ऑर्डिनरी, मेट्रो एक्सप्रेस या एक्सप्रेस बोर्ड वाली बस में चढ़ें", "Board a Pallevelugu, Ultra Pallevelugu, City Ordinary, Metro Express or Express bus"), ("आधार या मान्य पहचान पत्र दिखाएँ और मुफ़्त टिकट लें", "Show Aadhaar or another accepted ID and take the free ticket")],
+ ("apsrtc.co.in – APSRTC मुख्य साइट (योजना का पन्ना नहीं पढ़ा गया)", "apsrtc.co.in – APSRTC main site (scheme page not read)"), NOHELP,
+ [(("कौन-सी बसें मुफ़्त हैं?", "Which buses are free?"), ("पाँच श्रेणियाँ: पल्ले वेलुगु, अल्ट्रा पल्ले वेलुगु, सिटी ऑर्डिनरी, मेट्रो एक्सप्रेस और एक्सप्रेस (डेक्कन क्रॉनिकल, अगस्त 2026)।", "Five categories: Pallevelugu, Ultra Pallevelugu, City Ordinary, Metro Express and Express (Deccan Chronicle, Aug 2026).")),
+  (("क्या सिर्फ़ आधार काफ़ी है?", "Is Aadhaar enough?"), ("डेक्कन क्रॉनिकल (अगस्त 2026) में आधार बताया गया है; 2025 की रिपोर्ट में वोटर ID/राशन कार्ड भी। पक्का करने के लिए कंडक्टर या डिपो से पूछें।", "Deccan Chronicle (Aug 2026) mentions Aadhaar; a 2025 report also mentions voter ID/ration card. Ask the conductor or depot to be sure.")),
+  (("क्या तेलंगाना जैसे दूसरे राज्य की यात्रा मुफ़्त है?", "Is travel to another state like Telangana free?"), ("2025 की रिपोर्ट में नॉन-स्टॉप अंतरराज्यीय बसें बाहर थीं। बाकी अंतरराज्यीय सेवाओं पर हमें स्पष्ट जानकारी नहीं मिली; योजना राज्य के अंदर की यात्रा के लिए बताई गई है।", "A 2025 report excluded non-stop interstate buses. We found no clear information on other interstate services; the scheme is described for travel within the state.")),
+  (("क्या कोई मासिक सीमा है?", "Is there a monthly limit?"), ("हमारे पढ़े स्रोतों में कोई सीमा नहीं बताई गई।", "None of the sources we read mention a limit.")),
+  (("क्या योजना अब भी चल रही है?", "Is the scheme still running?"), ("हाँ। हंस इंडिया और डेक्कन क्रॉनिकल (7 अक्टूबर 2026) के अनुसार 100 करोड़ मुफ़्त यात्राएँ पूरी हुईं।", "Yes. Per The Hans India and Deccan Chronicle (7 Oct 2026) 100 crore free trips were completed."))],
+ ("स्रोत जाँचे (28 नवंबर 2026): डेक्कन क्रॉनिकल (15-16 अगस्त 2026 और 6-7 अक्टूबर 2026), द हंस इंडिया (7 अक्टूबर 2026), द प्रिंट (8 अगस्त 2025), फ्री प्रेस जर्नल (15 अगस्त 2025)। आधिकारिक पन्ना नहीं पढ़ा गया; 2026 की बाहर रखी बसों की सूची, स्मार्ट कार्ड और हेल्पलाइन की पुष्टि नहीं हुई, इसलिए कोई हेल्पलाइन नहीं दी गई। अफ़वाहों पर पैसे न दें; यात्रा निःशुल्क है.",
+  "Sources checked (28 Nov 2026): Deccan Chronicle (15-16 Aug 2026 and 6-7 Oct 2026), The Hans India (7 Oct 2026), ThePrint (8 Aug 2025), Free Press Journal (15 Aug 2025). The official page was not read; the 2026 list of excluded buses, any smart card and the helpline are not confirmed, so no helpline is given. Do not pay anyone on rumours; the travel is free."))
+tags.TAGS["ap-stree-shakti-free-bus"] = "w d s"
+
+B("tamilnadu-tamil-pudhalvan", "tamilnadu", "rozgar", "🎓", "https://www.tn.gov.in",
+ ("तमिल पुदलवन – सरकारी स्कूल से आए छात्रों को ₹1,000 मासिक (तमिलनाडु)", "Tamil Pudhalvan – ₹1,000 a Month for Government-School Students in Higher Education (Tamil Nadu)"),
+ ("सरकारी स्कूल से पढ़कर उच्च शिक्षा में जाने वाले छात्रों को हर महीने ₹1,000 बैंक खाते में, रिपोर्टों के अनुसार।", "Students from government schools going into higher education get ₹1,000 a month in the bank account, as per reports."),
+ ("तमिलनाडु · छात्र सहायता", "Tamil Nadu · Student support"), ("तमिलनाडु सरकार (उच्च शिक्षा/स्कूल शिक्षा)", "Government of Tamil Nadu (higher education/school education)"),
+ [(("राशि", "Amount"), ("₹1,000 प्रति माह, सीधे बैंक खाते में", "₹1,000 a month straight into the bank account")), (("किसके लिए", "For"), ("सरकारी/सहायता प्राप्त स्कूल से आए छात्र जो उच्च शिक्षा में हैं", "Students from government/aided schools in higher education")), (("शुरुआत", "Launched"), ("अगस्त 2024 (रिपोर्ट)", "August 2024 (report)")), (("स्थिति", "Status"), ("मई 2026 में जारी बताई गई", "Reported as continuing in May 2026"))],
+ ("तमिल पुदलवन तमिलनाडु की योजना है जिसमें सरकारी स्कूल से पढ़कर उच्च शिक्षा में जाने वाले छात्रों को हर महीने ₹1,000 मिलते हैं। यह छात्राओं के लिए चल रही पुदुमै पेन्न योजना की साथी योजना है। देवडिस्कोर्स (अगस्त 2024) में इसकी शुरुआत सरकारी और सहायता प्राप्त स्कूलों के लड़कों के लिए बताई गई थी। डीटी नेक्स्ट और न्यूज़ टुडे (14 मई 2026) के अनुसार नई सरकार के तहत भी योजना जारी है और ₹1,000 जमा हुए।",
+  "Tamil Pudhalvan is a Tamil Nadu scheme that gives students from government schools who go into higher education ₹1,000 a month. It is the companion of the Pudhumai Penn scheme for girls. Devdiscourse (Aug 2024) described its launch for boys from government and aided schools. As per DT Next and News Today (14 May 2026) the scheme continues under the new government and ₹1,000 was credited."),
+ [("₹1,000 प्रति माह सीधे बैंक खाते में (देवडिस्कोर्स 2024; डीटी नेक्स्ट और न्यूज़ टुडे 2026)", "₹1,000 a month straight into the bank account (Devdiscourse 2024; DT Next and News Today 2026)"), ("करियर्स360 (सितंबर 2025) के अनुसार कॉलेज में पढ़ रहे पात्र छात्र-छात्राओं के लिए विस्तार की बात आई; यह 'सिर्फ़ लड़के' वाली बात से मेल नहीं खाती, इसलिए पात्रता कॉलेज से पक्का करें", "As per Careers360 (Sep 2025) an expansion for eligible college students was mentioned; this does not match 'boys only', so confirm eligibility with your college")],
+ [("तमिलनाडु का छात्र जो सरकारी या सहायता प्राप्त स्कूल से पढ़ा हो (देवडिस्कोर्स, अगस्त 2024)", "A Tamil Nadu student who studied in a government or aided school (Devdiscourse, Aug 2024)"), ("उच्च शिक्षा (कॉलेज/ITI/डिप्लोमा जैसी) में दाख़िला; सटीक कोर्स-सूची हमें नहीं मिली", "Admission to higher education (college/ITI/diploma etc.); we did not find the exact list of courses")],
+ [("आय सीमा, आयु सीमा और अपवर्जन किसी पढ़े स्रोत में नहीं मिले; इसे 'कोई सीमा नहीं' न समझें", "Income limit, age limit and exclusions were not found in any source we read; do not take that as 'no limit'")],
+ [("आधार और बैंक खाता विवरण", "Aadhaar and bank account details"), ("स्कूल का ट्रांसफ़र सर्टिफ़िकेट/सरकारी स्कूल में पढ़ाई का प्रमाण", "Transfer certificate/proof of study in a government school"), ("कॉलेज में दाख़िले का प्रमाण", "Proof of admission in the college")],
+ [("किसी स्रोत ने आवेदन के चरण नहीं बताए। अपने कॉलेज के प्राचार्य/नोडल अधिकारी से पूछें", "No source describes the application steps. Ask your college principal/nodal officer"), ("पुदुमै पेन्न योजना के बारे में एक रिपोर्ट में आवेदन संस्थान के ज़रिए होने की बात थी; इस योजना के लिए यही तरीका है या नहीं, यह पुष्ट नहीं", "For Pudhumai Penn one report says applications go through the institution; whether the same applies here is not confirmed"), ("बैंक खाता आधार से जुड़ा रखें ताकि पैसा सीधे आ सके", "Keep the bank account linked to Aadhaar so money can come directly")],
+ ("tn.gov.in – तमिलनाडु सरकार (योजना का सीधा पन्ना नहीं मिला)", "tn.gov.in – Government of Tamil Nadu (no direct scheme page found)"), NOHELP,
+ [(("क्या यह सिर्फ़ लड़कों के लिए है?", "Is it for boys only?"), ("देवडिस्कोर्स (2024) में लड़कों के लिए शुरू हुई बताई गई। करियर्स360 (सितंबर 2025) में छात्र-छात्राओं के विस्तार की बात है। अपने कॉलेज से पक्का करें।", "Devdiscourse (2024) says it started for boys. Careers360 (Sep 2025) mentions an expansion to male and female students. Confirm with your college.")),
+  (("क्या नई सरकार में योजना जारी है?", "Is the scheme continuing under the new government?"), ("डीटी नेक्स्ट और न्यूज़ टुडे (14 मई 2026) के अनुसार हाँ और ₹1,000 जमा हुए। जुलाई-नवंबर 2026 की स्थिति की हमें पुष्टि नहीं मिली।", "Yes as per DT Next and News Today (14 May 2026) and ₹1,000 was credited. We found no confirmation for July-November 2026.")),
+  (("छात्राओं के लिए क्या है?", "What is there for girls?"), ("छात्राओं के लिए पुदुमै पेन्न योजना है; हमारे साइट पर उसका अलग पन्ना है।", "Girls have the Pudhumai Penn scheme; see its separate page on this site."))],
+ ("स्रोत जाँचे (28 नवंबर 2026): डीटी नेक्स्ट (14 मई 2026), न्यूज़ टुडे (14 मई 2026), देवडिस्कोर्स (अगस्त 2024), करियर्स360 (सितंबर 2025)। पात्रता, आवेदन प्रक्रिया, दस्तावेज़, पोर्टल और हेल्पलाइन की पुष्टि नहीं हुई; जुलाई-नवंबर 2026 की किस्तें भी नहीं। इसलिए ताज़ा स्थिति कॉलेज से पूछें.",
+  "Sources checked (28 Nov 2026): DT Next (14 May 2026), News Today (14 May 2026), Devdiscourse (Aug 2024), Careers360 (Sep 2025). Eligibility details, the application process, documents, portal and helpline are not confirmed, nor are July-November 2026 payments. Check the latest status with your college."))
+tags.TAGS["tamilnadu-tamil-pudhalvan"] = "s"
