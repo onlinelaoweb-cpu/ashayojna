@@ -210,6 +210,29 @@ def gicon(g):
     c = CATICON[k[1:]] if k[0]=="#" else (TICON[k[1:]] if k[0]=="@" else GICON[k])
     return f'<span class="tic" style="background:linear-gradient(145deg,{c[0]},{c[1]})">{c[2]}</span>'
 
+def _si(d): return '<svg class="si" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+d+'</svg>'
+SI = {
+ "home": _si('<path d="M3.5 11.2L12 4l8.5 7.2"/><path d="M5.8 9.6V20h12.4V9.6"/><path d="M10 20v-5.5h4V20"/>'),
+ "find": _si('<circle cx="10.5" cy="10.5" r="6.2"/><path d="M15.2 15.2L21 21"/>'),
+ "guides": _si('<path d="M5 4.5h10.5a3 3 0 0 1 3 3V20H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h10.5"/>'),
+ "calc": _si('<rect x="5" y="2.8" width="14" height="18.4" rx="2.4"/><rect x="8" y="6" width="8" height="3.4" rx="0.8"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.6h.01M12 16.6h.01M15.5 16.6h.01" stroke-width="2.6"/>'),
+ "status": _si('<rect x="5" y="4.5" width="14" height="16.5" rx="2.2"/><path d="M9 4.5V3.5h6v1"/><path d="M8.5 11l1.8 1.8 3.4-3.6M8.5 17h7" stroke-width="1.8"/>'),
+ "clock": _si('<circle cx="12" cy="13" r="8"/><path d="M12 8.5V13l3 2M9 2.8h6"/>'),
+ "week": _si('<rect x="3.5" y="5" width="17" height="15.5" rx="2.4"/><path d="M3.5 10h17M8 3v4M16 3v4"/>'),
+ "news": _si('<path d="M5 5h11v14H6.5A1.5 1.5 0 0 1 5 17.5z"/><path d="M16 9h3v8.5a1.5 1.5 0 0 1-3 0"/><path d="M8 9h5M8 12h5M8 15h3" stroke-width="1.7"/>'),
+ "saved": _si('<path d="M6.5 3.5h11v17.5L12 17l-5.5 4z"/>'),
+ "pin": _si('<path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/>'),
+ "kisan": _si('<path d="M12 21V9"/><path d="M12 9c-3.2 0-4.6-2.2-4.6-4.6C10 4.4 12 5.8 12 9z"/><path d="M12 9c3.2 0 4.6-2.2 4.6-4.6C14 4.4 12 5.8 12 9z"/><path d="M12 14.5c-3 0-4.4-2-4.4-4.2 2.6 0 4.4 1.3 4.4 4.2z"/><path d="M12 14.5c3 0 4.4-2 4.4-4.2-2.6 0-4.4 1.3-4.4 4.2z"/>'),
+ "swasthya": _si('<path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.8a4.3 4.3 0 0 1 7.5 2.5c0 5.6-7.5 10.2-7.5 10.2z"/>'),
+ "mahila": _si('<circle cx="12" cy="8" r="4"/><path d="M12 12v8.5M8.8 17.2h6.4"/>'),
+ "rozgar": _si('<rect x="3.5" y="7.5" width="17" height="12" rx="2.3"/><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5M3.5 13h17"/>'),
+ "bima": _si('<path d="M12 3l7.5 3v5.6c0 4.4-3.1 7.8-7.5 9.4-4.4-1.6-7.5-5-7.5-9.4V6z"/><path d="M8.6 12.2l2.4 2.4 4.4-4.8"/>'),
+ "ghar": _si('<path d="M3.5 11.2L12 4l8.5 7.2"/><path d="M5.8 9.6V20h12.4V9.6"/><path d="M10 20v-5.5h4V20"/>'),
+ "shiksha": _si('<path d="M2.5 9.5L12 5l9.5 4.5L12 14z"/><path d="M6.5 11.8v4.2c0 1.2 2.5 2.6 5.5 2.6s5.5-1.4 5.5-2.6v-4.2"/>'),
+}
+import re as _re
+def _ne(x): return _re.sub(r"^[^\w]+","",x)
+
 def _askq(lang):
     sub = "सवाल" if lang=="hi" else "Question"
     if FORM_URL:
@@ -248,11 +271,11 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
         desc = desc.rstrip("।. ") + (" | आशा योजना – सरकारी योजनाओं की सरल और भरोसेमंद जानकारी" if lang=="hi" else " | Asha Yojana – simple, reliable information on government schemes")
     t = T[lang]; pfx = "" if lang=="hi" else "en/"
     H = lang=="hi"
-    mains = [("index.html","🏠",t["home"]),("find.html","🔎",t["findl"]),("guides/index.html","📘","गाइड" if H else "Guides"),("calculators.html","🧮","कैलकुलेटर" if H else "Calculators"),("status.html","📋","स्टेटस" if H else "Status"),("deadlines.html","⏰","अंतिम तारीख़ें" if H else "Deadlines"),("weekly.html","🗞️","इस हफ़्ते" if H else "This week"),("khabar/index.html","📰","ताज़ा खबर" if H else "Updates")]
-    btm = [("index.html","🏠","होम" if H else "Home"),("find.html","🔎","खोजक" if H else "Find"),("deadlines.html","⏰","तारीख़ें" if H else "Dates"),("guides/index.html","📘","गाइड" if H else "Guides"),("calculators.html","🧮","कैलकुलेटर" if H else "Calculators"),("saved.html","🔖","सेव" if H else "Saved")]
+    mains = [("index.html",SI["home"],t["home"]),("find.html",SI["find"],t["findl"]),("guides/index.html",SI["guides"],"गाइड" if H else "Guides"),("calculators.html",SI["calc"],"कैलकुलेटर" if H else "Calculators"),("status.html",SI["status"],"स्टेटस" if H else "Status"),("deadlines.html",SI["clock"],"अंतिम तारीख़ें" if H else "Deadlines"),("weekly.html",SI["week"],"इस हफ़्ते" if H else "This week"),("khabar/index.html",SI["news"],"ताज़ा खबर" if H else "Updates")]
+    btm = [("index.html",SI["home"],"होम" if H else "Home"),("find.html",SI["find"],"खोजक" if H else "Find"),("deadlines.html",SI["clock"],"तारीख़ें" if H else "Dates"),("guides/index.html",SI["guides"],"गाइड" if H else "Guides"),("calculators.html",SI["calc"],"कैलकुलेटर" if H else "Calculators"),("saved.html",SI["saved"],"सेव" if H else "Saved")]
     mnav = "".join(f'<a href="{base}{u}"><span>{i}</span> {e(l)}</a>' for u,i,l in mains)
-    nav = "".join(f'<a href="{base}category/{k}.html">{v[1]} {e(cname(k,lang))}</a>' for k,v in CATS.items())
-    nav = f'<a class="navst" href="{base}index.html#states">📍 {"राज्य चुनें" if H else "Choose state"} ▾</a>' + nav
+    nav = "".join(f'<a href="{base}category/{k}.html">{SI.get(k,v[1])} {e(cname(k,lang))}</a>' for k,v in CATS.items())
+    nav = f'<a class="navst" href="{base}index.html#states">{SI["pin"]} {"राज्य चुनें" if H else "Choose state"} ▾</a>' + nav
     ldj = f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>' if ld else ""
     url = f"{SITE_URL}/{pfx}{path}"
     sw = f"{base}en/{path}" if lang=="hi" else f"{base}../{path}"
@@ -448,7 +471,7 @@ def build(lang):
                + 's.textContent=n>0?(n+(document.documentElement.lang=="hi"?" दिन बचे":" days left")):(document.documentElement.lang=="hi"?"आज आख़िरी दिन":"Last day today")})</script>')
     body = f"""<section class="hero"><p style="margin:0 0 4px;font-size:15px;opacity:.9">{t["dedtop"]}</p><h1>{t["h1"]}</h1>
 <p>{t["hp"]}</p>
-<p style="margin:0 0 10px"><a class="btn" href="find.html">{t["findgo"]}</a> <a class="btn" href="calculators.html">{t["calcall"]}</a> <a class="btn" href="deadlines.html">⏰ {"अंतिम तारीख़ें" if lang=="hi" else "Deadlines"}</a></p><input id="q" class="search" type="search" placeholder="{t["ph"]}" autocomplete="off"><div id="res" class="grid"></div></section>
+<p style="margin:0 0 10px"><a class="btn" href="find.html">{SI["find"]} {_ne(t["findgo"])}</a> <a class="btn" href="calculators.html">{SI["calc"]} {_ne(t["calcall"])}</a> <a class="btn" href="deadlines.html">{SI["clock"]} {"अंतिम तारीख़ें" if lang=="hi" else "Deadlines"}</a></p><input id="q" class="search" type="search" placeholder="{t["ph"]}" autocomplete="off"><div id="res" class="grid"></div></section>
 <div id="all">
 {topnews}
 <h2>📰 {"ताज़ा खबर" if lang=="hi" else "Latest updates"}</h2><div class="grid">{"".join(ncard(n,"") for n in [n for n in sorted(news.NEWS,key=lambda n:n["date"],reverse=True) if n["slug"] not in _used][:3])}</div><p><a class="btn" href="khabar/index.html">{"सभी खबरें" if lang=="hi" else "All updates"} →</a></p>
