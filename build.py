@@ -444,7 +444,7 @@ def build(lang):
     topnews = (f'<section class="topnews"><a class="tn-hero" href="khabar/{_hn["slug"]}.html"><img src="/img/news-{_hn["slug"]}-{lang}.jpg" alt="" width="1200" height="630" fetchpriority="high">'
                f'<div class="tn-t"><span class="tn-tag">{_tag}</span><h2>{e(_hd["title"])}</h2></div></a>'
                + (f'<aside class="tn-dl"><h3>⏰ {"अगली अंतिम तारीख़ें" if lang=="hi" else "Next deadlines"}</h3>{_dr}<a class="tn-all" href="deadlines.html">{"सभी तारीख़ें देखें →" if lang=="hi" else "See all deadlines →"}</a></aside>' if _dr else "")
-               + '</section><script>document.querySelectorAll(".tn-dl .dlleft").forEach(function(s){var t=new Date(s.dataset.d+"T23:59:59+05:30"),n=Math.ceil((t-new Date())/864e5);if(n<0){s.closest("a").style.display="none";return}'
+               + '</section><script>document.querySelectorAll(".tn-dl .dlleft").forEach(function(s){var n=Math.round((Date.parse(s.dataset.d+"T00:00:00Z")-Date.parse(new Date(Date.now()+19800000).toISOString().slice(0,10)+"T00:00:00Z"))/864e5);if(n<0){s.closest("a").style.display="none";return}'
                + 's.textContent=n>0?(n+(document.documentElement.lang=="hi"?" दिन बचे":" days left")):(document.documentElement.lang=="hi"?"आज आख़िरी दिन":"Last day today")})</script>')
     body = f"""<section class="hero"><p style="margin:0 0 4px;font-size:15px;opacity:.9">{t["dedtop"]}</p><h1>{t["h1"]}</h1>
 <p>{t["hp"]}</p>
@@ -637,7 +637,7 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
         rows += (f'<div class="card dl"><div class="dld"><b>{dd.day}</b><span>{dm[dd.month-1]} {dd.year}</span></div><div><h3>{e(ti)}</h3><p>{e(no)}</p>'
                  f'<p class="dlm"><span class="dlleft" data-d="{d["date"]}">{lbl}</span> · <a href="khabar/{d["news"]}.html">{"पूरी खबर" if lang=="hi" else "Full story"}</a> · <a href="yojana/{d["related"]}.html">{"योजना पेज" if lang=="hi" else "Scheme page"}</a></p></div></div>')
     if not shown: rows = f'<p>{"अभी कोई पक्की तारीख़ दर्ज नहीं है। रोज़ की खबरों में नई तारीख़ें जुड़ती हैं।" if lang=="hi" else "No confirmed dates listed right now. New dates are added with the daily news."}</p>'
-    js = ("<script>document.querySelectorAll('.dlleft').forEach(function(s){var t=new Date(s.dataset.d+'T23:59:59+05:30'),n=Math.ceil((t-new Date())/864e5);"
+    js = ("<script>document.querySelectorAll('.dlleft').forEach(function(s){var n=Math.round((Date.parse(s.dataset.d+'T00:00:00Z')-Date.parse(new Date(Date.now()+19800000).toISOString().slice(0,10)+'T00:00:00Z'))/864e5);"
           "if(n<0){s.closest('.dl').style.display='none';return}"
           "s.textContent=n>0?(n+(document.documentElement.lang=='hi'?' दिन बचे':' days left')):(document.documentElement.lang=='hi'?'आज आख़िरी दिन':'Last day today')})</script>")
     p = "deadlines.html"; reg(p)
