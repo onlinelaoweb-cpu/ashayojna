@@ -215,3 +215,11 @@ main{padding-top:20px}
 /* ---- v4 tool icon tiles ---- */
 .tic{display:inline-grid;place-items:center;width:48px;height:48px;border-radius:15px;box-shadow:0 6px 14px rgba(10,42,35,.22),inset 0 1px 0 rgba(255,255,255,.35);margin-bottom:2px}
 .card:hover .tic{transform:translateY(-1px) scale(1.05)}.tic{transition:transform .15s}
+
+/* ---- v5 lighter green header + hero (light mode only; dark mode keeps deep tones) ---- */
+@media(prefers-color-scheme:light){
+ .hd{background:radial-gradient(900px 240px at 15% -50%,#27a384 0,transparent 65%),linear-gradient(180deg,#12795f,#0d6450);box-shadow:0 6px 18px rgba(13,100,80,.28)}
+ .hero{background:linear-gradient(135deg,#1a9174,#12775f);box-shadow:0 8px 20px rgba(18,119,95,.22)}
+ .hd.shr.rev .nav{background:#0d6450;box-shadow:0 10px 22px rgba(13,100,80,.35)}
+ .hd .nav a{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.22)}
+}
