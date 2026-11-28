@@ -194,6 +194,22 @@ def caticon(y):
     if not c: return f'<span class="ic">{y["icon"]}</span>'
     return f'<span class="tic" style="background:linear-gradient(145deg,{c[0]},{c[1]})">{c[2]}</span>'
 
+GICON = {
+ "id": ("#3b82c4","#25609b", _svg('<rect x="3" y="5.5" width="18" height="13" rx="2.4"/><circle cx="8.6" cy="11" r="2"/><path d="M5.8 16c.6-1.6 1.7-2.3 2.8-2.3s2.2.7 2.8 2.3M14 10h4.5M14 13.5h3.5" stroke-width="1.6"/>')),
+ "doc": ("#6b7a2a","#4b5819", _svg('<path d="M6 3.5h9l3.5 3.5v13.5H6z"/><path d="M14.5 3.8V7.5h3.8"/><path d="M9 11.5h6M9 14.5h6M9 17.5h4" stroke-width="1.6"/>')),
+ "link": ("#14867f","#0c625c", _svg('<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>')),
+ "map": ("#c0623a","#8f4020", _svg('<path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/>')),
+ "bolt": ("#f0a21a","#c97a06", _svg('<path d="M13 2.5L5 13.5h6l-1 8 8-11h-6z"/>')),
+ "plane": ("#2f6fd0","#1d4c98", _svg('<path d="M21 3L10.5 13.5M21 3l-6.5 18-4-7.5L3 9.5z"/>')),
+ "alert": ("#d6453d","#a52a24", _svg('<path d="M12 3.5l9.5 16.5h-19z"/><path d="M12 10v4.2M12 17.2h.01" stroke-width="2.2"/>')),
+}
+GSLUG = {"aadhaar-bank-dbt-seeding":"@ppf-calculator","jan-dhan-account-opening-guide":"@ppf-calculator","bank-kyc-update-guide":"@ppf-calculator","pm-kisan-ekyc-guide":"#kisan","aadhaar-update-guide":"id","learner-driving-licence-online-guide":"id","voter-id-correction-e-epic-guide":"id","income-certificate-guide":"doc","caste-domicile-certificate-guide":"doc","birth-certificate-online-guide":"doc","digilocker-account-documents-guide":"doc","ration-card-ekyc-name-add":"doc","jeevan-pramaan-life-certificate-guide":"#bima","fake-scheme-website-check":"#bima","upi-online-fraud-report-1930":"alert","ayushman-card-download-guide":"#swasthya","pan-aadhaar-link-status-guide":"link","udyam-registration-guide":"@pmegp-subsidy-calculator","e-shram-card-registration-guide":"#rozgar","land-record-khatauni-check-guide":"map","new-electricity-connection-guide":"bolt","passport-apply-online-guide":"plane","nsp-otr-scholarship-status-guide":"#shiksha"}
+def gicon(g):
+    k = GSLUG.get(g["slug"])
+    if k is None: return f'<span class="ic">{g["icon"]}</span>'
+    c = CATICON[k[1:]] if k[0]=="#" else (TICON[k[1:]] if k[0]=="@" else GICON[k])
+    return f'<span class="tic" style="background:linear-gradient(145deg,{c[0]},{c[1]})">{c[2]}</span>'
+
 def _askq(lang):
     sub = "सवाल" if lang=="hi" else "Question"
     if FORM_URL:
@@ -319,7 +335,7 @@ def build(lang):
     def gcard(g, base):
         d = g[lang]
         gimg = f'<img class="nimg" src="/img/guide-{g["slug"]}-{lang}.jpg" alt="" width="600" height="315" loading="lazy">' if _hasimg(g['slug']) else ""
-        return f'<a class="card" href="{base}guides/{g["slug"]}.html">{gimg}<span class="ic">{g["icon"]}</span><h3>{e(d["title"])}</h3><p>{e(d["desc"])}</p><span class="more">{t["more"]}</span></a>'
+        return f'<a class="card" href="{base}guides/{g["slug"]}.html">{gimg}{gicon(g)}<h3>{e(d["title"])}</h3><p>{e(d["desc"])}</p><span class="more">{t["more"]}</span></a>'
     # ---------- Yojana pages ----------
     for y0 in Y:
         y = view(y0, lang)
