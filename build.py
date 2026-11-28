@@ -180,6 +180,20 @@ def ticon(k, fallback=""):
     a,b,sv = TICON[k]
     return f'<span class="tic" style="background:linear-gradient(145deg,{a},{b})">{sv}</span>'
 
+CATICON = {
+ "kisan": ("#4f9a2f","#35701d", _svg('<path d="M12 21V9"/><path d="M12 9c-3.2 0-4.6-2.2-4.6-4.6C10 4.4 12 5.8 12 9z"/><path d="M12 9c3.2 0 4.6-2.2 4.6-4.6C14 4.4 12 5.8 12 9z"/><path d="M12 14.5c-3 0-4.4-2-4.4-4.2 2.6 0 4.4 1.3 4.4 4.2z"/><path d="M12 14.5c3 0 4.4-2 4.4-4.2-2.6 0-4.4 1.3-4.4 4.2z"/><path d="M8 21h8"/>')),
+ "swasthya": ("#d8453f","#a82c27", _svg('<path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.8a4.3 4.3 0 0 1 7.5 2.5c0 5.6-7.5 10.2-7.5 10.2z"/><path d="M8.2 12.6h2.2l1.2-2.4 1.6 3.8 1-1.4h1.6" stroke-width="1.5"/>')),
+ "mahila": ("#d9548d","#b0356a", _svg('<circle cx="12" cy="8" r="4"/><path d="M12 12v8.5M8.8 17.2h6.4"/>')),
+ "rozgar": ("#2f6fd0","#1d4c98", _svg('<rect x="3.5" y="7.5" width="17" height="12" rx="2.3"/><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5"/><path d="M3.5 13h17"/><path d="M11 13v1.8h2V13" stroke-width="1.6"/>')),
+ "bima": ("#0f8a6a","#0a6350", _svg('<path d="M12 3l7.5 3v5.6c0 4.4-3.1 7.8-7.5 9.4-4.4-1.6-7.5-5-7.5-9.4V6z"/><path d="M8.6 12.2l2.4 2.4 4.4-4.8"/>')),
+ "ghar": ("#e0932a","#b36a0e", _svg('<path d="M3.5 11.2L12 4l8.5 7.2"/><path d="M5.8 9.6V20h12.4V9.6"/><path d="M10 20v-5.5h4V20"/>')),
+ "shiksha": ("#7a5cc9","#5a3fa6", _svg('<path d="M2.5 9.5L12 5l9.5 4.5L12 14z"/><path d="M6.5 11.8v4.2c0 1.2 2.5 2.6 5.5 2.6s5.5-1.4 5.5-2.6v-4.2"/><path d="M21.5 9.5V15"/>')),
+}
+def caticon(y):
+    c = CATICON.get(y.get("cat"))
+    if not c: return f'<span class="ic">{y["icon"]}</span>'
+    return f'<span class="tic" style="background:linear-gradient(145deg,{c[0]},{c[1]})">{c[2]}</span>'
+
 def _askq(lang):
     sub = "सवाल" if lang=="hi" else "Question"
     if FORM_URL:
@@ -291,7 +305,7 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
 
 def card(y, base, lang):
     v = view(y, lang); t = T[lang]
-    return f'<a class="card" href="{base}yojana/{y["slug"]}.html"><span class="ic">{y["icon"]}</span><span class="tg">{e(v["tag"])}</span><h3>{e(v["name"])}</h3><p>{e(v["short"])}</p><span class="more">{t["more"]}</span></a>'
+    return f'<a class="card" href="{base}yojana/{y["slug"]}.html">{caticon(y)}<span class="tg">{e(v["tag"])}</span><h3>{e(v["name"])}</h3><p>{e(v["short"])}</p><span class="more">{t["more"]}</span></a>'
 
 URLS = []
 def build(lang):
@@ -560,7 +574,7 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
         if not (ex and ex.get(lang)): continue
         yv = view(y0, lang); first = ex[lang]["status"][0]
         wh = sname(y0["state"],lang) if y0.get("state") else t["central"]
-        sc += f'<a class="card" href="yojana/{y0["slug"]}.html"><span class="ic">{y0["icon"]}</span><span class="tg">{e(wh)}</span><h3>{e(yv["name"])}</h3><p>{e(first)}</p><span class="more">{t["more"]}</span></a>'
+        sc += f'<a class="card" href="yojana/{y0["slug"]}.html">{caticon(y0)}<span class="tg">{e(wh)}</span><h3>{e(yv["name"])}</h3><p>{e(first)}</p><span class="more">{t["more"]}</span></a>'
     p = "status.html"; reg(p)
     page(lang, p, f"{sh} | {SN}", ssub, f'<nav class="bc"><a href="index.html">{t["home"]}</a> › {e(sh)}</nav><h1>📋 {e(sh)}</h1><p class="lead">{ssub}</p><div class="grid">{sc}</div><p><a class="btn" href="guides/aadhaar-bank-dbt-seeding.html">📘 {e(guides.GUIDES[0][lang]["title"])}</a></p>{wabox(lang)}', "")
 

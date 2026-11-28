@@ -171,3 +171,4 @@ Already on site, skip: Punjab Mawan Dhiyan, WB Annapurna Bhandar, WB Ayushman, N
 - 2026-11-28 contact email no longer shown as visible text on FAQ/how-we-verify (buttons only); stays on contact.html.
 - 2026-11-28 build.py FORM_URL switch added (empty = Gmail/mailto buttons). When owner sends Google Form link: set FORM_URL, rebuild, publish. Optionally remove email from contact.html then.
 - 2026-11-28 tool cards (home + calculators hub): emoji replaced by SVG icons on gradient tiles (TICON dict in build.py, keyed by calc slug; add an entry when a new calculator is added).
+- 2026-11-28 scheme cards (home central, state, category pages): emoji replaced by category SVG tiles (CATICON in build.py, keyed by cat). Page hero emoji unchanged.
