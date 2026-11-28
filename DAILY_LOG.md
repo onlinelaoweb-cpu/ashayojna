@@ -169,3 +169,4 @@ Already on site, skip: Punjab Mawan Dhiyan, WB Annapurna Bhandar, WB Ayushman, N
 - 2026-11-28 header: on shrink, header margin-bottom compensates height change so document height stays constant (removes scroll feedback loop for good).
 - 2026-11-28 mailto fix: 'Write to us' now also has Gmail compose link + visible email (mailto did nothing on MacBook without mail app).
 - 2026-11-28 contact email no longer shown as visible text on FAQ/how-we-verify (buttons only); stays on contact.html.
+- 2026-11-28 build.py FORM_URL switch added (empty = Gmail/mailto buttons). When owner sends Google Form link: set FORM_URL, rebuild, publish. Optionally remove email from contact.html then.
