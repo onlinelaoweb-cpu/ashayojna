@@ -110,7 +110,7 @@ Every daily run ALSO adds 2 to 3 new, unique, evergreen guides to `guides.GUIDES
 - Pick topics NOT already in guides.py (check slugs first; never repeat a topic). Mix categories across days.
 - Verify with 2+ sources, at least one official (portal, PIB, department FAQ) where readable; fetch pages (search results give only titles). Write original Hindi + English, hedge anything state-specific or that sources disagree on, never invent fees, URLs, helplines or deadlines. If a topic cannot be verified (e.g. official portal blocked and only aggregators readable), drop it and pick another; 1 good guide beats 3 weak ones. Add `rel` = related yojana slugs.
 - Fields: slug, icon, rel, src [(name,url)], hi/en: title, desc, intro, steps, docs, tips (see file header). After adding run `python3 tools/make_images.py`, `python3 build.py && python3 check.py`, then publish like the rest. Log guide slugs + sources + could-not-verify in DAILY_LOG.md.
-- Backlog (not yet done): voter ID correction/e-EPIC (ECI portal was unreadable 24 Nov, needs a readable source), birth certificate, DigiLocker, Udyam registration, bank KYC update, Jan Dhan account opening, driving licence/Parivahan, land record check, electricity connection, UPI fraud safety, e-Shram card steps, pension life certificate.
+- Done so far (23 guides, see guides.py slugs). Backlog ideas (28 Nov 2026): death certificate, ration card new/apply by state, Aadhaar mobile/address update steps refresh, PAN new/correction, EPF passbook/UAN activation, pension (PPO) status, caste/EWS certificate refresh, Ayushman card hospital list, bank account closure/complaint (RBI Ombudsman), cyber-fraud/fake loan app warning, post office savings account/PO apps, scholarship state portals, FASTag/e-challan basics, gas connection/KYC, e-Shram/Labour card benefits, school admission/TC documents, marriage certificate, NPS/APY statement. Pick topics not yet in guides.py.
 
 SEO boost: `seo_boost.py` holds extra FAQ entries that mirror real Search Console queries (answers only from facts on the page, hedge otherwise). The daily routine may add more there; keep both hi and en.
 
@@ -130,3 +130,8 @@ SEO boost: `seo_boost.py` holds extra FAQ entries that mirror real Search Consol
 
 ## Savings schemes (added 2026-11-28)
 PPF, SCSS, POMIS, NSC, KVP are in data_daily.py; calculators in calcs3.py. Rates are Oct-Dec 2026 and are reset every quarter: update facts, calcs3 defaults and the _SN note each quarter (1 Jan, 1 Apr, 1 Jul, 1 Oct).
+
+
+## Owner update 2026-11-28: Part D and Part E are part of EVERY daily run
+- Part D: 2-3 new guides daily (rules above). Guides with several weak points should be dropped, not published. Guides may be researched by subagents that write a `NEW=[dict(...)]` file; merge into guides.py, check hi/en list lengths match, run make_images + build + check.
+- Part E: add 1-2 FAQ entries to seo_boost.py (facts already on the page), keep deadlines.py current (future dated last dates only), update small-savings rates each quarter (1 Jan/1 Apr/1 Jul/1 Oct), keep rel/related links between guides, schemes and khabar.
