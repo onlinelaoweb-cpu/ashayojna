@@ -1916,3 +1916,17 @@ B("tamilnadu-tamil-pudhalvan", "tamilnadu", "rozgar", "🎓", "https://www.tn.go
  ("स्रोत जाँचे (28 नवंबर 2026): डीटी नेक्स्ट (14 मई 2026), न्यूज़ टुडे (14 मई 2026), देवडिस्कोर्स (अगस्त 2024), करियर्स360 (सितंबर 2025)। पात्रता, आवेदन प्रक्रिया, दस्तावेज़, पोर्टल और हेल्पलाइन की पुष्टि नहीं हुई; जुलाई-नवंबर 2026 की किस्तें भी नहीं। इसलिए ताज़ा स्थिति कॉलेज से पूछें.",
   "Sources checked (28 Nov 2026): DT Next (14 May 2026), News Today (14 May 2026), Devdiscourse (Aug 2024), Careers360 (Sep 2025). Eligibility details, the application process, documents, portal and helpline are not confirmed, nor are July-November 2026 payments. Check the latest status with your college."))
 tags.TAGS["tamilnadu-tamil-pudhalvan"] = "s"
+
+# ---------- 2026-11-28 follow-up: UP pension widow criteria + Rs 1,500 status (owner-requested recheck) ----------
+_s = "up-pension-yojana-sspy"
+_ad(_s, "elig",
+    "निराश्रित महिला (विधवा) पेंशन: नवभारत (23 अप्रैल 2026) के अनुसार उम्र 18 साल से ऊपर, पति की मृत्यु और परिवार की सालाना आय ₹2 लाख से कम; ऊपरी आयु सीमा उस रिपोर्ट में नहीं बताई गई",
+    "Destitute women (widow) pension: as per Navbharat (23 Apr 2026) age above 18, husband deceased and annual family income below ₹2 lakh; no upper age limit is stated in that report")
+_ad(_s, "faq",
+    [("₹1,500 की बढ़ोतरी का ताज़ा हाल क्या है?", "वन इंडिया (1 फ़रवरी 2026) के अनुसार वृद्धावस्था पेंशन ₹1,000 से ₹1,500 करने की योजना पर विचार चल रहा था और वह बजट में आने की उम्मीद थी, यानी प्रस्ताव। 13 फ़रवरी 2026 को मुख्यमंत्री ने विधानसभा में कहा कि पेंशन बढ़ेगी और बजट में पैसा रखा है, पर नई राशि नहीं बताई। अगस्त 2026 की रिपोर्ट में ₹1,500 करोड़ का बजट प्रावधान है, मासिक ₹1,500 नहीं। हमें कोई आदेश नहीं मिला, इसलिए राशि ₹1,000 ही मानें।"),
+     ("कितने लोगों को पेंशन मिलती है?", "वन इंडिया (फ़रवरी 2026) के अनुसार लगभग 67.5 लाख वृद्धजन, 38.58 लाख निराश्रित महिलाएँ और 11.98 लाख दिव्यांगजन; कुल 1 करोड़ से ज़्यादा। नवभारत (अप्रैल 2026) विधवा पेंशन के लिए 40.32 लाख महिलाएँ बताता है।")],
+    [("What is the latest on the ₹1,500 hike?", "As per Oneindia (1 Feb 2026) a plan to raise the old-age pension from ₹1,000 to ₹1,500 was under consideration and expected in the budget, i.e. a proposal. On 13 Feb 2026 the Chief Minister said in the Assembly that pensions will go up and money is in the budget, but gave no new amount. An August 2026 report mentions a ₹1,500 crore budget provision, not ₹1,500 a month. We found no order, so treat ₹1,000 as the amount."),
+     ("How many people get the pension?", "As per Oneindia (Feb 2026) about 67.5 lakh senior citizens, 38.58 lakh destitute women and 11.98 lakh persons with disabilities; over 1 crore in all. Navbharat (Apr 2026) gives 40.32 lakh women for the widow pension.")])
+y = _y(_s); e = _EN[_s]
+y["note"] += " अपडेट (28 नवंबर 2026): वन इंडिया (1 और 13 फ़रवरी 2026) और नवभारत (23 अप्रैल 2026) भी पढ़े गए; दिव्यांग पेंशन की आयु/आय सीमा और ₹1,500 का आदेश अब भी अपुष्ट हैं। किसी AI-सारांश की बात (अक्टूबर 2026 की सैद्धांतिक मंज़ूरी) का स्रोत नहीं मिला, इसलिए शामिल नहीं की गई।"
+e["note"] += " Update (28 Nov 2026): Oneindia (1 and 13 Feb 2026) and Navbharat (23 Apr 2026) were also read; the age/income limit for disability pension and an order for ₹1,500 are still unconfirmed. A claim in an AI summary (in-principle approval in October 2026) had no traceable source and is not included."
