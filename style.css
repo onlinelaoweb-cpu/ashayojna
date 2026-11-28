@@ -251,3 +251,6 @@ h1 .h1i{width:40px;height:40px;vertical-align:-9px;margin-right:4px}
 h1 .h1t{display:inline-block;vertical-align:-10px;margin-right:4px}
 h1 .h1t .tic{width:42px;height:42px;border-radius:13px;margin:0}
 h1 .h1t .tic svg{width:24px;height:24px}
+/* v7 min tagline size */
+.lt small{font-size:12px!important}
+@media(max-width:400px){.lt small{font-size:12px!important}.lt{font-size:18px}}
