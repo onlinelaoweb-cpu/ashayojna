@@ -185,3 +185,4 @@ Already on site, skip: Punjab Mawan Dhiyan, WB Annapurna Bhandar, WB Ayushman, N
 - 2026-11-28 hero: white card with green top accent in light mode (owner asked to drop green block); dark mode keeps deep green.
 - 2026-11-28 owner approved TOPIC MAP (3 active clusters: documents, money/bank, education) added to AGENT.md; daily Part D should rotate within these.
 - 2026-11-28 ROADMAP.md created and approved by owner (phases 0-3, brand, owner-only tasks).
+- 2026-11-28 bottom bar uses 3D-style SVG icons img/nav-*.svg (Canva quota exhausted, only a Home image was generated there). Menu/chips stay emoji.
