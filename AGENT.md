@@ -127,3 +127,6 @@ SEO boost: `seo_boost.py` holds extra FAQ entries that mirror real Search Consol
 
 ## Save, weekly, ask-a-question
 - Scheme pages: save button (localStorage `ay_saved`, no login) + /saved.html (noindex, not in sitemap); /weekly.html = last 7 days of NEWS + deadlines in next 21 days (rebuilt on every publish, so keep the daily publish going); `_askq` mailto under FAQ.
+
+## Savings schemes (added 2026-11-28)
+PPF, SCSS, POMIS, NSC, KVP are in data_daily.py; calculators in calcs3.py. Rates are Oct-Dec 2026 and are reset every quarter: update facts, calcs3 defaults and the _SN note each quarter (1 Jan, 1 Apr, 1 Jul, 1 Oct).

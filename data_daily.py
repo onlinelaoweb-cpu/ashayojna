@@ -1668,3 +1668,100 @@ e["faq"] = [("How much is paid?", "₹12,000 per acre a year, i.e. ₹6,000 each
 y["note"] = "स्रोत जाँचे (27 नवंबर 2026): साउथ फ़र्स्ट (मार्च 2026), न्यूज़मीटर (15 मार्च 2026), तेलंगाना टुडे (4 जनवरी 2025, 13 जून, 30 जून और 5 नवंबर 2026), सियासत (जून 2026), डेक्कन क्रॉनिकल और न्यूज़बाइट्स (4 जुलाई 2026)। तेलंगाना टुडे के कई लेख विपक्ष (BRS) के बयान हैं, उन्हें दावा मानें। पुष्टि नहीं हुई: आधिकारिक पात्रता दिशानिर्देश और एकड़ की सीमा, यासंगी 2026-27 की तारीख़, 6 एकड़ से बड़े किसानों का भुगतान, किराएदारों की पात्रता, कृषि विभाग का पोर्टल/हेल्पलाइन। हमने कृषि विभाग की वेबसाइट नहीं पढ़ी; नियम बदल सकते हैं।"
 e["note"] = "Sources checked (27 Nov 2026): South First (Mar 2026), NewsMeter (15 Mar 2026), Telangana Today (4 Jan 2025, 13 Jun, 30 Jun and 5 Nov 2026), Siasat (Jun 2026), Deccan Chronicle and NewsBytes (4 Jul 2026). Several Telangana Today pieces are statements of the opposition (BRS); treat them as claims. Could NOT confirm: official eligibility guidelines and acreage limits, the date for Yasangi 2026-27, payment to farmers above 6 acres, tenant eligibility, the Agriculture Department portal/helpline. We did not read the Agriculture Department site; rules can change."
 VERIFIED["telangana-rythu-bharosa"] = _D27
+
+# ---------------- 2026-11-28: government savings & investment schemes (rates: Oct-Dec 2026 quarter, unchanged) ----------------
+_SN = ("दरें हर तिमाही सरकार तय करती है और बदल सकती हैं। जाँचे गए स्रोत (28 नवंबर 2026): SBI (SCSS), ICICI Bank (PPF), Bajaj Finserv, PolicyBazaar, BankBazaar और Angel One (अक्टूबर–दिसंबर 2026 की दरें)। खाता खोलने से पहले डाकघर/बैंक या indiapost.gov.in से पक्का करें।",
+       "Rates are set by the government every quarter and can change. Sources checked (28 Nov 2026): SBI (SCSS), ICICI Bank (PPF), Bajaj Finserv, PolicyBazaar, BankBazaar and Angel One (Oct–Dec 2026 rates). Confirm with your post office/bank or indiapost.gov.in before opening an account.")
+_IP = ("indiapost.gov.in – डाक विभाग", "indiapost.gov.in – India Post")
+_KYC = ("आधार और पैन कार्ड (KYC)", "Aadhaar and PAN card (KYC)")
+_PH = ("पासपोर्ट साइज़ फोटो", "Passport-size photographs")
+
+B("ppf-public-provident-fund", None, "bima", "🏦", "https://www.indiapost.gov.in",
+ ("पब्लिक प्रोविडेंट फंड (PPF)", "Public Provident Fund (PPF)"),
+ ("15 साल की सरकारी बचत योजना, ब्याज साल में एक बार जुड़ता है; डाकघर और बैंक में खाता खुलता है।", "A 15-year government savings scheme with interest compounded yearly; accounts open at post offices and banks."),
+ ("बचत · निवेश", "Savings · Investment"), ("वित्त मंत्रालय (डाकघर और अधिकृत बैंक)", "Ministry of Finance (Post Office and authorised banks)"),
+ [(("ब्याज दर", "Interest rate"), ("7.1% सालाना (अक्टूबर–दिसंबर 2026, पिछली तिमाही जैसी)", "7.1% a year (Oct–Dec 2026, unchanged)")), (("सालाना जमा", "Yearly deposit"), ("न्यूनतम ₹500, अधिकतम ₹1,50,000", "Minimum ₹500, maximum ₹1,50,000")), (("अवधि", "Term"), ("15 साल, 5-5 साल के ब्लॉक में बढ़ा सकते हैं", "15 years, extendable in 5-year blocks")), (("खाता", "Account"), ("सिर्फ़ अकेले नाम पर, जॉइंट नहीं", "Individual only, no joint accounts"))],
+ ("PPF भारत सरकार की लंबी अवधि की बचत योजना है। इसमें हर साल ₹500 से ₹1,50,000 तक जमा कर सकते हैं और ब्याज साल में एक बार जुड़ता है। ब्याज दर सरकार हर तिमाही तय करती है, अभी यह 7.1% है। 15 साल से पहले पूरा पैसा नहीं निकलता, पर 5 पूरे वित्त वर्ष बाद आंशिक निकासी की सुविधा है।",
+  "PPF is the Government of India's long-term savings scheme. You can deposit ₹500 to ₹1,50,000 each year and interest is compounded once a year. The government sets the rate every quarter and it is now 7.1%. The full amount cannot be withdrawn before 15 years, but partial withdrawal is allowed after 5 complete financial years."),
+ [(("साल में ₹500 से ₹1,50,000 तक जमा", "Deposit ₹500 to ₹1,50,000 a year")), (("ब्याज साल में एक बार जुड़ता है (सालाना कंपाउंडिंग)", "Interest is compounded once a year")), (("5 पूरे वित्त वर्ष बाद आंशिक निकासी", "Partial withdrawal after 5 complete financial years")), (("15 साल बाद 5-5 साल के ब्लॉक में बढ़ाने का विकल्प (फ़ॉर्म H, मैच्योरिटी के 1 साल के भीतर)", "Option to extend in 5-year blocks after 15 years (Form H, within 1 year of maturity)"))],
+ [("भारत का निवासी नागरिक", "A resident Indian citizen"), ("बालिग व्यक्ति अपने नाम पर; माता-पिता या अभिभावक नाबालिग के नाम पर", "An adult in their own name; a parent or guardian for a minor"), ("एक व्यक्ति के नाम एक ही खाता (जॉइंट नहीं)", "One account per person, no joint accounts")],
+ [("NRI नया PPF खाता नहीं खोल सकते (निवासी रहते खुला खाता 15 साल तक चल सकता है, बढ़ाया नहीं जा सकता)", "NRIs cannot open a new PPF account (an account opened as a resident can run to 15 years but cannot be extended)"), ("जॉइंट खाता नहीं बन सकता", "A joint account is not allowed")],
+ [_KYC, _PH, ("पता प्रमाण", "Address proof"), ("पहली जमा की रकम (न्यूनतम ₹500)", "First deposit (minimum ₹500)")],
+ [("अपने डाकघर या PPF देने वाले बैंक की शाखा पर जाएँ", "Visit your post office or a bank branch that offers PPF"), ("खाता खोलने का फ़ॉर्म, KYC और फोटो दें", "Submit the account-opening form, KYC and photographs"), ("कम से कम ₹500 की पहली जमा करें", "Make a first deposit of at least ₹500"), ("हर वित्त वर्ष में कम से कम ₹500 जमा करते रहें, वरना खाता निष्क्रिय हो सकता है", "Keep depositing at least ₹500 each financial year, or the account can become inactive")],
+ _IP, NOHELP,
+ [(("साल में ₹500 न जमा हो तो क्या होता है?", "What if I do not deposit ₹500 in a year?"), ("खाता निष्क्रिय हो जाता है। ICICI Bank की जानकारी के अनुसार दोबारा चालू करने पर ₹50 जुर्माना और हर छूटे साल के ₹500 देने होते हैं। अपने डाकघर/बैंक से पक्का करें।", "The account becomes inactive. As per ICICI Bank, reactivation needs a ₹50 penalty plus ₹500 for each missed year. Confirm with your post office/bank.")),
+  (("क्या PPF में एक साल में कई बार जमा कर सकते हैं?", "Can I deposit several times in a year?"), ("इस पर हमें डाकघर का स्पष्ट स्रोत नहीं मिला। कुल सालाना जमा ₹1,50,000 से ऊपर नहीं जा सकती। बार-बार जमा के नियम अपने डाकघर/बैंक से पूछें।", "We found no clear post office source on this. The total yearly deposit cannot exceed ₹1,50,000. Ask your post office/bank about the rules for multiple deposits."))],
+ _SN)
+tags.TAGS["ppf-public-provident-fund"] = ""
+
+B("scss-senior-citizen-savings-scheme", None, "bima", "👴", "https://www.indiapost.gov.in",
+ ("वरिष्ठ नागरिक बचत योजना (SCSS)", "Senior Citizens Savings Scheme (SCSS)"),
+ ("60 साल या उससे ज़्यादा उम्र के लोगों के लिए 5 साल की सरकारी योजना, ब्याज हर तिमाही मिलता है।", "A 5-year government scheme for people aged 60 and above, with interest paid every quarter."),
+ ("बुज़ुर्ग · बचत", "Senior citizens · Savings"), ("वित्त मंत्रालय (डाकघर और अधिकृत बैंक)", "Ministry of Finance (Post Office and authorised banks)"),
+ [(("ब्याज दर", "Interest rate"), ("8.2% सालाना (अक्टूबर–दिसंबर 2026, पिछली तिमाही जैसी)", "8.2% a year (Oct–Dec 2026, unchanged)")), (("जमा", "Deposit"), ("₹1,000 के गुणक में, अधिकतम ₹30 लाख", "In multiples of ₹1,000, maximum ₹30 lakh")), (("अवधि", "Term"), ("5 साल, फिर 3 साल बढ़ा सकते हैं", "5 years, extendable by 3 more")), (("ब्याज", "Interest"), ("हर तिमाही मिलता है", "Paid every quarter"))],
+ ("SCSS बुज़ुर्गों के लिए सरकारी बचत योजना है। इसमें ₹1,000 के गुणक में अधिकतम ₹30 लाख जमा हो सकते हैं। ब्याज हर तिमाही मिलता है, इसलिए यह नियमित आय चाहने वालों के काम आती है। अवधि 5 साल है और मैच्योरिटी पर 3 साल और बढ़ा सकते हैं।",
+  "SCSS is a government savings scheme for senior citizens. You can deposit up to ₹30 lakh in multiples of ₹1,000. Interest is paid every quarter, so it suits people who want a regular income. The term is 5 years and it can be extended by 3 more years at maturity."),
+ [("हर तिमाही ब्याज, नियमित आय के लिए", "Interest every quarter, for regular income"), ("अधिकतम ₹30 लाख तक जमा", "Deposit up to ₹30 lakh"), ("5 साल की अवधि, 3 साल बढ़ाने का विकल्प", "5-year term, option to extend by 3 years"), ("नॉमिनी जोड़ने की सुविधा", "Nomination is available")],
+ [("उम्र 60 साल या उससे ज़्यादा", "Aged 60 or above"), ("55 से 60 साल से कम के वे लोग जो खाता खोलने की तारीख़ तक रिटायर हो चुके हैं (सुपरएन्युएशन या अन्यथा)", "People aged 55 to under 60 who have retired (superannuation or otherwise) by the date of opening"), ("रिटायर्ड रक्षा सेवा कर्मी, 50 साल या उससे ज़्यादा उम्र", "Retired defence services personnel aged 50 or above"), ("अकेले या पति/पत्नी के साथ जॉइंट खाता", "Individually or jointly with a spouse")],
+ [("NRI और HUF पात्र नहीं हैं", "NRIs and HUFs are not eligible"), ("जॉइंट खाते में पूरी जमा रकम पहले खाताधारक की मानी जाती है", "In a joint account the whole deposit is treated as the first holder's")],
+ [_KYC, _PH, ("उम्र का प्रमाण", "Proof of age"), ("रिटायरमेंट का प्रमाण (55–60 साल या रक्षा सेवा वालों के लिए)", "Proof of retirement (for ages 55–60 or defence personnel)")],
+ [("अपने डाकघर या SCSS देने वाले बैंक की शाखा पर जाएँ", "Visit your post office or a bank branch that offers SCSS"), ("SCSS खाते का फ़ॉर्म, KYC, फोटो और उम्र/रिटायरमेंट का प्रमाण दें", "Submit the SCSS form, KYC, photographs and proof of age/retirement"), ("एक बार में पूरी रकम जमा करें, ₹1,000 के गुणक में", "Deposit the amount in one go, in multiples of ₹1,000"), ("नॉमिनी का नाम भरें", "Fill in a nominee")],
+ _IP, NOHELP,
+ [(("क्या SCSS में बार-बार पैसे निकाल सकते हैं?", "Can I withdraw money from SCSS several times?"), ("नहीं। SBI की जानकारी के अनुसार एक खाते से कई बार निकासी की अनुमति नहीं है। समय से पहले बंद करने पर जुर्माना लगता है; जुर्माने की दर डाकघर/बैंक से पूछें।", "No. As per SBI, multiple withdrawals from one account are not permitted. Closing early attracts a penalty; ask your post office/bank for the exact rate.")),
+  (("अगर तिमाही का ब्याज न निकालूँ तो?", "What if I do not collect the quarterly interest?"), ("SBI की जानकारी के अनुसार न निकाले गए तिमाही ब्याज पर अलग से ब्याज नहीं मिलता।", "As per SBI, unclaimed quarterly interest does not earn extra interest."))],
+ _SN)
+tags.TAGS["scss-senior-citizen-savings-scheme"] = "e"
+
+B("post-office-monthly-income-scheme", None, "bima", "📮", "https://www.indiapost.gov.in",
+ ("डाकघर मासिक आय योजना (POMIS)", "Post Office Monthly Income Scheme (POMIS)"),
+ ("एक बार जमा करें, 5 साल तक हर महीने ब्याज की आय पाएँ। अकेले के लिए ₹9 लाख तक।", "Deposit once and get interest as monthly income for 5 years. Up to ₹9 lakh for one person."),
+ ("मासिक आय · बचत", "Monthly income · Savings"), ("डाक विभाग, संचार मंत्रालय", "Department of Posts"),
+ [(("ब्याज दर", "Interest rate"), ("7.4% सालाना (अक्टूबर–दिसंबर 2026, पिछली तिमाही जैसी)", "7.4% a year (Oct–Dec 2026, unchanged)")), (("अधिकतम जमा", "Maximum deposit"), ("अकेले ₹9 लाख, जॉइंट ₹15 लाख", "₹9 lakh single, ₹15 lakh joint")), (("अवधि", "Term"), ("5 साल", "5 years")), (("ब्याज", "Interest"), ("हर महीने मिलता है", "Paid every month"))],
+ ("POMIS डाकघर की योजना है जिसमें एक बार रकम जमा करने पर 5 साल तक हर महीने ब्याज मिलता है। अकेले खाते में अधिकतम ₹9 लाख और जॉइंट खाते में ₹15 लाख जमा हो सकते हैं। ब्याज पर टैक्स लगता है और इसमें धारा 80C की छूट नहीं है।",
+  "POMIS is a post office scheme where you deposit once and receive interest every month for 5 years. You can deposit up to ₹9 lakh in a single account and ₹15 lakh in a joint account. The interest is taxable and there is no Section 80C deduction."),
+ [("हर महीने ब्याज की नियमित आय", "Regular monthly interest income"), ("अकेले ₹9 लाख, जॉइंट ₹15 लाख तक", "Up to ₹9 lakh single, ₹15 lakh joint"), ("ब्याज डाकघर बचत खाते में सीधे आ सकता है", "Interest can be credited to a savings account"), ("नॉमिनी की सुविधा", "Nomination is available")],
+ [("भारत का नागरिक", "An Indian citizen"), ("बालिग अकेले, या अधिकतम 3 बालिग का जॉइंट खाता", "A single adult, or a joint account of up to 3 adults"), ("10 साल से ऊपर का नाबालिग अपने नाम पर (निकासी 18 साल के बाद)", "A minor above 10 in their own name (withdrawals after 18)"), ("अभिभावक नाबालिग या मानसिक रूप से अस्वस्थ व्यक्ति की ओर से", "A guardian on behalf of a minor or a person of unsound mind")],
+ [("NRI पात्र नहीं हैं", "NRIs are not eligible"), ("पहले साल में निकासी नहीं हो सकती", "No withdrawal is allowed in the first year")],
+ [_KYC, _PH, ("पता प्रमाण", "Address proof"), ("डाकघर बचत खाता (ब्याज सीधे पाने के लिए)", "Post office savings account (to receive interest directly)")],
+ [("अपने नज़दीकी डाकघर जाएँ", "Visit your nearest post office"), ("MIS खाते का फ़ॉर्म, KYC और फोटो दें", "Submit the MIS account form, KYC and photographs"), ("रकम जमा करें (अधिकतम सीमा के भीतर)", "Deposit the amount (within the maximum limit)"), ("तय करें कि ब्याज बचत खाते में आए या डाकघर से लें", "Choose whether interest is credited to a savings account or collected at the post office")],
+ _IP, NOHELP,
+ [(("समय से पहले खाता बंद करने पर क्या कटता है?", "What is deducted on early closure?"), ("PolicyBazaar की जानकारी के अनुसार पहले साल निकासी नहीं हो सकती; 1 से 3 साल के बीच बंद करने पर मूल रकम का 2% और 4 से 5 साल के बीच 1% कटता है। डाकघर से पक्का करें।", "As per PolicyBazaar, no withdrawal is allowed in year 1; closing between years 1 and 3 deducts 2% of principal and between years 4 and 5 deducts 1%. Confirm at the post office.")),
+  (("न्यूनतम जमा कितनी है?", "What is the minimum deposit?"), ("स्रोतों में ₹1,000 और ₹1,500 दोनों लिखे हैं, इसलिए डाकघर से न्यूनतम रकम पक्की करें।", "Sources give both ₹1,000 and ₹1,500, so confirm the minimum with the post office."))],
+ _SN)
+tags.TAGS["post-office-monthly-income-scheme"] = "e"
+
+B("nsc-national-savings-certificate", None, "bima", "📜", "https://www.indiapost.gov.in",
+ ("राष्ट्रीय बचत पत्र (NSC)", "National Savings Certificate (NSC)"),
+ ("डाकघर का 5 साल का बचत पत्र, ब्याज साल-दर-साल जुड़कर मैच्योरिटी पर मिलता है।", "A 5-year post office savings certificate; interest compounds yearly and is paid at maturity."),
+ ("बचत · निवेश", "Savings · Investment"), ("डाक विभाग, संचार मंत्रालय", "Department of Posts"),
+ [(("ब्याज दर", "Interest rate"), ("7.7% सालाना (अक्टूबर–दिसंबर 2026, पिछली तिमाही जैसी)", "7.7% a year (Oct–Dec 2026, unchanged)")), (("न्यूनतम जमा", "Minimum"), ("₹1,000, ₹100 के गुणक में", "₹1,000, in multiples of ₹100")), (("अधिकतम", "Maximum"), ("कोई सीमा नहीं", "No upper limit")), (("अवधि", "Term"), ("5 साल", "5 years"))],
+ ("NSC डाकघर का 5 साल का बचत पत्र है। ब्याज सालाना जुड़ता है और मैच्योरिटी पर एक साथ मिलता है। धारा 80C में ₹1.5 लाख तक की कर-छूट का दावा किया जा सकता है, पर ब्याज कर योग्य है।",
+  "NSC is a 5-year post office savings certificate. Interest compounds annually and is paid together at maturity. A deduction up to ₹1.5 lakh can be claimed under Section 80C, but the interest is taxable."),
+ [("5 साल बाद एक साथ रकम", "A lump sum after 5 years"), ("निवेश की कोई ऊपरी सीमा नहीं", "No upper limit on investment"), ("धारा 80C में सालाना ₹1.5 लाख तक की छूट", "Deduction up to ₹1.5 lakh a year under Section 80C"), ("नॉमिनी की सुविधा", "Nomination is available")],
+ [("भारत का निवासी नागरिक, उम्र की कोई सीमा नहीं", "A resident Indian citizen, no age limit"), ("अपने नाम पर, किसी बालिग के साथ जॉइंट, या नाबालिग की ओर से", "In your own name, jointly with another adult, or on behalf of a minor")],
+ [("NRI, HUF और ट्रस्ट पात्र नहीं हैं", "NRIs, HUFs and trusts are not eligible"), ("समय से पहले निकासी सिर्फ़ मृत्यु, अदालत के आदेश या पात्र गिरवीदार द्वारा ज़ब्ती जैसे मामलों में", "Early encashment only in cases like death, a court order, or forfeiture by an eligible pledgee")],
+ [_KYC, _PH, ("पता प्रमाण", "Address proof")],
+ [("नज़दीकी डाकघर जाएँ", "Visit the nearest post office"), ("NSC आवेदन फ़ॉर्म, KYC और फोटो दें", "Submit the NSC application form, KYC and photographs"), ("रकम जमा करें और प्रमाणपत्र/रसीद लें", "Pay the amount and collect the certificate/receipt")],
+ _IP, NOHELP,
+ [(("NSC का ब्याज कब मिलता है?", "When is NSC interest paid?"), ("ब्याज हर साल जुड़ता है और मैच्योरिटी पर एक साथ मिलता है। बीच में नहीं मिलता।", "Interest compounds every year and is paid together at maturity, not in between.")),
+  (("क्या NSC के ब्याज पर टैक्स लगता है?", "Is NSC interest taxable?"), ("स्रोतों के अनुसार ब्याज कर योग्य है, जबकि निवेश पर 80C की छूट मिलती है। कुछ स्रोतों में इस पर अलग बातें हैं, इसलिए टैक्स सलाहकार या आयकर विभाग से पक्का करें।", "As per sources the interest is taxable while the investment qualifies for Section 80C. Some sources differ on this, so confirm with a tax adviser or the Income Tax Department."))],
+ _SN)
+tags.TAGS["nsc-national-savings-certificate"] = ""
+
+B("kvp-kisan-vikas-patra", None, "bima", "🌾", "https://www.indiapost.gov.in",
+ ("किसान विकास पत्र (KVP)", "Kisan Vikas Patra (KVP)"),
+ ("डाकघर की योजना जिसमें रकम 115 महीने (9 साल 7 महीने) में दोगुनी होने का वादा है।", "A post office scheme where the amount is set to double in 115 months (9 years 7 months)."),
+ ("बचत · निवेश", "Savings · Investment"), ("डाक विभाग, संचार मंत्रालय", "Department of Posts"),
+ [(("ब्याज दर", "Interest rate"), ("7.5% सालाना (अक्टूबर–दिसंबर 2026, पिछली तिमाही जैसी)", "7.5% a year (Oct–Dec 2026, unchanged)")), (("दोगुना होने में", "Time to double"), ("115 महीने (9 साल 7 महीने)", "115 months (9 years 7 months)")), (("न्यूनतम जमा", "Minimum"), ("₹1,000", "₹1,000")), (("अधिकतम", "Maximum"), ("कोई सीमा नहीं", "No upper limit"))],
+ ("KVP डाकघर की योजना है। मौजूदा 7.5% की दर पर रकम 115 महीने में दोगुनी होती है। ब्याज सालाना जुड़ता है और मैच्योरिटी पर ही मिलता है। ब्याज कर योग्य है और निवेश पर धारा 80C की छूट नहीं मिलती। दर हर तिमाही बदल सकती है।",
+  "KVP is a post office scheme. At the current 7.5% rate the amount doubles in 115 months. Interest compounds annually and is paid only at maturity. The interest is taxable and the investment gets no Section 80C deduction. The rate can change every quarter."),
+ [("115 महीने में रकम दोगुनी (मौजूदा दर पर)", "Amount doubles in 115 months (at the current rate)"), ("न्यूनतम ₹1,000, अधिकतम सीमा नहीं", "Minimum ₹1,000, no upper limit"), ("अकेले, जॉइंट या नाबालिग की ओर से निवेश", "Invest individually, jointly or on behalf of a minor")],
+ [("भारत का बालिग नागरिक अकेले या जॉइंट", "An adult Indian citizen, individually or jointly"), ("बालिग नाबालिग की ओर से, या पात्र अभिभावक असमर्थ व्यक्ति की ओर से", "An adult on behalf of a minor, or an eligible guardian for a person who cannot manage their affairs")],
+ [("NRI और HUF पात्र नहीं हैं", "NRIs and HUFs are not eligible"), ("समय से पहले निकासी सिर्फ़ मृत्यु, अदालत के आदेश या पात्र गिरवीदार द्वारा ज़ब्ती जैसे मामलों में", "Early encashment only in cases such as death of the holder, a court order, or forfeiture by an eligible pledgee")],
+ [_KYC, _PH, ("पता प्रमाण", "Address proof")],
+ [("नज़दीकी डाकघर जाएँ", "Visit the nearest post office"), ("KVP आवेदन फ़ॉर्म, KYC और फोटो दें", "Submit the KVP application form, KYC and photographs"), ("रकम जमा करें और प्रमाणपत्र लें", "Pay the amount and collect the certificate")],
+ _IP, NOHELP,
+ [(("क्या KVP में रकम हमेशा 115 महीने में दोगुनी होगी?", "Will KVP always double the money in 115 months?"), ("नहीं। 115 महीने मौजूदा 7.5% की दर पर हैं। दर बदलने पर नए प्रमाणपत्रों की अवधि बदल सकती है। अपने प्रमाणपत्र पर लिखी अवधि देखें।", "No. 115 months applies at the current 7.5% rate. If the rate changes, the period for new certificates can change. Check the period on your certificate.")),
+  (("KVP में न्यूनतम होल्डिंग अवधि कितनी है?", "What is the minimum holding period in KVP?"), ("हमें इसका पक्का आँकड़ा सरकारी स्रोत में नहीं मिला, इसलिए डाकघर से पूछें।", "We did not find a confirmed figure in an official source, so ask the post office."))],
+ _SN)
+tags.TAGS["kvp-kisan-vikas-patra"] = ""

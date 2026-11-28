@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import os, json, html, shutil, datetime
-import guides, news, data10, data_daily, calcs2, calcdata, data9, tags, data4, data5, data6, data7, data8, en3, en4, en5, en6, static_hi, static_en
+import calcs3, guides, news, data10, data_daily, calcs2, calcdata, data9, tags, data4, data5, data6, data7, data8, en3, en4, en5, en6, static_hi, static_en
+calcs2.CALCS.extend(calcs3.CALCS)
 from data1 import Y, CATS
 EN = en6.EN
 CALC = calcdata.CALC
