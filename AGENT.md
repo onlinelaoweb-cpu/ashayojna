@@ -138,3 +138,9 @@ PPF, SCSS, POMIS, NSC, KVP are in data_daily.py; calculators in calcs3.py. Rates
 
 ## Part A priority (added 2026-11-28, owner supplied official PDF)
 - DONE 28 Nov (page exists). NDFDC "Divyangjan Swavalamban Yojana" (central concessional loans for persons with 40%+ disability, UDID needed, age 18+ [14+ for intellectual disability; no age limit for education loans], up to Rs 50 lakh, simple interest 5-9% self-employment / 5-7% home / 4% education, 10-year repayment, 1% rebate for women and non-OH PwD on self-employment loans up to Rs 50,000, applied via state channelising agencies). Source: NDFDC scheme guideline PDF (undated, owner-provided). Before writing the page confirm it is still running and how to apply from a second source (depwd.gov.in NDFDC page, myscheme.gov.in/schemes/sbstspddsy, Vikaspedia) and read the current NDFDC rates there; slug suggestion central-divyangjan-swavalamban-yojana.
+
+## Part A/B priority from Search Console (2026-11-28) — do these in the daily run
+1. Karnataka ration card e-KYC: on/after 1 Dec 2026 search for the latest status (deadline was 30 Nov). Update news `karnataka-ration-card-ekyc-deadline-30-november` and guide `ration-card-ekyc-name-add`; if no news found, say "status could not be verified". Do not invent an extension.
+2. Bihar ASHA payment status: research official source (ASHA incentive/payment status check); update/create page only with verified steps; log if portal unreadable.
+3. Optional new page: PMVVY (Pradhan Mantri Vaya Vandana Yojana) — site has no page; searched at pos 50-95.
+Mark each DONE in DAILY_LOG.md when finished.
