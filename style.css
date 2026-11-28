@@ -223,3 +223,19 @@ main{padding-top:20px}
  .hd.shr.rev .nav{background:#0d6450;box-shadow:0 10px 22px rgba(13,100,80,.35)}
  .hd .nav a{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.22)}
 }
+
+/* ---- v5b dark-mode fixes for components with hard-coded light backgrounds ---- */
+@media(prefers-color-scheme:dark){
+ .tn-dl{background:#1d2a2a;border-color:#3b3524;color:var(--ink)}
+ .tn-dl a{border-top-color:#2f3a38}
+ .tn-dl b{background:#172126;border-color:#3b3524;color:var(--ink)}
+ .tn-dl em{color:#f0b571}
+ .tn-dl .tn-all{border-top-color:#2f3a38;color:#35b79a}
+ .finder,.aud,.savebtn{background:var(--card);border-color:var(--bd);color:var(--ink)}
+ .statecard{background:linear-gradient(135deg,#232a24,#172126);border-color:#4a4226}
+ .wabox{background:#14281f;border-color:#2c5a3f;color:var(--ink)}
+ .echk{background:#14281f;border-color:#2c5a3f}
+ .dld{background:#2b2418;border-color:#6b4f22;color:var(--ink)}
+ .ssyt th,.ssyt td{border-color:var(--bd)}
+ .jump a{border-color:var(--bd);color:var(--ink)}
+}
