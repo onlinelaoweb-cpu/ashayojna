@@ -472,7 +472,7 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
     opts = f'<option value="">{t["findall"]}</option>' + "".join(f'<option value="{k}">{e(sname(k,lang))}</option>' for k in STATES)
     boxes = "".join(f'<label class="aud"><input type="checkbox" value="{k}"> {e(v[fidx])}</label>' for k,v in tags.AUD.items())
     fj = json.dumps([{"t":view(y0,lang)["name"],"s":view(y0,lang)["short"],"u":f'yojana/{y0["slug"]}.html',"st":y0.get("state",""),"a":tags.TAGS.get(y0["slug"],"").split(),"c":sname(y0["state"],lang) if y0.get("state") else t["central"]} for y0 in Y], ensure_ascii=False)
-    fbody = ('<nav class="bc"><a href="index.html">'+t["home"]+'</a> › '+e(t["findl"])+'</nav><h1>🔎 '+e(t["findh"])+'</h1><p class="lead">'+t["findp"]+'</p>'
+    fbody = ('<nav class="bc"><a href="index.html">'+t["home"]+'</a> › '+e(t["findl"])+'</nav><h1><img class="h1i" src="/img/nav-find.svg" width="40" height="40" alt=""> '+e(t["findh"])+'</h1><p class="lead">'+t["findp"]+'</p>'
       '<div class="finder"><label><b>'+t["findst"]+'</b><br><select id="fs" class="search" style="max-width:340px">'+opts+'</select></label>'
       '<p><b>'+t["findwho"]+'</b></p><div class="auds">'+boxes+'</div><button id="fb" class="btn" type="button">'+t["findbtn"]+'</button></div>'
       '<p class="note">⚠️ '+t["findnote"]+'</p><h2 id="fh" style="display:none">'+t["findres"]+'</h2><div id="fr" class="grid"><p>'+t["findnone"]+'</p></div>'
@@ -489,7 +489,7 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
 
     # ---------- SSY calculator ----------
     C = CALC[lang]
-    cb = (f'<nav class="bc"><a href="index.html">{t["home"]}</a> › {e(t["calcl"])}</nav><h1>🧮 {e(C["h1"])}</h1><p class="lead">{C["lead"]}</p>'
+    cb = (f'<nav class="bc"><a href="index.html">{t["home"]}</a> › {e(t["calcl"])}</nav><h1><img class="h1i" src="/img/nav-calc.svg" width="40" height="40" alt=""> {e(C["h1"])}</h1><p class="lead">{C["lead"]}</p>'
       f'<div class="finder"><p><label><b>{C["amt"]}</b><br><input id="am" class="search" type="number" min="0" value="1000" style="max-width:240px"></label></p>'
       f'<p><label><b>{C["fr"]}</b><br><select id="fq" class="search" style="max-width:240px"><option value="m">{C["pm"]}</option><option value="y">{C["py"]}</option></select></label></p>'
       f'<p><label><b>{C["rt"]}</b><br><input id="rt" class="search" type="number" step="0.1" min="0" value="8.2" style="max-width:240px"></label><br><small>{C["rtn"]}</small></p>'
@@ -520,7 +520,7 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
             hint = (D.get("hint") or [None]*9)[i] if f["kind"]=="num" else None
             fl.append(f'<p><label><b>{e(lab)}</b><br>{inp}</label>' + (f'<br><small>{e(hint)}</small>' if hint else '') + '</p>')
         ids = json.dumps([[f["id"], f["kind"]] for f in cc["fields"]])
-        body = (f'<nav class="bc"><a href="index.html">{t["home"]}</a> › <a href="calculators.html">{e(calcs2.HUB[lang]["crumb"])}</a> › {e(D["h1"])}</nav><h1>{cc["icon"]} {e(D["h1"])}</h1><p class="lead">{e(D["lead"])}</p>'
+        body = (f'<nav class="bc"><a href="index.html">{t["home"]}</a> › <a href="calculators.html">{e(calcs2.HUB[lang]["crumb"])}</a> › {e(D["h1"])}</nav><h1><span class="h1t">{ticon(cc["slug"],cc["icon"])}</span> {e(D["h1"])}</h1><p class="lead">{e(D["lead"])}</p>'
           f'<div class="finder">{"".join(fl)}<button id="go" class="btn" type="button">{e(D["btn"])}</button></div><div id="out"></div>'
           f'<p class="note">⚠️ {e(D["note"])}</p>{adslot(t)}<h2>{e(D["rh"])}</h2>{ul(D["rules"])}'
           f'<p><a class="btn" href="yojana/{cc["scheme"]}.html">{e(D["see"])}</a></p>'
@@ -535,7 +535,7 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
     for cc in calcs2.CALCS:
         D = cc[lang]
         cards += f'<a class="card" href="{cc["slug"]}.html">{ticon(cc["slug"],cc["icon"])}<h3>{e(D["h1"])}</h3><p>{e(D["desc"])}</p><span class="more">{t["more"]}</span></a>'
-    hb = f'<nav class="bc"><a href="index.html">{t["home"]}</a> › {e(H["crumb"])}</nav><h1>🧮 {e(H["h1"])}</h1><p class="lead">{e(H["lead"])}</p><div class="grid">{cards}</div>{adslot(t)}'
+    hb = f'<nav class="bc"><a href="index.html">{t["home"]}</a> › {e(H["crumb"])}</nav><h1><img class="h1i" src="/img/nav-calc.svg" width="40" height="40" alt=""> {e(H["h1"])}</h1><p class="lead">{e(H["lead"])}</p><div class="grid">{cards}</div>{adslot(t)}'
     reg("calculators.html")
     page(lang, "calculators.html", f'{H["h1"]} | {SN}', H["desc"], hb, "")
 
@@ -572,7 +572,7 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
         d = g[lang]
         srcs = "".join(f'<li><a href="{u}" target="_blank" rel="noopener nofollow">{e(nm)}</a></li>' for nm,u in g["src"])
         rl = "".join(f'<a class="btn" href="../yojana/{r}.html">{e(view(next(x for x in Y if x["slug"]==r),lang)["name"])}</a> ' for r in g["rel"])
-        gb = (f'<nav class="bc"><a href="../index.html">{t["home"]}</a> › <a href="index.html">{gt}</a></nav><article><h1>{g["icon"]} {e(d["title"])}</h1><p class="lead">{e(d["intro"])}</p>' + _phero(g["slug"], "guide-", lang, d["title"]) + ''
+        gb = (f'<nav class="bc"><a href="../index.html">{t["home"]}</a> › <a href="index.html">{gt}</a></nav><article><h1><span class="h1t">{gicon(g)}</span> {e(d["title"])}</h1><p class="lead">{e(d["intro"])}</p>' + _phero(g["slug"], "guide-", lang, d["title"]) + ''
               f'<h2>{stp}</h2>{ol(d["steps"])}' + (f'<h2>{dcp}</h2>{ul(d["docs"])}' if d["docs"] else "") + f'<h2>{tpp}</h2>{ul(d["tips"])}'
               + (f'<p>{rl}</p>' if rl else "") + f'<h2>{ofl}</h2><ul>{srcs}</ul><div class="warn">{t["warn"]}</div></article>{wabox(lang)}')
         giu = f'{SITE_URL}/img/guide-{g["slug"]}-{lang}.jpg'
@@ -581,7 +581,7 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
         p = f'guides/{g["slug"]}.html'; reg(p)
         page(lang, p, f'{d["title"]} | {SN}', d["desc"], gb, "../", gld, img=giu)
     p = "guides/index.html"; reg(p)
-    page(lang, p, f"{gt} | {SN}", gsub, f'<nav class="bc"><a href="../index.html">{t["home"]}</a> › {gt}</nav><h1>📘 {gt}</h1><p class="lead">{gsub}</p><div class="grid">{"".join(gcard(g,"../") for g in guides.GUIDES)}</div><p><a class="btn" href="../status.html">📋 {"स्टेटस जाँचें" if lang=="hi" else "Check scheme status"}</a></p>{wabox(lang)}', "../")
+    page(lang, p, f"{gt} | {SN}", gsub, f'<nav class="bc"><a href="../index.html">{t["home"]}</a> › {gt}</nav><h1><img class="h1i" src="/img/nav-guides.svg" width="40" height="40" alt=""> {gt}</h1><p class="lead">{gsub}</p><div class="grid">{"".join(gcard(g,"../") for g in guides.GUIDES)}</div><p><a class="btn" href="../status.html">📋 {"स्टेटस जाँचें" if lang=="hi" else "Check scheme status"}</a></p>{wabox(lang)}', "../")
     sh = "योजना का स्टेटस कैसे जाँचें – एक जगह" if lang=="hi" else "How to Check Scheme Status – All in One Place"
     ssub = "जिन योजनाओं की स्टेटस/पेमेंट जाँच के स्टेप हमने जाँचकर जोड़े हैं, उनकी सूची" if lang=="hi" else "Schemes for which we have added checked status/payment steps"
     sc = ""
@@ -598,7 +598,7 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
     svh = "मेरी सेव की हुई योजनाएँ" if lang=="hi" else "My saved schemes"
     svsub = "आपने जो योजनाएँ सेव की हैं वे सिर्फ़ इसी फ़ोन/ब्राउज़र में रहती हैं। लॉगिन की ज़रूरत नहीं।" if lang=="hi" else "Schemes you save stay only in this phone/browser. No login needed."
     svd = json.dumps({y0["slug"]: {"t": view(y0, lang)["name"], "s": view(y0, lang)["short"]} for y0 in Y}, ensure_ascii=False)
-    svbody = (f'<nav class="bc"><a href="index.html">{t["home"]}</a> › {e(svh)}</nav><h1>🔖 {e(svh)}</h1><p class="lead">{svsub}</p><div id="svlist" class="grid"></div>'
+    svbody = (f'<nav class="bc"><a href="index.html">{t["home"]}</a> › {e(svh)}</nav><h1><img class="h1i" src="/img/nav-saved.svg" width="40" height="40" alt=""> {e(svh)}</h1><p class="lead">{svsub}</p><div id="svlist" class="grid"></div>'
               f'<p id="svempty" class="note" style="display:none">{"अभी कुछ सेव नहीं है। किसी योजना के पेज पर “बाद के लिए सेव करें” दबाएँ।" if lang=="hi" else "Nothing saved yet. Tap “Save for later” on any scheme page."}</p>'
               f'<script>(function(){{var D={svd},K="ay_saved",a=[];try{{a=JSON.parse(localStorage.getItem(K)||"[]")}}catch(e){{}}'
               f'var h="",n=0;a.forEach(function(s){{var d=D[s];if(!d)return;n++;var u=\'yojana/\'+s+\'.html\';h+=\'<a class="card" href="\'+u+\'"><h3>\'+d.t+\'</h3><p>\'+d.s+\'</p><span class="more">{t["more"]}</span></a>\'}});'
@@ -641,7 +641,7 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
           "if(n<0){s.closest('.dl').style.display='none';return}"
           "s.textContent=n>0?(n+(document.documentElement.lang=='hi'?' दिन बचे':' days left')):(document.documentElement.lang=='hi'?'आज आख़िरी दिन':'Last day today')})</script>")
     p = "deadlines.html"; reg(p)
-    page(lang, p, f"{dh} | {SN}", dsub, f'<nav class="bc"><a href="index.html">{t["home"]}</a> › {e(dh)}</nav><h1>⏰ {e(dh)}</h1><p class="lead">{dsub}</p><div class="dlist">{rows}</div>{js}<p><a class="btn" href="khabar/index.html">📰 {"सभी खबरें" if lang=="hi" else "All news"}</a></p>{wabox(lang)}', "")
+    page(lang, p, f"{dh} | {SN}", dsub, f'<nav class="bc"><a href="index.html">{t["home"]}</a> › {e(dh)}</nav><h1><img class="h1i" src="/img/nav-dates.svg" width="40" height="40" alt=""> {e(dh)}</h1><p class="lead">{dsub}</p><div class="dlist">{rows}</div>{js}<p><a class="btn" href="khabar/index.html">📰 {"सभी खबरें" if lang=="hi" else "All news"}</a></p>{wabox(lang)}', "")
 
     # ---------- Trust page + checklist ----------
     H = lang=="hi"
