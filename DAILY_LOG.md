@@ -165,3 +165,4 @@ Already on site, skip: Punjab Mawan Dhiyan, WB Annapurna Bhandar, WB Ayushman, N
 - Top: Gaura/Gora Devi Kanya Dhan variants (pos 5-9, 0 CTR) -> title/FAQ spelling variants added; Karnataka ration e-KYC last date (deadline 30 Nov, update after); Punjab free units; PMAY-G apply (pos 19-47); PMJJBY/PMSBY/PMVVY acronyms (pos 50-95).
 - Backlog from queries: Karnataka e-KYC deadline update on/after 30 Nov; acronym full-form FAQs (PMSBY, PMVVY, PMSYM, PMKMY, PMUY); Lado Lakshmi apply online; Bihar ASHA payment status.
 - 2026-11-28 seo_boost FAQs added: PMSBY, PM-SYM, PM-KMY, PMUY, Haryana Lado Lakshmi apply online (page facts only). No PMVVY page exists. Still TODO: Karnataka e-KYC update after 30 Nov; Bihar ASHA payment status.
+- 2026-11-28 header flicker fix: shrink only at scroll>220 (needs >520px scroll room), unshrink <30, 350ms lock, removed transition:all on nav (ghost chips seen in user's MacBook video).
