@@ -240,3 +240,8 @@ main{padding-top:20px}
  .ssyt th,.ssyt td{border-color:var(--bd)}
  .jump a{border-color:var(--bd);color:var(--ink)}
 }
+
+/* ---- v6 3D bottom-bar icons ---- */
+.btm a span{display:flex;align-items:center;justify-content:center;line-height:0}
+.btm a span img{width:32px;height:32px;display:block}
+@media(max-width:860px){.btm a span img{width:30px;height:30px}}
