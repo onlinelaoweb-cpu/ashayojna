@@ -151,3 +151,20 @@ html{scroll-behavior:smooth}h2[id]{scroll-margin-top:12px}
 @media(min-width:861px){.hd .nav{flex-wrap:wrap;overflow:visible}}
 h2#states{scroll-margin-top:12px}
 @media(min-width:861px){.hd .nav{flex-wrap:nowrap;gap:5px}.hd .nav a{font-size:13.5px;padding:4px 10px}}
+/* ---- v3 dark header (matches footer, logo glows on dark) ---- */
+.hd{background:radial-gradient(900px 220px at 15% -40%,#14705b 0,transparent 65%),linear-gradient(180deg,#0c3329,#0a2a23);color:#e8f3ef;border-bottom:0;box-shadow:0 6px 22px rgba(10,42,35,.35);backdrop-filter:none;-webkit-backdrop-filter:none}
+.hd:before{height:3px;background:linear-gradient(90deg,#e8892b,#f5c04a,#35b79a,#f5c04a,#e8892b)}
+.hdr{min-height:72px;padding-top:10px;padding-bottom:10px}
+.logo{color:#fff!important;gap:12px}
+.lg{width:52px;height:52px;border-radius:50%;background:none;box-shadow:0 0 0 2px rgba(245,192,74,.55),0 0 18px rgba(245,192,74,.35);overflow:hidden;flex:none}
+.lg img{width:100%;height:100%;border-radius:50%;display:block;object-fit:cover}
+.lt{font-size:22px;font-weight:800;letter-spacing:.2px;color:#fff}
+.lt small{color:#f5c04a;font-size:12px;font-weight:600;letter-spacing:.3px;margin-top:3px}
+.mnav a{color:#e3f0eb}
+.mnav a:hover{background:rgba(255,255,255,.12);color:#fff}
+.hd .lang{background:linear-gradient(135deg,#f5a03c,#e8892b);color:#1d1204;box-shadow:0 3px 12px rgba(232,137,43,.45)}
+.hd .nav{padding:4px 16px 12px}
+.hd .nav a{background:rgba(255,255,255,.09);color:#e8f3ef;border:1px solid rgba(255,255,255,.14)}
+.hd .nav a:hover{border-color:#f5c04a;background:rgba(255,255,255,.16)}
+.hd .nav a.navst{background:#e8892b;color:#1d1204;border-color:transparent}
+@media(max-width:860px){.hdr{min-height:60px}.lg{width:44px;height:44px}.lt{font-size:19px}.lt small{font-size:11px}}
