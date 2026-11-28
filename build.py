@@ -531,7 +531,7 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
         reg(cc["slug"] + ".html")
         page(lang, cc["slug"] + ".html", f'{D["h1"]} | {SN}', D["desc"], body, "")
     H = calcs2.HUB[lang]
-    cards = f'<a class="card" href="ssy-calculator.html"><span class="ic">👧</span><h3>{e(CALC[lang]["h1"])}</h3><p>{e(H["ssy"])}</p><span class="more">{t["more"]}</span></a>'
+    cards = f'<a class="card" href="ssy-calculator.html">{ticon("ssy","👧")}<h3>{e(CALC[lang]["h1"])}</h3><p>{e(H["ssy"])}</p><span class="more">{t["more"]}</span></a>'
     for cc in calcs2.CALCS:
         D = cc[lang]
         cards += f'<a class="card" href="{cc["slug"]}.html">{ticon(cc["slug"],cc["icon"])}<h3>{e(D["h1"])}</h3><p>{e(D["desc"])}</p><span class="more">{t["more"]}</span></a>'

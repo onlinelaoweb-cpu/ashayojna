@@ -186,3 +186,4 @@ Already on site, skip: Punjab Mawan Dhiyan, WB Annapurna Bhandar, WB Ayushman, N
 - 2026-11-28 owner approved TOPIC MAP (3 active clusters: documents, money/bank, education) added to AGENT.md; daily Part D should rotate within these.
 - 2026-11-28 ROADMAP.md created and approved by owner (phases 0-3, brand, owner-only tasks).
 - 2026-11-28 bottom bar uses 3D-style SVG icons img/nav-*.svg (Canva quota exhausted, only a Home image was generated there). Menu/chips stay emoji.
+- 2026-11-28 calculators hub: SSY card now uses SVG tile. Owner saw old bottom-bar icons on some pages = browser cache (GitHub Pages max-age ~10 min); live main already has new icons.
