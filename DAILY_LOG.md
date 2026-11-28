@@ -183,3 +183,4 @@ Already on site, skip: Punjab Mawan Dhiyan, WB Annapurna Bhandar, WB Ayushman, N
 - pmay-beneficiary-list-name-check-guide: PMAY-U 2.0 MIS FAQ, PIB PRID 2074713, Bajaj Finserv, RTI Wiki. COULD NOT VERIFY: pmayg.nic.in and pmay-urban.gov.in unreadable; rural menu paths from secondary source (hedged); urban portal is pmaymis.gov.in; no PMAY-G helpline.
 - 2026-11-28 dbt-payment guide: added 'check these 3 things first' lead (facts from PFMS docs). Owner's screenshot of kisaanhelpline.com (PM-KISAN helpdesk email/phone) is a private site, not official: NOT used; numbers need official pmkisan.gov.in page.
 - 2026-11-28 hero: white card with green top accent in light mode (owner asked to drop green block); dark mode keeps deep green.
+- 2026-11-28 owner approved TOPIC MAP (3 active clusters: documents, money/bank, education) added to AGENT.md; daily Part D should rotate within these.
