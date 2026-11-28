@@ -154,3 +154,4 @@ Already on site, skip: Punjab Mawan Dhiyan, WB Annapurna Bhandar, WB Ayushman, N
 
 - 28 Nov design (owner request): header restyled dark green like the footer, round glowing logo, gold tagline, translucent nav chips (v3 block at end of style.css). Not sticky (header is tall on mobile).
 - 28 Nov design final: bigger logo (68px / 58px mobile), compact mobile header (top menu row hidden on mobile), bottom bar now 6 items incl. Calculators (build.py btm list).
+- 28 Nov design: header now sticky and shrinks to ~55px after scrolling 70px (class .shr set by HDRJS in build.py, CSS v3c at end of style.css); back at top it expands again.

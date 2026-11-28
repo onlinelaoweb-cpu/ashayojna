@@ -42,6 +42,7 @@ shutil.copy("BingSiteAuth.xml", OUT+"/BingSiteAuth.xml")
 open(OUT+"/a8f45ee04a54231a085577bbe7ae63ec.txt","w").write("a8f45ee04a54231a085577bbe7ae63ec")  # IndexNow key file
 open(OUT+"/OneSignalSDKWorker.js","w").write('importScripts("https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js");\n')
 
+HDRJS = '<script>(function(){var h=document.querySelector(".hd");if(!h)return;var t=false;function f(){t=false;var y=window.pageYOffset||0;if(y>70&&!h.classList.contains("shr"))h.classList.add("shr");else if(y<20&&h.classList.contains("shr"))h.classList.remove("shr")}window.addEventListener("scroll",function(){if(!t){t=true;requestAnimationFrame(f)}},{passive:true});f()})();</script>'
 STATES = {"up": ("उत्तर प्रदेश","Uttar Pradesh"), "bihar": ("बिहार","Bihar"), "mp": ("मध्य प्रदेश","Madhya Pradesh"), "rajasthan": ("राजस्थान","Rajasthan"), "maharashtra": ("महाराष्ट्र","Maharashtra"), "gujarat": ("गुजरात","Gujarat"), "delhi": ("दिल्ली","Delhi"), "haryana": ("हरियाणा","Haryana"), "karnataka": ("कर्नाटक","Karnataka"), "westbengal": ("पश्चिम बंगाल","West Bengal"), "tamilnadu": ("तमिलनाडु","Tamil Nadu"), "ap": ("आंध्र प्रदेश","Andhra Pradesh"), "arunachal": ("अरुणाचल प्रदेश","Arunachal Pradesh"), "assam": ("असम","Assam"), "chhattisgarh": ("छत्तीसगढ़","Chhattisgarh"), "goa": ("गोवा","Goa"), "himachal": ("हिमाचल प्रदेश","Himachal Pradesh"), "jharkhand": ("झारखंड","Jharkhand"), "kerala": ("केरल","Kerala"), "manipur": ("मणिपुर","Manipur"), "meghalaya": ("मेघालय","Meghalaya"), "mizoram": ("मिज़ोरम","Mizoram"), "nagaland": ("नागालैंड","Nagaland"), "odisha": ("ओडिशा","Odisha"), "punjab": ("पंजाब","Punjab"), "sikkim": ("सिक्किम","Sikkim"), "telangana": ("तेलंगाना","Telangana"), "tripura": ("त्रिपुरा","Tripura"), "uttarakhand": ("उत्तराखंड","Uttarakhand"), "jk": ("जम्मू और कश्मीर","Jammu & Kashmir")}
 CATS_EN = {
  "kisan":("Farmer Schemes","Direct income support and cheap credit for farmers"),
@@ -255,6 +256,7 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
 <p class="fnote">ℹ️ {"यह एक स्वतंत्र जानकारी वेबसाइट है, सरकारी वेबसाइट नहीं। आवेदन हमेशा आधिकारिक पोर्टल पर ही करें।" if lang=="hi" else "This is an independent information website, not a government site. Always apply on the official portal."}</p>
 <p class="cp">© {datetime.date.today().year} {sn} · {t['copy']}</p></div></footer>
 <nav class="btm" aria-label="{'मुख्य मेन्यू' if H else 'Main menu'}">{"".join(f'<a href="{base}{u}"><span>{i}</span>{e(l)}</a>' for u,i,l in btm)}</nav>
+{HDRJS}
 </body></html>"""
     full = os.path.join(OUT, pfx+path)
     os.makedirs(os.path.dirname(full) or ".", exist_ok=True)
