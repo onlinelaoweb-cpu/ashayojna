@@ -162,6 +162,24 @@ def _gm(sub):
     import urllib.parse as _u
     return "https://mail.google.com/mail/?view=cm&fs=1&to=%s&su=%s" % (CONTACT_EMAIL, _u.quote(sub))
 
+def _svg(d): return '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+d+'</svg>'
+TICON = {
+ "find": ("#0f7a5f","#0a5a46", _svg('<circle cx="10.5" cy="10.5" r="6.2"/><path d="M15.2 15.2L21 21"/><path d="M8.2 10.5h4.6M10.5 8.2v4.6" stroke-width="1.5"/>')),
+ "ssy": ("#e0568a","#b33a68", _svg('<circle cx="12" cy="12" r="9"/><path d="M8.5 7.8h7M8.5 11h7M8.5 7.8c4.2 0 4.2 6.2 0 6.2l5.2 4.2"/>')),
+ "nps-vatsalya-calculator": ("#3b82c4","#25609b", _svg('<path d="M4 20v-5M10 20v-8M16 20v-11"/><path d="M3 20h18"/><path d="M5 9l5-4 3.5 2.5L20 3.5M16.5 3.5H20V7"/>')),
+ "pm-surya-ghar-calculator": ("#f0a21a","#c97a06", _svg('<circle cx="12" cy="8.5" r="3.4"/><path d="M12 1.8v1.6M5.6 4.4l1.1 1.1M18.4 4.4l-1.1 1.1M3.8 10.5h1.6M18.6 10.5h1.6"/><path d="M3.5 21v-6.8L12 11l8.5 3.2V21z"/><path d="M9.5 21v-4h5v4"/>')),
+ "pmegp-subsidy-calculator": ("#7a5cc9","#5a3fa6", _svg('<path d="M3 21V10.5l6 3.8v-3.8l6 3.8V6.5h3.2V21z"/><path d="M7 17.5h2M12 17.5h2M17 17.5h1" stroke-width="1.6"/>')),
+ "ppf-calculator": ("#2f6fd0","#1d4c98", _svg('<path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8"/><path d="M3 20.5h18"/>')),
+ "scss-interest-calculator": ("#d9822b","#a85d12", _svg('<circle cx="12" cy="7.5" r="3.4"/><path d="M5.5 20c0-4 3-6.6 6.5-6.6s6.5 2.6 6.5 6.6"/><path d="M12 15.5c-1-1-2.6-.4-2.4 1 .2 1.2 2.4 2.6 2.4 2.6s2.2-1.4 2.4-2.6c.2-1.4-1.4-2-2.4-1z" stroke-width="1.4"/>')),
+ "pomis-monthly-income-calculator": ("#d6453d","#a52a24", _svg('<rect x="3" y="5.5" width="18" height="13" rx="2.4"/><path d="M3.5 7l8.5 6.2L20.5 7"/><path d="M9.5 16.2h5" stroke-width="1.6"/>')),
+ "nsc-calculator": ("#6b7a2a","#4b5819", _svg('<path d="M6 3.5h9l3.5 3.5v13.5H6z"/><path d="M14.5 3.8V7.5h3.8"/><path d="M9 11.5h6M9 14.5h6" stroke-width="1.6"/><circle cx="12" cy="18" r="1.5" stroke-width="1.4"/>')),
+ "loan-emi-calculator": ("#14867f","#0c625c", _svg('<rect x="5" y="2.8" width="14" height="18.4" rx="2.4"/><rect x="8" y="6" width="8" height="3.4" rx="0.8"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.6h.01M12 16.6h.01M15.5 16.6h.01" stroke-width="2.4"/>')),
+}
+def ticon(k, fallback=""):
+    if k not in TICON: return f'<span class="ic">{fallback}</span>'
+    a,b,sv = TICON[k]
+    return f'<span class="tic" style="background:linear-gradient(145deg,{a},{b})">{sv}</span>'
+
 def _askq(lang):
     sub = "सवाल" if lang=="hi" else "Question"
     if FORM_URL:
@@ -372,9 +390,9 @@ def build(lang):
     central = [y for y in Y if not y.get("state")]
     schips = "".join(f'<a class="card statecard" href="state/{k}.html"><span class="ic">📍</span><h3>{e(sname(k,lang))}</h3><p>{_cn(sum(1 for y in Y if y.get("state")==k), lang, t)}</p><span class="more">{t["more"]}</span></a>' for k in STATES)
     ccards = "".join(card(y,"",lang) for y in central)
-    toolcards = (f'<a class="card" href="find.html"><span class="ic">🔎</span><h3>{t["findl"]}</h3><p>{t["findp"]}</p><span class="more">{t["more"]}</span></a>'
-                 f'<a class="card" href="ssy-calculator.html"><span class="ic">👧</span><h3>{"सुकन्या समृद्धि कैलकुलेटर" if lang=="hi" else "Sukanya Samriddhi calculator"}</h3><p>{"जमा रकम पर परिपक्वता राशि का हिसाब" if lang=="hi" else "See the maturity amount on your deposits"}</p><span class="more">{t["more"]}</span></a>'
-                 + "".join(f'<a class="card" href="{cc["slug"]}.html"><span class="ic">{cc["icon"]}</span><h3>{e(cc[lang]["h1"])}</h3><p>{e(cc[lang]["desc"])}</p><span class="more">{t["more"]}</span></a>' for cc in calcs2.CALCS))
+    toolcards = (f'<a class="card" href="find.html">{ticon("find","🔎")}<h3>{t["findl"]}</h3><p>{t["findp"]}</p><span class="more">{t["more"]}</span></a>'
+                 f'<a class="card" href="ssy-calculator.html">{ticon("ssy","👧")}<h3>{"सुकन्या समृद्धि कैलकुलेटर" if lang=="hi" else "Sukanya Samriddhi calculator"}</h3><p>{"जमा रकम पर परिपक्वता राशि का हिसाब" if lang=="hi" else "See the maturity amount on your deposits"}</p><span class="more">{t["more"]}</span></a>'
+                 + "".join(f'<a class="card" href="{cc["slug"]}.html">{ticon(cc["slug"],cc["icon"])}<h3>{e(cc[lang]["h1"])}</h3><p>{e(cc[lang]["desc"])}</p><span class="more">{t["more"]}</span></a>' for cc in calcs2.CALCS))
     sj = []
     for y0 in Y:
         v = view(y0, lang); st = y0.get("state")
@@ -486,7 +504,7 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
     cards = f'<a class="card" href="ssy-calculator.html"><span class="ic">👧</span><h3>{e(CALC[lang]["h1"])}</h3><p>{e(H["ssy"])}</p><span class="more">{t["more"]}</span></a>'
     for cc in calcs2.CALCS:
         D = cc[lang]
-        cards += f'<a class="card" href="{cc["slug"]}.html"><span class="ic">{cc["icon"]}</span><h3>{e(D["h1"])}</h3><p>{e(D["desc"])}</p><span class="more">{t["more"]}</span></a>'
+        cards += f'<a class="card" href="{cc["slug"]}.html">{ticon(cc["slug"],cc["icon"])}<h3>{e(D["h1"])}</h3><p>{e(D["desc"])}</p><span class="more">{t["more"]}</span></a>'
     hb = f'<nav class="bc"><a href="index.html">{t["home"]}</a> › {e(H["crumb"])}</nav><h1>🧮 {e(H["h1"])}</h1><p class="lead">{e(H["lead"])}</p><div class="grid">{cards}</div>{adslot(t)}'
     reg("calculators.html")
     page(lang, "calculators.html", f'{H["h1"]} | {SN}', H["desc"], hb, "")
