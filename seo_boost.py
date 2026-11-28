@@ -2,6 +2,21 @@
 # Extra FAQ entries that match what people actually type in Google (from Search Console queries). Answers use ONLY facts already on the page; where
 # the page cannot confirm something, the answer says so. Applied in build.py after all data is loaded. Add more here as new queries show up.
 BOOST = {
+ "pm-suraksha-bima-yojana": {
+  "hi": [("PMSBY का पूरा नाम क्या है? (PMSBY full form)", "PMSBY का पूरा नाम प्रधानमंत्री सुरक्षा बीमा योजना है। इस पेज के अनुसार इसमें सिर्फ़ ₹20 प्रति वर्ष में दुर्घटना बीमा मिलता है, ₹2 लाख तक। प्रीमियम बदल सकता है, इसलिए अपने बैंक से पुष्टि करें।")],
+  "en": [("What is the full form of PMSBY?", "PMSBY stands for Pradhan Mantri Suraksha Bima Yojana. As per this page it gives accident insurance for just ₹20 a year, up to ₹2 lakh. The premium can change, so confirm with your bank.")]},
+ "pm-shram-yogi-maandhan-yojana": {
+  "hi": [("PM-SYM (PMSYM) क्या है और इसका फुल फॉर्म क्या है?", "PM-SYM का पूरा नाम प्रधानमंत्री श्रम योगी मानधन योजना है। इस पेज के अनुसार यह असंगठित मज़दूरों के लिए है और 60 साल के बाद कम से कम ₹3,000 मासिक पेंशन देती है।")],
+  "en": [("What is PM-SYM (PMSYM) and what is its full form?", "PM-SYM stands for Pradhan Mantri Shram Yogi Maandhan Yojana. As per this page it is for unorganised workers and gives a minimum ₹3,000 monthly pension after age 60.")]},
+ "pm-kisan-maandhan-yojana": {
+  "hi": [("PMKMY (PM किसान मानधन) क्या है? इसका फुल फॉर्म क्या है?", "PM-KMY का पूरा नाम पीएम किसान मान-धन पेंशन योजना है। इस पेज के अनुसार छोटे और सीमांत किसानों को 60 साल के बाद कम से कम ₹3,000 मासिक पेंशन मिलती है; प्रवेश उम्र 18 से 40 साल और मासिक अंशदान ₹55 से ₹200।")],
+  "en": [("What is PMKMY (PM Kisan Maandhan) and its full form?", "PM-KMY stands for PM Kisan Maan-Dhan Pension Scheme. As per this page small and marginal farmers get at least ₹3,000 a month after age 60; entry age is 18 to 40 years and the monthly contribution ₹55 to ₹200.")]},
+ "pm-ujjwala-yojana": {
+  "hi": [("PMUY क्या है? (PMUY full form)", "PMUY का पूरा नाम प्रधानमंत्री उज्ज्वला योजना है। इस पेज के अनुसार गरीब परिवार की महिला को मुफ़्त एलपीजी कनेक्शन मिलता है और सिलेंडर पर ₹300 की सब्सिडी बताई गई है।")],
+  "en": [("What is PMUY? (PMUY full form)", "PMUY stands for Pradhan Mantri Ujjwala Yojana. As per this page a woman from a poor family gets a free LPG connection, with a ₹300 subsidy on cylinders.")]},
+ "haryana-lado-lakshmi-yojana": {
+  "hi": [("लाडो लक्ष्मी योजना में ऑनलाइन आवेदन कैसे करें?", "इस पेज पर आवेदन का पोर्टल पक्का नहीं जाँचा जा सका। हरियाणा सरकार की आधिकारिक घोषणा और पोर्टल से पंजीकरण की प्रक्रिया देखें, माँगे गए दस्तावेज़ दें। रिपोर्ट के अनुसार ₹2,100 प्रति माह मिलना है (₹1,100 सीधे, ₹1,000 जमा खाते में)। किसी और साइट पर जानकारी न डालें।")],
+  "en": [("How to apply online for Lado Lakshmi Yojana?", "The application portal could not be confirmed on this page. Check the Haryana government's official announcement and registration portal, and submit the documents asked. As reported, ₹2,100 a month is planned (₹1,100 direct, ₹1,000 into a deposit account). Do not enter details on other sites.")]},
  "pm-jeevan-jyoti-bima-yojana": {
   "hi": [("PMJJBY का मतलब क्या है? (PMJJBY full form)", "PMJJBY का पूरा नाम प्रधानमंत्री जीवन ज्योति बीमा योजना है। यह एक साल की नवीनीकरण योग्य जीवन बीमा योजना है: ₹436 प्रति वर्ष के प्रीमियम पर किसी भी कारण से मृत्यु होने पर ₹2 लाख का कवर। प्रीमियम बदल सकता है, इसलिए बैंक से पुष्टि करें।")],
   "en": [("What does PMJJBY mean? (PMJJBY full form)", "PMJJBY stands for Pradhan Mantri Jeevan Jyoti Bima Yojana. It is a one-year renewable life insurance scheme: for a premium of ₹436 a year, ₹2 lakh is paid on death from any cause. The premium can change, so confirm with your bank.")]},
