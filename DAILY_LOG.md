@@ -156,3 +156,4 @@ Already on site, skip: Punjab Mawan Dhiyan, WB Annapurna Bhandar, WB Ayushman, N
 - 28 Nov design final: bigger logo (68px / 58px mobile), compact mobile header (top menu row hidden on mobile), bottom bar now 6 items incl. Calculators (build.py btm list).
 - 28 Nov design: header now sticky and shrinks to ~55px after scrolling 70px (class .shr set by HDRJS in build.py, CSS v3c at end of style.css); back at top it expands again.
 - 28 Nov design fix (owner phone screenshots, 'desktop site'/wide viewport): chip row (.hd .nav) overflowed the page at 861-1500px (old nowrap+overflow:visible rule) -> now scrollable; shrunk header no longer wraps (mnav only >=1280px); html/body overflow-x:clip.
+- 28 Nov design: dark header and dark hero were merging -> header has rounded bottom + 18px gap, hero slightly lighter gradient; dark-mode bottom bar text was invisible (white bar + light text) -> fixed with card colours.
