@@ -167,3 +167,4 @@ Already on site, skip: Punjab Mawan Dhiyan, WB Annapurna Bhandar, WB Ayushman, N
 - 2026-11-28 seo_boost FAQs added: PMSBY, PM-SYM, PM-KMY, PMUY, Haryana Lado Lakshmi apply online (page facts only). No PMVVY page exists. Still TODO: Karnataka e-KYC update after 30 Nov; Bihar ASHA payment status.
 - 2026-11-28 header flicker fix: shrink only at scroll>220 (needs >520px scroll room), unshrink <30, 350ms lock, removed transition:all on nav (ghost chips seen in user's MacBook video).
 - 2026-11-28 header: on shrink, header margin-bottom compensates height change so document height stays constant (removes scroll feedback loop for good).
+- 2026-11-28 mailto fix: 'Write to us' now also has Gmail compose link + visible email (mailto did nothing on MacBook without mail app).

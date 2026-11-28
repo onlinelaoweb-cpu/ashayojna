@@ -157,10 +157,14 @@ SAVEJS = ("<script>(function(){var K='ay_saved';function g(){try{return JSON.par
           "document.querySelectorAll('.savebtn').forEach(function(b){var s=b.dataset.slug;function r(){b.textContent=g().indexOf(s)>-1?b.dataset.on:b.dataset.off}r();"
           "b.addEventListener('click',function(){var a=g(),i=a.indexOf(s);if(i>-1)a.splice(i,1);else a.push(s);p(a);r()})})})()</script>")
 
+def _gm(sub):
+    import urllib.parse as _u
+    return "https://mail.google.com/mail/?view=cm&fs=1&to=%s&su=%s" % (CONTACT_EMAIL, _u.quote(sub))
+
 def _askq(lang):
     sub = "सवाल" if lang=="hi" else "Question"
-    msg = ("❓ आपका सवाल यहाँ नहीं है? <a href=\"mailto:%s?subject=%s\">हमें लिखें</a>। आम सवाल हम FAQ में जोड़ते रहते हैं।" if lang=="hi"
-           else "❓ Your question is not here? <a href=\"mailto:%s?subject=%s\">Write to us</a>. We add common questions to the FAQ.") % (CONTACT_EMAIL, sub)
+    msg = ("❓ आपका सवाल यहाँ नहीं है? <a href=\"mailto:%s?subject=%s\">हमें लिखें</a> या Gmail में <a href=\"%s\" target=\"_blank\" rel=\"noopener\">यहाँ खोलें</a> (ईमेल: <b>%s</b>)। आम सवाल हम FAQ में जोड़ते रहते हैं।" if lang=="hi"
+           else "❓ Your question is not here? <a href=\"mailto:%s?subject=%s\">Write to us</a> or <a href=\"%s\" target=\"_blank\" rel=\"noopener\">open in Gmail</a> (email: <b>%s</b>). We add common questions to the FAQ.") % (CONTACT_EMAIL, sub, _gm(sub), CONTACT_EMAIL)
     return f'<p class="note">{msg}</p>'
 
 def _jump(lang):
@@ -601,7 +605,7 @@ r.innerHTML=m.length?m.map(d=>'<a class="card" href="'+d.u+'"><h3>'+d.t+'</h3><p
       ("If you spot a mistake",["If any page has wrong or outdated information, tell us. We check and fix it quickly."])])
     vb = "".join(f"<h2>{e(a)}</h2><ul>{''.join(f'<li>{e(x)}</li>' for x in b)}</ul>" for a,b in vsec)
     rep = f'mailto:{CONTACT_EMAIL}?subject=' + ("गलती बताएँ" if H else "Report a mistake")
-    vb += f'<p><a class="btn" href="{rep}">✉️ {"गलती बताएँ" if H else "Report a mistake"}</a></p>'
+    vb += f'<p><a class="btn" href="{rep}">✉️ {"गलती बताएँ" if H else "Report a mistake"}</a> <a class="btn" href="{_gm("गलती बताएँ" if H else "Report a mistake")}" target="_blank" rel="noopener">Gmail</a></p><p class="note">{"ईमेल" if H else "Email"}: <b>{CONTACT_EMAIL}</b></p>'
     p = "how-we-verify.html"; reg(p)
     page(lang, p, f"{vh} | {SN}", vd, f'<nav class="bc"><a href="index.html">{t["home"]}</a> › {e(vh)}</nav><article class="static"><h1>🔍 {e(vh)}</h1><p class="lead">{vd}</p>{vb}</article>{wabox(lang)}', "")
     ck_t = "दस्तावेज़ चेकलिस्ट (प्रिंट/शेयर)" if H else "Document Checklist (print / share)"
