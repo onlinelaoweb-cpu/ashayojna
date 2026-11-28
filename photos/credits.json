@@ -1115,5 +1115,47 @@
   "id": "71L0v2kw424",
   "query": "indian farmer field",
   "out": "img/"
+ },
+ "pmay-beneficiary-list-name-check-guide": {
+  "name": "Birmingham Museums Trust",
+  "link": "https://unsplash.com/@birminghammuseumstrust",
+  "id": "KNmtTbVmXn4",
+  "query": "indian village house",
+  "out": "img/guide-"
+ },
+ "digilocker-account-documents-guide": {
+  "name": "Ashwini Chaudhary(Monty)",
+  "link": "https://unsplash.com/@suicide_chewbacca",
+  "id": "3eC15c-VYP0",
+  "query": "indian woman smartphone bank",
+  "out": "img/guide-"
+ },
+ "dbt-payment-not-received-pfms-status-guide": {
+  "name": "Adhitya Sibikumar",
+  "link": "https://unsplash.com/@adhitya_2505",
+  "id": "pAmZAoyYzG0",
+  "query": "indian woman smartphone bank",
+  "out": "img/guide-"
+ },
+ "education-loan-vidya-lakshmi-pm-vidyalaxmi-guide": {
+  "name": "Dibakar Roy",
+  "link": "https://unsplash.com/@dibakar16roy",
+  "id": "6-PyM8iUiZ8",
+  "query": "indian school students",
+  "out": "img/guide-"
+ },
+ "nsp-otr-scholarship-status-guide": {
+  "name": "Anunay Mahajan",
+  "link": "https://unsplash.com/@anunaymahajan",
+  "id": "WrT8agvQuWA",
+  "query": "indian school students",
+  "out": "img/guide-"
+ },
+ "central-divyangjan-swavalamban-yojana": {
+  "name": "Swastik Arora",
+  "link": "https://unsplash.com/@swastikarora",
+  "id": "34H2OZ5YphA",
+  "query": "indian school students",
+  "out": "img/"
  }
 }
