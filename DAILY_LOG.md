@@ -176,3 +176,8 @@ Already on site, skip: Punjab Mawan Dhiyan, WB Annapurna Bhandar, WB Ayushman, N
 - 2026-11-28 dark-mode fix: deadlines box (.tn-dl), finder, wabox, statecard etc. had hard-coded light backgrounds -> v5b dark overrides at end of style.css.
 - 2026-11-28 header colour back to footer-matching deep green in light mode (hero stays lighter); guide cards use SVG tiles (GSLUG/GICON in build.py; add mapping for new guides, else emoji fallback).
 - 2026-11-28 owner preferred the old emoji in menu/chips/bottom bar/hero buttons -> line-icon commit reverted. Keep emoji there; SVG tiles stay only on tool, scheme and guide cards.
+
+## 2026-11-28 Part D (owner audience list) - 3 guides
+- dbt-payment-not-received-pfms-status-guide: sources PFMS payment-rejection PDF + DBT FAQ (gifmis.cga.gov.in), NPCI NACH FAQ, CPGRAMS, Bajaj Finserv (secondary). COULD NOT VERIFY: pfms.nic.in 'Know your payments' steps (hedged), name-mismatch remedy, helplines (dropped).
+- education-loan-vidya-lakshmi-pm-vidyalaxmi-guide: PIB Cabinet 6 Nov 2024, pmvidyalaxmi.co.in, PIB Jul 2026 doc, india.gov.in, DU guide. COULD NOT VERIFY: vidyalakshmi.co.in (unreadable), relation of the two portals (hedged), institution count (omitted, sources differ), repayment/interest cap (omitted).
+- pmay-beneficiary-list-name-check-guide: PMAY-U 2.0 MIS FAQ, PIB PRID 2074713, Bajaj Finserv, RTI Wiki. COULD NOT VERIFY: pmayg.nic.in and pmay-urban.gov.in unreadable; rural menu paths from secondary source (hedged); urban portal is pmaymis.gov.in; no PMAY-G helpline.

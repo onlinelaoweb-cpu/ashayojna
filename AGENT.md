@@ -144,3 +144,8 @@ PPF, SCSS, POMIS, NSC, KVP are in data_daily.py; calculators in calcs3.py. Rates
 2. Bihar ASHA payment status: research official source (ASHA incentive/payment status check); update/create page only with verified steps; log if portal unreadable.
 3. Optional new page: PMVVY (Pradhan Mantri Vaya Vandana Yojana) — site has no page; searched at pos 50-95.
 Mark each DONE in DAILY_LOG.md when finished.
+
+## Part D backlog from owner's audience list (2026-11-28) - DONE: dbt-payment-not-received-pfms-status-guide, education-loan-vidya-lakshmi-pm-vidyalaxmi-guide, pmay-beneficiary-list-name-check-guide (26 guides total)
+Next, in this order (one-two per daily run, verify first, hedge unreadable portals):
+1. ration card: new card / add name (state-wise portals, hedge) 2. marriage certificate online 3. startup/Stand-Up India loan 4. post office schemes + FD rates compare for seniors (quarterly facts) 5. vridha/vidhwa/divyang pension "kitni milti hai" state table (only verified states) 6. Skill India / free training 7. free laptop / scooty / coaching scheme list (state-wise, verified only) 8. how-to-check sarkari naukri result/admit card via official sites (NO live dates).
+Never publish helpline numbers unless read on an official page. Guide cards need an icon mapping in build.py GSLUG (else emoji fallback).
