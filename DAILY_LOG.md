@@ -184,3 +184,4 @@ Already on site, skip: Punjab Mawan Dhiyan, WB Annapurna Bhandar, WB Ayushman, N
 - 2026-11-28 dbt-payment guide: added 'check these 3 things first' lead (facts from PFMS docs). Owner's screenshot of kisaanhelpline.com (PM-KISAN helpdesk email/phone) is a private site, not official: NOT used; numbers need official pmkisan.gov.in page.
 - 2026-11-28 hero: white card with green top accent in light mode (owner asked to drop green block); dark mode keeps deep green.
 - 2026-11-28 owner approved TOPIC MAP (3 active clusters: documents, money/bank, education) added to AGENT.md; daily Part D should rotate within these.
+- 2026-11-28 ROADMAP.md created and approved by owner (phases 0-3, brand, owner-only tasks).

@@ -163,3 +163,6 @@ ACTIVE CLUSTER 3 - Education and scholarship
 NEXT CLUSTERS (open after the above reach ~8-10 each): 4 Health (Ayushman card download, hospital search path, mahila health), 5 Kisan and gaon (khatauni by state, mandi, KCC, fasal bima claim), 6 Jobs/exams how-to only (how to check result/admit card on official sites; never live dates), 7 Senior citizens (pension amounts per state table, life certificate, SCSS).
 TOOLS to add (AI cannot replicate; also good for AdSense value): EMI/education loan EMI, pension amount estimator per state (verified only), document checklist per scheme (checklist.html exists - extend), eligibility checker (exists on scheme pages - extend), deadline calendar (exists), "will my payment come" checklist, scholarship eligibility finder.
 Rule of thumb per run: 1 guide or tool in the active clusters + 1 state-wise page; log the cluster and micro niche in DAILY_LOG.md so we can see coverage.
+
+## ROADMAP (owner approved 2026-11-28): see ROADMAP.md
+Follow ROADMAP.md phases together with the TOPIC MAP. Daily run keeps doing Parts A-E; when a run has spare capacity, work on the current phase items (hubs, trust pages, tools, printable checklists, corrections log). Never publish anything about the owner's family or the Asha Techno Management Institute without the owner's exact approval.
