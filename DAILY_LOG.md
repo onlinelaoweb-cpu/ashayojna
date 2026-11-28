@@ -151,3 +151,5 @@ Already on site, skip: Punjab Mawan Dhiyan, WB Annapurna Bhandar, WB Ayushman, N
 - Follow-up 28 Nov (owner pasted AI-summary, rejected as source): UP pension page updated from Oneindia 1+13 Feb 2026 (Rs 1,500 = proposal only, no order), Navbharat 23 Apr 2026 (widow: 18+, income < Rs 2 lakh, Rs 1,000, 40.32 lakh), FPJ 4 Aug 2026 (Rs 1,500 CRORE provision, not monthly). Still unverified: divyang age/income limit, any Rs 1,500 order, 'Oct 2026 in-principle approval' (no source found).
 
 - NEW 28 Nov (owner-requested): central-divyangjan-swavalamban-yojana (NDFDC guideline PDF supplied by owner, undated [rates/eligibility/rebate]; DEPwD NDFDC page last updated 31 Oct 2025 [SCA route, ndfdc.nic.in]). NOT used: helpline 1800114515/01145803730 and admin.ndfdcloanaccount.co.in online link (single private site govtschemes.in), myScheme (page error). Could not verify: ndfdc.nic.in current rates/closing date, official helpline, income limit. 474 pages, PROBLEMS 0.
+
+- 28 Nov design (owner request): header restyled dark green like the footer, round glowing logo, gold tagline, translucent nav chips (v3 block at end of style.css). Not sticky (header is tall on mobile).
