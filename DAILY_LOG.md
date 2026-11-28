@@ -153,3 +153,4 @@ Already on site, skip: Punjab Mawan Dhiyan, WB Annapurna Bhandar, WB Ayushman, N
 - NEW 28 Nov (owner-requested): central-divyangjan-swavalamban-yojana (NDFDC guideline PDF supplied by owner, undated [rates/eligibility/rebate]; DEPwD NDFDC page last updated 31 Oct 2025 [SCA route, ndfdc.nic.in]). NOT used: helpline 1800114515/01145803730 and admin.ndfdcloanaccount.co.in online link (single private site govtschemes.in), myScheme (page error). Could not verify: ndfdc.nic.in current rates/closing date, official helpline, income limit. 474 pages, PROBLEMS 0.
 
 - 28 Nov design (owner request): header restyled dark green like the footer, round glowing logo, gold tagline, translucent nav chips (v3 block at end of style.css). Not sticky (header is tall on mobile).
+- 28 Nov design final: bigger logo (68px / 58px mobile), compact mobile header (top menu row hidden on mobile), bottom bar now 6 items incl. Calculators (build.py btm list).

@@ -191,7 +191,7 @@ def page(lang, path, title, desc, body, base="", ld=None, noindex=False, alt=Tru
     t = T[lang]; pfx = "" if lang=="hi" else "en/"
     H = lang=="hi"
     mains = [("index.html","🏠",t["home"]),("find.html","🔎",t["findl"]),("guides/index.html","📘","गाइड" if H else "Guides"),("calculators.html","🧮","कैलकुलेटर" if H else "Calculators"),("status.html","📋","स्टेटस" if H else "Status"),("deadlines.html","⏰","अंतिम तारीख़ें" if H else "Deadlines"),("weekly.html","🗞️","इस हफ़्ते" if H else "This week"),("khabar/index.html","📰","ताज़ा खबर" if H else "Updates")]
-    btm = [("index.html","🏠","होम" if H else "Home"),("find.html","🔎","खोजक" if H else "Find"),("deadlines.html","⏰","तारीख़ें" if H else "Dates"),("guides/index.html","📘","गाइड" if H else "Guides"),("saved.html","🔖","सेव" if H else "Saved")]
+    btm = [("index.html","🏠","होम" if H else "Home"),("find.html","🔎","खोजक" if H else "Find"),("deadlines.html","⏰","तारीख़ें" if H else "Dates"),("guides/index.html","📘","गाइड" if H else "Guides"),("calculators.html","🧮","कैलकुलेटर" if H else "Calculators"),("saved.html","🔖","सेव" if H else "Saved")]
     mnav = "".join(f'<a href="{base}{u}"><span>{i}</span> {e(l)}</a>' for u,i,l in mains)
     nav = "".join(f'<a href="{base}category/{k}.html">{v[1]} {e(cname(k,lang))}</a>' for k,v in CATS.items())
     nav = f'<a class="navst" href="{base}index.html#states">📍 {"राज्य चुनें" if H else "Choose state"} ▾</a>' + nav
