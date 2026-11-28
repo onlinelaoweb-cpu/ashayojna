@@ -159,3 +159,8 @@ Already on site, skip: Punjab Mawan Dhiyan, WB Annapurna Bhandar, WB Ayushman, N
 - 28 Nov design: dark header and dark hero were merging -> header has rounded bottom + 18px gap, hero slightly lighter gradient; dark-mode bottom bar text was invisible (white bar + light text) -> fixed with card colours.
 - 28 Nov design: floating back-to-top button (#totop, shows after 500px scroll, smooth scroll; JS in build.py HDRJS, CSS at end of style.css). Category chips deliberately NOT made sticky (would cost ~50px of mobile screen); the shrunk sticky bar + back-to-top cover navigation.
 - 28 Nov design: scroll-up reveals the category chips again as an overlay under the slim sticky bar (class .rev, no layout shift); scroll-down hides them.
+
+## 2026-11-28 Search Console (3 months) analysis
+- Impressions started 20 Nov (589/day by 26 Nov), 12 clicks total, all India; mobile 8 clicks pos 10, desktop pos 32.
+- Top: Gaura/Gora Devi Kanya Dhan variants (pos 5-9, 0 CTR) -> title/FAQ spelling variants added; Karnataka ration e-KYC last date (deadline 30 Nov, update after); Punjab free units; PMAY-G apply (pos 19-47); PMJJBY/PMSBY/PMVVY acronyms (pos 50-95).
+- Backlog from queries: Karnataka e-KYC deadline update on/after 30 Nov; acronym full-form FAQs (PMSBY, PMVVY, PMSYM, PMKMY, PMUY); Lado Lakshmi apply online; Bihar ASHA payment status.

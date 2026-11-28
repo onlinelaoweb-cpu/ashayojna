@@ -19,7 +19,7 @@ PH = "YOUR-DOMAIN" in SITE_URL
 # Search-Console driven title overrides (25 Nov 2026): only wording from facts already on the page.
 SEO_TITLES = {
  "punjab-free-electricity": {"hi": "पंजाब 300 यूनिट मुफ़्त बिजली: पात्रता, शर्तें व आवेदन", "en": "Punjab 300 Units Free Electricity: Eligibility & How to Apply"},
- "uttarakhand-nanda-gaura": {"hi": "गौरा देवी कन्या धन योजना (नंदा गौरा), उत्तराखंड – पात्रता व आवेदन", "en": "Gaura Devi Kanya Dhan (Nanda Gaura) Uttarakhand: Eligibility, Apply"},
+ "uttarakhand-nanda-gaura": {"hi": "गौरा/गोरा देवी कन्या धन योजना (नंदा गौरा), उत्तराखंड – आवेदन", "en": "Gaura/Gora Devi Kanya Dhan Yojana (Nanda Gaura) Uttarakhand: Apply"},
  "westbengal-ayushman-bharat-swasthya-sathi": {"hi": "पश्चिम बंगाल आयुष्मान भारत (स्वास्थ्य साथी) – पात्रता व आवेदन", "en": "West Bengal Ayushman Bharat (Swasthya Sathi): Eligibility & Apply"},
  "central-national-family-benefit-scheme": {"hi": "राष्ट्रीय परिवार लाभ योजना (NFBS) ₹20,000 – पात्रता व आवेदन", "en": "National Family Benefit Scheme (NFBS) ₹20,000: Eligibility & Apply"},
  "ayushman-vay-vandana-yojana": {"hi": "आयुष्मान वय वंदना कार्ड (70+): पात्रता, लाभ व आवेदन", "en": "Ayushman Vay Vandana Card (70+): Eligibility, Benefits & Apply"},
